@@ -1,0 +1,55 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/* Application-wide Styles */
+@font-face {
+  font-family: codehack;
+  src: url("assets/fonts/nightmare-codehack.ttf") format("truetype");
+}
+@font-face {
+  font-family: blox;
+  src: url("assets/fonts/Blox2.ttf") format("truetype");
+}
+h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}
+h2, h3 {
+  color: #444;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+}
+body, input[type="text"], button {
+  color: #333;
+  font-family: Cambria, Georgia;
+}
+/* everywhere else */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  text-align: center;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: url('assets/images/wallpaper.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+mat-card {
+  width: fit-content;
+  max-width: 800px;
+  margin: 1em auto;
+  background-color: #f5f5f5;
+}
+
+a, a:hover, a:visited {
+  text-decoration: none;
+  color: rgba(0,0,0,.87);
+}

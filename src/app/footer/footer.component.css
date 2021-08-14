@@ -1,0 +1,17 @@
+mat-toolbar {
+    height: 1em;
+    font-size: 0.75em;
+}
+
+span {
+    margin: 0.25em 0.5em;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.twitter a, .twitter a:visited {
+    color: #1da1f2;
+    text-decoration: none;
+}

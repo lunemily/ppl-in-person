@@ -1,0 +1,351 @@
+.codehack {
+  font-family: codehack;
+  font-weight: 100;
+  font-size: 2em;
+  color: #ffffff;
+}
+
+.blox {
+  font-family: blox;
+  font-weight: 100;
+  font-size: 1.5em;
+  color: #ffffff;
+}
+
+h2 {
+  font-family: codehack;
+  font-size: 2em;
+  padding: 1em;
+  margin: 0;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.trainer-card {
+  max-width: 100%;
+  min-width: 320px;
+  padding: 0;
+  margin: 0;
+}
+
+.header {
+  padding: 0.5em;
+}
+
+.leaders-container {
+  display: inline-block;
+  padding: 0.5em;
+  clear: both;
+  line-height: 0;
+}
+
+.leader-row {
+  border: 2px solid #ffffff;
+  display: inline-block;
+  text-align: center; /* ensures the image is always in the h-middle */
+  width: 98%;
+  margin: auto;
+}
+
+.image-panel {
+  padding: 1em;
+  font-size: 1em;
+  font-weight: 700;
+  width: 20%
+}
+
+.tooltip {
+  font-size: 1em;
+}
+
+.portrait {
+  width: 100px;
+  height: 100px;
+}
+
+.badge, .emblem {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  border: 2px solid #ffffff;
+  border-radius: 100%;
+  margin: 30px 0;
+  clear: both;
+}
+
+.info-panel {
+  line-height: 2em;
+  text-align: left;
+  padding: 1em;
+  font-size: 1em;
+  font-weight: 700;
+  width: 30%;
+}
+
+.bio-panel {
+  line-height: 1.5em;
+  text-align: start;
+  padding: 1em;
+  font-weight: 600;
+}
+
+.callout {
+  font-weight: 700;
+  border-radius: 10px;
+  border: 3px solid;
+}
+
+.queue-open {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.queue-closed {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.doubles {
+  color: #004085;
+  background-color: #cce5ff;
+  border-color: #b8daff;
+}
+
+.twitch {
+  color: #463254;
+  background-color: #ddd3e5;
+  border-color: #e5d4e5;
+}
+
+a, a:hover, a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.twitch-icon {
+  font-size: 1em;
+}
+
+.casual {
+  background-color: #51b5a2;
+}
+
+.casual-badges {
+  background-color: #ef92ff;
+}
+
+.casual-badges * span.codehack {
+  text-shadow:  0px 1px #8efe94,
+                1px 1px #8efe94,
+                1px 0px #8efe94,
+               1px -1px #8efe94,
+               0px -1px #8efe94,
+              -1px -1px #8efe94,
+               -1px 0px #8efe94,
+               -1px 1px #8efe94,
+                0px 2px #8efe94,
+                2px 2px #8efe94,
+                2px 0px #8efe94,
+               2px -2px #8efe94,
+               0px -2px #8efe94,
+              -2px -2px #8efe94,
+               -2px 0px #8efe94,
+               -2px 2px #8efe94;
+}
+
+.casual-badges * span.blox {
+  text-shadow:  0px 1px #2f808a,
+                1px 1px #2f808a,
+                1px 0px #2f808a,
+               1px -1px #2f808a,
+               0px -1px #2f808a,
+              -1px -1px #2f808a,
+               -1px 0px #2f808a,
+               -1px 1px #2f808a,
+                0px 2px #2f808a,
+                2px 2px #2f808a,
+                2px 0px #2f808a,
+               2px -2px #2f808a,
+               0px -2px #2f808a,
+              -2px -2px #2f808a,
+               -2px 0px #2f808a,
+               -2px 2px #2f808a;
+}
+
+.veteran {
+  background-color: #45cd89;
+}
+
+.veteran-badges {
+  background-color: #e552f1;
+}
+
+.veteran-badges * span.codehack {
+  text-shadow:  0px 1px #4992c6,
+                1px 1px #4992c6,
+                1px 0px #4992c6,
+               1px -1px #4992c6,
+               0px -1px #4992c6,
+              -1px -1px #4992c6,
+               -1px 0px #4992c6,
+               -1px 1px #4992c6,
+                0px 2px #4992c6,
+                2px 2px #4992c6,
+                2px 0px #4992c6,
+               2px -2px #4992c6,
+               0px -2px #4992c6,
+              -2px -2px #4992c6,
+               -2px 0px #4992c6,
+               -2px 2px #4992c6;
+}
+
+.elite {
+  background-color: #238355;
+}
+
+.elites {
+  background-color: #71ff77;
+}
+
+.elites * span.codehack {
+  text-shadow:  0px 1px #206626,
+                1px 1px #206626,
+                1px 0px #206626,
+               1px -1px #206626,
+               0px -1px #206626,
+              -1px -1px #206626,
+               -1px 0px #206626,
+               -1px 1px #206626,
+                0px 2px #206626,
+                2px 2px #206626,
+                2px 0px #206626,
+               2px -2px #206626,
+               0px -2px #206626,
+              -2px -2px #206626,
+               -2px 0px #206626,
+               -2px 2px #206626;
+}
+
+.elites * span.blox {
+  text-shadow:  0px 1px #af0996,
+                1px 1px #af0996,
+                1px 0px #af0996,
+               1px -1px #af0996,
+               0px -1px #af0996,
+              -1px -1px #af0996,
+               -1px 0px #af0996,
+               -1px 1px #af0996,
+                0px 2px #af0996,
+                2px 2px #af0996,
+                2px 0px #af0996,
+               2px -2px #af0996,
+               0px -2px #af0996,
+              -2px -2px #af0996,
+               -2px 0px #af0996,
+               -2px 2px #af0996;
+}
+
+.champions {
+  background-color: #33eb47;
+}
+
+.champion {
+  background-color: #003f50;
+}
+
+.champions * span.codehack {
+  text-shadow:  0px 1px #023857,
+                1px 1px #023857,
+                1px 0px #023857,
+               1px -1px #023857,
+               0px -1px #023857,
+              -1px -1px #023857,
+               -1px 0px #023857,
+               -1px 1px #023857,
+                0px 2px #023857,
+                2px 2px #023857,
+                2px 0px #023857,
+               2px -2px #023857,
+               0px -2px #023857,
+              -2px -2px #023857,
+               -2px 0px #023857,
+               -2px 2px #023857;
+}
+
+.champions * span.blox {
+  text-shadow:  0px 1px #33eb46,
+                1px 1px #33eb46,
+                1px 0px #33eb46,
+               1px -1px #33eb46,
+               0px -1px #33eb46,
+              -1px -1px #33eb46,
+               -1px 0px #33eb46,
+               -1px 1px #33eb46,
+                0px 2px #33eb46,
+                2px 2px #33eb46,
+                2px 0px #33eb46,
+               2px -2px #33eb46,
+               0px -2px #33eb46,
+              -2px -2px #33eb46,
+               -2px 0px #33eb46,
+               -2px 2px #33eb46;
+}
+
+.unearned.leader-row {
+  background-color: #555555;
+}
+
+.unearned img {
+  opacity: 0.35;
+}
+
+#challengers {
+  margin-bottom: 2em;
+}
+
+@media (min-width: 600px) {
+  img.portrait {
+    width: 150px;
+    height: 150px;
+  }
+  img.badge {
+    height: 75px;
+    width: 75px;
+    border: 4px solid #ffffff;
+  }
+}
+
+@media (min-width: 990px) {
+  .trainer-card {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    min-width: 990px;
+    padding: 0 1em 1em 1em;
+  }
+  img.portrait {
+    width: 250px;
+    height: 250px;
+  }
+  img.badge {
+    height: 125px;
+    width: 125px;
+    margin: 52px 0;
+  }
+}
+
+
+@media (min-width: 1440px) {
+}

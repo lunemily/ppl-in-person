@@ -1,0 +1,53 @@
+<table>
+    <tr>
+        <td class="image-panel">
+            <img class="portrait"
+                    alt="{{ leader.name }}"
+                    src="assets/images/portraits/{{ leader.id }}.png" />
+        </td>
+        <td class="image-panel" *ngIf="leader.type !== 3">
+            <img class="badge"
+                    alt="{{ leader.badgeName }}"
+                    src="assets/images/badges/{{ leader.id }}.png" />
+        </td>
+        <td class="info-panel">
+            <div class="panel">
+                <tr>
+                    <span>{{ leader.name }}</span>
+                </tr>
+                <tr>
+                    <span>{{ leader.badgeName }}</span>
+                </tr>
+                <tr>
+                    <span *ngIf="leader.queueOpen === 1"
+                            class="callout queue-open"
+                            matTooltip="This leader is currently taking challengers"
+                            matTooltipPosition="above"
+                            matTooltipClass="tooltip">&nbsp;OPEN&nbsp;</span>
+                    <span *ngIf="leader.queueOpen === 0"
+                    class="callout queue-closed"
+                    matTooltip="This leader is not currently taking challengers"
+                    matTooltipPosition="above"
+                    matTooltipClass="tooltip">&nbsp;CLOSED&nbsp;</span>
+                </tr>
+                <tr>
+                    <span *ngIf="leader.doubles === 1"
+                            class="callout doubles">&nbsp;DOUBLES&nbsp;</span>
+                </tr>
+                <tr>
+                    <span *ngIf="leader.twitchName !== null"
+                            class="callout twitch">
+                        <a href="https://twitch.tv/{{ leader.twitchName }}" target="_blank">
+                            &nbsp;TWITCH&nbsp;<mat-icon class="twitch-icon">open_in_new</mat-icon>
+                        </a>
+                    </span>
+                </tr>
+            </div>
+        </td>
+        <td class="info-panel bio-panel">
+            <div class>
+                <span>{{ leader.bio }}</span>
+            </div>
+        </td>
+    </tr>
+</table>
