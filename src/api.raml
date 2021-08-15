@@ -2,144 +2,122 @@
 title: PPL In-Person
 
 /challenger:
-  get:
-    queryParameters: 
-      id:
-      displayName: Challenger ID
-      type: number
-      description: The unique id of a challenger
-      example: 0594
-      required: true
-    responses:
-      200:
-        body:
-          application/json:
-            example: |
+  /{challengerId}:
+    get:
+      description: Get the challenger with `challengerId = {challengerId}`
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+              {
+                "id": "0594",
+                "displayName": "Lunella",
+                queuesEntered: [
+                  2498,
+                  1723,
+                  9000
+                ],
+                badgesEarned: [
+                  3560,
+                  6110,
+                  5504
+                ]
+              }
+    post:
+      description: Set a displayName for a challenger with `challengerId = {challengerId}`
+      body:
+        application/json:
+          example: |
             {
-              "id": "0594",
-              "displayName": "Lunella",
-              queuesEntered: [
-                2498,
-                1723,
-                9000
-              ],
-              badgesEarned: [
-                3560,
-                6110,
-                5504
-              ]
+              "displayName": "Lunella"
             }
-  post:
-    queryParameters: 
-      id:
-      displayName: Challenger ID
-      type: number
-      description: The unique id of a challenger
-      example: 0594
-      required: true
-    body:
-      application/json:
-        example: |
-          {
-            "displayName": "Lunella"
-          }
-    responses:
-      200:
-        body:
-          application/json:
-            example: |
-            {
-              "id": "0594",
-              "displayName": "Lunella",
-              queuesEntered: [
-                2498,
-                1723,
-                9000
-              ],
-              badgesEarned: [
-                3560,
-                6110,
-                5504
-              ]
-            }
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+              {
+                "id": "0594",
+                "displayName": "Lunella",
+                queuesEntered: [
+                  2498,
+                  1723,
+                  9000
+                ],
+                badgesEarned: [
+                  3560,
+                  6110,
+                  5504
+                ]
+              }
 /leader:
-  get:
-    queryParameters: 
-      id:
-      displayName: Leader ID
-      type: number
-      description: The unique id of a leader
-      example: 0594
-      required: true
-    responses:
-      200:
-        body:
-          application/json:
-            example: |
+  /{leaderId}:
+    get:
+      description: Get the leader with `leaderId = {leaderId}`
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+              {
+                "id": "0594",
+                "displayName": "Lunella",
+                "badgeName": "Nocturnal Badge",
+                queue: [
+                  {
+                    "challengerId": 5603,
+                    "position": 0
+                  },
+                  {
+                    "challengerId": 1234,
+                    "position": 1
+                  },
+                  {
+                    "challengerId": 7654,
+                    "position": 2
+                  },
+                ],
+                onHold: [
+                  3210,
+                  4567,
+                  8901
+                ]
+              }
+    post:
+      description: Set a displayName for a leader with `leaderId = {leaderId}`
+      body:
+        application/json:
+          example: |
             {
-              "id": "0594",
-              "displayName": "Lunella",
-              "badgeName": "Nocturnal Badge",
-              queue: [
-                {
-                  "challengerId": 5603,
-                  "position": 0
-                },
-                {
-                  "challengerId": 1234,
-                  "position": 1
-                },
-                {
-                  "challengerId": 7654,
-                  "position": 2
-                },
-              ],
-              onHold: [
-                3210,
-                4567,
-                8901
-              ]
+              "displayName": "Lunella"
             }
-  post:
-    queryParameters: 
-      id:
-      displayName: Leader ID
-      type: number
-      description: The unique id of a leader
-      example: 0594
-      required: true
-    body:
-      application/json:
-        example: |
-          {
-            "displayName": "Lunella"
-          }
-    responses:
-      200:
-        body:
-          application/json:
-            example: |
-            {
-              "id": "0594",
-              "displayName": "Lunella",
-              "badgeName": "Nocturnal Badge",
-              queue: [
-                {
-                  "challengerId": 5603,
-                  "position": 0
-                },
-                {
-                  "challengerId": 1234,
-                  "position": 1
-                },
-                {
-                  "challengerId": 7654,
-                  "position": 2
-                },
-              ],
-              onHold: [
-                3210,
-                4567,
-                8901
-              ]
-            }
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+              {
+                "id": "0594",
+                "displayName": "Lunella",
+                "badgeName": "Nocturnal Badge",
+                queue: [
+                  {
+                    "challengerId": 5603,
+                    "position": 0
+                  },
+                  {
+                    "challengerId": 1234,
+                    "position": 1
+                  },
+                  {
+                    "challengerId": 7654,
+                    "position": 2
+                  },
+                ],
+                onHold: [
+                  3210,
+                  4567,
+                  8901
+                ]
+              }
