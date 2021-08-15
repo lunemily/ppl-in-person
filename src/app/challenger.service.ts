@@ -1,136 +1,58 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Challenger } from './challenger';
-import { Badge } from './badge';
-import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
-// import * as data from './leaders.json';
+import { MessageService } from './message.service';
 
+import { Challenger } from './challenger';
+import { Badge } from './badge';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChallengerService {
 
-  private challengersUrl = 'http://toastserv.com:26437';  // URL to web api
+  private serverUrl = 'http://toastserv.com:26437';  // URL to web api
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  /** GET challengers from the server */
-  getChallengers(): Observable<Challenger[]> {
-    const url = `${this.challengersUrl}/list`;
-    return this.http.get<Challenger[]>(url).pipe(
-      map(response => {
-        return response["challengers"];
-      }),
-      tap(_ => this.log('fetched challengers')),
-      catchError(this.handleError<Challenger[]>('getChallengers', []))
-    );
+  /** GET challenger from the server */
+  getChallenger(id: string): Observable<Challenger> {
+    const url = `${this.serverUrl}/badgesv2?id=${id}`;
+
+    // BEGIN: dummy data
+    let challenger: Challenger = {
+      id: id
+    }
+    // END: dummy data
+
+    return of(challenger)
+
   }
 
-  /** GET badges for challenger from the server */
-  getChallenger(id: string): Observable<Challenger> {
-    const url = `${this.challengersUrl}/badgesv2?id=${id}`;
-    return this.http.get<Challenger>(url).pipe(
-      map(response => {
+  /** GET challengers list from the server */
+  getChallengers(): Observable<Challenger[]> {
+    const url = `${this.serverUrl}/badgesv2`;
 
-        /** Create object to return. Add in all leaders now. */
-        let challenger: Challenger = {
-          id: id,
-          name: response["name"],
-          /** 0=casual,1=veteran,2=elite,3=champion */
-          casualLeaders: response["badges"].reduce(function(result, item) {
-            if (item["type"] === 0) {
-              // let staticBadge: Badge = data.badges[data.badges.map(function(e) { return e.id; }).indexOf(item["id"])];
-              let badge: Badge = {
-                id: item["id"],
-                name: item["name"],
-                badgeName: item["badgeName"],
-                queueOpen: item["queueOpen"],
-                badgeWon: item["badgeWon"],
-                twitchName: item["twitchName"],
-                doubles: item["doubles"],
-                type: item["type"],
-                // bio: staticBadge.bio,
-              }
-              result.push(badge);
-            }
-            return result;
-          }, []),
-          veteranLeaders: response["badges"].reduce(function(result, item) {
-            if (item["type"] === 1) {
-              // let staticBadge: Badge = data.badges[data.badges.map(function(e) { return e.id; }).indexOf(item["id"])];
-              let badge: Badge = {
-                id: item["id"],
-                name: item["name"],
-                badgeName: item["badgeName"],
-                queueOpen: item["queueOpen"],
-                badgeWon: item["badgeWon"],
-                twitchName: item["twitchName"],
-                doubles: item["doubles"],
-                type: item["type"],
-                // bio: staticBadge.bio,
-              }
-              result.push(badge);
-            }
-            return result;
-          }, []),
-          elites: response["badges"].reduce(function(result, item) {
-            if (item["type"] === 2) {
-              // let staticBadge: Badge = data.badges[data.badges.map(function(e) { return e.id; }).indexOf(item["id"])];
-              let badge: Badge = {
-                id: item["id"],
-                name: item["name"],
-                badgeName: item["badgeName"],
-                queueOpen: item["queueOpen"],
-                badgeWon: item["badgeWon"],
-                twitchName: item["twitchName"],
-                doubles: item["doubles"],
-                type: item["type"],
-                // bio: staticBadge.bio,
-              }
-              result.push(badge);
-            }
-            return result;
-          }, []),
-          champions: response["badges"].reduce(function(result, item) {
-            if (item["type"] === 3) {
-              // let staticBadge: Badge = data.badges[data.badges.map(function(e) { return e.id; }).indexOf(item["id"])];
-              let badge: Badge = {
-                id: item["id"],
-                name: item["name"],
-                badgeName: item["badgeName"],
-                queueOpen: item["queueOpen"],
-                badgeWon: item["badgeWon"],
-                twitchName: item["twitchName"],
-                doubles: item["doubles"],
-                type: item["type"],
-                // bio: staticBadge.bio,
-              }
-              result.push(badge);
-            }
-            return result;
-          }, []),
-        };
+    // BEGIN: dummy data
+    let challenger1: Challenger = {
+      id: '1'
+    }
+    let challenger2: Challenger = {
+      id: '2'
+    }
+    let challengers: Challenger[] = [challenger1, challenger2]
+    // END: dummy data
 
-        challenger.casualLeaders.sort((a, b) => (a.queueOpen === 0) ? 1 : -1);
-        challenger.veteranLeaders.sort((a, b) => (a.queueOpen === 0) ? 1 : -1);
-        challenger.elites.sort((a, b) => (a.queueOpen === 0) ? 1 : -1);
-        challenger.champions.sort((a, b) => (a.queueOpen === 0) ? 1 : -1);
+    return of(challengers)
 
-        return challenger;
-      }),
-      tap(_ => this.log(`fetched challenger id=${id}`)),
-      catchError(this.handleError<Challenger>(`getChallenger id=${id}`))
-    );
   }
 
   /** GET challengers whose name contains search term */
   searchChallengers(term: string): Observable<Challenger[]> {
-    const url = `${this.challengersUrl}/search?name=${term}`;
+    const url = `${this.serverUrl}/search?name=${term}`;
     if (!term.trim()) {
       // if not search term, return empty challenger array.
       return of([]);

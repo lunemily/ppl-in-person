@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ChallengerDetailComponent } from './challenger-detail/challenger-detail.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: '', component: ChallengerDetailComponent,
+  { path: '', component: LoginComponent,
   runGuardsAndResolvers: 'always' },
 ];
 

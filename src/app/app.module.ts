@@ -27,6 +27,9 @@ import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './footer/footer.component';
 import { LeaderRowComponent } from './leader-row/leader-row.component';
+import { LoginComponent } from './login/login.component';
+import { LeaderConsoleComponent } from './leader-console/leader-console.component';
+import { ChallengerConsoleComponent } from './challenger-console/challenger-console.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { LeaderRowComponent } from './leader-row/leader-row.component';
     HeaderComponent,
     FooterComponent,
     LeaderRowComponent,
+    LoginComponent,
+    LeaderConsoleComponent,
+    ChallengerConsoleComponent,
   ],
   imports: [
     MatAutocompleteModule,
