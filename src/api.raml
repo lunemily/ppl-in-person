@@ -14,14 +14,14 @@ title: PPL In-Person
                 "id": "0594",
                 "displayName": "Lunella",
                 queuesEntered: [
-                  2498,
-                  1723,
-                  9000
+                  "2498",
+                  "1723",
+                  "9000"
                 ],
                 badgesEarned: [
-                  3560,
-                  6110,
-                  5504
+                  "3560",
+                  "6110",
+                  "5504"
                 ]
               }
     post:
@@ -41,14 +41,14 @@ title: PPL In-Person
                 "id": "0594",
                 "displayName": "Lunella",
                 queuesEntered: [
-                  2498,
-                  1723,
-                  9000
+                  "2498",
+                  "1723",
+                  "9000"
                 ],
                 badgesEarned: [
-                  3560,
-                  6110,
-                  5504
+                  "3560",
+                  "6110",
+                  "5504"
                 ]
               }
 /leader:
@@ -66,22 +66,22 @@ title: PPL In-Person
                 "badgeName": "Nocturnal Badge",
                 queue: [
                   {
-                    "challengerId": 5603,
+                    "challengerId": "5603",
                     "position": 0
                   },
                   {
-                    "challengerId": 1234,
+                    "challengerId": "1234",
                     "position": 1
                   },
                   {
-                    "challengerId": 7654,
+                    "challengerId": "7654",
                     "position": 2
                   },
                 ],
                 onHold: [
-                  3210,
-                  4567,
-                  8901
+                  "3210",
+                  "4567",
+                  "8901"
                 ]
               }
     post:
@@ -98,26 +98,102 @@ title: PPL In-Person
             application/json:
               example: |
               {
-                "id": "0594",
+                "leaderId": "0594",
                 "displayName": "Lunella",
                 "badgeName": "Nocturnal Badge",
                 queue: [
                   {
-                    "challengerId": 5603,
+                    "challengerId": "5603",
                     "position": 0
                   },
                   {
-                    "challengerId": 1234,
+                    "challengerId": "1234",
                     "position": 1
                   },
                   {
-                    "challengerId": 7654,
+                    "challengerId": "7654",
                     "position": 2
                   },
                 ],
                 onHold: [
-                  3210,
-                  4567,
-                  8901
+                  "3210",
+                  "4567",
+                  "8901"
                 ]
               }
+  /enqueue:
+    post:
+      description: Adds a challenger to a leader's queue
+      body:
+        application/json:
+          example: |
+            {
+              "leaderId": "0594",
+              "challengerId": "7654"
+            }
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+              {
+                "success": "true",
+                "error": "errcode" (omitted it success == true)
+              }
+  /dequeue:
+    post:
+      description: Removes a challenger from a leader's queue
+      body:
+        application/json:
+          example: |
+            {
+              "leaderId": "0594",
+              "challengerId": "7654",
+              "challengerWin": "false" (default false if omitted)
+            }
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+              {
+                "success": "true",
+                "error": "errcode" (omitted it success == true)
+              }
+  /hold:
+    post:
+      description: Places a challenger on hold
+      body:
+        application/json:
+          example: |
+            {
+              "leaderId": "0594",
+              "challengerId": "7654"
+            }
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+              {
+                "success": "true",
+                "error": "errcode" (omitted it success == true)
+  /unhold:
+    post:
+      description: Places a challenger on hold
+      body:
+        application/json:
+          example: |
+            {
+              "leaderId": "0594",
+              "challengerId": "7654",
+              "placeAtFront": "true"
+            }
+      responses:
+        200:
+          body:
+            application/json:
+              example: |
+              {
+                "success": "true",
+                "error": "errcode" (omitted it success == true)
