@@ -87,6 +87,25 @@ export class ChallengerService {
     // END: real data
   }
 
+  setChallengerName(id: string, displayName: string): void {
+    const url = `${this.serverUrl}/challenger/${id}`;
+
+    console.log("Setting user's name to: " + displayName)
+
+    let display: string = displayName;
+
+    let body = {
+        "displayName": displayName
+    }
+
+    // BEGIN: real data
+    this.http.post<any>(url, { displayName: displayName }).subscribe(data => {
+            display = data.id;
+            window.location.reload();
+        })
+    // END: real data
+  }
+
   /** GET challengers list from the server */
   getChallengers(): Observable<Challenger[]> {
     const url = `${this.serverUrl}/badgesv2`;
