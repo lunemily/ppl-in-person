@@ -22,6 +22,14 @@
         clear: both;
     }
 
+.edit-name {
+    display: block;
+}
+
+.save-name {
+    display: none;
+}
+
 @media (min-width: 400px) {
     img.badge {
         height: 125px;

@@ -1,5 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Challenger } from '../challenger';
+// import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-challenger-console',
@@ -7,6 +9,11 @@ import { Challenger } from '../challenger';
   styleUrls: ['./challenger-console.component.css']
 })
 export class ChallengerConsoleComponent implements OnInit {
+  options: FormGroup;
+  hideRequiredControl = new FormControl(false);
+  floatLabelControl = new FormControl('auto');
+
+  help: string = "help"
 
   @Input() challenger: Challenger;
 
@@ -18,10 +25,7 @@ export class ChallengerConsoleComponent implements OnInit {
   editName(): void {
   }
 
-}
+  saveName(): void {
+  }
 
-@Component({
-  selector: 'dialog-elements-example-dialog',
-  templateUrl: 'challenger-console-name-dialog.html',
-})
-export class ChallengerConsoleNameChangeDialog {}
+}
