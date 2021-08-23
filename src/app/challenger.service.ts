@@ -25,28 +25,28 @@ export class ChallengerService {
     const url = `${this.serverUrl}/challenger/${id}`;
 
     // BEGIN: dummy data
-    let challenger: Challenger = {
-        "id": "f772ddb47f828d41",
-        "displayName": "Test trainer 1",
-        "queuesEntered": [
-            {
-                position: 1,
-                displayName: data["3159a3e6b9025da1"]["displayName"],
-                leaderId: "3159a3e6b9025da1"
-            },
-            {
-                position: 2,
-                displayName: data["d33861cc13ade093"]["displayName"],
-                leaderId: "d33861cc13ade093"
-            }
-        ],
-        "badgesEarned": [
-          {
-              displayName: data["3159a3e6b9025da1"]["displayName"],
-              leaderId: "3159a3e6b9025da1"
-          }
-        ]
-    }
+    // let challenger: Challenger = {
+    //     "id": "f772ddb47f828d41",
+    //     "displayName": "Test trainer 1",
+    //     "queuesEntered": [
+    //         {
+    //             position: 1,
+    //             displayName: data["3159a3e6b9025da1"]["displayName"],
+    //             leaderId: "3159a3e6b9025da1"
+    //         },
+    //         {
+    //             position: 2,
+    //             displayName: data["d33861cc13ade093"]["displayName"],
+    //             leaderId: "d33861cc13ade093"
+    //         }
+    //     ],
+    //     "badgesEarned": [
+    //       {
+    //           displayName: data["3159a3e6b9025da1"]["displayName"],
+    //           leaderId: "3159a3e6b9025da1"
+    //       }
+    //     ]
+    // }
     // END: dummy data
     // return of(challenger)
 
