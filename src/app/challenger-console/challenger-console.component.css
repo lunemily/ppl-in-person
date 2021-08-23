@@ -1,0 +1,50 @@
+.panel {
+    font-size: 1em;
+    font-weight: 700;
+    width: 20%
+}
+
+.image-panel {
+    padding: 0.5em;
+}
+
+.position-panel > span {
+    display: block;
+}
+
+.badge {
+        display: inline-block;
+        height: 100px;
+        width: 100px;
+        border: 2px solid #ffffff;
+        border-radius: 100%;
+        margin: 15px 0;
+        clear: both;
+    }
+
+@media (min-width: 400px) {
+    img.badge {
+        height: 125px;
+        width: 125px;
+        border: 4px solid #ffffff;
+    }
+}
+
+@media (min-width: 990px) {
+    .trainer-card {
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        min-width: 990px;
+        padding: 0 1em 1em 1em;
+    }
+    img.badge {
+        height: 200px;
+        width: 200px;
+        margin: 26px 0;
+    }
+}
+
+
+@media (min-width: 1440px) {
+}

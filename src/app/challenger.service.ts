@@ -60,14 +60,21 @@ export class ChallengerService {
           displayName: response["displayName"],
           queuesEntered: response["queuesEntered"].reduce(function(result, item) {
             let queue: Queue = {
-              displayName: data["default"][item["leaderId"]]["displayName"],
+              displayName: data["default"][item["leaderId"]] !== undefined ? data["default"][item["leaderId"]]["displayName"] : "",
               position: item["position"],
               leaderId: item["leaderId"]
             }
             result.push(queue);
             return result;
           }, []),
-          badgesEarned: response["badgesEarned"],
+          badgesEarned: response["badgesEarned"].map(function(item) {
+            console.log(item)
+            let badge: Badge = {
+              displayName: data["default"][item] !== undefined ? data["default"][item]["displayName"] : "",
+              leaderId: item as unknown as string
+            }
+            return badge;
+          }, []),
         };
 
         console.log(challenger);

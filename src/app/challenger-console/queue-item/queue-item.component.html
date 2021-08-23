@@ -1,7 +1,17 @@
-<td><span>{{ queue.displayName }}</span></td>
-<td class="image-panel">
-    <img class="badge"
-            alt="{{ queue.leaderId }}"
-            src="assets/images/badges/{{ queue.leaderId }}.png" />
-</td>
-<td><span>{{ queue.position*1 + 1*1 }}</span></td>
+<table>
+    <tr>
+        <td class="panel name-panel">
+            <span>{{ queue.displayName }}</span>
+        </td>
+        <td class="panel image-panel">
+            <img class="badge"
+                    alt="{{ queue.displayName }}"
+                    src="assets/images/badges/{{ queue.leaderId }}.png" />
+        </td>
+        <td class="panel position-panel">
+            <span>There are</span>
+            <span>{{ queue.position }}</span>
+            <span>ahead of you.</span>
+        </td>
+    </tr>
+</table>

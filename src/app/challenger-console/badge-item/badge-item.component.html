@@ -1,6 +1,13 @@
-<td><span>{{ badge.displayName }}</span></td>
-<td class="image-panel">
-    <img class="badge"
-            alt="{{ badge.leaderId }}"
-            src="assets/images/badges/{{ badge.leaderId }}.png" />
-</td>
+
+<table>
+    <tr>
+        <td class="panel name-panel">
+            <span>{{ badge.displayName }}</span>
+        </td>
+        <td class="panel image-panel">
+            <img class="badge"
+                    alt="{{ badge.displayName }}"
+                    src="assets/images/badges/{{ badge.leaderId }}.png" />
+        </td>
+    </tr>
+</table>
