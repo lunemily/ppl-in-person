@@ -1,5 +1,9 @@
 <mat-card>
-    <h2>{{ challenger.displayName | uppercase }}'S TRAINER CARD</h2>
+    <div>
+        <h2>{{ challenger.displayName | uppercase }}'S TRAINER CARD</h2>
+        <button mat-raised-button (click)="editName()">EDIT NAME</button>
+    </div>
+    <br />
     <div id="queues-entered">
         <span class="black-steel left">Queues Entered</span>
         <div *ngFor="let queue of challenger.queuesEntered" class="queue-container">

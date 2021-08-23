@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { Challenger } from '../challenger';
 
 @Component({
@@ -7,6 +7,7 @@ import { Challenger } from '../challenger';
   styleUrls: ['./challenger-console.component.css']
 })
 export class ChallengerConsoleComponent implements OnInit {
+
   @Input() challenger: Challenger;
 
   constructor() { }
@@ -14,4 +15,13 @@ export class ChallengerConsoleComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  editName(): void {
+  }
+
 }
+
+@Component({
+  selector: 'dialog-elements-example-dialog',
+  templateUrl: 'challenger-console-name-dialog.html',
+})
+export class ChallengerConsoleNameChangeDialog {}

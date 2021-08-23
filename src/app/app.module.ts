@@ -6,6 +6,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule, } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialog } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -38,6 +39,7 @@ import { BadgeItemComponent } from './challenger-console/badge-item/badge-item.c
     LoginComponent,
     LeaderConsoleComponent,
     ChallengerConsoleComponent,
+    // ChallengerConsoleNameChangeDialog,
     QueueItemComponent,
     BadgeItemComponent,
   ],
@@ -45,6 +47,7 @@ import { BadgeItemComponent } from './challenger-console/badge-item/badge-item.c
     MatAutocompleteModule,
     MatButtonModule,
     MatCardModule,
+    // MatDialog,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
