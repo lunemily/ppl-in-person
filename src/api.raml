@@ -84,43 +84,6 @@ title: PPL In-Person
                   "8901"
                 ]
               }
-    post:
-      description: Set a displayName for a leader with `leaderId = {leaderId}`
-      body:
-        application/json:
-          example: |
-            {
-              "displayName": "Lunella"
-            }
-      responses:
-        200:
-          body:
-            application/json:
-              example: |
-              {
-                "leaderId": "0594",
-                "displayName": "Lunella",
-                "badgeName": "Nocturnal Badge",
-                queue: [
-                  {
-                    "challengerId": "5603",
-                    "position": 0
-                  },
-                  {
-                    "challengerId": "1234",
-                    "position": 1
-                  },
-                  {
-                    "challengerId": "7654",
-                    "position": 2
-                  },
-                ],
-                onHold: [
-                  "3210",
-                  "4567",
-                  "8901"
-                ]
-              }
   /enqueue:
     post:
       description: Adds a challenger to a leader's queue

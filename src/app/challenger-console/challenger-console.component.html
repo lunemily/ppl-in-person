@@ -1,1 +1,29 @@
-<p>challenger-console works!</p>
+<mat-card>
+    <h2>{{ challenger.displayName | uppercase }}'S TRAINER CARD</h2>
+    <div id="queues-entered">
+        <span class="black-steel left">Queues Entered</span>
+        <table>
+            <tr>
+                <th><span>Leader</span></th>
+                <th><span>Badge</span></th>
+                <th><span>Position</span></th>
+            </tr>
+            <tr *ngFor="let queue of challenger.queuesEntered" class="queue-container">
+                <app-queue-item [queue]="queue"></app-queue-item>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <div id="badges-earned">
+        <span class="black-steel left">Badges Earned</span>
+        <table>
+            <tr>
+                <th><span>Leader</span></th>
+                <th><span>Badge</span></th>
+            </tr>
+            <tr *ngFor="let badge of challenger.badgesEarned" class="queue-container">
+                <app-badge-item [badge]="badge"></app-badge-item>
+            </tr>
+        </table>
+    </div>
+</mat-card>

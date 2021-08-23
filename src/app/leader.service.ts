@@ -13,7 +13,7 @@ import { Badge } from './badge';
 })
 export class LeaderService {
 
-  private serverUrl = 'http://toastserv.com:26437';  // URL to web api
+  private serverUrl = 'http://toastserv.com:26438';  // URL to web api
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

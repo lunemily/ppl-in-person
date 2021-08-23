@@ -19,31 +19,27 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import { ChallengersComponent } from './challengers/challengers.component';
-import { ChallengerDetailComponent } from './challenger-detail/challenger-detail.component';
 import { MessagesComponent } from './messages/messages.component';
-import { ChallengerSearchComponent } from './challenger-search/challenger-search.component';
 import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './footer/footer.component';
-import { LeaderRowComponent } from './leader-row/leader-row.component';
 import { LoginComponent } from './login/login.component';
 import { LeaderConsoleComponent } from './leader-console/leader-console.component';
 import { ChallengerConsoleComponent } from './challenger-console/challenger-console.component';
+import { QueueItemComponent } from './challenger-console/queue-item/queue-item.component';
+import { BadgeItemComponent } from './challenger-console/badge-item/badge-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChallengersComponent,
-    ChallengerDetailComponent,
     MessagesComponent,
-    ChallengerSearchComponent,
     HeaderComponent,
     FooterComponent,
-    LeaderRowComponent,
     LoginComponent,
     LeaderConsoleComponent,
     ChallengerConsoleComponent,
+    QueueItemComponent,
+    BadgeItemComponent,
   ],
   imports: [
     MatAutocompleteModule,

@@ -26,10 +26,10 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if(!!this.route.snapshot.queryParams.challenger) {
+    if(this.route.snapshot.queryParams.challenger) {
       this.getChallenger();
     }
-    if(!!this.route.snapshot.queryParams.leader) {
+    if(this.route.snapshot.queryParams.leader) {
       this.getLeader();
     }
     this.headerService.setUrl(window.location.href);
