@@ -69,22 +69,27 @@ export class LeaderService {
     const url = `${this.serverUrl}/leader/${leaderId}/hold/${challengerId}`;
     console.log(url)
 
-    // BEGIN: real data
     this.http.post<any>(url, {}).subscribe(data => {
             window.location.reload();
         })
-    // END: real data
   }
 
   unholdChallenger(leaderId: string, challengerId: string, placeAtFront: boolean): void {
     const url = `${this.serverUrl}/leader/${leaderId}/unhold/${challengerId}`;
     console.log(url)
 
-    // BEGIN: real data
     this.http.post<any>(url, {"placeAtFront": placeAtFront}).subscribe(data => {
             window.location.reload();
         })
-    // END: real data
+  }
+
+  removeChallenger(leaderId: string, challengerId: string): void {
+    const url = `${this.serverUrl}/leader/${leaderId}/dequeue/${challengerId}`;
+    console.log(url)
+
+    this.http.post<any>(url, {}).subscribe(data => {
+            window.location.reload();
+        })
   }
 
   /** Log a LeaderService message with the MessageService */

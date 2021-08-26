@@ -25,4 +25,9 @@ export class LeaderQueueItemComponent implements OnInit {
   manageChallenger(): void {
   }
 
+  removeChallenger(challengerId: string): void {
+    console.log(challengerId)
+    this.leaderService.removeChallenger(this.leaderId, challengerId)
+  }
+
 }
