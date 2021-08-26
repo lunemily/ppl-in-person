@@ -7,7 +7,7 @@
             <button class="battle-button" color="warn" [disabled]="queue.position !== 0" mat-raised-button (click)="manageChallenger()">BATTLE</button>
         </td>
         <td>
-            <button class="hold-button" mat-raised-button (click)="manageChallenger()">HOLD</button>
+            <button class="hold-button" mat-raised-button (click)="holdChallenger(queue.challengerId)">HOLD</button>
         </td>
         <td>
             <button class="remove-button" mat-raised-button (click)="manageChallenger()">REMOVE</button>

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Hold } from 'src/app/hold';
+import { LeaderService } from 'src/app/leader.service';
 
 @Component({
   selector: 'app-leader-hold-item',
@@ -6,10 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./leader-hold-item.component.css']
 })
 export class LeaderHoldItemComponent implements OnInit {
+  @Input() leaderId: string;
+  @Input() hold: Hold;
 
-  constructor() { }
+  constructor(
+    private leaderService: LeaderService,) { }
 
   ngOnInit(): void {
+  }
+
+  unholdFront(challengerId: string): void {
+    console.log(challengerId)
+    this.leaderService.unholdChallenger(this.leaderId, challengerId, true)
+  }
+
+  unholdBack(challengerId: string): void {
+    console.log(challengerId)
+    this.leaderService.unholdChallenger(this.leaderId, challengerId, false)
   }
 
 }

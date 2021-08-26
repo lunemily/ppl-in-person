@@ -1,1 +1,13 @@
-<p>leader-hold-item works!</p>
+<table>
+    <tr>
+        <td class="panel name-panel">
+            <span>{{ hold.displayName }}</span>
+        </td>
+        <td>
+            <button class="unhold-button" mat-raised-button (click)="unholdFront(hold.challengerId)">FRONT</button>
+        </td>
+        <td>
+            <button class="unhold-button" mat-raised-button (click)="unholdBack(hold.challengerId)">BACK</button>
+        </td>
+    </tr>
+</table>

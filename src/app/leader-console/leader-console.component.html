@@ -6,8 +6,14 @@
     <div id="leader-queue">
         <span class="title-font left">Queue</span>
         <div *ngFor="let challenger of leader.queue" class="queue-container">
-            <app-leader-queue-item [queue]="challenger"></app-leader-queue-item>
+            <app-leader-queue-item [leaderId]="leader.id" [queue]="challenger"></app-leader-queue-item>
         </div>
     </div>
     <br />
+    <div id="leader-onHold">
+        <span class="title-font left">On Hold</span>
+        <div *ngFor="let challenger of leader.onHold" class="hold-container">
+            <app-leader-hold-item [leaderId]="leader.id" [hold]="challenger"></app-leader-hold-item>
+        </div>
+    </div>
 </mat-card>

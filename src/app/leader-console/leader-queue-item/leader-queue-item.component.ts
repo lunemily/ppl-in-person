@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { LeaderService } from 'src/app/leader.service';
 import { Queue } from 'src/app/queue';
 
 @Component({
@@ -7,12 +8,18 @@ import { Queue } from 'src/app/queue';
   styleUrls: ['./leader-queue-item.component.css']
 })
 export class LeaderQueueItemComponent implements OnInit {
+  @Input() leaderId: string;
   @Input() queue: Queue;
 
-  constructor() { }
+  constructor(
+    private leaderService: LeaderService,) { }
 
   ngOnInit(): void {
-    console.log(this.queue);
+  }
+
+  holdChallenger(challengerId: string): void {
+    console.log(challengerId)
+    this.leaderService.holdChallenger(this.leaderId, challengerId)
   }
 
   manageChallenger(): void {
