@@ -60,7 +60,7 @@ export class ChallengerService {
           displayName: response["displayName"],
           queuesEntered: response["queuesEntered"].reduce(function(result, item) {
             let queue: Queue = {
-              displayName: data["default"][item["leaderId"]] !== undefined ? data["default"][item["leaderId"]]["displayName"] : "",
+              displayName: item["leaderName"],
               position: item["position"],
               leaderId: item["leaderId"]
             }
@@ -68,10 +68,9 @@ export class ChallengerService {
             return result;
           }, []),
           badgesEarned: response["badgesEarned"].map(function(item) {
-            console.log(item)
             let badge: Badge = {
-              displayName: data["default"][item] !== undefined ? data["default"][item]["displayName"] : "",
-              leaderId: item as unknown as string
+              displayName: item["leaderName"],
+              leaderId: item["leaderId"]
             }
             return badge;
           }, []),
@@ -93,10 +92,6 @@ export class ChallengerService {
     console.log("Setting user's name to: " + displayName)
 
     let display: string = displayName;
-
-    let body = {
-        "displayName": displayName
-    }
 
     // BEGIN: real data
     this.http.post<any>(url, { displayName: displayName }).subscribe(data => {

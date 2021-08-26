@@ -1,9 +1,12 @@
 import { Badge } from './badge';
+import { Hold } from './hold';
+import { Queue } from './queue';
 
 /** This object represents a leader */
 export interface Leader {
     id: string;
-    name?: string;
+    displayName?: string;
     badgeName?: string[];
-    queue?: string[];
+    queue?: Queue[];
+    onHold?: Hold[]
   }

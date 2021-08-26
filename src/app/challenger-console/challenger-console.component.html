@@ -5,14 +5,14 @@
     </div>
     <br />
     <div id="queues-entered">
-        <span class="black-steel left">Queues Entered</span>
+        <span class="title-font left">Queues Entered</span>
         <div *ngFor="let queue of challenger.queuesEntered" class="queue-container">
             <app-queue-item [queue]="queue"></app-queue-item>
         </div>
     </div>
     <br />
     <div id="badges-earned">
-        <span class="black-steel left">Badges Earned</span>
+        <span class="title-font left">Badges Earned</span>
         <div *ngFor="let badge of challenger.badgesEarned" class="queue-container">
             <app-badge-item [badge]="badge"></app-badge-item>
         </div>

@@ -28,5 +28,11 @@ p {
     flex: 1 1 auto;
 }
 #title {
-    font-size: 2em;
+    font-size: 1.5em;
+}
+
+@media (min-width: 400px) {
+    #title {
+        font-size: 2em;
+    }
 }

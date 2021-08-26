@@ -1,1 +1,13 @@
-<p>leader-console works!</p>
+<mat-card>
+    <div>
+        <h2>{{ leader.displayName.toUpperCase() }}'S LEADER CARD</h2>
+    </div>
+    <br />
+    <div id="leader-queue">
+        <span class="title-font left">Queue</span>
+        <div *ngFor="let challenger of leader.queue" class="queue-container">
+            <app-leader-queue-item [queue]="challenger"></app-leader-queue-item>
+        </div>
+    </div>
+    <br />
+</mat-card>

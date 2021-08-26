@@ -7,6 +7,8 @@ import { MessageService } from './message.service';
 
 import { Leader } from './leader';
 import { Badge } from './badge';
+import { Queue } from './queue';
+import { Hold } from './hold';
 
 @Injectable({
   providedIn: 'root'
@@ -18,15 +20,49 @@ export class LeaderService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
+
   /** GET leader from the server */
   getLeader(id: string): Observable<Leader> {
-    const url = `${this.serverUrl}/badgesv2?id=${id}`;
+    const url = `${this.serverUrl}/leader/${id}`;
 
-    let leader: Leader = {
-      id: id
-    }
-    return of(leader)
+    // BEGIN: dummy data
+    // return of(leader)
 
+    // BEGIN: real data
+    return this.http.get<Leader>(url).pipe(
+      map(response => {
+        console.log(response);
+
+        /** Create object to return. Add in all leaders now. */
+        let leader: Leader = {
+          id: id,
+          displayName: response["leaderName"],
+          queue: response["queue"].map(function(item) {
+            let queue: Queue = {
+              position: item["position"],
+              challengerId: item["challengerId"],
+              displayName: item["displayName"]
+            }
+            return queue;
+          }, []),
+          onHold: response["onHold"].map(function(item) {
+            let hold: Hold = {
+              challengerId: item["challengerId"],
+              displayName: item["displayName"]
+            }
+            return hold;
+          }, []),
+        };
+
+        console.log(leader)
+
+
+        return leader;
+      }),
+      tap(_ => this.log(`fetched leader id=${id}`)),
+      catchError(this.handleError<Leader>(`leader id=${id}`))
+    );
+    // END: real data
   }
 
   /** Log a LeaderService message with the MessageService */

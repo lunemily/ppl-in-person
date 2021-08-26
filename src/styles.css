@@ -12,6 +12,10 @@
   font-family: black-steel;
   src: url("assets/fonts/HffBlackSteel-vrv7.ttf") format("truetype");
 }
+@font-face {
+  font-family: theboldfont;
+  src: url("assets/fonts/theboldfont.ttf") format("truetype");
+}
 h1 {
   color: #369;
   font-family: Arial, Helvetica, sans-serif;
@@ -62,7 +66,12 @@ a, a:hover, a:visited {
   font-family: black-steel;
 }
 
+.title-font {
+  font-family: theboldfont;
+}
+
 .west {
-  background-color: rgb(10, 141, 111);
+  /* background-color: #0900FF; */
+  background-color: #040080;
   color: #fff;
 }
