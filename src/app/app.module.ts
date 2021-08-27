@@ -26,7 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { LeaderConsoleComponent } from './leader-console/leader-console.component';
-import { LeaderQueueItemComponent } from './leader-console/leader-queue-item/leader-queue-item.component'
+import { LeaderQueueItemComponent, ReportBattleDialog } from './leader-console/leader-queue-item/leader-queue-item.component'
 import { ChallengerConsoleComponent, ChallengerSetNameDialog } from './challenger-console/challenger-console.component';
 import { QueueItemComponent } from './challenger-console/queue-item/queue-item.component';
 import { BadgeItemComponent } from './challenger-console/badge-item/badge-item.component';
@@ -41,6 +41,7 @@ import { LeaderHoldItemComponent } from './leader-console/leader-hold-item/leade
     LoginComponent,
     LeaderConsoleComponent,
     LeaderQueueItemComponent,
+    ReportBattleDialog,
     ChallengerConsoleComponent,
     ChallengerSetNameDialog,
     QueueItemComponent,

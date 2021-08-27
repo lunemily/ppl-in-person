@@ -4,7 +4,7 @@
             <span>{{ queue.displayName }}</span>
         </td>
         <td>
-            <button class="battle-button" color="warn" [disabled]="queue.position !== 0" mat-raised-button (click)="manageChallenger()">BATTLE</button>
+            <button class="battle-button" color="warn" [disabled]="queue.position !== 0" mat-raised-button (click)="reportBattle()">BATTLE</button>
         </td>
         <td>
             <button class="hold-button" mat-raised-button (click)="holdChallenger(queue.challengerId)">HOLD</button>

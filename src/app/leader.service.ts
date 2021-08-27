@@ -65,6 +65,17 @@ export class LeaderService {
     // END: real data
   }
 
+  reportBattle(leaderId: string, challengerId: string, win: boolean): void {
+    const url = `${this.serverUrl}/leader/${leaderId}/report/${challengerId}`;
+    let body = {
+      challengerWin: win
+    }
+
+    this.http.post<any>(url, body).subscribe(data => {
+      window.location.reload();
+  })
+  }
+
   holdChallenger(leaderId: string, challengerId: string): void {
     const url = `${this.serverUrl}/leader/${leaderId}/hold/${challengerId}`;
     console.log(url)

@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~12.2.2",
     "@angular/router": "~12.2.2",
     "angular-in-memory-web-api": "^0.11.0",
+    "ngx-webcam": "^0.3.2",
     "rxjs": "~7.3.0",
     "tslib": "^2.3.1",
     "zone.js": "~0.11.4"
