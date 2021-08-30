@@ -76,8 +76,6 @@ export class ChallengerService {
           }, []),
         };
 
-        console.log(challenger);
-
         return challenger;
       }),
       tap(_ => this.log(`fetched challenger id=${id}`)),

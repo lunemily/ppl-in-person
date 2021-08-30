@@ -31,8 +31,6 @@ export class LeaderService {
     // BEGIN: real data
     return this.http.get<Leader>(url).pipe(
       map(response => {
-        console.log(response);
-
         /** Create object to return. Add in all leaders now. */
         let leader: Leader = {
           id: id,
@@ -53,10 +51,6 @@ export class LeaderService {
             return hold;
           }, []),
         };
-
-        console.log(leader)
-
-
         return leader;
       }),
       tap(_ => this.log(`fetched leader id=${id}`)),
@@ -76,9 +70,16 @@ export class LeaderService {
   })
   }
 
+  enqueueChallenger(leaderId: string, challengerId: string): void {
+    const url = `${this.serverUrl}/leader/${leaderId}/enqueue/${challengerId}`;
+
+    this.http.post<any>(url, {}).subscribe(data => {
+            window.location.reload();
+        })
+  }
+
   holdChallenger(leaderId: string, challengerId: string): void {
     const url = `${this.serverUrl}/leader/${leaderId}/hold/${challengerId}`;
-    console.log(url)
 
     this.http.post<any>(url, {}).subscribe(data => {
             window.location.reload();
@@ -87,7 +88,6 @@ export class LeaderService {
 
   unholdChallenger(leaderId: string, challengerId: string, placeAtFront: boolean): void {
     const url = `${this.serverUrl}/leader/${leaderId}/unhold/${challengerId}`;
-    console.log(url)
 
     this.http.post<any>(url, {"placeAtFront": placeAtFront}).subscribe(data => {
             window.location.reload();
@@ -96,7 +96,7 @@ export class LeaderService {
 
   removeChallenger(leaderId: string, challengerId: string): void {
     const url = `${this.serverUrl}/leader/${leaderId}/dequeue/${challengerId}`;
-    console.log(url)
+
 
     this.http.post<any>(url, {}).subscribe(data => {
             window.location.reload();

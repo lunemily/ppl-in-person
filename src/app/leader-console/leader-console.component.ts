@@ -15,6 +15,7 @@ export interface DialogData {
   styleUrls: ['./leader-console.component.css']
 })
 export class LeaderConsoleComponent implements OnInit {
+  showCamera: boolean
   options: FormGroup;
   hideRequiredControl = new FormControl(false);
   floatLabelControl = new FormControl('auto');
@@ -28,6 +29,11 @@ export class LeaderConsoleComponent implements OnInit {
     private leaderService: LeaderService,) { }
 
   ngOnInit(): void {
+    this.showCamera = false
+  }
+
+  enqueue(): void {
+    this.showCamera = true
   }
 
 

@@ -18,12 +18,10 @@ export class LeaderHoldItemComponent implements OnInit {
   }
 
   unholdFront(challengerId: string): void {
-    console.log(challengerId)
     this.leaderService.unholdChallenger(this.leaderId, challengerId, true)
   }
 
   unholdBack(challengerId: string): void {
-    console.log(challengerId)
     this.leaderService.unholdChallenger(this.leaderId, challengerId, false)
   }
 

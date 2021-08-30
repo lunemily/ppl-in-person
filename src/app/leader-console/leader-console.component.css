@@ -1,3 +1,8 @@
 .queue-container {
     padding: 0.5em 1em;
 }
+#enqueue-button {
+    font-size: 4em;
+    background-color: #040080;
+    margin: 0.5em;
+}

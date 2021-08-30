@@ -1,21 +1,25 @@
-import { Component, VERSION, OnInit, ViewChild } from '@angular/core';
+import { Component, VERSION, OnInit, ViewChild, Input } from '@angular/core';
 
 import { QrScannerComponent } from 'angular2-qrscanner';
-import { stringify } from '@angular/compiler/src/util';
+import { LeaderService } from '../leader.service';
 
 @Component({
-  selector: 'app-camera',
-  templateUrl: 'camera.component.html',
-  styleUrls: ['./camera.component.css']
+    selector: 'app-camera',
+    templateUrl: 'camera.component.html',
+    styleUrls: ['./camera.component.css']
 })
 export class CameraComponent implements OnInit {
-  @ViewChild(QrScannerComponent) qrScannerComponent: QrScannerComponent ;
+    // Presence of a leaderId indicates that we are enqueuing a challenger
+    @Input() leaderId: string;
+    @ViewChild(QrScannerComponent) qrScannerComponent: QrScannerComponent ;
 
-  constructor() {
-  }
+    constructor(
+        private leaderService: LeaderService,
+    ) {}
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        console.log(this.leaderId)
+    }
 
     ngAfterViewInit() {
         this.qrScannerComponent.getMediaDevices().then(devices => {
@@ -45,10 +49,17 @@ export class CameraComponent implements OnInit {
         this.qrScannerComponent.capturedQr.subscribe(result => {
             // const devURL = 'http://localhost:4200';
             // const prodURL = 'http://paxpokemonleague.net/west/';
-            const regex = /^http:\/\/(localhost:4200|paxpokemonleague.net\/west)\/\?(leader|challenger)=([a-zA-Z0-9]+){16}$/g;
-            console.log(result);
-            if (result.match(regex)) {
-                window.location.replace(result);
+            const enqueueRegex = /^http:\/\/(localhost:4200|paxpokemonleague.net\/west)\/\?(challenger)=([a-zA-Z0-9]+){16}$/g;
+            const loginRegex = /^http:\/\/(localhost:4200|paxpokemonleague.net\/west)\/\?(leader|challenger)=([a-zA-Z0-9]+){16}$/g;
+            if (this.leaderId) {
+                if (result.match(enqueueRegex)) {
+                    let challengerId = result.replace("http://localhost:4200/?challenger=", "").replace("http://paxpokemonleague.net/west/?challenger=", "")
+                    this.leaderService.enqueueChallenger(this.leaderId, challengerId);
+                }
+            } else {
+                if (result.match(loginRegex)) {
+                    window.location.replace(result);
+                }
             }
         });
     }

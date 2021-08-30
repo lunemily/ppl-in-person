@@ -26,12 +26,10 @@ export class LeaderQueueItemComponent implements OnInit {
   }
 
   holdChallenger(challengerId: string): void {
-    console.log(challengerId)
     this.leaderService.holdChallenger(this.leaderId, challengerId)
   }
 
   removeChallenger(challengerId: string): void {
-    console.log(challengerId)
     this.leaderService.removeChallenger(this.leaderId, challengerId)
   }
 

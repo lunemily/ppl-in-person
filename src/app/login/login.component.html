@@ -1,3 +1,5 @@
-<app-camera *ngIf="showCamera"></app-camera>
+<mat-card *ngIf="showCamera">
+    <app-camera></app-camera>
+</mat-card>
 <app-leader-console *ngIf="leader" [leader]="leader"></app-leader-console>
 <app-challenger-console *ngIf="challenger" [challenger]="challenger"></app-challenger-console>
