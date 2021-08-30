@@ -1,1 +1,9 @@
 @import '../challenger-console.component.css';
+table {
+    border: 2px black;
+    width: 100%;
+}
+
+.name-panel {
+    max-width: 80px;
+}

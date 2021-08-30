@@ -1,1 +1,21 @@
 @import '../challenger-console.component.css';
+table {
+    border: 2px black;
+    width: 100%;
+}
+
+.name-panel {
+    max-width: 80px;
+}
+
+#queue-position {
+    color: #040080;
+    font-size: 2em;
+}
+
+#queue-help {
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    font-size: 0.75em;
+  }
