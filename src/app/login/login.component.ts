@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   @Input() leader: Leader;
   @Input() challenger: Challenger;
+  showCamera: boolean
 
   constructor(
     private route: ActivatedRoute,
@@ -26,10 +27,13 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.showCamera = true;
     if(this.route.snapshot.queryParams.challenger) {
+      this.showCamera = false;
       this.getChallenger();
     }
     if(this.route.snapshot.queryParams.leader) {
+      this.showCamera = false;
       this.getLeader();
     }
     this.headerService.setUrl(window.location.href);

@@ -19,6 +19,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgQrScannerModule } from 'angular2-qrscanner';
 
 import { MessagesComponent } from './messages/messages.component';
 import { HeaderComponent } from './header/header.component';
@@ -31,6 +32,7 @@ import { ChallengerConsoleComponent, ChallengerSetNameDialog } from './challenge
 import { QueueItemComponent } from './challenger-console/queue-item/queue-item.component';
 import { BadgeItemComponent } from './challenger-console/badge-item/badge-item.component';
 import { LeaderHoldItemComponent } from './leader-console/leader-hold-item/leader-hold-item.component';
+import { CameraComponent } from './camera/camera.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,7 @@ import { LeaderHoldItemComponent } from './leader-console/leader-hold-item/leade
     QueueItemComponent,
     BadgeItemComponent,
     LeaderHoldItemComponent,
+    CameraComponent,
   ],
   imports: [
     MatAutocompleteModule,
@@ -66,7 +69,8 @@ import { LeaderHoldItemComponent } from './leader-console/leader-hold-item/leade
     FormsModule,
     ClipboardModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgQrScannerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
