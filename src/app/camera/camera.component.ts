@@ -18,7 +18,6 @@ export class CameraComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        console.log(this.leaderId)
     }
 
     ngAfterViewInit() {
@@ -33,7 +32,7 @@ export class CameraComponent implements OnInit {
             if (videoDevices.length > 0){
                 let choosenDev;
                 for (const dev of videoDevices){
-                    if (dev.label.includes('front')){
+                    if (dev.label.includes('back') || dev.label.includes('rear')){ // Select rear-facing camera
                         choosenDev = dev;
                         break;
                     }
