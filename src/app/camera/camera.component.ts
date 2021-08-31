@@ -46,13 +46,16 @@ export class CameraComponent implements OnInit {
         });
 
         this.qrScannerComponent.capturedQr.subscribe(result => {
-            // const devURL = 'http://localhost:4200';
-            // const prodURL = 'http://paxpokemonleague.net/west/';
-            const enqueueRegex = /^http:\/\/(localhost:4200|paxpokemonleague.net\/west)\/\?(challenger)=([a-zA-Z0-9]+){16}$/g;
-            const loginRegex = /^http:\/\/(localhost:4200|paxpokemonleague.net\/west)\/\?(leader|challenger)=([a-zA-Z0-9]+){16}$/g;
+            // const devURL = 'https://localhost:4200';
+            // const prodURL = 'https://paxpokemonleague.net/west/';
+            const enqueueRegex = /^http(s|):\/\/(localhost:4200|paxpokemonleague\.net\/west)\/\?(challenger)=([a-zA-Z0-9]+){0,16}$/g;
+            const loginRegex = /^http(s|):\/\/(localhost:4200|paxpokemonleague.net\/west)\/\?(leader|challenger)=([a-zA-Z0-9]+){0,16}$/g;
             if (this.leaderId) {
                 if (result.match(enqueueRegex)) {
-                    let challengerId = result.replace("http://localhost:4200/?challenger=", "").replace("http://paxpokemonleague.net/west/?challenger=", "")
+                    let challengerId = result.replace("http://localhost:4200/?challenger=", "")
+                            .replace("http://paxpokemonleague.net/west/?challenger=", "")
+                            .replace("https://localhost:4200/?challenger=", "")
+                            .replace("https://paxpokemonleague.net/west/?challenger=", "")
                     this.leaderService.enqueueChallenger(this.leaderId, challengerId);
                 }
             } else {
