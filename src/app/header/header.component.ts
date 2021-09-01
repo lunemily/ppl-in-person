@@ -27,11 +27,8 @@ export class HeaderComponent implements OnInit {
     window.open("assets/images/challenging.png");
   }
 
-  openCopy() {
-    this.clipboard.copy(this.headerService.url);
-    this.snackBar.open("URL copied to clipboard!", "Dismiss", {
-      duration: 2000,
-    });
+  openPrizes() {
+    window.open("assets/images/prizes.png");
   }
 
   openRules() {
@@ -39,6 +36,6 @@ export class HeaderComponent implements OnInit {
   }
 
   openSchedule() {
-    window.open("https://docs.google.com/spreadsheets/d/1IAbFVbaM77S5KE8-p8wtJ2ts_k1fKVFb-lvTfvSsMbw/edit?usp=sharing");
+    window.open("assets/images/schedule.png");
   }
 }
