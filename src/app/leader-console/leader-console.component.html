@@ -9,6 +9,7 @@
         <div *ngFor="let challenger of leader.queue" class="queue-container">
             <app-leader-queue-item [leaderId]="leader.id" [queue]="challenger"></app-leader-queue-item>
         </div>
+        <br />
         <button id="enqueue-button" mat-fab (click)="enqueue()">+</button>
     </div>
     <br />
