@@ -57,10 +57,14 @@ export class CameraComponent implements OnInit {
                             .replace("https://localhost:4200/?challenger=", "")
                             .replace("https://paxpokemonleague.net/west/?challenger=", "")
                     this.leaderService.enqueueChallenger(this.leaderId, challengerId);
+                } else {
+                    window.location.reload();
                 }
             } else {
                 if (result.match(loginRegex)) {
                     window.location.replace(result);
+                } else {
+                    window.location.reload();
                 }
             }
         });
