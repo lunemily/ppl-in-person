@@ -24,6 +24,7 @@
     "@angular/router": "~12.2.2",
     "angular-in-memory-web-api": "^0.11.0",
     "angular2-qrscanner": "^1.0.7",
+    "angularx-qrcode": "^11.0.0",
     "ngx-webcam": "^0.3.2",
     "rxjs": "~7.3.0",
     "tslib": "^2.3.1",

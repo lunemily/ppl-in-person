@@ -15,6 +15,8 @@ export interface DialogData {
   styleUrls: ['./challenger-console.component.css']
 })
 export class ChallengerConsoleComponent implements OnInit {
+  myAngularxQrCode: string;
+  showCamera: boolean
   options: FormGroup;
   hideRequiredControl = new FormControl(false);
   floatLabelControl = new FormControl('auto');
@@ -28,6 +30,12 @@ export class ChallengerConsoleComponent implements OnInit {
     private challengerService: ChallengerService,) { }
 
   ngOnInit(): void {
+    this.showCamera = false
+    this.myAngularxQrCode = `https://paxpokemonleague.net/west/?challenger=${this.challenger.id}`;
+  }
+
+  enqueue(): void {
+    this.showCamera = true
   }
 
   editName(): void {

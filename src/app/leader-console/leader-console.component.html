@@ -19,4 +19,6 @@
             <app-leader-hold-item [leaderId]="leader.id" [hold]="challenger"></app-leader-hold-item>
         </div>
     </div>
+    <br />
+    <qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
 </mat-card>

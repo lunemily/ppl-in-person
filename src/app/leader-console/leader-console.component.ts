@@ -15,6 +15,7 @@ export interface DialogData {
   styleUrls: ['./leader-console.component.css']
 })
 export class LeaderConsoleComponent implements OnInit {
+  myAngularxQrCode: string;
   showCamera: boolean
   options: FormGroup;
   hideRequiredControl = new FormControl(false);
@@ -30,6 +31,7 @@ export class LeaderConsoleComponent implements OnInit {
 
   ngOnInit(): void {
     this.showCamera = false
+    this.myAngularxQrCode = `https://paxpokemonleague.net/west/?leader=${this.leader.id}`;
   }
 
   enqueue(): void {

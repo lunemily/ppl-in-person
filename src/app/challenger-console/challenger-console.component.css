@@ -30,6 +30,12 @@
     display: none;
 }
 
+#enqueue-button {
+    font-size: 4em;
+    background-color: #040080;
+    margin: 0.5em;
+}
+
 @media (min-width: 400px) {
     img.badge {
         height: 125px;

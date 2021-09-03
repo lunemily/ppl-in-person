@@ -20,6 +20,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgQrScannerModule } from 'angular2-qrscanner';
+import { QRCodeModule } from 'angularx-qrcode';
 
 import { MessagesComponent } from './messages/messages.component';
 import { HeaderComponent } from './header/header.component';
@@ -71,6 +72,7 @@ import { CameraComponent } from './camera/camera.component';
     HttpClientModule,
     BrowserAnimationsModule,
     NgQrScannerModule,
+    QRCodeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

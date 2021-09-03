@@ -67,23 +67,23 @@ export class LeaderService {
 
     this.http.post<any>(url, body).subscribe(data => {
       window.location.reload();
-  })
+    })
   }
 
   enqueueChallenger(leaderId: string, challengerId: string): void {
     const url = `${this.serverUrl}/leader/${leaderId}/enqueue/${challengerId}`;
 
     this.http.post<any>(url, {}).subscribe(data => {
-            window.location.reload();
-        })
+      window.location.reload();
+    })
   }
 
   holdChallenger(leaderId: string, challengerId: string): void {
     const url = `${this.serverUrl}/leader/${leaderId}/hold/${challengerId}`;
 
     this.http.post<any>(url, {}).subscribe(data => {
-            window.location.reload();
-        })
+      window.location.reload();
+    })
   }
 
   unholdChallenger(leaderId: string, challengerId: string, placeAtFront: boolean): void {
