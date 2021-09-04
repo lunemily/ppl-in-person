@@ -16,6 +16,7 @@ export interface DialogData {
 })
 export class LeaderConsoleComponent implements OnInit {
   myAngularxQrCode: string;
+  battleCode: string;
   showCamera: boolean
   options: FormGroup;
   hideRequiredControl = new FormControl(false);
@@ -32,11 +33,21 @@ export class LeaderConsoleComponent implements OnInit {
   ngOnInit(): void {
     this.showCamera = false
     this.myAngularxQrCode = `https://paxpokemonleague.net/west/?leader=${this.leader.id}`;
+    this.battleCode = this.generateCode();
   }
 
   enqueue(): void {
     this.showCamera = true
   }
 
+  generateCode(): string {
+    let code = "";
+    let possible = "0123456789";
+  
+    for (let i = 0; i < 8; i++)
+      code += possible.charAt(Math.floor(Math.random() * possible.length));
+  
+    return code.match(/.{1,4}/g).join(' ');
+  }
 
 }

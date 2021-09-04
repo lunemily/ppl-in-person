@@ -6,6 +6,8 @@
     <br />
     <div id="leader-queue">
         <span class="title-font left">Queue</span>
+        <br />
+        <span id="queue-help">Your battle code is: </span><span id="battle-code">{{ battleCode }}</span>
         <div *ngFor="let challenger of leader.queue" class="queue-container">
             <app-leader-queue-item [leaderId]="leader.id" [queue]="challenger"></app-leader-queue-item>
         </div>
