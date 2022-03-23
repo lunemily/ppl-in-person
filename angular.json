@@ -3,45 +3,164 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ppl-site": {
+    "lib": {
+      "root": "projects/lib",
+      "sourceRoot": "projects/lib/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/lib/tsconfig.lib.json",
+            "project": "projects/lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/lib/ng-package.prod.json",
+              "tsConfig": "projects/lib/tsconfig.lib.prod.json"
+            }
+          }
+        }
+      }
+    },
+    "ppl-in-person": {
+      "root": "projects/ppl-in-person/",
+      "sourceRoot": "projects/ppl-in-person/src",
       "projectType": "application",
-      "schematics": {},
-      "root": "",
-      "sourceRoot": "src",
       "prefix": "app",
+      "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ppl-site",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
-            "aot": true,
+            "outputPath": "dist/ppl-in-person",
+            "index": "projects/ppl-in-person/src/index.html",
+            "main": "projects/ppl-in-person/src/main.ts",
+            "polyfills": "projects/ppl-in-person/src/polyfills.ts",
+            "tsConfig": "projects/ppl-in-person/tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/ppl-in-person/src/favicon.ico",
+              "projects/ppl-in-person/src/assets",
+              "projects/ppl-in-person/src/silent-refresh.html"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
-              "src/styles.css"
+              "projects/ppl-in-person/src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "projects/ppl-in-person/src/environments/environment.ts",
+                  "with": "projects/ppl-in-person/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          },
+          "defaultConfiguration": ""
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ppl-in-person:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ppl-in-person:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ppl-in-person:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ppl-in-person/src/test.ts",
+            "polyfills": "projects/ppl-in-person/src/polyfills.ts",
+            "tsConfig": "projects/ppl-in-person/tsconfig.spec.json",
+            "karmaConfig": "projects/ppl-in-person/karma.conf.js",
+            "styles": [
+              "projects/ppl-in-person/src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/ppl-in-person/src/favicon.ico",
+              "projects/ppl-in-person/src/assets"
+            ]
+          }
+        }
+      }
+    },
+
+    "quickstart-demo": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/quickstart-demo",
+      "sourceRoot": "projects/quickstart-demo/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/quickstart-demo",
+            "index": "projects/quickstart-demo/src/index.html",
+            "main": "projects/quickstart-demo/src/main.ts",
+            "polyfills": "projects/quickstart-demo/src/polyfills.ts",
+            "tsConfig": "projects/quickstart-demo/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/quickstart-demo/src/favicon.ico",
+              "projects/quickstart-demo/src/assets"
+            ],
+            "styles": ["projects/quickstart-demo/src/styles.css"],
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/quickstart-demo/src/environments/environment.ts",
+                  "with": "projects/quickstart-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -50,78 +169,89 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ppl-site:build"
+            "browserTarget": "quickstart-demo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ppl-site:build:production"
+              "browserTarget": "quickstart-demo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ppl-site:build"
+            "browserTarget": "quickstart-demo:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
+            "main": "projects/quickstart-demo/src/test.ts",
+            "polyfills": "projects/quickstart-demo/src/polyfills.ts",
+            "tsConfig": "projects/quickstart-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/quickstart-demo/karma.conf.js",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/quickstart-demo/src/favicon.ico",
+              "projects/quickstart-demo/src/assets"
             ],
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
-              "src/styles.css"
-            ],
+            "styles": ["projects/quickstart-demo/src/styles.css"],
             "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ppl-site:serve"
+            "protractorConfig": "projects/quickstart-demo/e2e/protractor.conf.js",
+            "devServerTarget": "quickstart-demo:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ppl-site:serve:production"
+              "devServerTarget": "quickstart-demo:serve:production"
             }
+          }
+        }
+      }
+    },
+
+    "angular-oauth2-oidc-jwks": {
+      "projectType": "library",
+      "root": "projects/angular-oauth2-oidc-jwks",
+      "sourceRoot": "projects/angular-oauth2-oidc-jwks/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/angular-oauth2-oidc-jwks/tsconfig.lib.json",
+            "project": "projects/angular-oauth2-oidc-jwks/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-oauth2-oidc-jwks/src/test.ts",
+            "tsConfig": "projects/angular-oauth2-oidc-jwks/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-oauth2-oidc-jwks/karma.conf.js"
           }
         }
       }
     }
   },
-  "defaultProject": "ppl-site"
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "css"
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
 }

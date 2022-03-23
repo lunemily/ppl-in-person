@@ -1,0 +1,26 @@
+<mat-sidenav-container>
+    <mat-toolbar class="east">
+        <span id="title" class="title-font">{{ title }}</span>
+        <span class="example-spacer"></span>
+        <a mat-icon-button
+                (click)="openSchedule()"
+                aria-label="PPL Schedule">
+            <mat-icon>calendar_today</mat-icon>
+        </a>
+        <a mat-icon-button
+                (click)="openChallenging()"
+                aria-label="How to Challenge">
+            <mat-icon>videogame_asset</mat-icon>
+        </a>
+        <a mat-icon-button
+                (click)="openRules()"
+                aria-label="PPL Rules">
+            <mat-icon>description</mat-icon>
+        </a>
+        <a mat-icon-button
+                (click)="openPrizes()"
+                aria-label="Prize Pools">
+            <mat-icon>stars</mat-icon>
+        </a>
+    </mat-toolbar>
+</mat-sidenav-container>

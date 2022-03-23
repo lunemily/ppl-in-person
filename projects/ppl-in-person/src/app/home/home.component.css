@@ -1,0 +1,11 @@
+.discord-button {
+    color: #fff;
+    background-color: #5865F2;
+    border: none;
+    margin: auto;
+    font-family: Roboto,sans-serif;
+}
+
+#diagnostics {
+    display: none;
+}

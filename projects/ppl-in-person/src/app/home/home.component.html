@@ -1,0 +1,41 @@
+<h1 *ngIf="!givenName">Welcome!</h1>
+<h1 *ngIf="givenName">Welcome, Trainer {{ givenName }} {{ familyName }}!</h1>
+
+<app-challenger-console *ngIf="isChallengerAndHasValidIdToken"></app-challenger-console>
+<app-leader-console *ngIf="isLeaderAndHasValidIdToken"></app-leader-console>
+
+<div *ngIf="!hasValidIdToken" class="panel panel-default">
+  <div class="panel-body">
+    <h2>Login with Code Flow</h2>
+    <button class="btn btn-default discord-button" (click)="loginCode()">Login with Discord</button>
+    <button class="btn btn-default" (click)="logout()">Logout</button>
+  </div>
+</div>
+
+<div id="diagnostics" class="panel panel-default">
+  <div class="panel-body">
+    <p><b>access_token_expiration:</b> {{ access_token_expiration }}</p>
+    <p><b>id_token_expiration:</b> {{ id_token_expiration }}</p>
+    <p><b>hasValidAccessToken:</b> {{ hasValidAccessToken }}</p>
+    <p><b>hasValidIdToken:</b> {{ hasValidIdToken }}</p>
+    <p><b>access_token:</b> {{ access_token }}</p>
+    <p><b>id_token:</b> {{ id_token }}</p>
+    <div *ngIf="userProfile">
+      <b>user profile:</b>
+      <pre>{{ userProfile | json }}</pre>
+    </div>
+    <button class="btn btn-default" (click)="refresh()">Refresh</button>
+
+    <button class="btn btn-default" (click)="loadUserProfile()">
+      Load User Profile
+    </button>
+
+    <button class="btn btn-default" (click)="startAutomaticRefresh()">
+      Start automatic refresh
+    </button>
+
+    <button class="btn btn-default" (click)="stopAutomaticRefresh()">
+      Stop automatic refresh
+    </button>
+  </div>
+</div>

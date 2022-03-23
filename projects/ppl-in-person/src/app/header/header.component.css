@@ -1,0 +1,42 @@
+mat-toolbar {
+    position: fixed;
+    margin-top: 0px;
+}
+mat-toolbar a {
+    color: #eee;
+    padding: 5px 10px;
+}
+nav a {
+    padding: 5px 10px;
+    text-decoration: none;
+    margin-top: 10px;
+    margin: 10px;
+    display: inline-block;
+    background-color: #eee;
+    border-radius: 4px;
+}
+nav a:visited, a:link {
+    color: #eee;
+}
+nav a:hover {
+    color: #eee;
+    background-color: #cfd8dc;
+}
+nav a.active {
+    color: #eee;
+}
+p {
+    margin-top: 0px;
+}
+.example-spacer {
+    flex: 1 1 auto;
+}
+#title {
+    font-size: 1.5em;
+}
+
+@media (min-width: 400px) {
+    #title {
+        font-size: 2em;
+    }
+}
