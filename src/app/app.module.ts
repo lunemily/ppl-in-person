@@ -34,6 +34,7 @@ import { QueueItemComponent } from './challenger-console/queue-item/queue-item.c
 import { BadgeItemComponent } from './challenger-console/badge-item/badge-item.component';
 import { LeaderHoldItemComponent } from './leader-console/leader-hold-item/leader-hold-item.component';
 import { CameraComponent } from './camera/camera.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { CameraComponent } from './camera/camera.component';
     BadgeItemComponent,
     LeaderHoldItemComponent,
     CameraComponent,
+    AuthComponent,
   ],
   imports: [
     MatAutocompleteModule,

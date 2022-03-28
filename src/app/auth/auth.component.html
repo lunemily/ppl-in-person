@@ -1,0 +1,34 @@
+<div id="login" *ngIf="showLogin">
+    <h2 class="title-font">Please login</h2>
+    <div id="login-form">
+        <p>Username</p>
+        <input matInput [(ngModel)]="data.username">
+        <p>Password</p>
+        <input matInput [(ngModel)]="data.password">
+        <br/>
+        <br/>
+        <button class="east" mat-raised-button (click)="login()">Login</button>
+        <br/>
+        <br/>
+        <p>Don't have a login?</p>
+        <button class="east" mat-stroked-button (click)="startRegister()">Register</button>
+    </div>
+</div>
+<div id="register" *ngIf="showRegister">
+    <h2 class="title-font">Please Register</h2>
+    <div id="login-form">
+        <p>Username</p>
+        <input matInput [(ngModel)]="data.username">
+        <p>Password</p>
+        <input matInput [(ngModel)]="data.password">
+        <p>Confirm Password</p>
+        <input matInput [(ngModel)]="data.confirmPassword">
+        <br/>
+        <br/>
+        <button class="east" mat-raised-button (click)="register()">Register</button>
+        <br/>
+        <br/>
+        <p>Already have a login?</p>
+        <button mat-flat-button (click)="startLogin()">Login</button>
+    </div>
+</div>

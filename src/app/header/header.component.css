@@ -28,10 +28,22 @@ p {
     flex: 1 1 auto;
 }
 #title {
-    font-size: 1.5em;
+    font-size: .75em;
 }
 
-@media (min-width: 400px) {
+@media (min-width: 390px) {
+    #title {
+        font-size: 1em;
+    }
+}
+
+@media (min-width: 450px) {
+    #title {
+        font-size: 1.5em;
+    }
+}
+
+@media (min-width: 660px) {
     #title {
         font-size: 2em;
     }
