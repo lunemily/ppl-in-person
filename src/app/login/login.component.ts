@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { ChallengerService } from '../challenger.service';
-import { HeaderService } from '../header.service';
-import { LeaderService } from '../leader.service';
+import { ChallengerService } from '../services/challenger.service';
+import { HeaderService } from '../services/header.service';
+import { LeaderService } from '../services/leader.service';
 
-import { Challenger } from '../challenger';
-import { Leader } from '../leader';
+import { Challenger } from '../models/challenger';
+import { Leader } from '../models/leader';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.showCamera = true;
+    this.showCamera = false;
     if(this.route.snapshot.queryParams.challenger) {
       this.showCamera = false;
       this.getChallenger();

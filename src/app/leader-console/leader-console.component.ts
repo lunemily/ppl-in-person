@@ -1,8 +1,8 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Leader } from '../leader';
+import { Leader } from '../models/leader';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LeaderService } from '../leader.service';
+import { LeaderService } from '../services/leader.service';
 
 export interface DialogData {
   previousName: string;

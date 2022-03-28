@@ -1,8 +1,8 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Challenger } from '../challenger';
+import { Challenger } from '../models/challenger';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ChallengerService } from '../challenger.service';
+import { ChallengerService } from '../services/challenger.service';
 
 export interface DialogData {
   previousName: string;

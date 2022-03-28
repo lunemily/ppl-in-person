@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Hold } from 'src/app/hold';
-import { LeaderService } from 'src/app/leader.service';
+import { Hold } from 'src/app/models/hold';
+import { LeaderService } from 'src/app/services/leader.service';
 
 @Component({
   selector: 'app-leader-hold-item',

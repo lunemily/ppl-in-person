@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Clipboard } from '@angular/cdk/clipboard';
 
-import { HeaderService } from '../header.service';
+import { HeaderService } from '../services/header.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LeaderService } from 'src/app/leader.service';
-import { Queue } from 'src/app/queue';
+import { LeaderService } from 'src/app/services/leader.service';
+import { Queue } from 'src/app/models/queue';
 
 export interface DialogData {
   win: boolean,

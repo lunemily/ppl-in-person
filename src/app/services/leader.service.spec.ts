@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LeaderService } from './leader.service';
+import { LeaderService } from './services/leader.service';
 
 describe('LeaderService', () => {
   let service: LeaderService;

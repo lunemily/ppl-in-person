@@ -5,10 +5,10 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { MessageService } from './message.service';
 
-import { Leader } from './leader';
-import { Badge } from './badge';
-import { Queue } from './queue';
-import { Hold } from './hold';
+import { Leader } from '../models/leader';
+import { Badge } from '../models/badge';
+import { Queue } from '../models/queue';
+import { Hold } from '../models/hold';
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,7 @@
 import { Component, VERSION, OnInit, ViewChild, Input } from '@angular/core';
 
 import { QrScannerComponent } from 'angular2-qrscanner';
-import { LeaderService } from '../leader.service';
+import { LeaderService } from '../services/leader.service';
 
 @Component({
     selector: 'app-camera',

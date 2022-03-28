@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Badge } from 'src/app/badge';
+import { Badge } from 'src/app/models/badge';
 
 @Component({
   selector: 'app-badge-item',

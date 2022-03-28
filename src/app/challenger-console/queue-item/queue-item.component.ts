@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Queue } from 'src/app/queue';
+import { Queue } from 'src/app/models/queue';
 
 @Component({
   selector: 'app-queue-item',
