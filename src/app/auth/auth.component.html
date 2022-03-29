@@ -1,34 +1,37 @@
 <div id="login" *ngIf="showLogin">
-    <h2 class="title-font">Please login</h2>
-    <div id="login-form">
-        <p>Username</p>
-        <input matInput [(ngModel)]="data.username">
-        <p>Password</p>
-        <input matInput [(ngModel)]="data.password">
-        <br/>
-        <br/>
-        <button class="east" mat-raised-button (click)="login()">Login</button>
-        <br/>
-        <br/>
-        <p>Don't have a login?</p>
-        <button class="east" mat-stroked-button (click)="startRegister()">Register</button>
-    </div>
+    <h2 class="title-font">Please Sign In</h2>
+    <form id="login-form">
+        <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input matInput [(ngModel)]="credentials.username">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="'password'" [(ngModel)]="credentials.password">
+        </mat-form-field>
+        <br />
+        <button class="east" mat-raised-button (click)="login()">Sign In</button>
+    </form>
+    <p>Don't have an account? <button class="east" mat-stroked-button (click)="startRegister()">Register</button></p>
 </div>
 <div id="register" *ngIf="showRegister">
     <h2 class="title-font">Please Register</h2>
-    <div id="login-form">
-        <p>Username</p>
-        <input matInput [(ngModel)]="data.username">
-        <p>Password</p>
-        <input matInput [(ngModel)]="data.password">
-        <p>Confirm Password</p>
-        <input matInput [(ngModel)]="data.confirmPassword">
-        <br/>
-        <br/>
-        <button class="east" mat-raised-button (click)="register()">Register</button>
-        <br/>
-        <br/>
-        <p>Already have a login?</p>
-        <button mat-flat-button (click)="startLogin()">Login</button>
-    </div>
+    <form id="login-form">
+        <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input matInput [(ngModel)]="credentials.username">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="'password'" [(ngModel)]="credentials.password">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput [type]="'password'" [(ngModel)]="credentials.confirmPassword">
+        </mat-form-field>
+        <br />
+        <button class="east" mat-raised-button (click)="login()">Sign In</button>
+    </form>
+    <br/>
+    <p>Already have an account? <button class="east" mat-stroked-button (click)="startLogin()">Sign In</button></p>
 </div>
