@@ -5,7 +5,7 @@ import { LeaderService } from 'src/app/services/leader.service';
 @Component({
   selector: 'app-leader-hold-item',
   templateUrl: './leader-hold-item.component.html',
-  styleUrls: ['./leader-hold-item.component.css']
+  styleUrls: ['./leader-hold-item.component.scss']
 })
 export class LeaderHoldItemComponent implements OnInit {
   @Input() leaderId: string;

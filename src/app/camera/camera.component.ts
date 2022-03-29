@@ -6,7 +6,7 @@ import { LeaderService } from '../services/leader.service';
 @Component({
     selector: 'app-camera',
     templateUrl: 'camera.component.html',
-    styleUrls: ['./camera.component.css']
+    styleUrls: ['./camera.component.scss']
 })
 export class CameraComponent implements OnInit {
     // Presence of a leaderId indicates that we are enqueuing a challenger

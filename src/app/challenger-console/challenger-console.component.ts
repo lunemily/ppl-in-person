@@ -12,7 +12,7 @@ export interface DialogData {
 @Component({
   selector: 'app-challenger-console',
   templateUrl: './challenger-console.component.html',
-  styleUrls: ['./challenger-console.component.css']
+  styleUrls: ['./challenger-console.component.scss']
 })
 export class ChallengerConsoleComponent implements OnInit {
   myAngularxQrCode: string;

@@ -11,7 +11,7 @@ export interface DialogData {
 @Component({
   selector: 'app-leader-queue-item',
   templateUrl: './leader-queue-item.component.html',
-  styleUrls: ['./leader-queue-item.component.css']
+  styleUrls: ['./leader-queue-item.component.scss']
 })
 export class LeaderQueueItemComponent implements OnInit {
   @Input() leaderId: string;

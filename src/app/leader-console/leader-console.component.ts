@@ -12,7 +12,7 @@ export interface DialogData {
 @Component({
   selector: 'app-leader-console',
   templateUrl: './leader-console.component.html',
-  styleUrls: ['./leader-console.component.css']
+  styleUrls: ['./leader-console.component.scss']
 })
 export class LeaderConsoleComponent implements OnInit {
   myAngularxQrCode: string;

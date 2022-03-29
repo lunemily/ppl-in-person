@@ -8,7 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
 
@@ -28,11 +28,11 @@ export class HeaderComponent implements OnInit {
   }
 
   openPrizes() {
-    window.open("assets/images/prizes.png");
+    window.open("assets/images/prizes-east.png");
   }
 
   openRules() {
-    window.open("assets/images/rules.png");
+    window.open("assets/images/rules-east.png");
   }
 
   openSchedule() {
