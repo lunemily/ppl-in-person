@@ -1,37 +1,59 @@
 <div id="login" *ngIf="showLogin">
     <h2 class="title-font">Please Sign In</h2>
     <form id="login-form">
-        <mat-form-field appearance="fill">
-            <mat-label>Username</mat-label>
-            <input matInput [(ngModel)]="credentials.username">
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Password</mat-label>
-            <input matInput [type]="'password'" [(ngModel)]="credentials.password">
-        </mat-form-field>
-        <br />
+        <table>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Username</mat-label>
+                        <input matInput [(ngModel)]="credentials.username">
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Password</mat-label>
+                        <input matInput [type]="'password'" [(ngModel)]="credentials.password">
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
         <button class="east" mat-raised-button (click)="login()">Sign In</button>
+        <br/>
+        <p>Don't have an account? <button class="east" mat-stroked-button (click)="startRegister()">Register</button></p>
     </form>
-    <p>Don't have an account? <button class="east" mat-stroked-button (click)="startRegister()">Register</button></p>
 </div>
 <div id="register" *ngIf="showRegister">
     <h2 class="title-font">Please Register</h2>
     <form id="login-form">
-        <mat-form-field appearance="fill">
-            <mat-label>Username</mat-label>
-            <input matInput [(ngModel)]="credentials.username">
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Password</mat-label>
-            <input matInput [type]="'password'" [(ngModel)]="credentials.password">
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Confirm Password</mat-label>
-            <input matInput [type]="'password'" [(ngModel)]="credentials.confirmPassword">
-        </mat-form-field>
-        <br />
-        <button class="east" mat-raised-button (click)="login()">Sign In</button>
+        <table>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Username</mat-label>
+                        <input matInput [(ngModel)]="credentials.username">
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Password</mat-label>
+                        <input matInput [type]="'password'" [(ngModel)]="credentials.password">
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Confirm Password</mat-label>
+                        <input matInput [type]="'password'" [(ngModel)]="credentials.confirmPassword">
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+        <button class="east" mat-raised-button (click)="login()">Sign In</button><br/>
+        <p>Already have an account? <button class="east" mat-stroked-button (click)="startLogin()">Sign In</button></p>
     </form>
-    <br/>
-    <p>Already have an account? <button class="east" mat-stroked-button (click)="startLogin()">Sign In</button></p>
 </div>

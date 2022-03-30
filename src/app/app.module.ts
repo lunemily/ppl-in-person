@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule, } from '@angular/material/button';
@@ -16,15 +18,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
 import { NgQrScannerModule } from 'angular2-qrscanner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QRCodeModule } from 'angularx-qrcode';
 
+import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages/messages.component';
 import { HeaderComponent } from './header/header.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { LeaderConsoleComponent } from './leader-console/leader-console.component';
@@ -35,6 +35,8 @@ import { BadgeItemComponent } from './challenger-console/badge-item/badge-item.c
 import { LeaderHoldItemComponent } from './leader-console/leader-hold-item/leader-hold-item.component';
 import { CameraComponent } from './camera/camera.component';
 import { AuthComponent } from './auth/auth.component';
+
+import {CookieService} from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -76,7 +78,7 @@ import { AuthComponent } from './auth/auth.component';
     NgQrScannerModule,
     QRCodeModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
