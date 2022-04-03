@@ -4,9 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { ChallengerService } from '../services/challenger.service';
 import { HeaderService } from '../services/header.service';
 import { LeaderService } from '../services/leader.service';
+import { CookieService } from 'ngx-cookie-service';
 
 import { Challenger } from '../models/challenger';
 import { Leader } from '../models/leader';
+import { Login } from '../models/login';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +17,8 @@ import { Leader } from '../models/leader';
 })
 export class LoginComponent implements OnInit {
 
+  id: string
+  isLeader: boolean;
   @Input() leader: Leader;
   @Input() challenger: Challenger;
   showLogin: boolean
@@ -22,32 +26,33 @@ export class LoginComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private challengerService: ChallengerService,
+    private cookieService: CookieService,
     private headerService: HeaderService,
     private leaderService: LeaderService,
   ) { }
 
   ngOnInit(): void {
     this.showLogin = true;
-    if(this.route.snapshot.queryParams.challenger) {
+    this.id = this.cookieService.get('id');
+    this.isLeader = ("true" == this.cookieService.get('isLeader'));
+    if( this.id ) {
       this.showLogin = false;
-      this.getChallenger();
-    }
-    if(this.route.snapshot.queryParams.leader) {
-      this.showLogin = false;
-      this.getLeader();
+      if (this.isLeader) {
+        this.getLeader()
+      } else {
+        this.getChallenger()
+      }
     }
     this.headerService.setUrl(window.location.href);
   }
 
   getChallenger(): void {
-    const challenger = this.route.snapshot.queryParams.challenger;
-    this.challengerService.getChallenger(challenger)
+    this.challengerService.getChallenger(this.id)
       .subscribe(challenger => this.challenger = challenger);
   }
 
   getLeader(): void {
-    const leader = this.route.snapshot.queryParams.leader;
-    this.leaderService.getLeader(leader)
+    this.leaderService.getLeader(this.id)
       .subscribe(leader => this.leader = leader);
   }
 

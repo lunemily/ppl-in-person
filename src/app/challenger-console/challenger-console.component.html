@@ -2,7 +2,7 @@
     <app-camera *ngIf="showCamera" [challengerId]="challenger.id"></app-camera>
     <div>
         <h2>{{ challenger.displayName.toUpperCase() }}'S TRAINER CARD</h2>
-        <button mat-raised-button (click)="editName()">EDIT NAME</button>
+        <!-- <button mat-raised-button (click)="editName()">EDIT NAME</button> -->
     </div>
     <br />
     <div id="queues-entered">
@@ -15,6 +15,7 @@
         <span id="queue-help">If you wish to leave a leader's queue, please go speak to them to remove you.</span>
     </div>
     <br />
+    <br />
     <div id="badges-earned">
         <span class="title-font left">Badges Earned</span>
         <div *ngFor="let badge of challenger.badgesEarned" class="queue-container">
@@ -22,9 +23,9 @@
         </div>
     </div>
     <br />
-    <span id="queue-help">Scan a leader's card to add yourself to their queue.</span>
+    <span id="queue-help">Scan a leader's card to add yourself to their queue. Or ask a leader to add you to their queue.</span>
     <br />
-    <button id="enqueue-button" mat-fab (click)="enqueue()">+</button>
+    <button id="enqueue-button" mat-fab class="east" (click)="enqueue()">+</button>
     <br />
     <qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
 </mat-card>

@@ -4,6 +4,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
 
 import { HeaderService } from '../services/header.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-header',
@@ -16,6 +17,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private router : Router,
+    private cookieService: CookieService,
     public headerService: HeaderService,
     private snackBar: MatSnackBar,
     private clipboard: Clipboard,
@@ -37,5 +39,10 @@ export class HeaderComponent implements OnInit {
 
   openSchedule() {
     window.open("assets/images/schedule.png");
+  }
+
+  logout() {
+    this.cookieService.deleteAll();
+    window.location.reload();
   }
 }

@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
+import { CookieService } from 'ngx-cookie-service';
 import { MessageService } from './message.service';
 
 import { Challenger } from '../models/challenger';
@@ -17,7 +18,7 @@ export class ChallengerService {
 
   private serverUrl = 'http://toastserv.com:26438';  // URL to web api
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Authorization': `Bearer ${this.cookieService.get('token')}` }),
   };
 
   /** GET challenger from the server */
@@ -51,7 +52,7 @@ export class ChallengerService {
     // return of(challenger)
 
     // BEGIN: real data
-    return this.http.get<Challenger>(url).pipe(
+    return this.http.get<Challenger>(url, this.httpOptions).pipe(
       map(response => {
 
         /** Create object to return. Add in all leaders now. */
@@ -92,7 +93,7 @@ export class ChallengerService {
     let display: string = displayName;
 
     // BEGIN: real data
-    this.http.post<any>(url, { displayName: displayName }).subscribe(data => {
+    this.http.post<any>(url, { displayName: displayName }, this.httpOptions).subscribe(data => {
             display = data.id;
             window.location.reload();
         })
@@ -124,7 +125,7 @@ export class ChallengerService {
       // if not search term, return empty challenger array.
       return of([]);
     }
-    return this.http.get<Challenger[]>(url).pipe(
+    return this.http.get<Challenger[]>(url, this.httpOptions).pipe(
       map(response => {
         return response["challengers"];
       }),
@@ -162,6 +163,7 @@ export class ChallengerService {
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private cookieService: CookieService,
   ) { }
 }
