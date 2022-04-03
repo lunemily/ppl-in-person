@@ -18,8 +18,16 @@ export class AuthenticationService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  login(username: string, password: string): void {
-    const url = `${this.serverUrl}/login`;
+  login(username: string, password: string) {
+    this.loginOrRegister(username, password, 'login');
+  }
+
+  register(username: string, password: string) {
+    this.loginOrRegister(username, password, 'register');
+  }
+
+  loginOrRegister(username: string, password: string, endpoint: string): void {
+    const url = `${this.serverUrl}/${endpoint}`;
 
     // curl -X POST https://toastserv.com:26438/login -v -H "Authorization: Basic bHVuZWxsYTpodW50ZXIy"
 

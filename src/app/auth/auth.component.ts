@@ -3,6 +3,7 @@ import { Credential } from './credential'
 import { CookieService } from 'ngx-cookie-service';
 import { AuthenticationService } from '../services/authentication.service';
 import { MessageService } from '../services/message.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-auth',
@@ -20,6 +21,7 @@ export class AuthComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private cookieService: CookieService,
     private messageService: MessageService,
+    private snackBar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
@@ -39,9 +41,11 @@ export class AuthComponent implements OnInit {
   register(): void {
     // Verify password and confirmPassword are equal
     if (this.credentials.password === this.credentials.confirmPassword) {
-      this.authenticationService.login(this.credentials.username, this.credentials.password);
+      this.authenticationService.register(this.credentials.username, this.credentials.password);
     } else {
-      this.messageService.add("Passwords do not match.");
+      this.snackBar.open("Error: Passwords to not match.", "Dismiss", {
+        duration: 2000,
+      });
     }
   }
 
