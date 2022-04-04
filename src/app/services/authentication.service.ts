@@ -6,16 +6,15 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { MessageService } from './message.service';
 
-import { Login } from '../models/login'
+import { Login } from '../models/login';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthenticationService {
-
-  private serverUrl = 'https://toastserv.com:26438';  // URL to web api
+  private serverUrl = 'https://toastserv.com:26438'; // URL to web api
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
   login(username: string, password: string) {
@@ -31,24 +30,24 @@ export class AuthenticationService {
 
     // curl -X POST https://toastserv.com:26438/login -v -H "Authorization: Basic bHVuZWxsYTpodW50ZXIy"
 
-    let authorization: string = btoa(username + ':' + password)
+    let authorization: string = btoa(username + ':' + password);
     let httpOptions = {
-      headers: new HttpHeaders({ 'Authorization': `Basic ${authorization}` }),
+      headers: new HttpHeaders({ Authorization: `Basic ${authorization}` }),
     };
     // console.log(httpOptions)
 
     // BEGIN: real data
-    this.http.post<Login>(url, null, httpOptions).subscribe(data => {
-        let login: Login = {
-          id: data.id,
-          isLeader: data.isLeader,
-          token: data.token,
-        }
-        this.cookieService.set('id', login.id);
-        this.cookieService.set('isLeader', String(login.isLeader));
-        this.cookieService.set('token', login.token);
-        window.location.reload();
-      });
+    this.http.post<Login>(url, null, httpOptions).subscribe((data) => {
+      let login: Login = {
+        id: data.id,
+        isLeader: data.isLeader,
+        token: data.token,
+      };
+      this.cookieService.set('id', login.id);
+      this.cookieService.set('isLeader', String(login.isLeader));
+      this.cookieService.set('token', login.token);
+      window.location.reload();
+    });
     // END: real data
   }
 
@@ -56,7 +55,7 @@ export class AuthenticationService {
     // Get id and token
     let id = this.cookieService.get('id');
     let httpOptions = {
-      headers: new HttpHeaders({ 'Authorization': `Bearer ${this.cookieService.get('token')}` }),
+      headers: new HttpHeaders({ Authorization: `Bearer ${this.cookieService.get('token')}` }),
     };
     const url = `${this.serverUrl}/logout/${id}`;
 
@@ -64,9 +63,9 @@ export class AuthenticationService {
     this.cookieService.deleteAll();
 
     // Log out of idp
-    this.http.get<any>(url, httpOptions).subscribe(data => {
+    this.http.get<any>(url, httpOptions).subscribe((data) => {
       window.location.reload();
-    })
+    });
   }
 
   /** Log a AuthenticationService message with the MessageService */
@@ -80,9 +79,8 @@ export class AuthenticationService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-   private handleError<T>(operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
@@ -94,9 +92,5 @@ export class AuthenticationService {
     };
   }
 
-  constructor(
-    private http: HttpClient,
-    private messageService: MessageService,
-    private cookieService: CookieService,
-  ) { }
+  constructor(private http: HttpClient, private messageService: MessageService, private cookieService: CookieService) {}
 }
