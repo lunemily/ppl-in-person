@@ -63,7 +63,7 @@ export class AuthenticationService {
     this.cookieService.deleteAll();
 
     // Log out of idp
-    this.http.get<any>(url, httpOptions).subscribe((data) => {
+    this.http.post<any>(url, {}, httpOptions).subscribe((data) => {
       window.location.reload();
     });
   }
