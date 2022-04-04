@@ -52,6 +52,23 @@ export class AuthenticationService {
     // END: real data
   }
 
+  logout(): void {
+    // Get id and token
+    let id = this.cookieService.get('id');
+    let httpOptions = {
+      headers: new HttpHeaders({ 'Authorization': `Bearer ${this.cookieService.get('token')}` }),
+    };
+    const url = `${this.serverUrl}/logout/${id}`;
+
+    // Delete cookies for local logout
+    this.cookieService.deleteAll();
+
+    // Log out of idp
+    this.http.get<any>(url, httpOptions).subscribe(data => {
+      window.location.reload();
+    })
+  }
+
   /** Log a AuthenticationService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`AuthenticationService: ${message}`);

@@ -42,7 +42,5 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.cookieService.deleteAll();
-    window.location.reload();
   }
 }
