@@ -2,30 +2,40 @@
     <mat-toolbar class="east">
         <span id="title" class="title-font">{{ title }}</span>
         <span class="example-spacer"></span>
-        <button mat-icon-button
-                (click)="openSchedule()"
-                aria-label="PPL Schedule">
-            <mat-icon>calendar_today</mat-icon>
+        <button id="menu-button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu">
+            <mat-icon>more_vert</mat-icon>
         </button>
-        <button mat-icon-button
-                (click)="openChallenging()"
-                aria-label="How to Challenge">
-            <mat-icon>videogame_asset</mat-icon>
-        </button>
-        <button mat-icon-button
-                (click)="openRules()"
-                aria-label="PPL Rules">
-            <mat-icon>description</mat-icon>
-        </button>
-        <button mat-icon-button
-                (click)="openPrizes()"
-                aria-label="Prize Pools">
-            <mat-icon>stars</mat-icon>
-        </button>
-        <button mat-icon-button
-                (click)="logout()"
-                aria-label="Logout">
-            <mat-icon>logout</mat-icon>
-        </button>
+        <mat-menu class="east" #menu="matMenu">
+            <button mat-icon-button
+                    (click)="openSchedule()"
+                    aria-label="PPL Schedule">
+                <mat-icon>calendar_today</mat-icon>
+                <span>PPL Schedule</span>
+            </button>
+            <button mat-icon-button
+                    (click)="openChallenging()"
+                    aria-label="How to Challenge">
+                <mat-icon>videogame_asset</mat-icon>
+                <span>How to Challenge</span>
+            </button>
+            <button mat-icon-button
+                    (click)="openRules()"
+                    aria-label="PPL Rules">
+                <mat-icon>description</mat-icon>
+                <span>PPL Rules</span>
+            </button>
+            <button mat-icon-button
+                    (click)="openPrizes()"
+                    aria-label="Prize Pools">
+                <mat-icon>stars</mat-icon>
+                <span>Prize Pools</span>
+            </button>
+            <button mat-icon-button
+                    (click)="logout()"
+                    aria-label="Logout">
+                <mat-icon>logout</mat-icon>
+                <span>Logout</span>
+            </button>
+        </mat-menu>
     </mat-toolbar>
 </mat-sidenav-container>
