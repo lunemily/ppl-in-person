@@ -37,7 +37,11 @@ export class LeaderConsoleComponent implements OnInit {
   }
 
   enqueueQR(): void {
-    this.showCamera = true
+    if (this.showCamera === false) {
+      this.showCamera = true
+    } else {
+      this.showCamera = false
+    }
   }
 
   generateCode(): string {

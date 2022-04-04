@@ -35,7 +35,11 @@ export class ChallengerConsoleComponent implements OnInit {
   }
 
   enqueue(): void {
-    this.showCamera = true
+    if (this.showCamera === false) {
+      this.showCamera = true
+    } else {
+      this.showCamera = false
+    }
   }
 
   editName(): void {

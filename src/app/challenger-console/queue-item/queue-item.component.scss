@@ -4,12 +4,17 @@ table {
     width: 100%;
 }
 
+td {
+    width: 33%
+}
+
 .name-panel {
     max-width: 80px;
 }
 
 #queue-position {
-    color: #040080;
+    // color: #040080; // west
+    color: #d91e1e; // east
     font-size: 2em;
 }
 

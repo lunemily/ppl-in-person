@@ -1,9 +1,6 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { Clipboard } from '@angular/cdk/clipboard';
+import { Component, OnInit } from '@angular/core';
 
 import { HeaderService } from '../services/header.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -13,17 +10,20 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class HeaderComponent implements OnInit {
 
-  title: string = "PPL \'22 East";
+  // Base string
+  title: string = "PPL";
 
   constructor(
-    private router : Router,
     private cookieService: CookieService,
     public headerService: HeaderService,
-    private snackBar: MatSnackBar,
-    private clipboard: Clipboard,
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    // Add year
+    this.title += ' \'' + new Date().getFullYear().toString().substring(2)
+    // Add location
+    this.title += ' East'
+  }
 
   openChallenging() {
     window.open("assets/images/challenging.png");
