@@ -50,9 +50,9 @@ export class CameraComponent implements OnInit {
         this.qrScannerComponent.capturedQr.subscribe(result => {
             // const devURL = 'https://localhost:4200';
             // const prodURL = 'https://paxpokemonleague.net/west/';
-            const challengerEnqueueRegex = /^http(s|):\/\/(localhost:4200|paxpokemonleague\.net\/west)\/\?(challenger)=([a-zA-Z0-9]+){0,16}$/g;
-            const leaderEnqueueRegex = /^http(s|):\/\/(localhost:4200|paxpokemonleague\.net\/west)\/\?(leader)=([a-zA-Z0-9]+){0,16}$/g;
-            const loginRegex = /^http(s|):\/\/(localhost:4200|paxpokemonleague.net\/west)\/\?(leader|challenger)=([a-zA-Z0-9]+){0,16}$/g;
+            const challengerEnqueueRegex = /^http(s|):\/\/(localhost:4200|paxpokemonleague\.net\/qr)\/\?(challenger)=([a-zA-Z0-9]+){0,16}$/g;
+            const leaderEnqueueRegex = /^http(s|):\/\/(localhost:4200|paxpokemonleague\.net\/qr)\/\?(leader)=([a-zA-Z0-9]+){0,16}$/g;
+            const loginRegex = /^http(s|):\/\/(localhost:4200|paxpokemonleague.net\/qr)\/\?(leader|challenger)=([a-zA-Z0-9]+){0,16}$/g;
             if (this.leaderId) {
                 // If a leader is scanning a challenger, the QR code will have ?challenger=
                 if (result.match(challengerEnqueueRegex)) {

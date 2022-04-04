@@ -32,11 +32,11 @@ export class LeaderConsoleComponent implements OnInit {
 
   ngOnInit(): void {
     this.showCamera = false
-    this.myAngularxQrCode = `https://paxpokemonleague.net/west/?leader=${this.leader.id}`;
+    this.myAngularxQrCode = `https://paxpokemonleague.net/qr/?leader=${this.leader.id}`;
     this.battleCode = this.generateCode();
   }
 
-  enqueue(): void {
+  enqueueQR(): void {
     this.showCamera = true
   }
 

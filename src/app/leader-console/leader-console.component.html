@@ -1,26 +1,34 @@
 <mat-card>
-    <app-camera *ngIf="showCamera" [leaderId]="leader.id"></app-camera>
     <div>
         <h2>{{ leader.displayName.toUpperCase() }}'S LEADER CARD</h2>
     </div>
-    <br />
     <div id="leader-queue">
-        <span class="title-font left">Queue</span>
-        <br />
+        <p class="title-font left">Queue</p>
         <span id="queue-help">Your battle code is: </span><span id="battle-code">{{ battleCode }}</span>
+        <br />
         <div *ngFor="let challenger of leader.queue" class="queue-container">
             <app-leader-queue-item [leaderId]="leader.id" [queue]="challenger"></app-leader-queue-item>
         </div>
-        <br />
-        <button id="enqueue-button" mat-fab (click)="enqueue()">+</button>
+        <!-- <button id="enqueue-button" mat-fab (click)="enqueue()">
+            <mat-icon>qr_code</mat-icon>
+        </button> -->
     </div>
-    <br />
+</mat-card>
+<mat-card>
+    <p class="title-font left">Add Challengers to your queue</p>
+    <app-camera *ngIf="showCamera" [leaderId]="leader.id"></app-camera>
+    <app-challenger-search [leaderId]="leader.id" (enqueueQR)="enqueueQR()"></app-challenger-search>
+</mat-card>
+<mat-card>
     <div id="leader-onHold">
         <span class="title-font left">On Hold</span>
         <div *ngFor="let challenger of leader.onHold" class="hold-container">
             <app-leader-hold-item [leaderId]="leader.id" [hold]="challenger"></app-leader-hold-item>
         </div>
     </div>
+</mat-card>
+<mat-card>
+    <span class="title-font left">Leader QR Code</span>
     <br />
     <qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
 </mat-card>

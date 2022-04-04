@@ -31,7 +31,7 @@ export class ChallengerConsoleComponent implements OnInit {
 
   ngOnInit(): void {
     this.showCamera = false
-    this.myAngularxQrCode = `https://paxpokemonleague.net/west/?challenger=${this.challenger.id}`;
+    this.myAngularxQrCode = `https://paxpokemonleague.net/qr/?challenger=${this.challenger.id}`;
   }
 
   enqueue(): void {

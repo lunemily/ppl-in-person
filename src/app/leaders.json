@@ -1,18 +1,62 @@
 {
-  "3159a3e6b9025da1": {
-    "displayName": "Hermes",
-    "badgeName": "Speedy Speedboi Badge"
+  "1": {
+    "displayName": "Aidan and Drak",
+    "badgeName": "Double Dragon Badge"
   },
-  "d33861cc13ade093": {
-    "displayName": "Jose",
-    "badgeName": "I Have No Funny Ideas For This One Badge"
+  "2": {
+    "displayName": "Bede",
+    "badgeName": "Wishing Badge"
   },
-  "ea78dab8a9f0316e": {
-    "displayName": "Professor Pine",
-    "badgeName": "Air Freshener Badge"
+  "3": {
+    "displayName": "Conifer",
+    "badgeName": "View Badge"
   },
-  "5851bdc21bae1eb0": {
-    "displayName": "Roxas",
-    "badgeName": "Champs Don't Need a Badge Badge"
+  "4": {
+    "displayName": "Daphne",
+    "badgeName": "Tea Party Badge"
+  },
+  "5": {
+    "displayName": "Lucid",
+    "badgeName": "Butterfly Rose Badge"
+  },
+  "6": {
+    "displayName": "Mads Mercury",
+    "badgeName": "Mercurial Badge"
+  },
+  "7": {
+    "displayName": "Melony",
+    "badgeName": "Ice Badge"
+  },
+  "8": {
+    "displayName": "Orpheus",
+    "badgeName": "Lyre Badge"
+  },
+  "9": {
+    "displayName": "Paxman",
+    "badgeName": "PAX Badge"
+  },
+  "10": {
+    "displayName": "Reyes",
+    "badgeName": "Grim Badge"
+  },
+  "11": {
+    "displayName": "Saul",
+    "badgeName": "Silk Badge"
+  },
+  "12": {
+    "displayName": "Sayu",
+    "badgeName": "Muji Muji Badge"
+  },
+  "13": {
+    "displayName": "Scoot",
+    "badgeName": "Unova Badge"
+  },
+  "14": {
+    "displayName": "Soundwave",
+    "badgeName": "Data Badge"
+  },
+  "15": {
+    "displayName": "Tom Nook and Crazy Redd",
+    "badgeName": "Merchants Badge"
   }
 }
