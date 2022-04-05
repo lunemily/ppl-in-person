@@ -14,7 +14,7 @@ import { LeaderService } from '../services/leader.service';
 export class ChallengerSearchComponent implements OnInit {
   @Input() leaderId: string;
   challengers: Challenger[];
-  selected = 'option2';
+  selected: string;
   @Output("enqueueQR") callEnqueueQR: EventEmitter<any> = new EventEmitter();
 
   constructor(

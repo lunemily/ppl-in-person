@@ -17,7 +17,7 @@ import { Login } from '../models/login';
 })
 export class LoginComponent implements OnInit {
 
-  id: string
+  loginId: string
   isLeader: boolean;
   @Input() leader: Leader;
   @Input() challenger: Challenger;
@@ -33,9 +33,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.showLogin = true;
-    this.id = this.cookieService.get('id');
+    this.loginId = this.cookieService.get('loginId');
     this.isLeader = ("true" == this.cookieService.get('isLeader'));
-    if( this.id ) {
+    if( this.loginId ) {
       this.showLogin = false;
       if (this.isLeader) {
         this.getLeader()
@@ -47,12 +47,12 @@ export class LoginComponent implements OnInit {
   }
 
   getChallenger(): void {
-    this.challengerService.getChallenger(this.id)
+    this.challengerService.getChallenger(this.loginId)
       .subscribe(challenger => this.challenger = challenger);
   }
 
   getLeader(): void {
-    this.leaderService.getLeader(this.id)
+    this.leaderService.getLeader(this.loginId)
       .subscribe(leader => this.leader = leader);
   }
 

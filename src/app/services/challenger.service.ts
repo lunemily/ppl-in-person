@@ -8,7 +8,7 @@ import { MessageService } from './message.service';
 
 import { Challenger } from '../models/challenger';
 import { Badge } from '../models/badge';
-import * as data from '../leaders.json';
+import { data } from '../leader.data';
 import { Queue } from '../models/queue';
 
 @Injectable({
@@ -62,16 +62,18 @@ export class ChallengerService {
           queuesEntered: response["queuesEntered"].reduce(function(result, item) {
             let queue: Queue = {
               displayName: item["leaderName"],
-              position: item["position"],
-              leaderId: item["leaderId"]
+              position: item["position"] + 1,
+              leaderId: item["leaderId"],
+              badgeName: data[item["leaderId"]]['badgeName']
             }
             result.push(queue);
             return result;
           }, []),
           badgesEarned: response["badgesEarned"].map(function(item) {
             let badge: Badge = {
-              displayName: item["leaderName"],
-              leaderId: item["leaderId"]
+              displayName: item['badgeName'],
+              leaderId: item["leaderId"],
+              leaderName: item["leaderName"]
             }
             return badge;
           }, []),

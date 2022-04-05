@@ -39,13 +39,17 @@ export class AuthenticationService {
     // BEGIN: real data
     this.http.post<Login>(url, null, httpOptions).subscribe((data) => {
       let login: Login = {
-        id: data.id,
+        loginId: data.loginId,
+        leaderId: data.leaderId ? data.leaderId : null,
         isLeader: data.isLeader,
         token: data.token,
       };
-      this.cookieService.set('id', login.id);
+      this.cookieService.set('loginId', login.loginId);
       this.cookieService.set('isLeader', String(login.isLeader));
       this.cookieService.set('token', login.token);
+      if (login.isLeader) {
+        this.cookieService.set('leaderId', login.leaderId);
+      }
       window.location.reload();
     });
     // END: real data
@@ -53,7 +57,7 @@ export class AuthenticationService {
 
   logout(): void {
     // Get id and token
-    let id = this.cookieService.get('id');
+    let id = this.cookieService.get('loginId');
     let httpOptions = {
       headers: new HttpHeaders({ Authorization: `Bearer ${this.cookieService.get('token')}` }),
     };

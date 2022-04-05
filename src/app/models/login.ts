@@ -1,5 +1,6 @@
 export interface Login {
-  id: string;
+  loginId: string;
+  leaderId?: string;
   isLeader: boolean;
   token: string;
 }

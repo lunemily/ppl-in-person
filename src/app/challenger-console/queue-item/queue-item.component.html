@@ -1,7 +1,9 @@
 <table>
     <tr>
-        <td class="panel name-panel">
-            <span>{{ queue.displayName }}</span>
+        <td class="panel image-panel">
+            <img class="badge"
+                    alt="{{ queue.displayName }}"
+                    src="assets/images/portraits/{{ queue.leaderId }}.png" />
         </td>
         <td class="panel image-panel">
             <img class="badge"
@@ -9,8 +11,16 @@
                     src="assets/images/badges/{{ queue.leaderId }}.png" />
         </td>
         <td class="panel position-panel">
-            <span>Challengers ahead of you:</span>
+            <span>Position in queue:</span>
             <span id="queue-position">{{ queue.position }}</span>
+        </td>
+    </tr>
+    <tr>
+        <td class="panel name-panel">
+            <span>{{ queue.displayName }}</span>
+        </td>
+        <td class="panel name-panel">
+            <span>{{ queue.badgeName }}</span>
         </td>
     </tr>
 </table>

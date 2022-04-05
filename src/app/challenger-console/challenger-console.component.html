@@ -11,7 +11,15 @@
             <app-queue-item [queue]="queue"></app-queue-item>
         </div>
         <br />
-        <span id="queue-help">If you wish to leave a leader's queue, please go speak to them to remove you.</span>
+        <p id="queue-help">Scan a leader's QR code to add yourself to their queue.</p>
+        <p id="queue-help">Or ask a leader to scan your QR code.</p>
+        <p id="queue-help">Or ask a leader to add you to their queue.</p>
+        <app-camera *ngIf="showCamera" [challengerId]="challenger.id"></app-camera>
+        <button class="east" mat-raised-button (click)="enqueue()">
+            <mat-icon>qr_code</mat-icon>
+        </button>
+        <br />
+        <p id="queue-help">If you wish to leave a leader's queue, please go speak to them to remove you.</p>
     </div>
 </mat-card>
 <mat-card>
@@ -21,12 +29,6 @@
             <app-badge-item [badge]="badge"></app-badge-item>
         </div>
     </div>
-    <br />
-    <span id="queue-help">Scan a leader's card to add yourself to their queue. Or ask a leader to add you to their queue.</span>
-    <app-camera *ngIf="showCamera" [challengerId]="challenger.id"></app-camera>
-    <button class="east" mat-raised-button (click)="enqueue()">
-        <mat-icon>qr_code</mat-icon>
-    </button>
 </mat-card>
 <mat-card>
     <span class="title-font left">Challenger QR Code</span>
