@@ -13,13 +13,14 @@ export class CameraComponent implements OnInit {
     @Input() leaderId: string;
     // Presence of a challengerId indicates that we are enqueuing a challenger
     @Input() challengerId: string;
-    @ViewChild(QrScannerComponent) qrScannerComponent: QrScannerComponent ;
+    @ViewChild(QrScannerComponent) qrScannerComponent: QrScannerComponent;
 
     constructor(
         private leaderService: LeaderService,
     ) {}
 
     ngOnInit() {
+        this.qrScannerComponent.videoElement.setAttribute('playsinline', 'true');
     }
 
     ngAfterViewInit() {
