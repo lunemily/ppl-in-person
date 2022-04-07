@@ -7,6 +7,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { MessageService } from './message.service';
 
 import { Login } from '../models/login';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { error } from '@angular/compiler/src/util';
 
 @Injectable({
   providedIn: 'root',
@@ -37,21 +39,30 @@ export class AuthenticationService {
     // console.log(httpOptions)
 
     // BEGIN: real data
-    this.http.post<Login>(url, null, httpOptions).subscribe((data) => {
-      let login: Login = {
-        loginId: data.loginId,
-        leaderId: data.leaderId ? data.leaderId : null,
-        isLeader: data.isLeader,
-        token: data.token,
-      };
-      this.cookieService.set('loginId', login.loginId);
-      this.cookieService.set('isLeader', String(login.isLeader));
-      this.cookieService.set('token', login.token);
-      if (login.isLeader) {
-        this.cookieService.set('leaderId', login.leaderId);
-      }
-      window.location.reload();
-    });
+    this.http.post<Login>(url, null, httpOptions)
+      .subscribe(
+        (data) => {
+          let login: Login = {
+            loginId: data.loginId,
+            leaderId: data.leaderId ? data.leaderId : null,
+            isLeader: data.isLeader,
+            token: data.token,
+          };
+          this.cookieService.set('loginId', login.loginId);
+          this.cookieService.set('isLeader', String(login.isLeader));
+          this.cookieService.set('token', login.token);
+          if (login.isLeader) {
+            this.cookieService.set('leaderId', login.leaderId);
+          }
+          window.location.reload();
+        },
+        (error) => {
+          console.error(error);
+          this.snackBar.open(error['error']['error'], "Dismiss", {
+            duration: 2000,
+          });
+        }
+      );
     // END: real data
   }
 
@@ -96,5 +107,6 @@ export class AuthenticationService {
     };
   }
 
-  constructor(private http: HttpClient, private messageService: MessageService, private cookieService: CookieService) {}
+  constructor(private http: HttpClient, private messageService: MessageService, private cookieService: CookieService,
+    private snackBar: MatSnackBar,) {}
 }

@@ -10,6 +10,7 @@ import { Challenger } from '../models/challenger';
 import { Badge } from '../models/badge';
 import { data } from '../leader.data';
 import { Queue } from '../models/queue';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -155,6 +156,9 @@ export class ChallengerService {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
+      // There was an error. just log out
+      this.authenticationService.logout();
+
       // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);
 
@@ -165,6 +169,7 @@ export class ChallengerService {
 
   constructor(
     private http: HttpClient,
+    private authenticationService: AuthenticationService,
     private messageService: MessageService,
     private cookieService: CookieService,
   ) { }

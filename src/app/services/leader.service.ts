@@ -11,6 +11,7 @@ import { Queue } from '../models/queue';
 import { Hold } from '../models/hold';
 import { CookieService } from 'ngx-cookie-service';
 import { Challenger } from '../models/challenger';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -137,6 +138,9 @@ export class LeaderService {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
+      // There was an error. just log out
+      this.authenticationService.logout();
+
       // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);
 
@@ -147,6 +151,7 @@ export class LeaderService {
 
   constructor(
     private http: HttpClient,
+    private authenticationService: AuthenticationService,
     private cookieService: CookieService,
     private messageService: MessageService
   ) { }
