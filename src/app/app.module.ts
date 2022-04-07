@@ -21,6 +21,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { NgQrScannerModule } from 'angular2-qrscanner';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QRCodeModule } from 'angularx-qrcode';
 
@@ -38,7 +39,7 @@ import { LeaderHoldItemComponent } from './leader-console/leader-hold-item/leade
 import { CameraComponent } from './camera/camera.component';
 import { AuthComponent } from './auth/auth.component';
 
-import {CookieService} from 'ngx-cookie-service';
+import { CookieService } from 'ngx-cookie-service';
 import { ChallengerSearchComponent } from './challenger-search/challenger-search.component';
 
 @NgModule({
@@ -83,6 +84,7 @@ import { ChallengerSearchComponent } from './challenger-search/challenger-search
     BrowserAnimationsModule,
     NgQrScannerModule,
     QRCodeModule,
+    ZXingScannerModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
