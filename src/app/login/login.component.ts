@@ -9,6 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Challenger } from '../models/challenger';
 import { Leader } from '../models/leader';
 import { Login } from '../models/login';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private authenticationService: AuthenticationService,
     private challengerService: ChallengerService,
     private cookieService: CookieService,
     private headerService: HeaderService,
@@ -54,6 +56,10 @@ export class LoginComponent implements OnInit {
   getLeader(): void {
     this.leaderService.getLeader(this.loginId)
       .subscribe(leader => this.leader = leader);
+  }
+
+  logout() {
+    this.authenticationService.logout();
   }
 
 }

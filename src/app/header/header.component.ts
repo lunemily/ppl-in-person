@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   }
 
   openChallenging() {
-    window.open('assets/images/challenging.png');
+    window.open('assets/images/challenging-east.png');
   }
 
   openPrizes() {
@@ -33,9 +33,9 @@ export class HeaderComponent implements OnInit {
     window.open('assets/images/rules-east.png');
   }
 
-  openSchedule() {
-    window.open('assets/images/schedule.png');
-  }
+  // openSchedule() {
+  //   window.open('assets/images/schedule.png');
+  // }
 
   logout() {
     this.authenticationService.logout();
