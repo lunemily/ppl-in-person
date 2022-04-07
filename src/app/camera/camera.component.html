@@ -6,4 +6,4 @@
     [stopAfterScan]="true"
     [updateTime]="500">
 </qr-scanner> -->
-<zxing-scanner></zxing-scanner>
+<zxing-scanner (scanSuccess)="onCodeResult($event)"></zxing-scanner>
