@@ -103,6 +103,14 @@ export class ChallengerService {
     // END: real data
   }
 
+  enqueueLeader(challengerId: string, leaderId: string): void {
+    const url = `${this.serverUrl}/challenger/${challengerId}/enqueue/${leaderId}`;
+
+    this.http.post<any>(url, {}, this.httpOptions).subscribe(data => {
+      window.location.reload();
+    })
+  }
+
   /** GET challengers list from the server */
   getChallengers(): Observable<Challenger[]> {
     const url = `${this.serverUrl}/badgesv2`;

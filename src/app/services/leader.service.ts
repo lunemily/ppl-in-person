@@ -36,6 +36,7 @@ export class LeaderService {
         /** Create object to return. Add in all leaders now. */
         let leader: Leader = {
           id: id,
+          leaderId: response["leaderId"],
           displayName: response["leaderName"],
           queue: response["queue"].map(function(item) {
             let queue: Queue = {
