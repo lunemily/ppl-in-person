@@ -12,6 +12,7 @@ import { Hold } from '../models/hold';
 import { CookieService } from 'ngx-cookie-service';
 import { Challenger } from '../models/challenger';
 import { AuthenticationService } from './authentication.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -68,9 +69,18 @@ export class LeaderService {
       challengerWin: win
     }
 
-    this.http.post<any>(url, body, this.httpOptions).subscribe(data => {
-      window.location.reload();
-    })
+    this.http.post<any>(url, body, this.httpOptions)
+    .subscribe(
+      (data) => {
+        window.location.reload();
+      },
+      (error) => {
+        console.error(error);
+        this.snackBar.open(error['error']['error'], "Dismiss", {
+          duration: 2000,
+        });
+      }
+    )
   }
 
   getChallengers(leaderId: string): Observable<Challenger[]> {
@@ -84,7 +94,7 @@ export class LeaderService {
         return response;
       }),
       tap(_ => this.log('fetched challengers')),
-      catchError(this.handleError<Challenger[]>('getChallengers', []))
+      catchError(this.handleErrorNoLogout<Challenger[]>('getChallengers', []))
     );
     // END: real data
   }
@@ -92,34 +102,69 @@ export class LeaderService {
   enqueueChallenger(leaderId: string, challengerId: string): void {
     const url = `${this.serverUrl}/leader/${leaderId}/enqueue/${challengerId}`;
 
-    this.http.post<any>(url, {}, this.httpOptions).subscribe(data => {
-      window.location.reload();
-    })
+    this.http.post<any>(url, {}, this.httpOptions)
+    .subscribe(
+      (data) => {
+        window.location.reload();
+      },
+      (error) => {
+        console.error(error);
+        this.snackBar.open(error['error']['error'], "Dismiss", {
+          duration: 2000,
+        });
+      }
+    )
   }
 
   holdChallenger(leaderId: string, challengerId: string): void {
     const url = `${this.serverUrl}/leader/${leaderId}/hold/${challengerId}`;
 
-    this.http.post<any>(url, {}, this.httpOptions).subscribe(data => {
-      window.location.reload();
-    })
+    this.http.post<any>(url, {}, this.httpOptions)
+    .subscribe(
+      (data) => {
+        window.location.reload();
+      },
+      (error) => {
+        console.error(error);
+        this.snackBar.open(error['error']['error'], "Dismiss", {
+          duration: 2000,
+        });
+      }
+    )
   }
 
   unholdChallenger(leaderId: string, challengerId: string, placeAtFront: boolean): void {
     const url = `${this.serverUrl}/leader/${leaderId}/unhold/${challengerId}`;
 
-    this.http.post<any>(url, {"placeAtFront": placeAtFront}, this.httpOptions).subscribe(data => {
-            window.location.reload();
-        })
+    this.http.post<any>(url, {"placeAtFront": placeAtFront}, this.httpOptions)
+    .subscribe(
+      (data) => {
+        window.location.reload();
+      },
+      (error) => {
+        console.error(error);
+        this.snackBar.open(error['error']['error'], "Dismiss", {
+          duration: 2000,
+        });
+      }
+    )
   }
 
   removeChallenger(leaderId: string, challengerId: string): void {
     const url = `${this.serverUrl}/leader/${leaderId}/dequeue/${challengerId}`;
 
-
-    this.http.post<any>(url, {}, this.httpOptions).subscribe(data => {
-            window.location.reload();
-        })
+    this.http.post<any>(url, {}, this.httpOptions)
+    .subscribe(
+      (data) => {
+        window.location.reload();
+      },
+      (error) => {
+        console.error(error);
+        this.snackBar.open(error['error']['error'], "Dismiss", {
+          duration: 2000,
+        });
+      }
+    )
   }
 
   /** Log a LeaderService message with the MessageService */
@@ -150,10 +195,31 @@ export class LeaderService {
     };
   }
 
+  /**
+   * Handle Http operation that failed.
+   * Let the app continue.
+   * @param operation - name of the operation that failed
+   * @param result - optional value to return as the observable result
+   */
+   private handleErrorNoLogout<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      this.log(`${operation} failed: ${error.message}`);
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
+
   constructor(
     private http: HttpClient,
     private authenticationService: AuthenticationService,
     private cookieService: CookieService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private snackBar: MatSnackBar,
   ) { }
 }

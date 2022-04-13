@@ -11,6 +11,7 @@ import { Badge } from '../models/badge';
 import { data } from '../leader.data';
 import { Queue } from '../models/queue';
 import { AuthenticationService } from './authentication.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -106,9 +107,25 @@ export class ChallengerService {
   enqueueLeader(challengerId: string, leaderId: string): void {
     const url = `${this.serverUrl}/challenger/${challengerId}/enqueue/${leaderId}`;
 
-    this.http.post<any>(url, {}, this.httpOptions).subscribe(data => {
-      window.location.reload();
-    })
+    this.http.post<any>(url, {}, this.httpOptions)
+      .subscribe(
+        (data) => {
+          window.location.reload();
+        },
+        (error) => {
+          console.error(error);
+          this.snackBar.open(error['error']['error'], "Dismiss", {
+            duration: 2000,
+          });
+        }
+      )
+
+    // this.http.post<any>(url, {}, this.httpOptions).pipe(
+    //   map(response => {
+    //     window.location.reload();
+    //   }),
+    //   tap(_ => this.log(`enqueued challengerId=${challengerId} to leaderId=${leaderId}`)),
+    //   catchError()
   }
 
   /** GET challengers list from the server */
@@ -143,7 +160,7 @@ export class ChallengerService {
       tap(x => x.length ?
         this.log(`found challengers matching "${term}"`) :
         this.log(`no challengers matching "${term}"`)),
-      catchError(this.handleError<Challenger[]>('searchChallengers', []))
+      catchError(this.handleErrorNoLogout<Challenger[]>('searchChallengers', []))
     );
   }
 
@@ -175,10 +192,31 @@ export class ChallengerService {
     };
   }
 
+  /**
+   * Handle Http operation that failed.
+   * Let the app continue.
+   * @param operation - name of the operation that failed
+   * @param result - optional value to return as the observable result
+   */
+   private handleErrorNoLogout<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      this.log(`${operation} failed: ${error.message}`);
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
+
   constructor(
     private http: HttpClient,
     private authenticationService: AuthenticationService,
     private messageService: MessageService,
     private cookieService: CookieService,
+    private snackBar: MatSnackBar,
   ) { }
 }
