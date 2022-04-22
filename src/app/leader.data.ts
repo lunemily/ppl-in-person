@@ -63,5 +63,9 @@ export const data =
   "68ad4ad23795": {
     "displayName": "Volcanus, Scared of Rocks",
     "badgeName": "Champion"
+  },
+  "001f9d23dc12": {
+    "displayName": "Erkenhelm, The Ultimate Dragon Slayer",
+    "badgeName": "Dragon Slayer Badge"
   }
 }
