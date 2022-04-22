@@ -8,8 +8,12 @@ import { Queue } from 'src/app/models/queue';
 })
 export class QueueItemComponent implements OnInit {
   @Input() queue: Queue;
+  onHold: boolean = false;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.queue.position)
+    this.onHold = (this.queue.position === -1) ? true : false;
+  }
 }

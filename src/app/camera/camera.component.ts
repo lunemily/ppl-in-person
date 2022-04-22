@@ -34,6 +34,7 @@ export class CameraComponent implements OnInit {
     hasDevices: boolean;
     hasPermission: boolean;
   
+    scannerEnabled = true;
     torchEnabled = false;
     torchAvailable$ = new BehaviorSubject<boolean>(false);
     tryHarder = false;
@@ -46,9 +47,7 @@ export class CameraComponent implements OnInit {
 
     onCodeResult(result: string) {
         console.info(result);
-        this.snackBar.open(result, "Dismiss", {
-          duration: 2000,
-        });
+        this.scannerEnabled = false;
         // const devURL = 'https://localhost:4200';
         // const prodURL = 'https://paxpokemonleague.net/qr/';
         const challengerEnqueueRegex = /^http(s|):\/\/(localhost:4200|paxpokemonleague\.net\/qr)\/\?(challenger)=([a-zA-Z0-9]+){0,16}$/g;
@@ -63,7 +62,7 @@ export class CameraComponent implements OnInit {
                         .replace("https://paxpokemonleague.net/qr/?challenger=", "")
                 this.leaderService.enqueueChallenger(this.leaderId, challengerId);
             } else {
-                // window.location.reload();
+                window.location.reload();
             }
         }
         else if (this.challengerId) {
@@ -75,66 +74,65 @@ export class CameraComponent implements OnInit {
                         .replace("https://paxpokemonleague.net/qr/?leader=", "")
                 this.challengerService.enqueueLeader(this.challengerId, leaderId);
             } else {
-                window.location.reload();
+              window.location.reload();
             }
         } else {
-            // window.location.reload();
+          // window.location.reload();
         }
     }
 
     clearResult(): void {
-        this.qrResultString = null;
-      }
-    
-      onCamerasFound(devices: MediaDeviceInfo[]): void {
-        this.availableDevices = devices;
-        this.hasDevices = Boolean(devices && devices.length);
-      }
-    
-      onDeviceSelectChange(selected: string) {
-        const selectedStr = selected || '';
-        if (this.deviceSelected === selectedStr) { return; }
-        this.deviceSelected = selectedStr;
-        const device = this.availableDevices.find(x => x.deviceId === selected);
-        this.deviceCurrent = device || undefined;
-      }
-    
-      onDeviceChange(device: MediaDeviceInfo) {
-        const selectedStr = device?.deviceId || '';
-        if (this.deviceSelected === selectedStr) { return; }
-        this.deviceSelected = selectedStr;
-        this.deviceCurrent = device || undefined;
-      }
-    
-      openFormatsDialog() {
-        const data = {
-          formatsEnabled: this.formatsEnabled,
-        };
-      }
-    
-      onHasPermission(has: boolean) {
-        this.hasPermission = has;
-      }
-    
-      openInfoDialog() {
-        const data = {
-          hasDevices: this.hasDevices,
-          hasPermission: this.hasPermission,
-        };
-    
-      }
-    
-      onTorchCompatible(isCompatible: boolean): void {
-        this.torchAvailable$.next(isCompatible || false);
-      }
-    
-      toggleTorch(): void {
-        this.torchEnabled = !this.torchEnabled;
-      }
-    
-      toggleTryHarder(): void {
-        this.tryHarder = !this.tryHarder;
-      }
+      this.qrResultString = null;
+    }
+
+    onCamerasFound(devices: MediaDeviceInfo[]): void {
+      this.availableDevices = devices;
+      this.hasDevices = Boolean(devices && devices.length);
+    }
+
+    onDeviceSelectChange(selected: string) {
+      const selectedStr = selected || '';
+      if (this.deviceSelected === selectedStr) { return; }
+      this.deviceSelected = selectedStr;
+      const device = this.availableDevices.find(x => x.deviceId === selected);
+      this.deviceCurrent = device || undefined;
+    }
+
+    onDeviceChange(device: MediaDeviceInfo) {
+      const selectedStr = device?.deviceId || '';
+      if (this.deviceSelected === selectedStr) { return; }
+      this.deviceSelected = selectedStr;
+      this.deviceCurrent = device || undefined;
+    }
+
+    openFormatsDialog() {
+      const data = {
+        formatsEnabled: this.formatsEnabled,
+      };
+    }
+
+    onHasPermission(has: boolean) {
+      this.hasPermission = has;
+    }
+
+    openInfoDialog() {
+      const data = {
+        hasDevices: this.hasDevices,
+        hasPermission: this.hasPermission,
+      };
+    }
+
+    onTorchCompatible(isCompatible: boolean): void {
+      this.torchAvailable$.next(isCompatible || false);
+    }
+
+    toggleTorch(): void {
+      this.torchEnabled = !this.torchEnabled;
+    }
+
+    toggleTryHarder(): void {
+      this.tryHarder = !this.tryHarder;
+    }
 
     ngOnInit() {
         // this.qrScannerComponent.videoElement.setAttribute('playsinline', 'true');

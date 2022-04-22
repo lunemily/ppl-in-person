@@ -10,9 +10,13 @@
                     alt="{{ queue.displayName }}"
                     src="assets/images/badges/{{ queue.leaderId }}.png" />
         </td>
-        <td class="panel position-panel">
+        <td *ngIf="!onHold" class="panel position-panel">
             <span>Position in queue:</span>
             <span id="queue-position">{{ queue.position }}</span>
+        </td>
+        <td *ngIf="onHold" class="panel position-panel">
+            <span>You are on</span>
+            <span id="queue-position">HOLD</span>
         </td>
     </tr>
     <tr>
