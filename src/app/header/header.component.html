@@ -1,11 +1,11 @@
 <mat-sidenav-container>
-    <mat-toolbar class="east">
+    <mat-toolbar color="primary">
         <span id="title" class="title-font">{{ title }}</span>
         <span class="example-spacer"></span>
         <button id="menu-button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu">
             <mat-icon>more_vert</mat-icon>
         </button>
-        <mat-menu class="east" #menu="matMenu">
+        <mat-menu color="primary" #menu="matMenu">
             <!-- Schedule rolled into challenging -->
             <!-- <button mat-icon-button
                     (click)="openSchedule()"
@@ -14,24 +14,28 @@
                 <span>PPL Schedule</span>
             </button> -->
             <button mat-icon-button
+                    color="primary"
                     (click)="openChallenging()"
                     aria-label="How to Challenge">
                 <mat-icon>videogame_asset</mat-icon>
                 <span>How to Challenge</span>
             </button>
             <button mat-icon-button
+                    color="primary"
                     (click)="openRules()"
                     aria-label="PPL Rules">
                 <mat-icon>description</mat-icon>
                 <span>PPL Rules</span>
             </button>
             <button mat-icon-button
+                    color="primary"
                     (click)="openPrizes()"
                     aria-label="Prize Pools">
                 <mat-icon>stars</mat-icon>
                 <span>Prize Pools</span>
             </button>
             <button mat-icon-button
+                    color="primary"
                     (click)="logout()"
                     aria-label="Logout">
                 <mat-icon>logout</mat-icon>

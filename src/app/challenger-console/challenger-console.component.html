@@ -15,7 +15,7 @@
         <p id="queue-help">Or ask a leader to scan your QR code.</p>
         <p id="queue-help">Or ask a leader to add you to their queue.</p>
         <app-camera *ngIf="showCamera" [challengerId]="challenger.id"></app-camera>
-        <button class="east" mat-raised-button (click)="enqueue()">
+        <button mat-raised-button color="primary" (click)="enqueue()">
             <mat-icon>qr_code</mat-icon>
         </button>
         <br />

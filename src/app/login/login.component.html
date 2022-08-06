@@ -4,5 +4,5 @@
 <app-leader-console *ngIf="leader" [leader]="leader"></app-leader-console>
 <app-challenger-console *ngIf="challenger" [challenger]="challenger"></app-challenger-console>
 <mat-card *ngIf="!showLogin">
-    <button class="east" mat-raised-button (click)="logout()">Sign Out <mat-icon>logout</mat-icon></button>
+    <button mat-raised-button color="primary" (click)="logout()">Sign Out <mat-icon>logout</mat-icon></button>
 </mat-card>
