@@ -1,4 +1,5 @@
-import { Component, VERSION, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, VERSION, OnInit, ViewChild, Input, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BarcodeFormat } from '@zxing/library';
 
@@ -6,6 +7,12 @@ import { QrScannerComponent } from 'angular2-qrscanner';
 import { BehaviorSubject } from 'rxjs';
 import { ChallengerService } from '../services/challenger.service';
 import { LeaderService } from '../services/leader.service';
+
+export interface DialogData {
+  challengerId: string;
+  leaderId: string;
+  isLeader: boolean;
+}
 
 @Component({
     selector: 'app-camera',
@@ -43,6 +50,7 @@ export class CameraComponent implements OnInit {
         private challengerService: ChallengerService,
         private leaderService: LeaderService,
         private snackBar: MatSnackBar,
+        public dialog: MatDialog,
     ) {}
 
     onCodeResult(result: string) {
@@ -60,7 +68,7 @@ export class CameraComponent implements OnInit {
                         .replace("http://paxpokemonleague.net/qr/?challenger=", "")
                         .replace("https://localhost:4200/?challenger=", "")
                         .replace("https://paxpokemonleague.net/qr/?challenger=", "")
-                this.leaderService.enqueueChallenger(this.leaderId, challengerId);
+                this.openEnqueueDialog(challengerId, this.leaderId)
             } else {
                 window.location.reload();
             }
@@ -72,7 +80,7 @@ export class CameraComponent implements OnInit {
                         .replace("http://paxpokemonleague.net/qr/?leader=", "")
                         .replace("https://localhost:4200/?leader=", "")
                         .replace("https://paxpokemonleague.net/qr/?leader=", "")
-                this.challengerService.enqueueLeader(this.challengerId, leaderId);
+                this.openEnqueueDialog(this.challengerId, leaderId)
             } else {
               window.location.reload();
             }
@@ -132,6 +140,28 @@ export class CameraComponent implements OnInit {
 
     toggleTryHarder(): void {
       this.tryHarder = !this.tryHarder;
+    }
+
+    openEnqueueDialog(challengerId: string, leaderId: string): void {
+      const dialogRef = this.dialog.open(EnqueueDialog, {
+        width: '250px',
+        data: {
+          challengerId: challengerId,
+          leaderId: leaderId,
+          isLeader: this.challengerId == null
+        },
+      });
+  
+      dialogRef.afterClosed().subscribe((doEnqueue) => {
+        if (this.leaderId && (doEnqueue === 'true')) {
+          this.leaderService.enqueueChallenger(this.leaderId, challengerId);
+        }
+        else if (this.challengerId && (doEnqueue === 'true')) {
+          this.challengerService.enqueueLeader(this.challengerId, leaderId);
+        } else {
+          window.location.reload();
+        }
+      });
     }
 
     ngOnInit() {
@@ -201,4 +231,23 @@ export class CameraComponent implements OnInit {
         //     }
         // });
     }
+}
+
+@Component({
+  selector: 'enqueue-dialog',
+  templateUrl: 'enqueue-dialog.html',
+})
+export class EnqueueDialog {
+  constructor(
+    public dialogRef: MatDialogRef<EnqueueDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  onYesClick(): void {
+    this.dialogRef.close("true");
+  }
 }
