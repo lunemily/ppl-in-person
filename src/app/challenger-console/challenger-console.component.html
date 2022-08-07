@@ -5,7 +5,7 @@
     </div>
     <br />
     <div id="queues-entered">
-        <span class="title-font left">Queues Entered</span>
+        <h2 class="left">Queues Entered</h2>
         <br />
         <div *ngFor="let queue of challenger.queuesEntered" class="queue-container">
             <app-queue-item [queue]="queue"></app-queue-item>
@@ -24,13 +24,13 @@
 </mat-card>
 <mat-card>
     <div id="badges-earned">
-        <span class="title-font left">Badges Earned</span>
+        <h2 class="left">Badges Earned</h2>
         <div *ngFor="let badge of challenger.badgesEarned" class="queue-container">
             <app-badge-item [badge]="badge"></app-badge-item>
         </div>
     </div>
 </mat-card>
 <mat-card>
-    <span class="title-font left">Challenger QR Code</span>
+    <h2 class="left">Challenger QR Code</h2>
     <qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
 </mat-card>

@@ -15,6 +15,16 @@
 
 @font-face {
   font-family: ethnocentric;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/fonts/ethnocentric-rg.ttf") format("truetype");
+}
+@font-face {
+  font-family: ethnocentric;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
   src: url("assets/fonts/ethnocentric-rg.ttf") format("truetype");
 }
 
@@ -23,8 +33,9 @@ $fontConfig: (
   display-3: mat-typography-level(56px, 56px, 400, 'Roboto', -0.0089em),
   display-2: mat-typography-level(45px, 48px, 400, 'Roboto', 0.0000em),
   display-1: mat-typography-level(34px, 40px, 400, 'Roboto', 0.0074em),
-  headline: mat-typography-level(24px, 32px, 400, 'ethnocentric', 0.0000em),
-  title: mat-typography-level(20px, 32px, 500, 'ethnocentric', 0.0075em),
+  headline: mat-typography-level(1.5em, 1.5em, 400, 'ethnocentric', 0.0000em),
+  title: mat-typography-level(1.5em, 1.5em, 400, 'ethnocentric', 0.0000em),
+  // title: mat-typography-level(20px, 32px, 500, 'ethnocentric', 0.0075em),
   subheading-2: mat-typography-level(16px, 28px, 400, 'ethnocentric', 0.0094em),
   subheading-1: mat-typography-level(15px, 24px, 500, 'ethnocentric', 0.0067em),
   body-2: mat-typography-level(14px, 24px, 500, 'Roboto', 0.0179em),

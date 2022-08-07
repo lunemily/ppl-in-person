@@ -1,6 +1,6 @@
 <div id="header">
-    <h2 *ngIf="isLogin" class="title-font">Please Sign In</h2>
-    <h2 *ngIf="isRegister" class="title-font">Please Register</h2>
+    <h2 *ngIf="isLogin">Please Sign In</h2>
+    <h2 *ngIf="isRegister">Please Register</h2>
 </div>
 <form id="login-form">
     <table>
@@ -33,10 +33,12 @@
 <div *ngIf="isLogin">
     <button mat-raised-button color="primary" (click)="login()">Sign In</button>
     <br/>
+    <br/>
     <p>Don't have an account? <button mat-stroked-button color="primary" (click)="showRegister()">Register</button></p>
 </div>
 <div *ngIf="isRegister">
     <button mat-raised-button color="primary" (click)="register()">Register</button>
+    <br/>
     <br/>
     <p>Already have an account? <button mat-stroked-button color="primary" (click)="showLogin()">Sign In</button></p>
 </div>
