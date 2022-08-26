@@ -1,6 +1,27 @@
 <h2 mat-dialog-title>Did the challenger win?</h2>
-<div mat-dialog-actions>
+<!-- <div mat-dialog-actions>
   <button mat-button (click)="onWinClick()" cdkFocusInitial>WIN</button>
   <button mat-button (click)="onLoseClick()">LOSE</button>
   <button mat-button (click)="onCancelClick()">CANCEL</button>
-</div>
+</div> -->
+<mat-form-field appearance="fill">
+  <mat-label>Select an option</mat-label>
+  <mat-select [(value)]="win">
+    <mat-option>None</mat-option>
+    <mat-option value="true">Yes</mat-option>
+    <mat-option value="false">No</mat-option>
+  </mat-select>
+</mat-form-field>
+<h2 mat-dialog-title>Did you award the challenger a badge?</h2>
+<mat-form-field appearance="fill">
+  <mat-label>Select an option</mat-label>
+  <mat-select [(value)]="badge">
+    <mat-option>None</mat-option>
+    <mat-option value="true">Yes</mat-option>
+    <mat-option value="false">No</mat-option>
+  </mat-select>
+</mat-form-field>
+<button mat-button color="primary" (click)="onSubmitClick()">SUBMIT</button>
+<button mat-stroked-button (click)="onCancelClick()">CANCEL</button>
+<p>Win: {{win}}</p>
+<p>Badge: {{badge}}</p>

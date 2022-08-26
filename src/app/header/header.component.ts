@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
     // Add year
     this.title += " '" + new Date().getFullYear().toString().substring(2);
     // Add location
-    this.title += ' East';
+    this.title += ' West';
     // this.route.queryParams
     //   .subscribe(params => {
     //     this.showLogs = JSON.parse(params.debug);

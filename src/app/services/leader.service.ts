@@ -63,10 +63,11 @@ export class LeaderService {
     // END: real data
   }
 
-  reportBattle(leaderId: string, challengerId: string, win: boolean): void {
+  reportBattle(leaderId: string, challengerId: string, win: boolean, badge: boolean): void {
     const url = `${this.serverUrl}/leader/${leaderId}/report/${challengerId}`;
     let body = {
-      challengerWin: win
+      challengerWin: win,
+      badgeAwarded: badge
     }
 
     this.http.post<any>(url, body, this.httpOptions)

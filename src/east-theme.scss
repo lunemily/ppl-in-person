@@ -10,6 +10,10 @@
 // have to load a single css file for Angular Material in your app.
 
 // Fonts
+@font-face {
+  font-family: ethnocentric;
+  src: url("assets/fonts/ethnocentric-rg.ttf") format("truetype");
+}
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 

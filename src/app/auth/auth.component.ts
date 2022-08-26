@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Credential } from './credential'
+import { Credential } from './credential';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthenticationService } from '../services/authentication.service';
 import { MessageService } from '../services/message.service';
@@ -8,29 +8,31 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss']
+  styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent implements OnInit {
-
-  isLogin: boolean
-  isRegister: boolean
-  credentials: Credential
+  isLogin: boolean;
+  isRegister: boolean;
+  credentials: Credential;
   hide = true;
+  win: string;
+  badge: string;
+  report: boolean;
 
   constructor(
     private authenticationService: AuthenticationService,
     private cookieService: CookieService,
     private messageService: MessageService,
-    private snackBar: MatSnackBar,
-  ) { }
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
-    this.showLogin()
+    this.showLogin();
     this.credentials = {
-      username: "",
-      password: "",
-      confirmPassword: "",
-    }
+      username: '',
+      password: '',
+      confirmPassword: '',
+    };
   }
 
   login(): void {
@@ -43,7 +45,7 @@ export class AuthComponent implements OnInit {
     if (this.credentials.password === this.credentials.confirmPassword) {
       this.authenticationService.register(this.credentials.username, this.credentials.password);
     } else {
-      this.snackBar.open("Error: Passwords to not match.", "Dismiss", {
+      this.snackBar.open('Error: Passwords to not match.', 'Dismiss', {
         duration: 2000,
       });
     }
@@ -62,5 +64,4 @@ export class AuthComponent implements OnInit {
     this.isLogin = false;
     this.isRegister = true;
   }
-
 }

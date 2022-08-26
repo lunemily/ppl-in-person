@@ -1,16 +1,24 @@
 <table>
-    <tr>
-        <td class="panel name-panel">
-            <span>{{ queue.displayName }}</span>
-        </td>
-        <td>
-            <button class="battle-button" color="warn" [disabled]="queue.position !== 0" mat-raised-button (click)="reportBattle()">BATTLE</button>
-        </td>
-        <td>
-            <button class="hold-button" mat-raised-button (click)="holdChallenger(queue.challengerId)">HOLD</button>
-        </td>
-        <td>
-            <button class="remove-button" mat-raised-button (click)="removeChallenger(queue.challengerId)">REMOVE</button>
-        </td>
-    </tr>
+  <tr>
+    <td class="panel name-panel">
+      <span>{{ queue.displayName }}</span>
+    </td>
+    <td>
+      <button
+        class="battle-button"
+        color="warn"
+        [disabled]="queue.position !== 0"
+        mat-raised-button
+        (click)="reportBattle()"
+      >
+        BATTLE
+      </button>
+    </td>
+    <td>
+      <button class="hold-button" mat-raised-button (click)="holdChallenger(queue.challengerId)">HOLD</button>
+    </td>
+    <td>
+      <button class="remove-button" mat-raised-button (click)="removeChallenger(queue.challengerId)">REMOVE</button>
+    </td>
+  </tr>
 </table>

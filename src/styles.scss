@@ -1,29 +1,29 @@
 // @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "west-theme.scss";
-@import "east-theme.scss";
+// @import "east-theme.scss";
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 /* Application-wide Styles */
-@font-face {
-  font-family: codehack;
-  src: url("assets/fonts/nightmare-codehack.ttf") format("truetype");
-}
-@font-face {
-  font-family: blox;
-  src: url("assets/fonts/Blox2.ttf") format("truetype");
-}
-@font-face {
-  font-family: black-steel;
-  src: url("assets/fonts/HffBlackSteel-vrv7.ttf") format("truetype");
-}
-@font-face {
-  font-family: theboldfont;
-  src: url("assets/fonts/theboldfont.ttf") format("truetype");
-}
-@font-face {
-  font-family: ethnocentric;
-  src: url("assets/fonts/ethnocentric-rg.ttf") format("truetype");
-}
+// @font-face {
+//   font-family: codehack;
+//   src: url("assets/fonts/nightmare-codehack.ttf") format("truetype");
+// }
+// @font-face {
+//   font-family: blox;
+//   src: url("assets/fonts/Blox2.ttf") format("truetype");
+// }
+// @font-face {
+//   font-family: black-steel;
+//   src: url("assets/fonts/HffBlackSteel-vrv7.ttf") format("truetype");
+// }
+// @font-face {
+//   font-family: theboldfont;
+//   src: url("assets/fonts/theboldfont.ttf") format("truetype");
+// }
+// @font-face {
+//   font-family: ethnocentric;
+//   src: url("assets/fonts/ethnocentric-rg.ttf") format("truetype");
+// }
 h1 {
   color: #369;
   font-family: Arial, Helvetica, sans-serif;
@@ -51,7 +51,7 @@ html, body {
 
 body {
   margin: 0;
-  background-image: url('assets/images/wallpaper-east.png');
+  background-image: url('assets/images/wallpaper-west.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -68,24 +68,4 @@ mat-card {
 a, a:hover, a:visited {
   text-decoration: none;
   color: rgba(0,0,0,.87);
-}
-
-.black-steel {
-  font-family: black-steel;
-}
-
-.title-font {
-  font-family: ethnocentric;
-}
-
-// .west {
-//   /* background-color: #0900FF; */
-//   background-color: #040080;
-//   color: #fff;
-// }
-
-.east {
-  /* background-color: #0900FF; */
-  background-color: #D91E1E;
-  color: #fff;
 }
