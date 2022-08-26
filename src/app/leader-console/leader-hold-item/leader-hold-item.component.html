@@ -1,13 +1,17 @@
 <table>
-    <tr>
-        <td class="panel name-panel">
-            <span>{{ hold.displayName }}</span>
-        </td>
-        <td>
-            <button class="unhold-button" mat-raised-button (click)="unholdFront(hold.challengerId)">FRONT</button>
-        </td>
-        <td>
-            <button class="unhold-button" mat-raised-button (click)="unholdBack(hold.challengerId)">BACK</button>
-        </td>
-    </tr>
+  <tr>
+    <td class="panel name-panel">
+      <span>{{ hold.displayName }}</span>
+    </td>
+    <td>
+      <button class="unhold-button" mat-stroked-button color="primary" (click)="unholdFront(hold.challengerId)">
+        FRONT
+      </button>
+    </td>
+    <td>
+      <button class="unhold-button" mat-stroked-button color="primary" (click)="unholdBack(hold.challengerId)">
+        BACK
+      </button>
+    </td>
+  </tr>
 </table>

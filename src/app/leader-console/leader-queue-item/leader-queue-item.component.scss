@@ -1,8 +1,13 @@
 table {
-    border: 2px black;
-    width: 100%;
+  border: 2px black;
+  width: 100%;
+}
+
+td {
+  width: 24%;
+  word-wrap: break-word;
 }
 
 .name-panel {
-    max-width: 80px;
+  max-width: 80px;
 }

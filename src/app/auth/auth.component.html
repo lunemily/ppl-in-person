@@ -31,13 +31,13 @@
   </table>
 </form>
 <div *ngIf="isLogin">
-  <button mat-raised-button color="primary" (click)="login()">Sign In</button>
+  <button mat-flat-button color="primary" (click)="login()">Sign In</button>
   <br />
   <br />
   <p>Don't have an account? <button mat-stroked-button color="primary" (click)="showRegister()">Register</button></p>
 </div>
 <div *ngIf="isRegister">
-  <button mat-raised-button color="primary" (click)="register()">Register</button>
+  <button mat-flat-button color="primary" (click)="register()">Register</button>
   <br />
   <br />
   <p>Already have an account? <button mat-stroked-button color="primary" (click)="showLogin()">Sign In</button></p>

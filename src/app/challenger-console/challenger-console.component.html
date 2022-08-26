@@ -1,36 +1,36 @@
 <mat-card>
-    <div>
-        <h2>{{ challenger.displayName.toUpperCase() }}'S TRAINER CARD</h2>
-        <button mat-stroked-button (click)="editName()">EDIT NAME</button>
+  <div>
+    <h2>{{ challenger.displayName.toUpperCase() }}'S TRAINER CARD</h2>
+    <button mat-stroked-button (click)="editName()">EDIT NAME</button>
+  </div>
+  <br />
+  <div id="queues-entered">
+    <h2 class="left">Queues Entered</h2>
+    <br />
+    <div *ngFor="let queue of challenger.queuesEntered" class="queue-container">
+      <app-queue-item [queue]="queue"></app-queue-item>
     </div>
     <br />
-    <div id="queues-entered">
-        <h2 class="left">Queues Entered</h2>
-        <br />
-        <div *ngFor="let queue of challenger.queuesEntered" class="queue-container">
-            <app-queue-item [queue]="queue"></app-queue-item>
-        </div>
-        <br />
-        <p id="queue-help">Scan a leader's QR code to add yourself to their queue.</p>
-        <p id="queue-help">Or ask a leader to scan your QR code.</p>
-        <p id="queue-help">Or ask a leader to add you to their queue.</p>
-        <app-camera *ngIf="showCamera" [challengerId]="challenger.id"></app-camera>
-        <button mat-raised-button color="primary" (click)="enqueue()">
-            <mat-icon>qr_code</mat-icon>
-        </button>
-        <br />
-        <p id="queue-help">If you wish to leave a leader's queue, please go speak to them to remove you.</p>
-    </div>
+    <p id="queue-help">Scan a leader's QR code to add yourself to their queue.</p>
+    <p id="queue-help">Or ask a leader to scan your QR code.</p>
+    <p id="queue-help">Or ask a leader to add you to their queue.</p>
+    <app-camera *ngIf="showCamera" [challengerId]="challenger.id"></app-camera>
+    <button mat-flat-button color="primary" (click)="enqueue()">
+      <mat-icon>qr_code</mat-icon>
+    </button>
+    <br />
+    <p id="queue-help">If you wish to leave a leader's queue, please go speak to them to remove you.</p>
+  </div>
 </mat-card>
 <mat-card>
-    <div id="badges-earned">
-        <h2 class="left">Badges Earned</h2>
-        <div *ngFor="let badge of challenger.badgesEarned" class="queue-container">
-            <app-badge-item [badge]="badge"></app-badge-item>
-        </div>
+  <div id="badges-earned">
+    <h2 class="left">Badges Earned</h2>
+    <div *ngFor="let badge of challenger.badgesEarned" class="queue-container">
+      <app-badge-item [badge]="badge"></app-badge-item>
     </div>
+  </div>
 </mat-card>
 <mat-card>
-    <h2 class="left">Challenger QR Code</h2>
-    <qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+  <h2 class="left">Challenger QR Code</h2>
+  <qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
 </mat-card>

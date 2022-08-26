@@ -1,30 +1,30 @@
 mat-toolbar {
-    position: fixed;
-    margin-top: 0px;
+  position: fixed;
+  margin-top: 0px;
 }
 
 mat-menu {
-    max-width: 300px;
+  max-width: 300px;
 }
 
 .mat-icon-button {
-    display: block;
-    width: 100%;
-    text-align: left;
+  display: block;
+  width: 100%;
+  text-align: left;
 }
 
 #menu-button {
-    text-align: right;
-    width: 40px;
-    margin: 0px;
+  text-align: right;
+  width: 40px;
+  margin: 0px;
 }
 
 mat-icon {
-    margin: .25em
+  margin: 0.25em;
 }
 
 span {
-    margin-right: .5em;
+  margin-right: 0.5em;
 }
 
 // nav a {
@@ -47,20 +47,24 @@ span {
 //     color: #039be5;
 // }
 p {
-    margin-top: 0px;
+  margin-top: 0px;
 }
 
 .example-spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 h1 {
-    color: #fff;
+  color: #fff;
+}
+
+button {
+  padding: 0em 0.5em;
 }
 
 @supports (-webkit-touch-callout: none) {
-    /* CSS specific to iOS devices */
-    .mat-sidenav-container {
-        overflow: visible;
-    }
+  /* CSS specific to iOS devices */
+  .mat-sidenav-container {
+    overflow: visible;
+  }
 }

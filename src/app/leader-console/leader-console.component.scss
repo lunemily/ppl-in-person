@@ -1,9 +1,15 @@
-#leader
-
-.queue-container {
-    padding: 0.5em 0em;
+#leader .queue-container {
+  padding: 0.5em 0em;
 }
 
 #battle-code {
-    font-weight: 700;
+  font-weight: 700;
+}
+
+mat-card {
+  width: 85%;
+}
+
+#record-table > * > td {
+  width: 24%;
 }

@@ -52,6 +52,7 @@ export class LeaderQueueItemComponent implements OnInit {
 @Component({
   selector: 'report-battle-dialog',
   templateUrl: 'report-battle-dialog.html',
+  styleUrls: ['./report-battle-dialog.scss'],
 })
 export class ReportBattleDialog {
   win: string;
