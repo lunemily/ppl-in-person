@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatButtonModule, } from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -31,7 +31,10 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { LeaderConsoleComponent } from './leader-console/leader-console.component';
-import { LeaderQueueItemComponent, ReportBattleDialog } from './leader-console/leader-queue-item/leader-queue-item.component'
+import {
+  LeaderQueueItemComponent,
+  ReportBattleDialog,
+} from './leader-console/leader-queue-item/leader-queue-item.component';
 import { ChallengerConsoleComponent, ChallengerSetNameDialog } from './challenger-console/challenger-console.component';
 import { QueueItemComponent } from './challenger-console/queue-item/queue-item.component';
 import { BadgeItemComponent } from './challenger-console/badge-item/badge-item.component';
@@ -79,6 +82,7 @@ import { ChallengerSearchComponent } from './challenger-search/challenger-search
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     ClipboardModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -87,6 +91,6 @@ import { ChallengerSearchComponent } from './challenger-search/challenger-search
     ZXingScannerModule,
   ],
   providers: [CookieService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
