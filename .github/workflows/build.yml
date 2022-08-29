@@ -1,0 +1,18 @@
+name: Build the site
+on:
+  workflow_dispatch:
+    inputs:
+      location:
+        description: 'Which PAX is it?'
+        required: true
+        type: choice
+        options:
+          - east
+          - west
+          - online
+jobs:
+  npm_build:
+    name: Build the site
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
