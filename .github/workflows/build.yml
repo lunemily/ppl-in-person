@@ -13,6 +13,7 @@ on:
 jobs:
   npm_build:
     name: Build the site
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
