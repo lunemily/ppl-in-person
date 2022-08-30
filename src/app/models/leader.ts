@@ -13,4 +13,7 @@ export interface Leader {
   wins?: number;
   losses?: number;
   badgesAwarded?: number;
+  art?: string;
+  blurb?: string;
+  tagline?: string;
 }

@@ -8,21 +8,19 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { Challenger } from '../models/challenger';
 import { Leader } from '../models/leader';
-import { Login } from '../models/login';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
-  loginId: string
+  loginId: string;
   isLeader: boolean;
   @Input() leader: Leader;
   @Input() challenger: Challenger;
-  showLogin: boolean
+  showLogin: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,36 +28,33 @@ export class LoginComponent implements OnInit {
     private challengerService: ChallengerService,
     private cookieService: CookieService,
     private headerService: HeaderService,
-    private leaderService: LeaderService,
-  ) { }
+    private leaderService: LeaderService
+  ) {}
 
   ngOnInit(): void {
     this.showLogin = true;
     this.loginId = this.cookieService.get('loginId');
-    this.isLeader = ("true" == this.cookieService.get('isLeader'));
-    if( this.loginId ) {
+    this.isLeader = 'true' == this.cookieService.get('isLeader');
+    if (this.loginId) {
       this.showLogin = false;
       if (this.isLeader) {
-        this.getLeader()
+        this.getLeader();
       } else {
-        this.getChallenger()
+        this.getChallenger();
       }
     }
     this.headerService.setUrl(window.location.href);
   }
 
   getChallenger(): void {
-    this.challengerService.getChallenger(this.loginId)
-      .subscribe(challenger => this.challenger = challenger);
+    this.challengerService.getChallenger(this.loginId).subscribe((challenger) => (this.challenger = challenger));
   }
 
   getLeader(): void {
-    this.leaderService.getLeader(this.loginId)
-      .subscribe(leader => this.leader = leader);
+    this.leaderService.getLeader(this.loginId).subscribe((leader) => (this.leader = leader));
   }
 
   logout() {
     this.authenticationService.logout();
   }
-
 }

@@ -4,6 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { AuthenticationService } from '../services/authentication.service';
 import { MessageService } from '../services/message.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-auth',
@@ -22,6 +23,7 @@ export class AuthComponent implements OnInit {
   constructor(
     private authenticationService: AuthenticationService,
     private cookieService: CookieService,
+    private dataService: DataService,
     private messageService: MessageService,
     private snackBar: MatSnackBar
   ) {}
@@ -33,6 +35,9 @@ export class AuthComponent implements OnInit {
       password: '',
       confirmPassword: '',
     };
+
+    // Cache data
+    this.dataService.getRemoteData();
   }
 
   login(): void {

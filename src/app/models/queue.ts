@@ -6,4 +6,5 @@ export interface Queue {
   badgeName?: string;
   challengerId?: string;
   position: number;
+  badgeArt?: string;
 }
