@@ -1,71 +1,70 @@
-export const data =
-{
-  "2c5f346defd7": {
-    "displayName": "Aidan and Drak, the Draco Master and Dragon Fanatic",
-    "badgeName": "Double Dragon Badge"
+export const data = {
+  '00c0b9669df8': {
+    displayName: 'Roxas, the Overcaffeinated Admin',
+    badgeName: 'Iced Latte Badge',
   },
-  "dffcbc6d59c6": {
-    "displayName": "Bede, the Pink Predecessor",
-    "badgeName": "Wishing Badge"
+  '16fdeaef3799': {
+    displayName: 'Etch, the Savvy Scientific Illustrator',
+    badgeName: 'Field Study Badge',
   },
-  "53a574da71d1": {
-    "displayName": "Conifer, the All-Terrain Hiker",
-    "badgeName": "View Badge"
+  '2d0f49b297cd': {
+    displayName: 'Rhonder, the Puzzle League Master',
+    badgeName: 'Puzzle League Badge',
   },
-  "d0cb919d5611": {
-    "displayName": "Daphne, the Tea Time Princess",
-    "badgeName": "Tea Party Badge"
+  '3056473e5679': {
+    displayName: 'Jose, the Raucous',
+    badgeName: 'Cacophonous Badge',
   },
-  "356b8822b378": {
-    "displayName": "Lucid, the Man of Emotion",
-    "badgeName": "Butterfly Rose Emblem"
+  '30d635b10187': {
+    displayName: 'Bioram, the Blue Dude',
+    badgeName: 'Blue Badge',
   },
-  "25e440806b6d": {
-    "displayName": "Mads Mercury, the Mischievous Haberdasher",
-    "badgeName": "Mercurial Badge"
+  '34c30492736c': {
+    displayName: 'Mamoru Chiba, the Masked Observer',
+    badgeName: 'Elegant Badge',
   },
-  "710a10d8fd47": {
-    "displayName": "Melony, the Ice-Cold Professional",
-    "badgeName": "Ice Badge"
+  '404a69cb5b9f': {
+    displayName: 'Mike, the Giant',
+    badgeName: 'G-Max Badge',
   },
-  "7ed6d86c8a8f": {
-    "displayName": "Orpheus, the House Musician",
-    "badgeName": "Lyre Badge"
+  '483a657b99c0': {
+    displayName: 'Jules, the Traveler',
+    badgeName: 'Passport Badge',
   },
-  "8751e23af50e": {
-    "displayName": "PAXMAN, the Man of PAX",
-    "badgeName": "PAX Emblem"
+  '511b226c5749': {
+    displayName: 'Doomy, the Max Raider',
+    badgeName: 'Novice Raider Badge',
   },
-  "7d39a4af39b0": {
-    "displayName": "Reyes, the Umbral Reaper",
-    "badgeName": "Grim Badge"
+  '55a4b533dc78': {
+    displayName: 'Kenny, the Max Raider',
+    badgeName: 'Expert Raider Badge',
   },
-  "807a09908f42": {
-    "displayName": "Saul, Strixhaven's Star-Studded Student",
-    "badgeName": "Silk Emblem"
+  '8f94033f58b7': {
+    displayName: 'Chrys, the Hard-Shelled Trainer',
+    badgeName: 'Exoskeleton Badge',
   },
-  "ea7f99e7a307": {
-    "displayName": "Sayu, the Sleepy Ninja",
-    "badgeName": "Muji-Muji Badge"
+  aeaf9468b4a2: {
+    displayName: 'Monsoon, the Stains of Time',
+    badgeName: 'Storm Badge',
   },
-  "0c3a6c425643": {
-    "displayName": "Scoot, the Gen 5 Fanboy",
-    "badgeName": "Unova Badge"
+  bcbeb3764061: {
+    displayName: 'Douglas, the Rising Fist',
+    badgeName: 'Steel Fist Badge',
   },
-  "37c3c472abc5": {
-    "displayName": "Soundwave, the Metal Menace",
-    "badgeName": "Data Badge"
+  c6e73226e7c4: {
+    displayName: 'Nancy Richardson II, the Dex Maniac',
+    badgeName: 'PokéDex Maniac Badge',
   },
-  "174cdcf924b9": {
-    "displayName": "Tom Nook and Crazy Redd, the Island Merchants",
-    "badgeName": "Merchants' Badge"
+  cc31b0cbc4b5: {
+    displayName: 'Dustin, Respite in the Dunes',
+    badgeName: 'Oasis Emblem',
   },
-  "68ad4ad23795": {
-    "displayName": "Volcanus, Scared of Rocks",
-    "badgeName": "Champion"
+  cddaba15d491: {
+    displayName: 'Lord Fingler, the Socialite',
+    badgeName: 'Influencer Badge',
   },
-  "001f9d23dc12": {
-    "displayName": "Erkenhelm, The Ultimate Dragon Slayer",
-    "badgeName": "Dragon Slayer Badge"
-  }
-}
+  f00c087d1a2c: {
+    displayName: 'Lord Fingler, the Artiste',
+    badgeName: 'Artiste Badge',
+  },
+};

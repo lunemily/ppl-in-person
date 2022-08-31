@@ -15,7 +15,9 @@ export class HeaderComponent implements OnInit {
   showLogs: boolean = false;
 
   constructor(
-    private route: ActivatedRoute, private authenticationService: AuthenticationService, public headerService: HeaderService
+    private route: ActivatedRoute,
+    private authenticationService: AuthenticationService,
+    public headerService: HeaderService
   ) {}
 
   ngOnInit(): void {
@@ -31,15 +33,15 @@ export class HeaderComponent implements OnInit {
   }
 
   openChallenging() {
-    window.open('assets/images/challenging-east.png');
+    window.open('assets/images/challenging-west.png');
   }
 
   openPrizes() {
-    window.open('assets/images/prizes-east.png');
+    window.open('assets/images/prizes-west.png');
   }
 
   openRules() {
-    window.open('assets/images/rules-east.png');
+    window.open('assets/images/rules-west.png');
   }
 
   // openSchedule() {
