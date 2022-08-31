@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { map } from 'rxjs';
+import { map, Observable, shareReplay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -31,7 +31,7 @@ export class DataService {
 
   cacheData(): void {
     if (!this.cookieService.check('leaderData')) {
-      this.cookieService.set('leaderData', JSON.stringify(this.getRemoteData()), 7); // Cache lives for 7 days
+      // this.cookieService.set('leaderData', JSON.stringify(this.getRemoteData()), 7); // Cache lives for 7 days
     }
   }
 

@@ -3,7 +3,8 @@
     <h2>{{ challenger.displayName.toUpperCase() }}'S TRAINER CARD</h2>
     <button mat-stroked-button (click)="editName()">EDIT NAME</button>
   </div>
-  <br />
+</mat-card>
+<mat-card>
   <div id="queues-entered">
     <h2 class="left">Queues Entered</h2>
     <br />
@@ -18,6 +19,7 @@
     <button mat-flat-button color="primary" (click)="enqueue()">
       <mat-icon>qr_code</mat-icon>
     </button>
+    <br />
     <br />
     <p id="queue-help">If you wish to leave a leader's queue, please go speak to them to remove you.</p>
   </div>

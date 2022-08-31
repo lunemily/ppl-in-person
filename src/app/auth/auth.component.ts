@@ -37,7 +37,7 @@ export class AuthComponent implements OnInit {
     };
 
     // Cache data
-    this.dataService.getRemoteData();
+    // this.dataService.cacheData();
   }
 
   login(): void {
