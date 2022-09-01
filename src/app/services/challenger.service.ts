@@ -14,13 +14,12 @@ import { AuthenticationService } from './authentication.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ChallengerService {
-
-  private serverUrl = 'http://toastserv.com:26438';  // URL to web api
+  private serverUrl = 'https://toastserv.com:26438'; // URL to web api
   httpOptions = {
-    headers: new HttpHeaders({ 'Authorization': `Bearer ${this.cookieService.get('token')}` }),
+    headers: new HttpHeaders({ Authorization: `Bearer ${this.cookieService.get('token')}` }),
   };
 
   /** GET challenger from the server */
@@ -55,35 +54,34 @@ export class ChallengerService {
 
     // BEGIN: real data
     return this.http.get<Challenger>(url, this.httpOptions).pipe(
-      map(response => {
-
+      map((response) => {
         /** Create object to return. Add in all leaders now. */
         let challenger: Challenger = {
           id: id,
-          displayName: response["displayName"],
-          queuesEntered: response["queuesEntered"].reduce(function(result, item) {
+          displayName: response['displayName'],
+          queuesEntered: response['queuesEntered'].reduce(function (result, item) {
             let queue: Queue = {
-              displayName: item["leaderName"],
-              position: item["position"] + 1,
-              leaderId: item["leaderId"],
-              badgeName: data[item["leaderId"]]['badgeName']
-            }
+              displayName: item['leaderName'],
+              position: item['position'] + 1,
+              leaderId: item['leaderId'],
+              badgeName: data[item['leaderId']]['badgeName'],
+            };
             result.push(queue);
             return result;
           }, []),
-          badgesEarned: response["badgesEarned"].map(function(item) {
+          badgesEarned: response['badgesEarned'].map(function (item) {
             let badge: Badge = {
               displayName: item['badgeName'],
-              leaderId: item["leaderId"],
-              leaderName: item["leaderName"]
-            }
+              leaderId: item['leaderId'],
+              leaderName: item['leaderName'],
+            };
             return badge;
           }, []),
         };
 
         return challenger;
       }),
-      tap(_ => this.log(`fetched challenger id=${id}`)),
+      tap((_) => this.log(`fetched challenger id=${id}`)),
       catchError(this.handleError<Challenger>(`getChallenger id=${id}`))
     );
     // END: real data
@@ -92,33 +90,32 @@ export class ChallengerService {
   setChallengerName(id: string, displayName: string): void {
     const url = `${this.serverUrl}/challenger/${id}`;
 
-    console.log("Setting user's name to: " + displayName)
+    console.log("Setting user's name to: " + displayName);
 
     let display: string = displayName;
 
     // BEGIN: real data
-    this.http.post<any>(url, { displayName: displayName }, this.httpOptions).subscribe(data => {
-            display = data.id;
-            window.location.reload();
-        })
+    this.http.post<any>(url, { displayName: displayName }, this.httpOptions).subscribe((data) => {
+      display = data.id;
+      window.location.reload();
+    });
     // END: real data
   }
 
   enqueueLeader(challengerId: string, leaderId: string): void {
     const url = `${this.serverUrl}/challenger/${challengerId}/enqueue/${leaderId}`;
 
-    this.http.post<any>(url, {}, this.httpOptions)
-      .subscribe(
-        (data) => {
-          window.location.reload();
-        },
-        (error) => {
-          console.error(error);
-          this.snackBar.open(error['error']['error'], "Dismiss", {
-            duration: 2000,
-          });
-        }
-      )
+    this.http.post<any>(url, {}, this.httpOptions).subscribe(
+      (data) => {
+        window.location.reload();
+      },
+      (error) => {
+        console.error(error);
+        this.snackBar.open(error['error']['error'], 'Dismiss', {
+          duration: 2000,
+        });
+      }
+    );
 
     // this.http.post<any>(url, {}, this.httpOptions).pipe(
     //   map(response => {
@@ -134,16 +131,15 @@ export class ChallengerService {
 
     // BEGIN: dummy data
     let challenger1: Challenger = {
-      id: '1'
-    }
+      id: '1',
+    };
     let challenger2: Challenger = {
-      id: '2'
-    }
-    let challengers: Challenger[] = [challenger1, challenger2]
+      id: '2',
+    };
+    let challengers: Challenger[] = [challenger1, challenger2];
     // END: dummy data
 
-    return of(challengers)
-
+    return of(challengers);
   }
 
   /** GET challengers whose name contains search term */
@@ -154,12 +150,12 @@ export class ChallengerService {
       return of([]);
     }
     return this.http.get<Challenger[]>(url, this.httpOptions).pipe(
-      map(response => {
-        return response["challengers"];
+      map((response) => {
+        return response['challengers'];
       }),
-      tap(x => x.length ?
-        this.log(`found challengers matching "${term}"`) :
-        this.log(`no challengers matching "${term}"`)),
+      tap((x) =>
+        x.length ? this.log(`found challengers matching "${term}"`) : this.log(`no challengers matching "${term}"`)
+      ),
       catchError(this.handleErrorNoLogout<Challenger[]>('searchChallengers', []))
     );
   }
@@ -175,9 +171,8 @@ export class ChallengerService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-   private handleError<T>(operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
@@ -198,9 +193,8 @@ export class ChallengerService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-   private handleErrorNoLogout<T>(operation = 'operation', result?: T) {
+  private handleErrorNoLogout<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
@@ -217,6 +211,6 @@ export class ChallengerService {
     private authenticationService: AuthenticationService,
     private messageService: MessageService,
     private cookieService: CookieService,
-    private snackBar: MatSnackBar,
-  ) { }
+    private snackBar: MatSnackBar
+  ) {}
 }

@@ -18,7 +18,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providedIn: 'root',
 })
 export class LeaderService {
-  private serverUrl = 'http://toastserv.com:26438'; // URL to web api
+  private serverUrl = 'https://toastserv.com:26438'; // URL to web api
   httpOptions = {
     headers: new HttpHeaders({ Authorization: `Bearer ${this.cookieService.get('token')}` }),
   };
