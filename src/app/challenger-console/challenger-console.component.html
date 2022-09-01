@@ -34,5 +34,12 @@
 </mat-card>
 <mat-card>
   <h2 class="left">Challenger QR Code</h2>
-  <qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+  <qrcode
+    [qrdata]="myAngularxQrCode"
+    [imageSrc]="'assets/images/pokeball.png'"
+    [imageHeight]="60"
+    [imageWidth]="60"
+    [width]="300"
+    [errorCorrectionLevel]="'M'"
+  ></qrcode>
 </mat-card>
