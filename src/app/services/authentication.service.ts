@@ -17,7 +17,7 @@ import { api } from '../constants.data';
 })
 export class AuthenticationService {
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    headers: api.httpOtions.headers.append('Content-Type', 'application/json'),
   };
 
   login(username: string, password: string) {
@@ -33,7 +33,7 @@ export class AuthenticationService {
 
     let authorization: string = btoa(username + ':' + password);
     let httpOptions = {
-      headers: new HttpHeaders({ Authorization: `Basic ${authorization}` }),
+      headers: api.httpOtions.headers.append('Authorization', `Basic ${authorization}`),
     };
     // console.log(httpOptions)
 
@@ -68,7 +68,7 @@ export class AuthenticationService {
     // Get id and token
     let id = this.cookieService.get('loginId');
     let httpOptions = {
-      headers: new HttpHeaders({ Authorization: `Bearer ${this.cookieService.get('token')}` }),
+      headers: api.httpOtions.headers.append('Authorization', `Bearer ${this.cookieService.get('token')}`),
     };
     const url = `${api.serverUrl}/logout/${id}`;
 
