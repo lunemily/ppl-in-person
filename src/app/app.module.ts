@@ -20,7 +20,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { NgQrScannerModule } from 'angular2-qrscanner';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QRCodeModule } from 'angularx-qrcode';
@@ -86,7 +85,7 @@ import { ChallengerSearchComponent } from './challenger-search/challenger-search
     ClipboardModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgQrScannerModule,
+    // NgQrScannerModule,
     QRCodeModule,
     ZXingScannerModule,
   ],

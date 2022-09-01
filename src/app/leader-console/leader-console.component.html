@@ -52,5 +52,10 @@
 </mat-card>
 <mat-card>
   <h3>Leader QR Code</h3>
-  <qrcode [qrdata]="myAngularxQrCode" [width]="300" [errorCorrectionLevel]="'M'"></qrcode>
+  <qrcode
+    [qrdata]="myAngularxQrCode"
+    [imageSrc]="'assets/images/badges/{{ leader.leaderId }}.png'"
+    [width]="300"
+    [errorCorrectionLevel]="'M'"
+  ></qrcode>
 </mat-card>
