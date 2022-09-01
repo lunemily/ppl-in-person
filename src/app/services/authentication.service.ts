@@ -35,7 +35,6 @@ export class AuthenticationService {
     let httpOptions = {
       headers: api.httpOtions.headers.append('Authorization', `Basic ${authorization}`),
     };
-    // console.log(httpOptions)
 
     // BEGIN: real data
     this.http.post<Login>(url, null, httpOptions).subscribe(

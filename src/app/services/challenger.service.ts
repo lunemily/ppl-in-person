@@ -21,7 +21,6 @@ import { api } from '../constants.data';
 export class ChallengerService {
   httpOptions = {
     headers: api.httpOtions.headers.append('Authorization', `Bearer ${this.cookieService.get('token')}`),
-    // headers: new HttpHeaders({ Authorization: `Bearer ${this.cookieService.get('token')}` }),
   };
 
   /** GET challenger from the server */
