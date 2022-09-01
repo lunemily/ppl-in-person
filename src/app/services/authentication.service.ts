@@ -10,11 +10,12 @@ import { Login } from '../models/login';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { error } from '@angular/compiler/src/util';
 
+import { api } from '../constants.data';
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
-  private serverUrl = 'https://toastserv.com:26438'; // URL to web api
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
@@ -28,9 +29,7 @@ export class AuthenticationService {
   }
 
   loginOrRegister(username: string, password: string, endpoint: string): void {
-    const url = `${this.serverUrl}/${endpoint}`;
-
-    // curl -X POST https://toastserv.com:26438/login -v -H "Authorization: Basic bHVuZWxsYTpodW50ZXIy"
+    const url = `${api.serverUrl}/${endpoint}`;
 
     let authorization: string = btoa(username + ':' + password);
     let httpOptions = {
@@ -39,30 +38,29 @@ export class AuthenticationService {
     // console.log(httpOptions)
 
     // BEGIN: real data
-    this.http.post<Login>(url, null, httpOptions)
-      .subscribe(
-        (data) => {
-          let login: Login = {
-            loginId: data.loginId,
-            leaderId: data.leaderId ? data.leaderId : null,
-            isLeader: data.isLeader,
-            token: data.token,
-          };
-          this.cookieService.set('loginId', login.loginId);
-          this.cookieService.set('isLeader', String(login.isLeader));
-          this.cookieService.set('token', login.token);
-          if (login.isLeader) {
-            this.cookieService.set('leaderId', login.leaderId);
-          }
-          window.location.reload();
-        },
-        (error) => {
-          console.error(error);
-          this.snackBar.open(error['error']['error'], "Dismiss", {
-            duration: 2000,
-          });
+    this.http.post<Login>(url, null, httpOptions).subscribe(
+      (data) => {
+        let login: Login = {
+          loginId: data.loginId,
+          leaderId: data.leaderId ? data.leaderId : null,
+          isLeader: data.isLeader,
+          token: data.token,
+        };
+        this.cookieService.set('loginId', login.loginId);
+        this.cookieService.set('isLeader', String(login.isLeader));
+        this.cookieService.set('token', login.token);
+        if (login.isLeader) {
+          this.cookieService.set('leaderId', login.leaderId);
         }
-      );
+        window.location.reload();
+      },
+      (error) => {
+        console.error(error);
+        this.snackBar.open(error['error']['error'], 'Dismiss', {
+          duration: 2000,
+        });
+      }
+    );
     // END: real data
   }
 
@@ -72,7 +70,7 @@ export class AuthenticationService {
     let httpOptions = {
       headers: new HttpHeaders({ Authorization: `Bearer ${this.cookieService.get('token')}` }),
     };
-    const url = `${this.serverUrl}/logout/${id}`;
+    const url = `${api.serverUrl}/logout/${id}`;
 
     // Delete cookies for local logout
     this.cookieService.deleteAll();
@@ -107,6 +105,10 @@ export class AuthenticationService {
     };
   }
 
-  constructor(private http: HttpClient, private messageService: MessageService, private cookieService: CookieService,
-    private snackBar: MatSnackBar,) {}
+  constructor(
+    private http: HttpClient,
+    private messageService: MessageService,
+    private cookieService: CookieService,
+    private snackBar: MatSnackBar
+  ) {}
 }

@@ -14,18 +14,20 @@ import { Challenger } from '../models/challenger';
 import { AuthenticationService } from './authentication.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { api } from '../constants.data';
+
 @Injectable({
   providedIn: 'root',
 })
 export class LeaderService {
-  private serverUrl = 'https://toastserv.com:26438'; // URL to web api
   httpOptions = {
-    headers: new HttpHeaders({ Authorization: `Bearer ${this.cookieService.get('token')}` }),
+    headers: api.httpOtions.headers.append('Authorization', `Bearer ${this.cookieService.get('token')}`),
+    // headers: new HttpHeaders({ Authorization: `Bearer ${this.cookieService.get('token')}` }),
   };
 
   /** GET leader from the server */
   getLeader(id: string): Observable<Leader> {
-    const url = `${this.serverUrl}/leader/${id}`;
+    const url = `${api.serverUrl}/leader/${id}`;
 
     // BEGIN: dummy data
     // return of(leader)
@@ -66,7 +68,7 @@ export class LeaderService {
   }
 
   reportBattle(leaderId: string, challengerId: string, win: boolean, badge: boolean): void {
-    const url = `${this.serverUrl}/leader/${leaderId}/report/${challengerId}`;
+    const url = `${api.serverUrl}/leader/${leaderId}/report/${challengerId}`;
     let body = {
       challengerWin: win,
       badgeAwarded: badge,
@@ -87,7 +89,7 @@ export class LeaderService {
   }
 
   getChallengers(leaderId: string): Observable<Challenger[]> {
-    const url = `${this.serverUrl}/leader/${leaderId}/allchallengers`;
+    const url = `${api.serverUrl}/leader/${leaderId}/allchallengers`;
     let challengers: Challenger[] = [];
 
     // return of(challengers);
@@ -103,7 +105,7 @@ export class LeaderService {
   }
 
   enqueueChallenger(leaderId: string, challengerId: string): void {
-    const url = `${this.serverUrl}/leader/${leaderId}/enqueue/${challengerId}`;
+    const url = `${api.serverUrl}/leader/${leaderId}/enqueue/${challengerId}`;
 
     this.http.post<any>(url, {}, this.httpOptions).subscribe(
       (data) => {
@@ -119,7 +121,7 @@ export class LeaderService {
   }
 
   holdChallenger(leaderId: string, challengerId: string): void {
-    const url = `${this.serverUrl}/leader/${leaderId}/hold/${challengerId}`;
+    const url = `${api.serverUrl}/leader/${leaderId}/hold/${challengerId}`;
 
     this.http.post<any>(url, {}, this.httpOptions).subscribe(
       (data) => {
@@ -135,7 +137,7 @@ export class LeaderService {
   }
 
   unholdChallenger(leaderId: string, challengerId: string, placeAtFront: boolean): void {
-    const url = `${this.serverUrl}/leader/${leaderId}/unhold/${challengerId}`;
+    const url = `${api.serverUrl}/leader/${leaderId}/unhold/${challengerId}`;
 
     this.http.post<any>(url, { placeAtFront: placeAtFront }, this.httpOptions).subscribe(
       (data) => {
@@ -151,7 +153,7 @@ export class LeaderService {
   }
 
   removeChallenger(leaderId: string, challengerId: string): void {
-    const url = `${this.serverUrl}/leader/${leaderId}/dequeue/${challengerId}`;
+    const url = `${api.serverUrl}/leader/${leaderId}/dequeue/${challengerId}`;
 
     this.http.post<any>(url, {}, this.httpOptions).subscribe(
       (data) => {

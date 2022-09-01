@@ -3,11 +3,12 @@ import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { map, Observable, shareReplay } from 'rxjs';
 
+import { api } from '../constants.data';
+
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  private serverUrl = 'https://toastserv.com:26438'; // URL to web api
   leaderData: string;
 
   //   {
@@ -23,7 +24,7 @@ export class DataService {
   // }
 
   getRemoteData(): any {
-    const url = `${this.serverUrl}/allleaderdata`;
+    const url = `${api.serverUrl}/allleaderdata`;
     return this.http.get(url).subscribe((data) => {
       return data;
     });

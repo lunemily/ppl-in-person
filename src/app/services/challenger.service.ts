@@ -13,18 +13,20 @@ import { Queue } from '../models/queue';
 import { AuthenticationService } from './authentication.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { api } from '../constants.data';
+
 @Injectable({
   providedIn: 'root',
 })
 export class ChallengerService {
-  private serverUrl = 'https://toastserv.com:26438'; // URL to web api
   httpOptions = {
-    headers: new HttpHeaders({ Authorization: `Bearer ${this.cookieService.get('token')}` }),
+    headers: api.httpOtions.headers.append('Authorization', `Bearer ${this.cookieService.get('token')}`),
+    // headers: new HttpHeaders({ Authorization: `Bearer ${this.cookieService.get('token')}` }),
   };
 
   /** GET challenger from the server */
   getChallenger(id: string): Observable<Challenger> {
-    const url = `${this.serverUrl}/challenger/${id}`;
+    const url = `${api.serverUrl}/challenger/${id}`;
 
     // BEGIN: dummy data
     // let challenger: Challenger = {
@@ -88,7 +90,7 @@ export class ChallengerService {
   }
 
   setChallengerName(id: string, displayName: string): void {
-    const url = `${this.serverUrl}/challenger/${id}`;
+    const url = `${api.serverUrl}/challenger/${id}`;
 
     console.log("Setting user's name to: " + displayName);
 
@@ -103,7 +105,7 @@ export class ChallengerService {
   }
 
   enqueueLeader(challengerId: string, leaderId: string): void {
-    const url = `${this.serverUrl}/challenger/${challengerId}/enqueue/${leaderId}`;
+    const url = `${api.serverUrl}/challenger/${challengerId}/enqueue/${leaderId}`;
 
     this.http.post<any>(url, {}, this.httpOptions).subscribe(
       (data) => {
@@ -127,7 +129,7 @@ export class ChallengerService {
 
   /** GET challengers list from the server */
   getChallengers(): Observable<Challenger[]> {
-    const url = `${this.serverUrl}/badgesv2`;
+    const url = `${api.serverUrl}/badgesv2`;
 
     // BEGIN: dummy data
     let challenger1: Challenger = {
@@ -144,7 +146,7 @@ export class ChallengerService {
 
   /** GET challengers whose name contains search term */
   searchChallengers(term: string): Observable<Challenger[]> {
-    const url = `${this.serverUrl}/search?name=${term}`;
+    const url = `${api.serverUrl}/search?name=${term}`;
     if (!term.trim()) {
       // if not search term, return empty challenger array.
       return of([]);
