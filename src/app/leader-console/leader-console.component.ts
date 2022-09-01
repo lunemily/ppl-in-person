@@ -1,5 +1,5 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Leader } from '../models/leader';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LeaderService } from '../services/leader.service';
@@ -18,9 +18,9 @@ export class LeaderConsoleComponent implements OnInit {
   myAngularxQrCode: string;
   battleCode: string;
   showCamera: boolean
-  options: FormGroup;
-  hideRequiredControl = new FormControl(false);
-  floatLabelControl = new FormControl('auto');
+  options: UntypedFormGroup;
+  hideRequiredControl = new UntypedFormControl(false);
+  floatLabelControl = new UntypedFormControl('auto');
 
   previousName: string;
   newName: string;

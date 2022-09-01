@@ -1,5 +1,5 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Challenger } from '../models/challenger';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ChallengerService } from '../services/challenger.service';
@@ -18,9 +18,9 @@ export interface DialogData {
 export class ChallengerConsoleComponent implements OnInit {
   myAngularxQrCode: string;
   showCamera: boolean;
-  options: FormGroup;
-  hideRequiredControl = new FormControl(false);
-  floatLabelControl = new FormControl('auto');
+  options: UntypedFormGroup;
+  hideRequiredControl = new UntypedFormControl(false);
+  floatLabelControl = new UntypedFormControl('auto');
 
   previousName: string;
   newName: string;

@@ -2,7 +2,7 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LeaderService } from 'src/app/services/leader.service';
 import { Queue } from 'src/app/models/queue';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 
 export interface DialogData {
   win: boolean;
@@ -56,8 +56,8 @@ export class LeaderQueueItemComponent implements OnInit {
   styleUrls: ['./report-battle-dialog.scss'],
 })
 export class ReportBattleDialog {
-  winControl = new FormControl(null, Validators.required);
-  badgeControl = new FormControl(null, Validators.required);
+  winControl = new UntypedFormControl(null, Validators.required);
+  badgeControl = new UntypedFormControl(null, Validators.required);
   win: string;
   badge: string;
   report: boolean;
