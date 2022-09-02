@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { ClipboardModule } from '@angular/cdk/clipboard';
@@ -89,7 +89,7 @@ import { ChallengerSearchComponent } from './challenger-search/challenger-search
     QRCodeModule,
     ZXingScannerModule,
   ],
-  providers: [CookieService],
+  providers: [CookieService, Title],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

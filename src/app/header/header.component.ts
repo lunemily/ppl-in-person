@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BrowserModule, Title } from '@angular/platform-browser';
+import { pplEvent } from '../constants.data';
 
 import { AuthenticationService } from '../services/authentication.service';
 import { HeaderService } from '../services/header.service';
@@ -17,19 +19,16 @@ export class HeaderComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private authenticationService: AuthenticationService,
-    public headerService: HeaderService
+    public headerService: HeaderService,
+    private htmlTitle: Title
   ) {}
 
   ngOnInit(): void {
     // Add year
     this.title += " '" + new Date().getFullYear().toString().substring(2);
     // Add location
-    this.title += ' West';
-    // this.route.queryParams
-    //   .subscribe(params => {
-    //     this.showLogs = JSON.parse(params.debug);
-    //   }
-    // );
+    this.title += ` ${pplEvent}`;
+    this.htmlTitle.setTitle(`PAX ${pplEvent} Pokémon League`);
   }
 
   openChallenging() {

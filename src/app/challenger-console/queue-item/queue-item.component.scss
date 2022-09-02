@@ -1,26 +1,20 @@
 @import '../challenger-console.component.scss';
 table {
-    border: 2px black;
-    width: 100%;
+  border: 2px black;
+  width: 100%;
 }
 
 td {
-    width: 33%
+  width: 33%;
 }
 
 .name-panel {
-    max-width: 80px;
-}
-
-#queue-position {
-    // color: #040080; // west
-    color: #d91e1e; // east
-    font-size: 2em;
+  max-width: 80px;
 }
 
 #queue-help {
-    color: #444;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: lighter;
-    font-size: 0.75em;
-  }
+  color: #444;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  font-size: 0.75em;
+}
