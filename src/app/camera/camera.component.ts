@@ -52,9 +52,21 @@ export class CameraComponent implements OnInit {
     public dialog: MatDialog
   ) {}
 
-  onCodeResult(result: string) {
-    console.info(result);
-    this.scannerEnabled = false;
+  onCodeResult(result: string): void {
+    /*
+    The camera is quite finicky and basically no longer supported. This is an artificial gate to
+    set the result value to whatever comes back from the QR scanner picks up the first time and
+    completely ignore all other attempts to do a thing until either the result doesn't match our
+    regex, OR the leader does a thing with the dialog.
+    */
+    if (!this.qrResultString) {
+      this.qrResultString = result;
+      this.scannerEnabled = false;
+      this.evaluateResult(result);
+    }
+  }
+
+  evaluateResult(result: string): void {
     // const devURL = 'https://localhost:4200';
     // const prodURL = 'https://paxpokemonleague.net/qr/';
     const challengerEnqueueRegex =
@@ -155,7 +167,7 @@ export class CameraComponent implements OnInit {
       data: {
         challengerId: challengerId,
         leaderId: leaderId,
-        isLeader: this.challengerId == null,
+        isLeader: typeof this.challengerId === 'undefined' || this.challengerId === null,
       },
     });
 

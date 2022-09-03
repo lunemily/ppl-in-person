@@ -38,7 +38,7 @@ import { ChallengerConsoleComponent, ChallengerSetNameDialog } from './challenge
 import { QueueItemComponent } from './challenger-console/queue-item/queue-item.component';
 import { BadgeItemComponent } from './challenger-console/badge-item/badge-item.component';
 import { LeaderHoldItemComponent } from './leader-console/leader-hold-item/leader-hold-item.component';
-import { CameraComponent } from './camera/camera.component';
+import { CameraComponent, EnqueueDialog } from './camera/camera.component';
 import { AuthComponent } from './auth/auth.component';
 
 import { CookieService } from 'ngx-cookie-service';
@@ -60,6 +60,7 @@ import { ChallengerSearchComponent } from './challenger-search/challenger-search
     BadgeItemComponent,
     LeaderHoldItemComponent,
     CameraComponent,
+    EnqueueDialog,
     AuthComponent,
     ChallengerSearchComponent,
   ],

@@ -1,11 +1,6 @@
-<div *ngIf="isLeader; then thenBlock; else elseBlock"></div>
-<ng-template #thenBlock>
-  <h2 mat-dialog-title>Would you like to add yourself to this leader's queue?</h2>
-</ng-template>
-<ng-template #elseBlock>
-  <h2 mat-dialog-title>Would you like to add this challenger to your queue?</h2>
-</ng-template>
+<h2 mat-dialog-title *ngIf="!data.isLeader">Would you like to add yourself to this leader's queue?</h2>
+<h2 mat-dialog-title *ngIf="data.isLeader">Would you like to add this challenger to your queue?</h2>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button (click)="onYesClick()" cdkFocusInitial>Yes</button>
+  <button mat-stroked-button (click)="onNoClick()">No Thanks</button>
+  <button mat-flat-button (click)="onYesClick()" color="primary" cdkFocusInitial>Yes</button>
 </div>
