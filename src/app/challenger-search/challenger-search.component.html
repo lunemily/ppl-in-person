@@ -3,7 +3,7 @@
   <mat-select [(value)]="selected">
     <mat-option>None</mat-option>
     <mat-option *ngFor="let challenger of challengers" [value]="challenger.id">{{
-      challenger.name | uppercase
+      challenger.displayName | uppercase
     }}</mat-option>
   </mat-select>
 </mat-form-field>

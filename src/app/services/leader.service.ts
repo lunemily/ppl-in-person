@@ -90,13 +90,22 @@ export class LeaderService {
 
   getChallengers(leaderId: string): Observable<Challenger[]> {
     const url = `${api.serverUrl}/leader/${leaderId}/allchallengers`;
-    let challengers: Challenger[] = [];
 
     // return of(challengers);
     // BEGIN: real data
     return this.http.get<Challenger[]>(url, this.httpOptions).pipe(
       map((response) => {
-        return response;
+        let unsortedChallengers = response.map(function (item) {
+          let challenger: Challenger = {
+            id: item['id'],
+            displayName: item['name'],
+          };
+          return challenger;
+        }, []);
+        let sortedChallengers = unsortedChallengers.sort(
+          (first, second) => 0 - (first.displayName.toLowerCase() > second.displayName.toLowerCase() ? -1 : 1)
+        );
+        return sortedChallengers;
       }),
       tap((_) => this.log('fetched challengers')),
       catchError(this.handleErrorNoLogout<Challenger[]>('getChallengers', []))
