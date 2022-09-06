@@ -1,42 +1,62 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
-import { Observable, Subject } from 'rxjs';
+import { map, Observable, startWith, Subject } from 'rxjs';
 
 import { Challenger } from '../models/challenger';
-import { ChallengerService } from '../services/challenger.service';
 import { LeaderService } from '../services/leader.service';
 
 @Component({
   selector: 'app-challenger-search',
   templateUrl: './challenger-search.component.html',
-  styleUrls: ['./challenger-search.component.scss']
+  styleUrls: ['./challenger-search.component.scss'],
 })
 export class ChallengerSearchComponent implements OnInit {
+  myControl = new FormControl<string>('');
   @Input() leaderId: string;
   challengers: Challenger[];
+  searchValue = '';
   selected: string;
-  @Output("enqueueQR") callEnqueueQR: EventEmitter<any> = new EventEmitter();
+  filteredChallengers: Observable<Challenger[]>;
+  @Output('enqueueQR') callEnqueueQR: EventEmitter<any> = new EventEmitter();
 
-  constructor(
-    private leaderService: LeaderService,
-  ) { }
+  constructor(private leaderService: LeaderService) {}
 
   ngOnInit(): void {
     this.getChallengers();
   }
 
   getChallengers(): void {
-    this.leaderService.getChallengers(this.leaderId)
-      .subscribe( challengers => this.challengers = challengers);
+    // this.challengers = challengers;
+    this.leaderService.getChallengers(this.leaderId).subscribe((challengers) => {
+      this.challengers = challengers;
+      this.filteredChallengers = this.myControl.valueChanges.pipe(
+        startWith(''),
+        map((value) => {
+          return typeof value !== undefined && value !== null ? this._filter(value) : this.challengers.slice();
+        })
+      );
+    });
   }
 
   enqueue(): void {
-    console.log('enqueueing challenger id:' + this.selected)
-    this.leaderService.enqueueChallenger(this.leaderId, this.selected);
+    let challengerId = this.getChallengerIdByDisplayName(this.searchValue);
+    console.log('enqueueing challenger id: ' + challengerId);
+    this.leaderService.enqueueChallenger(this.leaderId, challengerId);
   }
 
   enqueueQR() {
     this.callEnqueueQR.emit();
   }
 
+  private _filter(name: string): Challenger[] {
+    const filterValue = name.toLowerCase();
+    return this.challengers.filter((option) => option.displayName.toLowerCase().includes(filterValue));
+  }
+
+  getChallengerIdByDisplayName(displayName: string): string {
+    return this.challengers.find((challenger) => {
+      return challenger.displayName.toLowerCase() === displayName.toLowerCase();
+    }).id;
+  }
 }

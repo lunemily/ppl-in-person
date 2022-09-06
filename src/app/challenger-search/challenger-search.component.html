@@ -1,12 +1,22 @@
-<mat-form-field appearance="fill">
+<mat-form-field appearance="fill" style="width: 200px">
   <mat-label>Add Challenger</mat-label>
-  <mat-select [(value)]="selected">
-    <mat-option>None</mat-option>
-    <mat-option *ngFor="let challenger of challengers" [value]="challenger.id">{{
-      challenger.displayName | uppercase
-    }}</mat-option>
-  </mat-select>
+  <input
+    matInput
+    [formControl]="myControl"
+    id="search-box"
+    placeholder="Challenger's Name"
+    [(ngModel)]="searchValue"
+    [matAutocomplete]="auto"
+  />
+  <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="searchValue = ''">
+    <mat-icon>close</mat-icon>
+  </button>
 </mat-form-field>
+<mat-autocomplete #auto="matAutocomplete">
+  <mat-option *ngFor="let challenger of filteredChallengers | async" [value]="challenger.displayName | uppercase">{{
+    challenger.displayName | uppercase
+  }}</mat-option></mat-autocomplete
+>
 <br />
 <button mat-flat-button color="primary" (click)="enqueueQR()">
   <mat-icon>qr_code</mat-icon>
