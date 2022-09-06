@@ -54,9 +54,9 @@
   <h3>Leader QR Code</h3>
   <qrcode
     [qrdata]="myAngularxQrCode"
-    [imageSrc]="'assets/images/badges/{{ leader.leaderId }}.png'"
-    [imageHeight]="60"
-    [imageWidth]="60"
+    [imageSrc]="'assets/images/badges/' + leader.leaderId + '.png'"
+    [imageHeight]="75"
+    [imageWidth]="75"
     [width]="300"
     [errorCorrectionLevel]="'M'"
   ></qrcode>
