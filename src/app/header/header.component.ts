@@ -32,15 +32,15 @@ export class HeaderComponent implements OnInit {
   }
 
   openChallenging() {
-    window.open('assets/images/challenging-west.png');
+    window.open(`assets/images/challenging-${pplEvent.toLowerCase}.png`);
   }
 
   openPrizes() {
-    window.open('assets/images/prizes-west.png');
+    window.open(`assets/images/prizes-${pplEvent.toLowerCase}.png`);
   }
 
   openRules() {
-    window.open('assets/images/rules-west.png');
+    window.open(`assets/images/rules-${pplEvent.toLowerCase}.png`);
   }
 
   // openSchedule() {

@@ -9,6 +9,7 @@ on:
         options:
           - east
           - west
+          - aus
           - online
 jobs:
   npm_build:

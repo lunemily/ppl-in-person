@@ -10,7 +10,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "east": "./deploy.sh \"east\"",
-    "west": "./deploy.sh \"west\""
+    "west": "./deploy.sh \"west\"",
+    "aus": "./deploy.sh \"aus\""
   },
   "private": true,
   "dependencies": {
