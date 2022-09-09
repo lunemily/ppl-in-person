@@ -1,20 +1,14 @@
 mat-toolbar {
   margin-top: 0px;
   padding: 0;
+  position: fixed;
+  z-index: 2;
 }
 
 .mat-icon-button {
   display: block;
   width: 100%;
   text-align: left;
-}
-
-span {
-  margin-right: 0.5em;
-}
-
-p {
-  margin-top: 0px;
 }
 
 @supports (-webkit-touch-callout: none) {

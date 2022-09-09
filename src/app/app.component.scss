@@ -1,23 +1,12 @@
 /* AppComponent's private CSS styles */
 
-h1 {
-  font-size: 1.2em;
-  margin-bottom: 0;
-  color: #fff;
-}
-
-h2 {
-  font-size: 2em;
-  margin-top: 0;
-  padding-top: 0;
-}
-
 .mat-drawer-container {
   background-color: transparent;
 }
 
-app-header {
-  // position: fixed;
+mat-sidenav,
+mat-sidenav-content {
+  margin-top: 64px;
 }
 
 app-footer {

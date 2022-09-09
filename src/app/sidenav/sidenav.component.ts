@@ -13,15 +13,15 @@ export class SidenavComponent implements OnInit {
   ngOnInit(): void {}
 
   openChallenging() {
-    window.open(`assets/images/challenging-${pplEvent.toLowerCase}.png`);
+    window.open(`assets/images/challenging-${pplEvent.toLowerCase()}.png`);
   }
 
   openPrizes() {
-    window.open(`assets/images/prizes-${pplEvent.toLowerCase}.png`);
+    window.open(`assets/images/prizes-${pplEvent.toLowerCase()}.png`);
   }
 
   openRules() {
-    window.open(`assets/images/rules-${pplEvent.toLowerCase}.png`);
+    window.open(`assets/images/rules-${pplEvent.toLowerCase()}.png`);
   }
 
   // openSchedule() {
