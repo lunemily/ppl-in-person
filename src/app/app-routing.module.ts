@@ -5,11 +5,7 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [{ path: '', component: HomeComponent, runGuardsAndResolvers: 'always' }];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, {
-      onSameUrlNavigation: 'reload',
-    }),
-  ],
+  imports: [RouterModule],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

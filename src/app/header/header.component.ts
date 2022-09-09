@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { pplEvent } from '../constants.data';
 
@@ -17,7 +16,6 @@ export class HeaderComponent implements OnInit {
   showLogs: boolean = false;
 
   constructor(
-    private route: ActivatedRoute,
     private authenticationService: AuthenticationService,
     public headerService: HeaderService,
     private htmlTitle: Title

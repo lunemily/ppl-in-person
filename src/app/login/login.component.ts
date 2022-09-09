@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 import { ChallengerService } from '../services/challenger.service';
 import { HeaderService } from '../services/header.service';
@@ -23,7 +22,6 @@ export class LoginComponent implements OnInit {
   showLogin: boolean;
 
   constructor(
-    private route: ActivatedRoute,
     private authenticationService: AuthenticationService,
     private challengerService: ChallengerService,
     private cookieService: CookieService,
