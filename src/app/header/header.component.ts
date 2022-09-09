@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { pplEvent } from '../constants.data';
 
@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   // Base string
   title: string = 'PPL';
   showLogs: boolean = false;
+  @Output('toggleSidenav') callToggleSidenav: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -29,23 +30,7 @@ export class HeaderComponent implements OnInit {
     this.htmlTitle.setTitle(`PAX ${pplEvent} Pokémon League`);
   }
 
-  openChallenging() {
-    window.open(`assets/images/challenging-${pplEvent.toLowerCase}.png`);
-  }
-
-  openPrizes() {
-    window.open(`assets/images/prizes-${pplEvent.toLowerCase}.png`);
-  }
-
-  openRules() {
-    window.open(`assets/images/rules-${pplEvent.toLowerCase}.png`);
-  }
-
-  // openSchedule() {
-  //   window.open('assets/images/schedule.png');
-  // }
-
-  logout() {
-    this.authenticationService.logout();
+  toggleSidenav() {
+    this.callToggleSidenav.emit();
   }
 }

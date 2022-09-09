@@ -43,6 +43,7 @@ import { AuthComponent } from './auth/auth.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ChallengerSearchComponent } from './challenger-search/challenger-search.component';
 import { HomeComponent } from './home/home.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { HomeComponent } from './home/home.component';
     AuthComponent,
     ChallengerSearchComponent,
     HomeComponent,
+    SidenavComponent,
   ],
   imports: [
     MatAutocompleteModule,

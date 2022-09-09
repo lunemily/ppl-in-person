@@ -1,47 +1,6 @@
-<mat-sidenav-container>
-    <mat-toolbar color="primary">
-        <h1 color="primary">{{ title }}</h1>
-        <span class="example-spacer"></span>
-        <button id="menu-button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu">
-            <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu color="primary" #menu="matMenu">
-            <!-- Schedule rolled into challenging -->
-            <!-- <button mat-icon-button
-                    (click)="openSchedule()"
-                    aria-label="PPL Schedule">
-                <mat-icon>calendar_today</mat-icon>
-                <span>PPL Schedule</span>
-            </button> -->
-            <button mat-icon-button
-                    color="primary"
-                    (click)="openChallenging()"
-                    aria-label="How to Challenge">
-                <mat-icon>videogame_asset</mat-icon>
-                <span>How to Challenge</span>
-            </button>
-            <button mat-icon-button
-                    color="primary"
-                    (click)="openRules()"
-                    aria-label="PPL Rules">
-                <mat-icon>description</mat-icon>
-                <span>PPL Rules</span>
-            </button>
-            <button mat-icon-button
-                    color="primary"
-                    (click)="openPrizes()"
-                    aria-label="Prize Pools">
-                <mat-icon>stars</mat-icon>
-                <span>Prize Pools</span>
-            </button>
-            <!-- <a https://discord.gg/ZGBxdVb -->
-            <button mat-icon-button
-                    color="primary"
-                    (click)="logout()"
-                    aria-label="Logout">
-                <mat-icon>logout</mat-icon>
-                <span>Logout</span>
-            </button>
-        </mat-menu>
-    </mat-toolbar>
-</mat-sidenav-container>
+<mat-toolbar color="primary"
+  ><button mat-button (click)="toggleSidenav()" class="menu-button">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h1 color="primary">{{ title }}</h1>
+</mat-toolbar>

@@ -1,6 +1,11 @@
-<app-header></app-header>
-<br />
-<br />
-<br />
-<app-home></app-home>
-<!-- <app-footer></app-footer> -->
+<app-header (toggleSidenav)="toggleSidenav()"></app-header>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav">
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-auth id="login-register-form" *ngIf="showLogin"></app-auth>
+    <app-home [leader]="leader" [challenger]="challenger"></app-home>
+    <!-- <app-footer></app-footer> -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

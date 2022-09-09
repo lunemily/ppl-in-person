@@ -1,44 +1,46 @@
-<div id="header">
-  <h2 *ngIf="isLogin">Please Sign In</h2>
-  <h2 *ngIf="isRegister">Please Register</h2>
-</div>
-<form id="login-form">
-  <table>
-    <tr>
-      <td>
-        <mat-form-field appearance="fill">
-          <mat-label>Username</mat-label>
-          <input matInput [(ngModel)]="credentials.username" />
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <mat-form-field appearance="fill">
-          <mat-label>Password</mat-label>
-          <input matInput [type]="'password'" [(ngModel)]="credentials.password" />
-        </mat-form-field>
-      </td>
-    </tr>
-    <tr *ngIf="isRegister">
-      <td>
-        <mat-form-field appearance="fill">
-          <mat-label>Confirm Password</mat-label>
-          <input matInput [type]="'password'" [(ngModel)]="credentials.confirmPassword" />
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
-</form>
-<div *ngIf="isLogin">
-  <button mat-flat-button color="primary" (click)="login()">Sign In</button>
-  <br />
-  <br />
-  <p>Don't have an account? <button mat-stroked-button color="primary" (click)="showRegister()">Register</button></p>
-</div>
-<div *ngIf="isRegister">
-  <button mat-flat-button color="primary" (click)="register()">Register</button>
-  <br />
-  <br />
-  <p>Already have an account? <button mat-stroked-button color="primary" (click)="showLogin()">Sign In</button></p>
-</div>
+<mat-card>
+  <div id="header">
+    <h2 *ngIf="isLogin">Please Sign In</h2>
+    <h2 *ngIf="isRegister">Please Register</h2>
+  </div>
+  <form id="login-form">
+    <table>
+      <tr>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input matInput [(ngModel)]="credentials.username" />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="'password'" [(ngModel)]="credentials.password" />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr *ngIf="isRegister">
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput [type]="'password'" [(ngModel)]="credentials.confirmPassword" />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <div *ngIf="isLogin">
+    <button mat-flat-button color="primary" (click)="login()">Sign In</button>
+    <br />
+    <br />
+    <p>Don't have an account? <button mat-stroked-button color="primary" (click)="showRegister()">Register</button></p>
+  </div>
+  <div *ngIf="isRegister">
+    <button mat-flat-button color="primary" (click)="register()">Register</button>
+    <br />
+    <br />
+    <p>Already have an account? <button mat-stroked-button color="primary" (click)="showLogin()">Sign In</button></p>
+  </div>
+</mat-card>

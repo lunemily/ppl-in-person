@@ -1,10 +1,6 @@
 mat-toolbar {
-  position: fixed;
   margin-top: 0px;
-}
-
-mat-menu {
-  max-width: 300px;
+  padding: 0;
 }
 
 .mat-icon-button {
@@ -13,58 +9,17 @@ mat-menu {
   text-align: left;
 }
 
-#menu-button {
-  text-align: right;
-  width: 40px;
-  margin: 0px;
-}
-
-mat-icon {
-  margin: 0.25em;
-}
-
 span {
   margin-right: 0.5em;
 }
 
-// nav a {
-//     padding: 5px 10px;
-//     text-decoration: none;
-//     margin-top: 10px;
-//     margin: 10px;
-//     display: block;
-//     background-color: #eee;
-//     border-radius: 4px;
-// }
-// nav a:visited, a:link {
-//     color: #334953;
-// }
-// nav a:hover {
-//     color: #039be5;
-//     background-color: #cfd8dc;
-// }
-// nav a.active {
-//     color: #039be5;
-// }
 p {
   margin-top: 0px;
 }
 
-.example-spacer {
-  flex: 1 1 auto;
-}
-
-h1 {
-  color: #fff;
-}
-
-button {
-  padding: 0em 0.5em;
-}
-
 @supports (-webkit-touch-callout: none) {
   /* CSS specific to iOS devices */
-  .mat-sidenav-container {
+  mat-toolbar {
     overflow: visible;
   }
 }
