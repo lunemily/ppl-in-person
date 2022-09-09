@@ -9,9 +9,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "east": "./deploy.sh \"east\"",
-    "west": "./deploy.sh \"west\"",
-    "aus": "./deploy.sh \"aus\""
+    "east": "ng serve -o --configuration=east",
+    "west": "ng serve -o --configuration=west",
+    "aus": "ng serve -o --configuration=aus",
+    "deploy": "./deploy.sh"
   },
   "private": true,
   "dependencies": {

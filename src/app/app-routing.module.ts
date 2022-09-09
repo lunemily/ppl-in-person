@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
-const routes: Routes = [
-  { path: '', component: LoginComponent,
-  runGuardsAndResolvers: 'always' },
-];
+const routes: Routes = [{ path: '', component: HomeComponent, runGuardsAndResolvers: 'always' }];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    onSameUrlNavigation: 'reload'
-  })],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {
+      onSameUrlNavigation: 'reload',
+    }),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
