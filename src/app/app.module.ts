@@ -45,6 +45,8 @@ import { ChallengerSearchComponent } from './challenger-search/challenger-search
 import { HomeComponent } from './home/home.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { AboutLeadersComponent } from './about-leaders/about-leaders.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ConsoleComponent } from './console/console.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +70,7 @@ import { AboutLeadersComponent } from './about-leaders/about-leaders.component';
     HomeComponent,
     SidenavComponent,
     AboutLeadersComponent,
+    ConsoleComponent,
   ],
   imports: [
     MatAutocompleteModule,
@@ -93,6 +96,7 @@ import { AboutLeadersComponent } from './about-leaders/about-leaders.component';
     // NgQrScannerModule,
     QRCodeModule,
     ZXingScannerModule,
+    AppRoutingModule,
   ],
   providers: [CookieService, Title],
   bootstrap: [AppComponent],
