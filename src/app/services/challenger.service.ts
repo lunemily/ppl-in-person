@@ -14,6 +14,7 @@ import { AuthenticationService } from './authentication.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { api } from '../constants.data';
+import { Leader } from '../models/leader';
 
 @Injectable({
   providedIn: 'root',
@@ -126,38 +127,26 @@ export class ChallengerService {
     //   catchError()
   }
 
-  /** GET challengers list from the server */
-  getChallengers(): Observable<Challenger[]> {
-    const url = `${api.serverUrl}/badgesv2`;
+  fetchLeaderData(): Observable<Leader[]> {
+    const url = `${api.serverUrl}/allleaderdata`;
 
-    // BEGIN: dummy data
-    let challenger1: Challenger = {
-      id: '1',
-    };
-    let challenger2: Challenger = {
-      id: '2',
-    };
-    let challengers: Challenger[] = [challenger1, challenger2];
-    // END: dummy data
-
-    return of(challengers);
-  }
-
-  /** GET challengers whose name contains search term */
-  searchChallengers(term: string): Observable<Challenger[]> {
-    const url = `${api.serverUrl}/search?name=${term}`;
-    if (!term.trim()) {
-      // if not search term, return empty challenger array.
-      return of([]);
-    }
-    return this.http.get<Challenger[]>(url, this.httpOptions).pipe(
+    return this.http.get(url).pipe(
       map((response) => {
-        return response['challengers'];
+        let leaders: Leader[] = [];
+        for (let leaderId of Object.keys(response)) {
+          let leader: Leader = {
+            leaderId: leaderId,
+            displayName: response[leaderId].displayName,
+            badgeName: response[leaderId].badgeName,
+            bio: response[leaderId].bio,
+            tagline: response[leaderId].tagline,
+          };
+          leaders.push(leader);
+        }
+        return leaders;
       }),
-      tap((x) =>
-        x.length ? this.log(`found challengers matching "${term}"`) : this.log(`no challengers matching "${term}"`)
-      ),
-      catchError(this.handleErrorNoLogout<Challenger[]>('searchChallengers', []))
+      tap((_) => this.log('fetched leader data')),
+      catchError(this.handleErrorNoLogout<Leader[]>('fetchLeaderData', []))
     );
   }
 

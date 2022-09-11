@@ -12,6 +12,10 @@ export class SidenavComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  goHome() {
+    window.location.reload();
+  }
+
   openChallenging() {
     window.open(`assets/images/challenging-${pplEvent.toLowerCase()}.png`);
   }
@@ -24,9 +28,9 @@ export class SidenavComponent implements OnInit {
     window.open(`assets/images/rules-${pplEvent.toLowerCase()}.png`);
   }
 
-  // openSchedule() {
-  //   window.open('assets/images/schedule.png');
-  // }
+  openAboutLeaders() {
+    window.location.reload();
+  }
 
   logout() {
     this.authenticationService.logout();

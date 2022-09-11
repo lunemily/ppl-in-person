@@ -4,16 +4,16 @@ import { Queue } from './queue';
 
 /** This object represents a leader */
 export interface Leader {
-  id: string;
-  leaderId: string;
+  id?: string;
+  leaderId?: string;
   displayName?: string;
-  badgeName?: string[];
+  badgeName?: string;
   queue?: Queue[];
   onHold?: Hold[];
   wins?: number;
   losses?: number;
   badgesAwarded?: number;
   art?: string;
-  blurb?: string;
+  bio?: string;
   tagline?: string;
 }

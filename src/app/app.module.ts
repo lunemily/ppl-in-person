@@ -44,6 +44,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ChallengerSearchComponent } from './challenger-search/challenger-search.component';
 import { HomeComponent } from './home/home.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { AboutLeadersComponent } from './about-leaders/about-leaders.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     ChallengerSearchComponent,
     HomeComponent,
     SidenavComponent,
+    AboutLeadersComponent,
   ],
   imports: [
     MatAutocompleteModule,
