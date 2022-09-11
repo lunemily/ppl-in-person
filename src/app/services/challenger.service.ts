@@ -127,29 +127,6 @@ export class ChallengerService {
     //   catchError()
   }
 
-  fetchLeaderData(): Observable<Leader[]> {
-    const url = `${api.serverUrl}/allleaderdata`;
-
-    return this.http.get(url).pipe(
-      map((response) => {
-        let leaders: Leader[] = [];
-        for (let leaderId of Object.keys(response)) {
-          let leader: Leader = {
-            leaderId: leaderId,
-            displayName: response[leaderId].displayName,
-            badgeName: response[leaderId].badgeName,
-            bio: response[leaderId].bio,
-            tagline: response[leaderId].tagline,
-          };
-          leaders.push(leader);
-        }
-        return leaders;
-      }),
-      tap((_) => this.log('fetched leader data')),
-      catchError(this.handleErrorNoLogout<Leader[]>('fetchLeaderData', []))
-    );
-  }
-
   /** Log a ChallengerService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`ChallengerService: ${message}`);

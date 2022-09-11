@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Challenger } from '../models/challenger';
 import { Leader } from '../models/leader';
-import { ChallengerService } from '../services/challenger.service';
+import { DataService } from '../services/static-data.service';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +12,10 @@ export class HomeComponent implements OnInit {
   @Input() leader: Leader;
   @Input() challenger: Challenger;
 
-  constructor(private challengerService: ChallengerService) {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.challengerService.fetchLeaderData().subscribe((data) => {
+    this.dataService.fetchLeaderData().subscribe((data) => {
       console.log('Leader data:');
       console.log(data);
       return data;

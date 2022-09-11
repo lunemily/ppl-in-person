@@ -3,7 +3,7 @@ import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Challenger } from '../models/challenger';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ChallengerService } from '../services/challenger.service';
-import { DataService } from '../services/data.service';
+import { DataService } from '../services/static-data.service';
 
 export interface DialogData {
   previousName: string;
@@ -29,16 +29,11 @@ export class ChallengerConsoleComponent implements OnInit {
 
   leaderData: JSON;
 
-  constructor(
-    public dialog: MatDialog,
-    private challengerService: ChallengerService,
-    private dataService: DataService
-  ) {}
+  constructor(public dialog: MatDialog, private challengerService: ChallengerService) {}
 
   ngOnInit(): void {
     this.showCamera = false;
     this.myAngularxQrCode = `https://paxpokemonleague.net/qr/?challenger=${this.challenger.id}`;
-    // this.injectBadges();
   }
 
   enqueue(): void {
@@ -59,25 +54,6 @@ export class ChallengerConsoleComponent implements OnInit {
       this.newName = result;
       this.challengerService.setChallengerName(this.challenger.id, this.newName);
     });
-  }
-
-  injectBadges(): void {
-    // Get leader data
-    this.leaderData = this.dataService.parseData();
-
-    // Inject badges into queues
-    let queuesEntered = this.challenger.queuesEntered.map((queue) => ({
-      ...queue,
-      badgeArt: this.leaderData[queue.leaderId]['badgeArt'],
-    }));
-    this.challenger.queuesEntered = queuesEntered;
-
-    // Inject badges into earned badges
-    let badgesEarned = this.challenger.badgesEarned.map((badgeEarned) => ({
-      ...badgeEarned,
-      badgeArt: this.leaderData[badgeEarned.leaderId]['badgeArt'],
-    }));
-    this.challenger.badgesEarned = badgesEarned;
   }
 }
 
