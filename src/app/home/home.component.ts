@@ -1,7 +1,6 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { Challenger } from '../models/challenger';
-import { Leader } from '../models/leader';
-import { DataService } from '../services/static-data.service';
+import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { HeaderService } from '../services/header.service';
 
 @Component({
   selector: 'app-home',
@@ -9,16 +8,17 @@ import { DataService } from '../services/static-data.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  @Input() leader: Leader;
-  @Input() challenger: Challenger;
+  loginId: string;
+  showLogin: boolean;
 
-  constructor(private dataService: DataService) {}
+  constructor(private cookieService: CookieService, private headerService: HeaderService) {}
 
   ngOnInit(): void {
-    this.dataService.fetchLeaderData().subscribe((data) => {
-      console.log('Leader data:');
-      console.log(data);
-      return data;
-    });
+    this.showLogin = true;
+    this.loginId = this.cookieService.get('loginId');
+    if (this.loginId) {
+      this.showLogin = false;
+    }
+    this.headerService.setUrl(window.location.href);
   }
 }
