@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { pplEvent } from '../constants.data';
 import { AuthenticationService } from '../services/authentication.service';
 
@@ -8,12 +8,13 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['./sidenav.component.scss'],
 })
 export class SidenavComponent implements OnInit {
+  @Output('closeSidenav') callCloseSidenav: EventEmitter<any> = new EventEmitter();
   constructor(private authenticationService: AuthenticationService) {}
 
   ngOnInit(): void {}
 
-  goHome() {
-    window.location.reload();
+  closeSidenav() {
+    this.callCloseSidenav.emit();
   }
 
   openChallenging() {

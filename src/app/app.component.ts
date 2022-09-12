@@ -23,4 +23,8 @@ export class AppComponent {
   toggleSidenav(): void {
     this.sidenav.toggle();
   }
+
+  closeSidenav(): void {
+    this.sidenav.close();
+  }
 }
