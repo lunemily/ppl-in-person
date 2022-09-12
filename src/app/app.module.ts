@@ -27,7 +27,6 @@ import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages/messages.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
 import { LeaderConsoleComponent } from './leader-console/leader-console.component';
 import {
   LeaderQueueItemComponent,
@@ -35,7 +34,6 @@ import {
 } from './leader-console/leader-queue-item/leader-queue-item.component';
 import { ChallengerConsoleComponent, ChallengerSetNameDialog } from './challenger-console/challenger-console.component';
 import { QueueItemComponent } from './challenger-console/queue-item/queue-item.component';
-import { BadgeItemComponent } from './challenger-console/badge-item/badge-item.component';
 import { LeaderHoldItemComponent } from './leader-console/leader-hold-item/leader-hold-item.component';
 import { CameraComponent, EnqueueDialog } from './camera/camera.component';
 import { AuthComponent } from './auth/auth.component';
@@ -47,6 +45,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { AboutLeadersComponent } from './about-leaders/about-leaders.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ConsoleComponent } from './console/console.component';
+import { LeaderBadgeComponent } from './common/leader-badge/leader-badge.component';
 
 @NgModule({
   declarations: [
@@ -54,14 +53,12 @@ import { ConsoleComponent } from './console/console.component';
     MessagesComponent,
     HeaderComponent,
     FooterComponent,
-    LoginComponent,
     LeaderConsoleComponent,
     LeaderQueueItemComponent,
     ReportBattleDialog,
     ChallengerConsoleComponent,
     ChallengerSetNameDialog,
     QueueItemComponent,
-    BadgeItemComponent,
     LeaderHoldItemComponent,
     CameraComponent,
     EnqueueDialog,
@@ -71,6 +68,7 @@ import { ConsoleComponent } from './console/console.component';
     SidenavComponent,
     AboutLeadersComponent,
     ConsoleComponent,
+    LeaderBadgeComponent,
   ],
   imports: [
     MatAutocompleteModule,

@@ -1,0 +1,24 @@
+<div class="leader-row">
+  <div class="images split">
+    <div class="panel">
+      <div class="image">
+        <img class="portrait" alt="{{ leader.displayName }}" src="assets/images/portraits/{{ leader.leaderId }}.png" />
+      </div>
+      <h4>{{ leader.displayName }}</h4>
+    </div>
+    <div class="panel">
+      <div class="image">
+        <img class="badge" alt="{{ leader.displayName }}" src="assets/images/badges/{{ leader.leaderId }}.png" />
+      </div>
+      <h4>{{ leader.badgeName }}</h4>
+    </div>
+  </div>
+  <div class="details split">
+    <div class="panel">
+      <p>{{ leader.bio }}</p>
+    </div>
+    <div class="panel">
+      <p>{{ leader.tagline }}</p>
+    </div>
+  </div>
+</div>

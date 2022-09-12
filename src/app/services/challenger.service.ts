@@ -77,7 +77,12 @@ export class ChallengerService {
               leaderId: item['leaderId'],
               leaderName: item['leaderName'],
             };
-            return badge;
+            let leader: Leader = {
+              leaderId: item['leaderId'],
+              displayName: item['leaderName'],
+              badgeName: item['badgeName'],
+            };
+            return leader;
           }, []),
         };
 

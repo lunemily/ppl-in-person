@@ -12,8 +12,6 @@ import { MessageService } from './message.service';
   providedIn: 'root',
 })
 export class DataService {
-  leaderData: string;
-
   //   {
   //   [leaderId]: {
   //     name: [leader name],
@@ -26,6 +24,10 @@ export class DataService {
   //   ...
   // }
 
+  getLeaderData(): Observable<Leader[]> {
+    return this.fetchLeaderData();
+  }
+
   fetchLeaderData(): Observable<Leader[]> {
     const url = `${api.serverUrl}/allleaderdata`;
 
@@ -35,7 +37,7 @@ export class DataService {
         for (let leaderId of Object.keys(response)) {
           let leader: Leader = {
             leaderId: leaderId,
-            displayName: response[leaderId].displayName,
+            displayName: response[leaderId].name,
             badgeName: response[leaderId].badgeName,
             bio: response[leaderId].bio,
             tagline: response[leaderId].tagline,

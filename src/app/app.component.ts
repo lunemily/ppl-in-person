@@ -13,7 +13,7 @@ export class AppComponent {
   constructor() {}
 
   ngOnInit(): void {
-    // this.dataService.fetchLeaderData().subscribe((data) => {
+    // this.dataService.getLeaderData().subscribe((data) => {
     //   console.log('Leader data:');
     //   console.log(data);
     //   return data;

@@ -1,1 +1,8 @@
-<p>about-leaders works!</p>
+<mat-card id="about-card">
+  <div id="badges-earned">
+    <h2 class="left">About the leaders!</h2>
+    <div *ngFor="let leader of leaderData">
+      <app-leader-badge [leader]="leader"></app-leader-badge>
+    </div>
+  </div>
+</mat-card>

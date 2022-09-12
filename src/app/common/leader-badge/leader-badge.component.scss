@@ -1,0 +1,44 @@
+.image {
+  max-width: 100%;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+img.badge {
+  height: 80%;
+  width: 80%;
+  border: 2px solid #ffffff;
+  border-radius: 100%;
+}
+
+.panel {
+  width: 50%;
+  max-width: 200px;
+  display: inline-block;
+}
+
+p {
+  padding: 0 1em;
+}
+
+@media (min-width: 400px) {
+  .badge {
+    border: 4px solid #ffffff;
+  }
+}
+
+@media (min-width: 440px) {
+}
+
+@media (min-width: 990px) {
+  .split {
+    display: inline;
+  }
+}
+
+@media (min-width: 1440px) {
+}

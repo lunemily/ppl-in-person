@@ -1,9 +1,0 @@
-<mat-card id="login-register-form" *ngIf="showLogin">
-  <app-auth></app-auth>
-</mat-card>
-<app-leader-console *ngIf="leader" [leader]="leader"></app-leader-console>
-<app-challenger-console *ngIf="challenger" [challenger]="challenger"></app-challenger-console>
-<mat-card *ngIf="!showLogin">
-  <button mat-flat-button color="primary" (click)="logout()"><mat-icon>logout</mat-icon> Logout</button>
-</mat-card>
-<br />
