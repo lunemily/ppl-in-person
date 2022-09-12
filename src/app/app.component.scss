@@ -6,7 +6,8 @@
 
 mat-sidenav,
 mat-sidenav-content {
-  margin-top: 64px;
+  margin-top: 56px;
+  height: 100vh;
 }
 
 app-footer {
@@ -15,4 +16,11 @@ app-footer {
   bottom: 0;
   width: 100%;
   text-align: center;
+}
+
+@media (min-width: 600px) {
+  mat-sidenav,
+  mat-sidenav-content {
+    margin-top: 64px;
+  }
 }
