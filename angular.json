@@ -69,6 +69,11 @@
                   "input": "src/assets/",
                   "ignore": ["**/*-west.png", "**/*-aus.png"],
                   "output": "/assets/"
+                },
+                {
+                  "glob": "favicon.ico",
+                  "input": "src/",
+                  "output": "/"
                 }
               ],
               "optimization": true,
@@ -105,6 +110,11 @@
                   "input": "src/assets/",
                   "ignore": ["**/*-east.png", "**/*-aus.png"],
                   "output": "/assets/"
+                },
+                {
+                  "glob": "favicon.ico",
+                  "input": "src/",
+                  "output": "/"
                 }
               ],
               "optimization": true,
@@ -141,6 +151,11 @@
                   "input": "src/assets/",
                   "ignore": ["**/*-east.png", "**/*-west.png"],
                   "output": "/assets/"
+                },
+                {
+                  "glob": "favicon.ico",
+                  "input": "src/",
+                  "output": "/"
                 }
               ],
               "optimization": true,

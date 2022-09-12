@@ -12,6 +12,9 @@ import { MessageService } from './message.service';
   providedIn: 'root',
 })
 export class DataService {
+  httpOptions = {
+    headers: api.httpOtions.headers.append('Content-Type', 'application/json'),
+  };
   //   {
   //   [leaderId]: {
   //     name: [leader name],
@@ -31,7 +34,7 @@ export class DataService {
   fetchLeaderData(): Observable<Leader[]> {
     const url = `${api.serverUrl}/allleaderdata`;
 
-    return this.http.get(url).pipe(
+    return this.http.get(url, this.httpOptions).pipe(
       map((response) => {
         let leaders: Leader[] = [];
         for (let leaderId of Object.keys(response)) {
