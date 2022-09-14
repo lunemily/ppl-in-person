@@ -1,23 +1,33 @@
-<div class="leader-row">
-  <div class="images split">
-    <div class="panel">
-      <div class="image">
-        <img class="portrait" alt="{{ leader.displayName }}" src="assets/images/portraits/{{ leader.leaderId }}.png" />
-      </div>
-      <h4>{{ leader.displayName }}</h4>
+<div
+  fxLayout="row"
+  fxLayout.lt-sm="column"
+  fxLayoutGap="1em"
+  fxLayoutAlign="space-evenly space-evenly"
+  class="entry background-primary"
+>
+  <div *ngIf="leader.bio" fxLayout="column" fxLayout.xs="row" fxLayoutAlign="space-evenly space-evenly">
+    <div>
+      <img class="portrait" alt="{{ leader.displayName }}" src="assets/images/portraits/{{ leader.leaderId }}.png" />
     </div>
-    <div class="panel">
-      <div class="image">
-        <img class="badge" alt="{{ leader.displayName }}" src="assets/images/badges/{{ leader.leaderId }}.png" />
-      </div>
-      <h4>{{ leader.badgeName }}</h4>
+    <div>
+      <img class="badge" alt="{{ leader.displayName }}" src="assets/images/badges/{{ leader.leaderId }}.png" />
     </div>
   </div>
-  <div class="details split">
-    <div class="panel">
-      <p>{{ leader.bio }}</p>
+  <div *ngIf="!leader.bio" fxLayout="row" fxLayoutGap="4em" fxLayoutAlign="space-evenly space-evenly space-evenly">
+    <div>
+      <img class="portrait" alt="{{ leader.displayName }}" src="assets/images/portraits/{{ leader.leaderId }}.png" />
     </div>
-    <div class="panel">
+    <div>
+      <img class="badge" alt="{{ leader.displayName }}" src="assets/images/badges/{{ leader.leaderId }}.png" />
+    </div>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="space-evenly space-evenly">
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1em" fxLayoutAlign="space-evenly space-evenly">
+      <h3>{{ leader.displayName }}</h3>
+      <h3>{{ leader.badgeName }}</h3>
+    </div>
+    <div *ngIf="leader.bio" class="details background-accent" fxLayout="column" fxLayout.xs="row" fxLayoutGap="1em">
+      <p>{{ leader.bio }}</p>
       <p>{{ leader.tagline }}</p>
     </div>
   </div>

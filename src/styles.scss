@@ -5,9 +5,7 @@
 
 h2,
 h3 {
-  color: #444;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
+  letter-spacing: 0.4em;
 }
 body,
 input[type='text'],
@@ -36,8 +34,8 @@ body {
 }
 
 mat-card {
-  width: fit-content;
-  max-width: 800px;
+  width: 85%;
+  max-width: 900px;
   margin: 1em auto;
   background-color: #f5f5f5;
 }

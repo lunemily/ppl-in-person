@@ -1,44 +1,37 @@
-.image {
-  max-width: 100%;
-}
-
 img {
-  height: 100%;
-  width: 100%;
-  object-fit: contain;
+  height: 100px;
+  width: 100px;
 }
 
-img.badge {
-  height: 80%;
-  width: 80%;
+.badge {
+  height: 92px;
+  width: 92px;
   border: 2px solid #ffffff;
   border-radius: 100%;
+  margin: auto;
 }
 
-.panel {
-  width: 50%;
-  max-width: 200px;
-  display: inline-block;
+h3 {
+  margin: 0;
 }
 
 p {
   padding: 0 1em;
 }
 
+.entry {
+  padding: 1em;
+  margin-bottom: 0.5em;
+  border-radius: 4px;
+}
+
+.details {
+  padding: 1em;
+  border-radius: 4px;
+}
+
 @media (min-width: 400px) {
   .badge {
     border: 4px solid #ffffff;
   }
-}
-
-@media (min-width: 440px) {
-}
-
-@media (min-width: 990px) {
-  .split {
-    display: inline;
-  }
-}
-
-@media (min-width: 1440px) {
 }

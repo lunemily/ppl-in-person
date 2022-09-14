@@ -39,7 +39,7 @@ $fontConfig: (
   display-1: mat-typography-level(34px, 40px, 400, 'Roboto', 0.0074em),
   headline: mat-typography-level(1.5em, 1.5em, 400, 'theboldfont', 0em),
   title: mat-typography-level(1.5em, 1.5em, 400, 'theboldfont', 0em),
-  subheading-2: mat-typography-level(16px, 28px, 400, 'theboldfont', 0.0094em),
+  subheading-2: mat-typography-level(16px, 28px, 400, 'theboldfont', 0.05em),
   subheading-1: mat-typography-level(15px, 24px, 500, 'theboldfont', 0.0067em),
   body-2: mat-typography-level(14px, 24px, 500, 'Roboto', 0.0179em),
   body-1: mat-typography-level(14px, 20px, 400, 'Roboto', 0.0179em),
@@ -168,20 +168,20 @@ $mat-dark-theme-background: (
 // Theme Config
 
 body {
-  --primary-color: #ff8301;
-  --primary-lighter-color: #ffdab3;
-  --primary-darker-color: #ff6601;
+  --primary-color: #caad0c;
+  --primary-lighter-color: #efe6b6;
+  --primary-darker-color: #b79306;
   --text-primary-color: #{$dark-primary-text};
   --text-primary-lighter-color: #{$dark-primary-text};
   --text-primary-darker-color: #{$dark-primary-text};
-  background-color: #c89041;
+  background-image: url('assets/images/wallpaper-aus.png');
 }
 
 $mat-primary: (
-  main: #ff8301,
-  lighter: #ffdab3,
-  darker: #ff6601,
-  200: #ff8301,
+  main: #caad0c,
+  lighter: #efe6b6,
+  darker: #b79306,
+  200: #caad0c,
   // For slide toggle,
   contrast:
     (
@@ -194,18 +194,18 @@ $mat-primary: (
 $theme-primary: mat-palette($mat-primary, main, lighter, darker);
 
 body {
-  --accent-color: #fac983;
-  --accent-lighter-color: #feefda;
-  --accent-darker-color: #f8b566;
+  --accent-color: #e4e6ad;
+  --accent-lighter-color: #f7f8e6;
+  --accent-darker-color: #d9db93;
   --text-accent-color: #{$dark-primary-text};
   --text-accent-lighter-color: #{$dark-primary-text};
   --text-accent-darker-color: #{$dark-primary-text};
 }
 $mat-accent: (
-  main: #fac983,
-  lighter: #feefda,
-  darker: #f8b566,
-  200: #fac983,
+  main: #e4e6ad,
+  lighter: #f7f8e6,
+  darker: #d9db93,
+  200: #e4e6ad,
   // For slide toggle,
   contrast:
     (
@@ -248,11 +248,25 @@ $altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
   @include angular-material-theme($altTheme);
 }
 
-// Specific component overrides, pieces that are not in line with the general theming
-#queue-position {
-  color: #5f411e;
-  font-size: 2em;
+.color-primary {
+  color: mat-color($theme-primary);
 }
+
+.color-accent {
+  color: mat-color($theme-accent);
+}
+
+.background-primary {
+  background-color: mat-color($theme-primary);
+  color: mat-color($theme-primary, default-contrast);
+}
+
+.background-accent {
+  background-color: mat-color($theme-accent);
+  color: mat-color($theme-accent, default-contrast);
+}
+
+// Specific component overrides, pieces that are not in line with the general theming
 
 // Handle buttons appropriately, with respect to line-height
 .mat-raised-button,

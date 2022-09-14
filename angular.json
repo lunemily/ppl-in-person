@@ -234,7 +234,7 @@
           "builder": "angular-cli-ghpages:deploy",
           "options": {
             "baseHref": "/ppl-in-person/",
-            "buildTarget": "ppl-site:build:west"
+            "buildTarget": "ppl-site:build:aus"
           }
         }
       }

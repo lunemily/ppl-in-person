@@ -39,7 +39,7 @@ $fontConfig: (
   display-1: mat-typography-level(34px, 40px, 400, 'Roboto', 0.0074em),
   headline: mat-typography-level(1.5em, 1.5em, 400, 'theboldfont', 0em),
   title: mat-typography-level(1.5em, 1.5em, 400, 'theboldfont', 0em),
-  subheading-2: mat-typography-level(16px, 28px, 400, 'theboldfont', 0.0094em),
+  subheading-2: mat-typography-level(16px, 28px, 400, 'theboldfont', 0.05em),
   subheading-1: mat-typography-level(15px, 24px, 500, 'theboldfont', 0.0067em),
   body-2: mat-typography-level(14px, 24px, 500, 'Roboto', 0.0179em),
   body-1: mat-typography-level(14px, 20px, 400, 'Roboto', 0.0179em),
@@ -176,6 +176,7 @@ body {
   --text-primary-darker-color: #{$light-primary-text};
   background-image: url('assets/images/wallpaper-west.png');
 }
+
 $mat-primary: (
   main: #040080,
   lighter: #b4b3d9,
@@ -189,21 +190,22 @@ $mat-primary: (
       darker: $light-primary-text,
     ),
 );
+
 $theme-primary: mat-palette($mat-primary, main, lighter, darker);
 
 body {
-  --accent-color: #00ceff;
-  --accent-lighter-color: #b3f0ff;
-  --accent-darker-color: #00bcff;
+  --accent-color: #add8e6;
+  --accent-lighter-color: #e6f3f8;
+  --accent-darker-color: #93c8db;
   --text-accent-color: #{$dark-primary-text};
   --text-accent-lighter-color: #{$dark-primary-text};
   --text-accent-darker-color: #{$dark-primary-text};
 }
 $mat-accent: (
-  main: #00ceff,
-  lighter: #b3f0ff,
-  darker: #00bcff,
-  200: #00ceff,
+  main: #add8e6,
+  lighter: #e6f3f8,
+  darker: #93c8db,
+  200: #add8e6,
   // For slide toggle,
   contrast:
     (
@@ -246,11 +248,25 @@ $altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
   @include angular-material-theme($altTheme);
 }
 
-// Specific component overrides, pieces that are not in line with the general theming
-#queue-position {
-  color: #040080;
-  font-size: 2em;
+.color-primary {
+  color: mat-color($theme-primary);
 }
+
+.color-accent {
+  color: mat-color($theme-accent);
+}
+
+.background-primary {
+  background-color: mat-color($theme-primary);
+  color: mat-color($theme-primary, default-contrast);
+}
+
+.background-accent {
+  background-color: mat-color($theme-accent);
+  color: mat-color($theme-accent, default-contrast);
+}
+
+// Specific component overrides, pieces that are not in line with the general theming
 
 // Handle buttons appropriately, with respect to line-height
 .mat-raised-button,

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
@@ -71,6 +72,7 @@ import { LeaderBadgeComponent } from './common/leader-badge/leader-badge.compone
     LeaderBadgeComponent,
   ],
   imports: [
+    FlexLayoutModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatCardModule,
