@@ -1,6 +1,8 @@
 <app-header (toggleSidenav)="toggleSidenav()"></app-header>
 <mat-sidenav-container>
-  <mat-sidenav #sidenav="matSidenav" fixedInViewport="true">
+  <!-- This toolbar is a spacer -->
+  <mat-toolbar color="primary"></mat-toolbar>
+  <mat-sidenav #sidenav="matSidenav">
     <app-sidenav (closeSidenav)="closeSidenav()"></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>

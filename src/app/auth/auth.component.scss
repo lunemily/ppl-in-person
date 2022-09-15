@@ -1,10 +1,15 @@
-#login-form {
-    text-align: left;
-    width: 90%;
-    margin: auto;
-    display: block;
+mat-card {
+  max-width: 300px;
 }
 
-table, mat-form-field {
-    width: 100%
+#login-form {
+  text-align: left;
+  width: 90%;
+  margin: auto;
+  display: block;
+}
+
+table,
+mat-form-field {
+  width: 100%;
 }

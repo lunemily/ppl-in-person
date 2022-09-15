@@ -2,12 +2,8 @@
 
 .mat-drawer-container {
   background-color: transparent;
-}
-
-mat-sidenav,
-mat-sidenav-content {
-  margin-top: 56px;
   height: 100vh;
+  padding-top: 56px;
 }
 
 app-footer {
@@ -19,8 +15,7 @@ app-footer {
 }
 
 @media (min-width: 600px) {
-  mat-sidenav,
-  mat-sidenav-content {
-    margin-top: 64px;
+  .mat-drawer-container {
+    padding-top: 64px;
   }
 }
