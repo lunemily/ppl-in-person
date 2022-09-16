@@ -1,26 +1,25 @@
 # PplSite
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.6.
+This project is based on [AngularJS](https://angular.io/), and uses [Angular Material](https://material.angular.io/) for the UI components. Themes are built in [SASS](https://sass-lang.com/).
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run one of these. A new broswer window will open up to http://localhost:4200
+`npm run aus`
+`npm run east`
+`npm run west`
 
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Build and Push
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run any of these to push the fully built static site to Github. The output will be in `/docs/(aus|east|west)` depending on which one you build.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+`npm run deploy aus`
+`npm run deploy east`
+`npm run deploy west`
 
 ## Further help
 
