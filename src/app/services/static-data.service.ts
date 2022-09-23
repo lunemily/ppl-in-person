@@ -49,10 +49,10 @@ export class DataService {
         for (let leaderId of Object.keys(response)) {
           let leader: Leader = {
             leaderId: leaderId,
-            displayName: response[leaderId].name,
-            badgeName: response[leaderId].badgeName,
-            bio: response[leaderId].bio,
-            tagline: response[leaderId].tagline,
+            displayName: response[leaderId].name as string,
+            badgeName: response[leaderId].badgeName as string,
+            bio: response[leaderId].bio as string,
+            tagline: response[leaderId].tagline as string,
           };
           listOfLeaders.push(`leader-data-${leaderId}`);
           leaders.push(leader);

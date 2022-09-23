@@ -27,8 +27,8 @@
       <h3>{{ leader.badgeName }}</h3>
     </div>
     <div *ngIf="leader.bio" class="details background-accent" fxLayout="column" fxLayout.xs="row" fxLayoutGap="1em">
-      <p>{{ leader.bio }}</p>
-      <p>{{ leader.tagline }}</p>
+      <p [innerHTML]="leader.bio"></p>
+      <p [innerHTML]="leader.tagline"></p>
     </div>
   </div>
 </div>
