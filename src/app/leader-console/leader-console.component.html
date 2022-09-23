@@ -1,33 +1,4 @@
 <mat-card>
-  <h2>{{ leader.displayName.toUpperCase() }}'S LEADER CARD</h2>
-  <div id="leader-record">
-    <table id="record-table">
-      <tr>
-        <td>
-          <h3>Wins</h3>
-        </td>
-        <td>
-          <h3>Losses</h3>
-        </td>
-        <td>
-          <h3>Awarded</h3>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <span>{{ leader.wins }}</span>
-        </td>
-        <td>
-          <span>{{ leader.losses }}</span>
-        </td>
-        <td>
-          <span>{{ leader.badgesAwarded }}</span>
-        </td>
-      </tr>
-    </table>
-  </div>
-</mat-card>
-<mat-card>
   <div id="leader-queue">
     <h3>Queue</h3>
     <span id="queue-help">Your battle code is: </span><span id="battle-code">{{ battleCode }}</span>

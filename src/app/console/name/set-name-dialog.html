@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Hi {{data.previousName}}</h2>
+<div mat-dialog-content>
+  <p>Change your display name here:</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Display Name</mat-label>
+    <input matInput [(ngModel)]="data.newName" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.newName" cdkFocusInitial>SAVE</button>
+</div>

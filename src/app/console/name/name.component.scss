@@ -1,0 +1,15 @@
+#record-table {
+  margin: auto;
+}
+
+#record-table > * > td {
+  width: 30%;
+}
+
+.edit-name {
+  display: block;
+}
+
+.save-name {
+  display: none;
+}

@@ -1,0 +1,31 @@
+<mat-card>
+  <h2>{{ person.displayName.toUpperCase() }}'S TRAINER CARD</h2>
+  <button *ngIf="challenger" mat-stroked-button (click)="editName()">EDIT NAME</button>
+
+  <div *ngIf="leader" id="leader-record">
+    <table id="record-table">
+      <tr>
+        <td>
+          <h3>Wins</h3>
+        </td>
+        <td>
+          <h3>Losses</h3>
+        </td>
+        <td>
+          <h3>Awarded</h3>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span>{{ leader.wins }}</span>
+        </td>
+        <td>
+          <span>{{ leader.losses }}</span>
+        </td>
+        <td>
+          <span>{{ leader.badgesAwarded }}</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+</mat-card>

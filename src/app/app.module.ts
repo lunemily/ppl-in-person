@@ -33,7 +33,7 @@ import {
   LeaderQueueItemComponent,
   ReportBattleDialog,
 } from './leader-console/leader-queue-item/leader-queue-item.component';
-import { ChallengerConsoleComponent, ChallengerSetNameDialog } from './challenger-console/challenger-console.component';
+import { ChallengerConsoleComponent } from './challenger-console/challenger-console.component';
 import { QueueItemComponent } from './challenger-console/queue-item/queue-item.component';
 import { LeaderHoldItemComponent } from './leader-console/leader-hold-item/leader-hold-item.component';
 import { CameraComponent, EnqueueDialog } from './camera/camera.component';
@@ -47,6 +47,7 @@ import { AboutLeadersComponent } from './about-leaders/about-leaders.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ConsoleComponent } from './console/console.component';
 import { LeaderBadgeComponent } from './common/leader-badge/leader-badge.component';
+import { NameComponent, SetNameDialog } from './console/name/name.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,6 @@ import { LeaderBadgeComponent } from './common/leader-badge/leader-badge.compone
     LeaderQueueItemComponent,
     ReportBattleDialog,
     ChallengerConsoleComponent,
-    ChallengerSetNameDialog,
     QueueItemComponent,
     LeaderHoldItemComponent,
     CameraComponent,
@@ -70,6 +70,8 @@ import { LeaderBadgeComponent } from './common/leader-badge/leader-badge.compone
     AboutLeadersComponent,
     ConsoleComponent,
     LeaderBadgeComponent,
+    NameComponent,
+    SetNameDialog,
   ],
   imports: [
     FlexLayoutModule,

@@ -29,10 +29,10 @@ export class LeaderService {
   getLeader(id: string): Observable<Leader> {
     const url = `${api.serverUrl}/leader/${id}`;
 
-    // BEGIN: dummy data
-    // return of(leader)
+    let reponse =
+      '{"loginId":"73986cb938a84d6d","leaderId":"f00c087d1a2c","leaderName":"Lord Fingler, the Artiste","badgeName":"Artiste Badge","winCount":0,"lossCount":69,"badgesAwarded":69,"queue":[],"onHold":[]}';
 
-    // BEGIN: real data
+    // return of(reponse).pipe(
     return this.http.get<Leader>(url, this.httpOptions).pipe(
       map((response) => {
         /** Create object to return. Add in all leaders now. */

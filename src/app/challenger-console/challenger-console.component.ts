@@ -43,31 +43,4 @@ export class ChallengerConsoleComponent implements OnInit {
       this.showCamera = false;
     }
   }
-
-  editName(): void {
-    const dialogRef = this.dialog.open(ChallengerSetNameDialog, {
-      width: '250px',
-      data: { previousName: this.challenger.displayName, newName: this.challenger.displayName },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      this.newName = result;
-      this.challengerService.setChallengerName(this.challenger.id, this.newName);
-    });
-  }
-}
-
-@Component({
-  selector: 'challenger-set-name-dialog',
-  templateUrl: 'challenger-set-name-dialog.html',
-})
-export class ChallengerSetNameDialog {
-  constructor(
-    public dialogRef: MatDialogRef<ChallengerSetNameDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
 }

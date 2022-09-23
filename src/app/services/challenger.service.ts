@@ -28,34 +28,11 @@ export class ChallengerService {
   getChallenger(id: string): Observable<Challenger> {
     const url = `${api.serverUrl}/challenger/${id}`;
 
-    // BEGIN: dummy data
-    // let challenger: Challenger = {
-    //     "id": "f772ddb47f828d41",
-    //     "displayName": "Test trainer 1",
-    //     "queuesEntered": [
-    //         {
-    //             position: 1,
-    //             displayName: data["3159a3e6b9025da1"]["displayName"],
-    //             leaderId: "3159a3e6b9025da1"
-    //         },
-    //         {
-    //             position: 2,
-    //             displayName: data["d33861cc13ade093"]["displayName"],
-    //             leaderId: "d33861cc13ade093"
-    //         }
-    //     ],
-    //     "badgesEarned": [
-    //       {
-    //           displayName: data["3159a3e6b9025da1"]["displayName"],
-    //           leaderId: "3159a3e6b9025da1"
-    //       }
-    //     ]
-    // }
-    // END: dummy data
-    // return of(challenger)
+    let response =
+      '{"id":"433c4b55a17da084","displayName":"lunella","queuesEntered":[],"badgesEarned":[{"leaderId":"f00c087d1a2c","leaderName":"Lord Fingler, the Artiste","badgeName":"Artiste Badge"}]}';
 
-    // BEGIN: real data
-    return this.http.get<Challenger>(url, this.httpOptions).pipe(
+    return of(JSON.parse(response)).pipe(
+      // return this.http.get<Challenger>(url, this.httpOptions).pipe(
       map((response) => {
         /** Create object to return. Add in all leaders now. */
         let challenger: Challenger = {
@@ -71,12 +48,7 @@ export class ChallengerService {
             result.push(queue);
             return result;
           }, []),
-          badgesEarned: response['badgesEarned'].map(function (item) {
-            let badge: Badge = {
-              displayName: item['badgeName'],
-              leaderId: item['leaderId'],
-              leaderName: item['leaderName'],
-            };
+          badgesEarned: response['badgesEarned'].map(function (item: Leader) {
             let leader: Leader = {
               leaderId: item['leaderId'],
               displayName: item['leaderName'],

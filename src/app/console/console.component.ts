@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Challenger } from '../models/challenger';
 import { Leader } from '../models/leader';
+import { Person } from '../models/person';
 import { ChallengerService } from '../services/challenger.service';
 import { LeaderService } from '../services/leader.service';
 
@@ -13,6 +14,7 @@ import { LeaderService } from '../services/leader.service';
 export class ConsoleComponent implements OnInit {
   loginId: string;
   isLeader: boolean;
+  person: Person;
   leader: Leader;
   challenger: Challenger;
 
@@ -35,10 +37,16 @@ export class ConsoleComponent implements OnInit {
   }
 
   getChallenger(): void {
-    this.challengerService.getChallenger(this.loginId).subscribe((challenger) => (this.challenger = challenger));
+    this.challengerService.getChallenger(this.loginId).subscribe((challenger) => {
+      this.challenger = challenger;
+      this.person = challenger;
+    });
   }
 
   getLeader(): void {
-    this.leaderService.getLeader(this.loginId).subscribe((leader) => (this.leader = leader));
+    this.leaderService.getLeader(this.loginId).subscribe((leader) => {
+      this.leader = leader;
+      this.person = leader;
+    });
   }
 }
