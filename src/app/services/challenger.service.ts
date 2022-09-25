@@ -31,8 +31,8 @@ export class ChallengerService {
     let response =
       '{"id":"433c4b55a17da084","displayName":"lunella","queuesEntered":[],"badgesEarned":[{"leaderId":"f00c087d1a2c","leaderName":"Lord Fingler, the Artiste","badgeName":"Artiste Badge"}]}';
 
-    return of(JSON.parse(response)).pipe(
-      // return this.http.get<Challenger>(url, this.httpOptions).pipe(
+    // return of(JSON.parse(response)).pipe(
+    return this.http.get<Challenger>(url, this.httpOptions).pipe(
       map((response) => {
         /** Create object to return. Add in all leaders now. */
         let challenger: Challenger = {
