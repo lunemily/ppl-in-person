@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { pplEvent } from '../constants.data';
+import { pplEvent, sidenav } from '../constants.data';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
@@ -9,6 +9,8 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class SidenavComponent implements OnInit {
   @Output('closeSidenav') callCloseSidenav: EventEmitter<any> = new EventEmitter();
+  sidenavFlags = sidenav;
+
   constructor(private authenticationService: AuthenticationService) {}
 
   ngOnInit(): void {}
