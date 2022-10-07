@@ -91,7 +91,7 @@ export const data: { [key: string]: Leader } = {
     bio: '',
     tagline: '',
   },
-  cddaba15d491: {
+  fddaba15d491: {
     displayName: 'Lord Fingler, the Socialite',
     badgeName: 'Influencer Badge',
     bio: '',

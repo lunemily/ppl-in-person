@@ -7,8 +7,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { MessageService } from './message.service';
 
 import { Challenger } from '../models/challenger';
-import { Badge } from '../models/badge';
-import { data } from '../leader.data';
 import { Queue } from '../models/queue';
 import { AuthenticationService } from './authentication.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -43,7 +41,7 @@ export class ChallengerService {
               displayName: item['leaderName'],
               position: item['position'] + 1,
               leaderId: item['leaderId'],
-              badgeName: data[item['leaderId']]['badgeName'],
+              // badgeName: data[item['leaderId']]['badgeName'],
             };
             result.push(queue);
             return result;
