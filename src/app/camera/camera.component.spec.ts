@@ -1,4 +1,8 @@
+import { Overlay } from '@angular/cdk/overlay';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { CameraComponent } from './camera.component';
 
@@ -8,9 +12,9 @@ describe('CameraComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CameraComponent ]
-    })
-    .compileComponents();
+      providers: [HttpClient, HttpHandler, MatSnackBar, Overlay, MatDialog],
+      declarations: [CameraComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

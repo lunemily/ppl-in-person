@@ -1,4 +1,7 @@
+import { Overlay } from '@angular/cdk/overlay';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { ChallengerSearchComponent } from './challenger-search.component';
 
@@ -8,9 +11,9 @@ describe('ChallengerSearchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChallengerSearchComponent ]
-    })
-    .compileComponents();
+      providers: [HttpClient, HttpHandler, MatSnackBar, Overlay],
+      declarations: [ChallengerSearchComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

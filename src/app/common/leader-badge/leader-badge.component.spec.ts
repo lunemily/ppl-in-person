@@ -8,12 +8,13 @@ describe('LeaderBadgeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LeaderBadgeComponent ]
-    })
-    .compileComponents();
+      declarations: [LeaderBadgeComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(LeaderBadgeComponent);
     component = fixture.componentInstance;
+    component.leader = {};
+    component.ngOnInit();
     fixture.detectChanges();
   });
 

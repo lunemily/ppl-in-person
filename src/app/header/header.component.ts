@@ -16,11 +16,7 @@ export class HeaderComponent implements OnInit {
   showLogs: boolean = false;
   @Output('toggleSidenav') callToggleSidenav: EventEmitter<any> = new EventEmitter();
 
-  constructor(
-    private authenticationService: AuthenticationService,
-    public headerService: HeaderService,
-    private htmlTitle: Title
-  ) {}
+  constructor(public headerService: HeaderService, private htmlTitle: Title) {}
 
   ngOnInit(): void {
     // Add year

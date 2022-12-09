@@ -48,6 +48,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ConsoleComponent } from './console/console.component';
 import { LeaderBadgeComponent } from './common/leader-badge/leader-badge.component';
 import { NameComponent, SetNameDialog } from './console/name/name.component';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { NameComponent, SetNameDialog } from './console/name/name.component';
     MatSnackBarModule,
     MatToolbarModule,
     MatTooltipModule,
+    OverlayModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,

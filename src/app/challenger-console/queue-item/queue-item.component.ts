@@ -13,7 +13,6 @@ export class QueueItemComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.queue.position)
-    this.onHold = (this.queue.position === -1) ? true : false;
+    this.onHold = this.queue.position === -1 ? true : false;
   }
 }

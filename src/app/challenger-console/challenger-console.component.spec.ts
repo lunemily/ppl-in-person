@@ -1,4 +1,6 @@
+import { Overlay } from '@angular/cdk/overlay';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialog } from '@angular/material/dialog';
 
 import { ChallengerConsoleComponent } from './challenger-console.component';
 
@@ -8,9 +10,9 @@ describe('ChallengerConsoleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChallengerConsoleComponent ]
-    })
-    .compileComponents();
+      providers: [MatDialog, Overlay],
+      declarations: [ChallengerConsoleComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

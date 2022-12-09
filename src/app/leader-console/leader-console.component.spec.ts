@@ -1,4 +1,6 @@
+import { Overlay } from '@angular/cdk/overlay';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialog } from '@angular/material/dialog';
 
 import { LeaderConsoleComponent } from './leader-console.component';
 
@@ -8,9 +10,9 @@ describe('LeaderConsoleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LeaderConsoleComponent ]
-    })
-    .compileComponents();
+      providers: [MatDialog, Overlay],
+      declarations: [LeaderConsoleComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

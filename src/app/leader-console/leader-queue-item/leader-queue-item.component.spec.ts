@@ -1,4 +1,6 @@
+import { Overlay } from '@angular/cdk/overlay';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialog } from '@angular/material/dialog';
 
 import { LeaderQueueItemComponent } from './leader-queue-item.component';
 
@@ -8,9 +10,9 @@ describe('LeaderQueueItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LeaderQueueItemComponent ]
-    })
-    .compileComponents();
+      providers: [MatDialog, Overlay],
+      declarations: [LeaderQueueItemComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

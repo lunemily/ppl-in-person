@@ -1,4 +1,6 @@
+import { Overlay } from '@angular/cdk/overlay';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialog } from '@angular/material/dialog';
 
 import { NameComponent } from './name.component';
 
@@ -8,9 +10,9 @@ describe('NameComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NameComponent ]
-    })
-    .compileComponents();
+      providers: [MatDialog, Overlay],
+      declarations: [NameComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(NameComponent);
     component = fixture.componentInstance;
