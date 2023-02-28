@@ -4,8 +4,8 @@ import { AboutLeadersComponent } from './about-leaders/about-leaders.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  // { path: '', component: AboutLeadersComponent },
+  //{ path: '', component: HomeComponent },
+  { path: '', component: AboutLeadersComponent },
   { path: 'home', redirectTo: '', pathMatch: 'full' },
   { path: 'about', component: AboutLeadersComponent },
 ];

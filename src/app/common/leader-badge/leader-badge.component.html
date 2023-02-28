@@ -5,7 +5,10 @@
   fxLayoutAlign="space-evenly space-evenly"
   class="entry background-primary"
 >
-  <div *ngIf="leader.bio" fxLayout="column" fxLayout.xs="row" fxLayoutAlign="space-evenly space-evenly">
+  <div *ngIf="leader.bio" fxLayout="column" fxLayout.xs="row" fxLayoutAlign="space-evenly center">
+    <div>
+      <img class="badge" alt="{{ leader.displayName }}" src="assets/images/badges/{{ leader.leaderId }}.png" />
+    </div>
     <div>
       <img class="portrait" alt="{{ leader.displayName }}" src="assets/images/portraits/{{ leader.leaderId }}.png" />
     </div>
@@ -20,13 +23,16 @@
     <div>
       <img class="badge" alt="{{ leader.displayName }}" src="assets/images/badges/{{ leader.leaderId }}.png" />
     </div>
+    <div>
+      <img class="badge" alt="{{ leader.displayName }}" src="assets/images/badges/{{ leader.leaderId }}.png" />
+    </div>
   </div>
   <div fxLayout="column" fxLayoutAlign="space-evenly space-evenly">
     <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1em" fxLayoutAlign="space-evenly space-evenly">
       <h3>{{ leader.displayName }}</h3>
       <h3>{{ leader.badgeName }}</h3>
     </div>
-    <div *ngIf="leader.bio" class="details background-accent" fxLayout="column" fxLayout.xs="row" fxLayoutGap="1em">
+    <div *ngIf="leader.bio" class="details background-accent" fxLayout="column" fxLayoutGap="1em">
       <p [innerHTML]="leader.bio"></p>
       <p [innerHTML]="leader.tagline"></p>
     </div>
