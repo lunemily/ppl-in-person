@@ -27,7 +27,7 @@ export class ChallengerService {
     const url = `${api.serverUrl}/challenger/${id}`;
 
     let response =
-      '{"id":"433c4b55a17da084","displayName":"lunella","queuesEntered":[],"badgesEarned":[{"leaderId":"f00c087d1a2c","leaderName":"Lord Fingler, the Artiste","badgeName":"Artiste Badge"}]}';
+      '{"id":"433c4b55a17da084","displayName":"lunelleast","queuesEntered":[],"badgesEarned":[],"bingoBoard":[["9ddbf474802e","82ee137cec0a","505ae7cfcf50","3f2fdd84c972","b4ec415c761a"],["f27c016d37c9","94660e8e0cbc","5aa97464ba52","70022f182dab","354d81a64586"],["e4ce20138ea7","c881ce67b0b9","","6f6987c7fcb5","d13b6a996d12"],["694e553197d0","7944e32f799a","116e1c1e242b","4fc4e2f3e847","07e84bcc07cf"],["49b1a6453903","eb604a2a0eee","0f50d12ba4cc","a9f3e51dffc8","aed5dc645d93"]],"championDefeated":false}';
 
     // return of(JSON.parse(response)).pipe(
     return this.http.get<Challenger>(url, this.httpOptions).pipe(
@@ -61,7 +61,35 @@ export class ChallengerService {
       tap((_) => this.log(`fetched challenger id=${id}`)),
       catchError(this.handleError<Challenger>(`getChallenger id=${id}`))
     );
-    // END: real data
+  }
+
+  getBingoBoard(id: string): Observable<any> {
+    const url = `${api.serverUrl}/challenger/${id}/bingoBoard`;
+    // Transform each object to {id: "value", earned: "bool"}
+
+    let response =
+      '{"bingoBoard":[[{"9ddbf474802e":false},{"82ee137cec0a":false},{"505ae7cfcf50":false},{"3f2fdd84c972":false},{"b4ec415c761a":false}],[{"f27c016d37c9":false},{"94660e8e0cbc":false},{"5aa97464ba52":false},{"70022f182dab":false},{"354d81a64586":false}],[{"e4ce20138ea7":false},{"c881ce67b0b9":false},{"":true},{"6f6987c7fcb5":true},{"d13b6a996d12":false}],[{"694e553197d0":false},{"7944e32f799a":false},{"116e1c1e242b":false},{"4fc4e2f3e847":false},{"07e84bcc07cf":true}],[{"49b1a6453903":false},{"eb604a2a0eee":false},{"0f50d12ba4cc":true},{"a9f3e51dffc8":false},{"aed5dc645d93":true}]]}';
+
+    return of(JSON.parse(response)).pipe(
+      // return this.http.get<any>(url, this.httpOptions).pipe(
+      map((response) => {
+        return response['bingoBoard'].map(function (rawRow: []) {
+          let row: [] = rawRow;
+          // console.log(row);
+          return row.map(function (rawColumn: {}) {
+            let intermediateColumn = Object.entries(rawColumn)[0];
+            let column = {
+              id: intermediateColumn[0] === '' ? 'missingno' : intermediateColumn[0],
+              earned: intermediateColumn[1],
+            };
+            console.log(column);
+            return column;
+          }, []);
+        }, []);
+      }),
+      tap((_) => this.log(`fetched bingoBoard for challenger id=${id}`)),
+      catchError(this.handleError<Challenger>(`bingoBoard id=${id}`))
+    );
   }
 
   setChallengerName(id: string, displayName: string): void {
@@ -71,12 +99,10 @@ export class ChallengerService {
 
     let display: string = displayName;
 
-    // BEGIN: real data
     this.http.post<any>(url, { displayName: displayName }, this.httpOptions).subscribe((data) => {
       display = data.id;
       window.location.reload();
     });
-    // END: real data
   }
 
   enqueueLeader(challengerId: string, leaderId: string): void {

@@ -1,0 +1,18 @@
+.bingo-space {
+  display: inline-block;
+  border: 3px solid black;
+  position: relative;
+}
+
+.bingo {
+  height: 48px;
+  width: 48px;
+  padding: 3px 3px 0 3px;
+}
+
+.earned-pokeball {
+  position: absolute;
+  bottom: 3px;
+  right: 0;
+  opacity: 0.5;
+}

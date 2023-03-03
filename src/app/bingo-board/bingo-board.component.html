@@ -1,0 +1,20 @@
+<mat-card
+  ><div fxLayout="column" fxLayoutGap="1em" fxLayoutAlign="space-evenly space-evenly" class="bingo-row">
+    <div
+      *ngFor="let row of bingoBoard"
+      fxLayout="row"
+      fxLayoutGap="0.5em"
+      fxLayoutAlign="space-evenly space-evenly"
+      class="bingo-row"
+    >
+      <div *ngFor="let column of row" class="bingo-space">
+        <img class="bingo tera-pokemon" alt="{{ column.id }}" src="assets/images/teras/{{ column.id }}.png" />
+        <img
+          *ngIf="column.earned"
+          class="bingo earned-pokeball"
+          alt="{{ column.id }}"
+          src="assets/images/teras/pokeball.png"
+        />
+      </div>
+    </div></div
+></mat-card>
