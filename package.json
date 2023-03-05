@@ -12,7 +12,7 @@
     "east": "ng serve -o --configuration=east",
     "west": "ng serve -o --configuration=west",
     "aus": "ng serve -o --configuration=aus",
-    "deploy": "./deploy.sh"
+    "deploy": "ng deploy --base-href=/ppl-webapp/"
   },
   "private": true,
   "dependencies": {
