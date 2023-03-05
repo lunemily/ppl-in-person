@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { catchError, map, Observable, of, shareReplay, tap } from 'rxjs';
 
 import { api } from '../constants.data';
@@ -29,7 +28,7 @@ export class DataService {
   // }
 
   getLeaderData(): Observable<Leader[]> {
-    let localLeaderList = this.cookieService.get('leader-data-list');
+    let localLeaderList = localStorage.getItem('leader-data-list');
     if (localLeaderList) {
       console.info('Leader data present.\nReturning...\n');
       return this.returnLocalLeaderData(JSON.parse(localLeaderList));
@@ -56,10 +55,10 @@ export class DataService {
           };
           listOfLeaders.push(`leader-data-${leaderId}`);
           leaders.push(leader);
-          this.cookieService.set(`leader-data-${leaderId}`, JSON.stringify(leader), 7);
+          localStorage.setItem(`leader-data-${leaderId}`, JSON.stringify(leader));
         }
         // Store leaders
-        this.cookieService.set('leader-data-list', JSON.stringify(listOfLeaders), 7);
+        localStorage.setItem(`leader-data-list`, JSON.stringify(listOfLeaders));
 
         return leaders;
       }),
@@ -77,8 +76,8 @@ export class DataService {
     let leaders: Leader[] = [];
     for (let leaderCookie of listOfLeaders) {
       console.info(leaderCookie);
-      console.info(this.cookieService.get(leaderCookie));
-      let leader: Leader = JSON.parse(this.cookieService.get(leaderCookie));
+      console.info(localStorage.getItem(leaderCookie));
+      let leader: Leader = JSON.parse(localStorage.getItem(leaderCookie));
       leaders.push(leader);
     }
     return of(leaders);
@@ -133,7 +132,6 @@ export class DataService {
   constructor(
     private http: HttpClient,
     private authenticationService: AuthenticationService,
-    private cookieService: CookieService,
     private messageService: MessageService
   ) {}
 }

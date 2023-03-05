@@ -43,6 +43,19 @@
   <mat-icon>stars</mat-icon>
   <span>Prize Pools</span>
 </button>
+<a
+  *ngIf="sidenavFlags.bingoBoard"
+  mat-icon-button
+  color="primary"
+  skipLocationChange
+  routerLink="/bingo"
+  routerLinkActive="active"
+  ariaCurrentWhenActive="page"
+  (click)="closeSidenav()"
+>
+  <mat-icon>grid_on</mat-icon>
+  <span>Bingo Board</span>
+</a>
 <!-- <a https://discord.gg/ZGBxdVb -->
 <button mat-icon-button color="primary" (click)="logout()" aria-label="Logout">
   <mat-icon>logout</mat-icon>

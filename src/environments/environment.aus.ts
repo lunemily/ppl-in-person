@@ -17,6 +17,7 @@ export const sidenav = {
   rules: true,
   prizePools: false,
   schedule: false,
+  bingoBoard: false,
 };
 
 export const environment = {
