@@ -1,5 +1,6 @@
-<mat-card
-  ><div fxLayout="column" fxLayoutGap="1em" fxLayoutAlign="space-evenly space-evenly" class="bingo-row">
+<mat-card>
+  <img class="external-graphic" alt="" src="{{ bingoHeader }}" />
+  <div fxLayout="column" fxLayoutGap="1em" fxLayoutAlign="space-evenly space-evenly" class="bingo-row">
     <div
       *ngFor="let row of bingoBoard"
       fxLayout="row"
@@ -16,5 +17,7 @@
           src="assets/images/teras/pokeball.png"
         />
       </div>
-    </div></div
-></mat-card>
+    </div>
+  </div>
+  <img class="external-graphic" src="{{ bingoHowTo }}"
+/></mat-card>
