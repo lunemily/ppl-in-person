@@ -1,11 +1,11 @@
-ng build --output-path docs\$0 --base-href /$0/ --configuration=$0
+Set-Variable -Name "ppl" -Value $args[0]
 
-Set-Location $srcRoot
+ng build --output-path docs\$ppl --base-href /$ppl/ --configuration=$ppl
 
-Copy-Item "$srcRoot\docs\$0\index.html" "$srcRoot\docs\$0\404.html"
+Copy-Item ".\docs\$ppl\index.html" ".\docs\$ppl\404.html"
 
 git add .
 
-git commit -m "Build for deploy $0"
+git commit -m "Build for deploy $ppl"
 
 git push
