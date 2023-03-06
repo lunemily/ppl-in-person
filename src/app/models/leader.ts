@@ -14,4 +14,6 @@ export interface Leader extends Person {
   art?: string;
   bio?: string;
   tagline?: string;
+  leaderType?: number;
+  champion?: boolean;
 }

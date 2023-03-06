@@ -1,12 +1,12 @@
 <div fxLayout="column" fxLayoutGap="1em" fxLayoutAlign="space-evenly space-evenly" class="entry background-primary">
   <div *ngIf="leader.bio" fxLayout="row" fxLayoutAlign="space-evenly center">
-    <div>
+    <div *ngIf="!leader.champion">
       <img class="badge" alt="{{ leader.displayName }}" src="assets/images/badges/{{ leader.leaderId }}.png" />
     </div>
     <div>
       <img class="portrait" alt="{{ leader.displayName }}" src="assets/images/portraits/{{ leader.leaderId }}.png" />
     </div>
-    <div>
+    <div *ngIf="!leader.champion">
       <img class="badge" alt="{{ leader.displayName }}" src="assets/images/teras/{{ leader.leaderId }}.png" />
     </div>
   </div>
@@ -14,14 +14,14 @@
     <div>
       <img class="portrait" alt="{{ leader.displayName }}" src="assets/images/portraits/{{ leader.leaderId }}.png" />
     </div>
-    <div>
+    <div *ngIf="!leader.champion">
       <img class="badge" alt="{{ leader.displayName }}" src="assets/images/badges/{{ leader.leaderId }}.png" />
     </div>
   </div>
   <div fxLayout="column" fxLayoutAlign="space-evenly space-evenly">
     <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1em" fxLayoutAlign="space-evenly space-evenly">
       <h3>{{ leader.displayName }}</h3>
-      <h3>{{ leader.badgeName }}</h3>
+      <h3 *ngIf="!leader.champion">{{ leader.badgeName }}</h3>
     </div>
     <div *ngIf="leader.bio" class="details background-accent" fxLayout="column" fxLayoutGap="1em">
       <p [innerHTML]="leader.bio"></p>
