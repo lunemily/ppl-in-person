@@ -1,3 +1,41 @@
+.entry {
+  display: flex;
+  flex-direction: column;
+  align-content: space-evenly;
+  align-items: space-evenly;
+  justify-content: space-evenly;
+}
+
+.portraits-and-badges {
+  //  fxLayout="row" fxLayoutAlign="space-evenly center"
+  display: flex;
+  flex-direction: row;
+  align-content: space-evenly;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.leader-data {
+  display: flex;
+  flex-direction: column;
+  align-content: space-evenly;
+  align-items: space-evenly;
+  justify-content: space-evenly;
+}
+
+.name-and-badge {
+  display: flex;
+  flex-direction: column;
+  align-content: space-evenly;
+  align-items: space-evenly;
+  justify-content: space-evenly;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+}
+
 img {
   /* Commented this section out because PPL Aus portraits looked better as circles.
     height: 100px;
@@ -12,9 +50,13 @@ img {
   margin: auto;
 }
 
-.badge {
+img.badge {
   height: 64px;
   width: 64px;
+}
+
+img.tera {
+  border-radius: 0;
 }
 
 h3 {
@@ -39,5 +81,11 @@ p {
 @media (min-width: 400px) {
   img {
     // border: 4px solid #ffffff;
+  }
+}
+
+@media (min-width: 600px) {
+  .name-and-badge {
+    flex-direction: row;
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { pplEvent } from '../constants.data';
 import { ChallengerService } from '../services/challenger.service';
+import { BingoSpace } from '../models/bingo-space';
 
 @Component({
   selector: 'app-bingo-board',
@@ -11,7 +12,9 @@ import { ChallengerService } from '../services/challenger.service';
 export class BingoBoardComponent implements OnInit {
   loginId: string;
   isLeader: boolean;
-  bingoBoard: [][];
+  bingoBoard: BingoSpace[][];
+
+  // Copy
   bingoHeader = `assets/images/bingo-header-${pplEvent.toLowerCase()}.png`;
   bingoHeaderAlt = `PAX ${pplEvent} ${new Date().getFullYear()} Pokemon League Tera Bingo`;
   bingoHowTo = `assets/images/bingo-how-${pplEvent.toLowerCase()}.png`;
