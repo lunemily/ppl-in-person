@@ -25,7 +25,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 
 import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages/messages.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent, PPLHelpDialog } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LeaderConsoleComponent } from './leader-console/leader-console.component';
 import {
@@ -73,6 +73,7 @@ import { BingoBoardComponent } from './bingo-board/bingo-board.component';
     NameComponent,
     SetNameDialog,
     BingoBoardComponent,
+    PPLHelpDialog,
   ],
   imports: [
     MatAutocompleteModule,

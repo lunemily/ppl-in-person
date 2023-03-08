@@ -64,6 +64,7 @@ export class DataService {
         // Store list of leaders
         localStorage.setItem(`leader-data-list`, JSON.stringify(sortedListOfLeaders));
 
+        sortedfLeaders[sortedfLeaders.length - 1].champion = true;
         return sortedfLeaders;
       }),
       tap((_) => this.log('fetched leader data')),
