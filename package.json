@@ -12,7 +12,12 @@
     "east": "ng serve -o --configuration=east",
     "west": "ng serve -o --configuration=west",
     "aus": "ng serve -o --configuration=aus",
-    "deploy": "ng deploy --base-href=/ppl-webapp/"
+    "deployToGithub": "ng deploy --base-href=/ppl-webapp/",
+    "build-east": "ng build --base-href /east/ --configuration=east",
+    "build-west": "ng build --base-href /west/ --configuration=west",
+    "build-aus": "ng build --base-href /aus/ --configuration=aus",
+    "build-online": "ng build --base-href /online/ --configuration=online",
+    "build-unplugged": "ng build --base-href /unplugged/ --configuration=unplugged"
   },
   "private": true,
   "dependencies": {
