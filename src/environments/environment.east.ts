@@ -12,7 +12,7 @@ export const api = {
 };
 
 export const sidenav = {
-  trainerCard: true,
+  trainerCard: false,
   howToChallenge: true,
   rules: true,
   prizePools: true,
