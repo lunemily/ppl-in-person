@@ -6,7 +6,6 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 
 import { Leader } from '../models/leader';
-import { Badge } from '../models/badge';
 import { Queue } from '../models/queue';
 import { Hold } from '../models/hold';
 import { CookieService } from 'ngx-cookie-service';

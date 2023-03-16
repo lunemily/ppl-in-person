@@ -1,5 +1,5 @@
 <mat-card>
-  <h2>{{ person.displayName.toUpperCase() }}'S TRAINER CARD</h2>
+  <h2 *ngIf="person">{{ person.displayName.toUpperCase() }}'S TRAINER CARD</h2>
   <button *ngIf="challenger" mat-stroked-button (click)="editName()">EDIT NAME</button>
 
   <div *ngIf="leader" id="leader-record">
@@ -27,5 +27,11 @@
         </td>
       </tr>
     </table>
+  </div>
+  <div *ngIf="feedbackSurveyUrl" id="survey-container">
+    <mat-divider></mat-divider>
+    <h4>Thanks for participating!</h4>
+
+    <a mat-button color="primary" href="{{ feedbackSurveyUrl }}">Let us know what you thought!</a>
   </div>
 </mat-card>
