@@ -57,6 +57,7 @@ export class LeaderService {
           wins: response['winCount'],
           losses: response['lossCount'],
           badgesAwarded: response['badgesAwarded'],
+          feedbackSurveyUrl: response['feedbackSurveyUrl'] ? response['feedbackSurveyUrl'] : null,
         };
         return leader;
       }),
