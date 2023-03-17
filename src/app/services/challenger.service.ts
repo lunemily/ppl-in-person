@@ -55,6 +55,7 @@ export class ChallengerService {
             return leader;
           }, []),
           feedbackSurveyUrl: response['feedbackSurveyUrl'] ? response['feedbackSurveyUrl'] : null,
+          championSurveyUrl: response['championDefeated'] ? response['championSurveyUrl'] : null,
         };
 
         return challenger;

@@ -18,6 +18,7 @@ export class ConsoleComponent implements OnInit {
   leader: Leader;
   challenger: Challenger;
   feedbackSurveyUrl: string;
+  championSurveyUrl: string;
 
   constructor(
     private challengerService: ChallengerService,
@@ -42,6 +43,7 @@ export class ConsoleComponent implements OnInit {
       this.challenger = challenger;
       this.person = challenger;
       this.feedbackSurveyUrl = this.person.feedbackSurveyUrl;
+      this.championSurveyUrl = this.challenger.championSurveyUrl;
     });
   }
 

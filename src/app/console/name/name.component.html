@@ -34,4 +34,12 @@
 
     <a mat-button color="primary" href="{{ feedbackSurveyUrl }}">Let us know what you thought!</a>
   </div>
+  <div *ngIf="championSurveyUrl" id="survey-container">
+    <mat-divider></mat-divider>
+    <h4>Congrats Champion!</h4>
+
+    <a mat-flat-button color="primary" href="{{ championSurveyUrl }}">
+      <mat-icon>star</mat-icon>Submit your team for the Hall of Fame! <mat-icon>star</mat-icon></a
+    >
+  </div>
 </mat-card>
