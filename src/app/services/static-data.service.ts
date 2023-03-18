@@ -5,8 +5,11 @@ import { catchError, map, Observable, of, shareReplay, tap } from 'rxjs';
 
 import { api } from '../constants.data';
 import { Leader } from '../models/leader';
+import { PPLSettings } from '../models/settings';
 import { AuthenticationService } from './authentication.service';
 import { MessageService } from './message.service';
+
+import { sidenav } from '../constants.data';
 
 @Injectable({
   providedIn: 'root',
@@ -88,6 +91,24 @@ export class DataService {
     }
     leaders[leaders.length - 1].champion = true;
     return of(leaders);
+  }
+
+  getPPLSettings(): Observable<PPLSettings> {
+    const url = `${api.serverUrl}/appsettings`;
+
+    return this.http.get(url, this.httpOptions).pipe(
+      map((response: JSON) => {
+        let settings: PPLSettings = {
+          showTrainerCard: response['showTrainerCard'],
+          howToChallenge: sidenav['howToChallenge'],
+          rules: sidenav['rules'],
+          prizePools: sidenav['prizePools'],
+          schedule: sidenav['schedule'],
+          bingoBoard: sidenav['bingoBoard'],
+        };
+        return settings;
+      })
+    );
   }
 
   /** Log a ChallengerService message with the MessageService */

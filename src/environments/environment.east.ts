@@ -1,4 +1,5 @@
 import { HttpHeaders } from '@angular/common/http';
+import { PPLSettings } from '../app/models/settings';
 
 export const pplEvent = 'East';
 
@@ -11,8 +12,8 @@ export const api = {
   httpOtions: httpOtions,
 };
 
-export const sidenav = {
-  trainerCard: false,
+export const sidenav: PPLSettings = {
+  showTrainerCard: false,
   howToChallenge: true,
   rules: true,
   prizePools: true,
