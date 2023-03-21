@@ -72,8 +72,8 @@ export class ChallengerService {
     let response =
       '{"bingoBoard":[[{"9ddbf474802e":false},{"82ee137cec0a":false},{"505ae7cfcf50":false},{"3f2fdd84c972":false},{"b4ec415c761a":false}],[{"f27c016d37c9":false},{"94660e8e0cbc":false},{"5aa97464ba52":false},{"70022f182dab":false},{"354d81a64586":false}],[{"e4ce20138ea7":false},{"c881ce67b0b9":false},{"":true},{"6f6987c7fcb5":true},{"d13b6a996d12":false}],[{"694e553197d0":false},{"7944e32f799a":false},{"116e1c1e242b":false},{"4fc4e2f3e847":false},{"07e84bcc07cf":true}],[{"49b1a6453903":false},{"eb604a2a0eee":false},{"0f50d12ba4cc":true},{"a9f3e51dffc8":false},{"aed5dc645d93":true}]]}';
 
-    return of(JSON.parse(response)).pipe(
-      // return this.http.get<any>(url, this.httpOptions).pipe(
+    // return of(JSON.parse(response)).pipe(
+    return this.http.get<any>(url, this.httpOptions).pipe(
       map((response) => {
         return response['bingoBoard'].map(function (rawRow: []) {
           let row: [] = rawRow;
