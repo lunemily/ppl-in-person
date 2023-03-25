@@ -48,6 +48,7 @@ import { ConsoleComponent } from './console/console.component';
 import { LeaderBadgeComponent } from './common/leader-badge/leader-badge.component';
 import { NameComponent, SetNameDialog } from './console/name/name.component';
 import { BingoBoardComponent } from './bingo-board/bingo-board.component';
+import { MetricsComponent } from './metrics/metrics.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { BingoBoardComponent } from './bingo-board/bingo-board.component';
     SetNameDialog,
     BingoBoardComponent,
     PPLHelpDialog,
+    MetricsComponent,
   ],
   imports: [
     MatAutocompleteModule,

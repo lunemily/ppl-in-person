@@ -6,6 +6,7 @@ import { catchError, map, Observable, of, shareReplay, tap } from 'rxjs';
 import { api } from '../constants.data';
 import { Leader } from '../models/leader';
 import { PPLSettings } from '../models/settings';
+import { Metric } from '../models/metric';
 import { AuthenticationService } from './authentication.service';
 import { MessageService } from './message.service';
 
@@ -98,15 +99,39 @@ export class DataService {
 
     return this.http.get(url, this.httpOptions).pipe(
       map((response: JSON) => {
+        // Use settings provided from API, otherwise default to local flags.
         let settings: PPLSettings = {
-          showTrainerCard: response['showTrainerCard'],
-          howToChallenge: sidenav['howToChallenge'],
-          rules: sidenav['rules'],
-          prizePools: sidenav['prizePools'],
-          schedule: sidenav['schedule'],
-          bingoBoard: sidenav['bingoBoard'],
+          showTrainerCard:
+            'showTrainerCard' in response ? (response['showTrainerCard'] as boolean) : sidenav['showTrainerCard'],
+          howToChallenge:
+            'howToChallenge' in response ? (response['howToChallenge'] as boolean) : sidenav['howToChallenge'],
+          rules: 'rules' in response ? (response['rules'] as boolean) : sidenav['rules'],
+          prizePools: 'prizePools' in response ? (response['prizePools'] as boolean) : sidenav['prizePools'],
+          schedule: 'schedule' in response ? (response['schedule'] as boolean) : sidenav['schedule'],
+          bingoBoard: 'bingoBoard' in response ? (response['bingoBoard'] as boolean) : sidenav['bingoBoard'],
         };
         return settings;
+      })
+    );
+  }
+
+  getMetrics(): Observable<Metric[]> {
+    const url = `${api.serverUrl}/metrics`;
+
+    return this.http.get(url, this.httpOptions).pipe(
+      map((response: JSON) => {
+        let metrics: Metric[] = [];
+        Object.keys(response).forEach((leaderId) => {
+          let metric: Metric = {
+            leaderId: leaderId,
+            displayName: response[leaderId]['name'],
+            wins: response[leaderId]['wins'],
+            losses: response[leaderId]['losses'],
+            badgesAwarded: response[leaderId]['badgesAwarded'],
+          };
+          metrics.push(metric);
+        });
+        return metrics;
       })
     );
   }
