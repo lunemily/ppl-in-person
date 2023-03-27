@@ -16,6 +16,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -49,6 +50,7 @@ import { LeaderBadgeComponent } from './common/leader-badge/leader-badge.compone
 import { NameComponent, SetNameDialog } from './console/name/name.component';
 import { BingoBoardComponent } from './bingo-board/bingo-board.component';
 import { MetricsComponent } from './metrics/metrics.component';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -90,6 +92,8 @@ import { MetricsComponent } from './metrics/metrics.component';
     MatSelectModule,
     MatSidenavModule,
     MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
     MatToolbarModule,
     MatTooltipModule,
     BrowserModule,

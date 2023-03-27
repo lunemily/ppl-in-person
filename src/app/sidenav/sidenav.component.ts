@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { pplEvent, sidenav } from '../constants.data';
 import { PPLHelpDialog } from '../header/header.component';
 import { PPLSettings } from '../models/settings';
@@ -13,8 +14,13 @@ import { DataService } from '../services/static-data.service';
 export class SidenavComponent implements OnInit {
   @Output('closeSidenav') callCloseSidenav: EventEmitter<any> = new EventEmitter();
   pplSettings: PPLSettings;
+  isLeader: boolean;
 
-  constructor(private authenticationService: AuthenticationService, private dataService: DataService) {}
+  constructor(
+    private authenticationService: AuthenticationService,
+    private dataService: DataService,
+    private cookieService: CookieService
+  ) {}
 
   ngOnInit(): void {
     this.loadPPLSettings();
@@ -23,6 +29,7 @@ export class SidenavComponent implements OnInit {
   loadPPLSettings() {
     this.dataService.getPPLSettings().subscribe((pplSettings) => {
       this.pplSettings = pplSettings;
+      this.isLeader = 'true' == this.cookieService.get('isLeader');
     });
   }
 

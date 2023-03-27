@@ -51,11 +51,24 @@
     <span>Activities and Prizes</span>
   </button>
   <a
-    *ngIf="pplSettings.bingoBoard"
+    *ngIf="pplSettings.bingoBoard && !isLeader"
     mat-icon-button
     color="primary"
     skipLocationChange
     routerLink="/bingo"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page"
+    (click)="closeSidenav()"
+  >
+    <mat-icon>grid_on</mat-icon>
+    <span>Bingo Board</span>
+  </a>
+  <a
+    *ngIf="isLeader"
+    mat-icon-button
+    color="primary"
+    skipLocationChange
+    routerLink="/metrics"
     routerLinkActive="active"
     ariaCurrentWhenActive="page"
     (click)="closeSidenav()"

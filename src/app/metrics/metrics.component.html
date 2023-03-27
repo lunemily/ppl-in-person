@@ -1,1 +1,36 @@
-<p>metrics works!</p>
+<mat-card>
+  <table mat-table [dataSource]="dataSource" matSort matSortActive="displayName" matSortDirection="asc">
+    <!-- displayName Column -->
+    <ng-container matColumnDef="displayName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let row">{{ row.displayName }}</td>
+    </ng-container>
+
+    <!-- wins Column -->
+    <ng-container matColumnDef="wins">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Wins</th>
+      <td mat-cell *matCellDef="let row">{{ row.wins }}</td>
+    </ng-container>
+
+    <!-- losses Column -->
+    <ng-container matColumnDef="losses">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Losses</th>
+      <td mat-cell *matCellDef="let row">{{ row.losses }}</td>
+    </ng-container>
+
+    <!-- matches Column -->
+    <ng-container matColumnDef="matches">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Matches</th>
+      <td mat-cell *matCellDef="let row">{{ row.matches }}</td>
+    </ng-container>
+
+    <!-- badgesAwarded Column -->
+    <ng-container matColumnDef="badgesAwarded">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Badges Awarded</th>
+      <td mat-cell *matCellDef="let row">{{ row.badgesAwarded }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</mat-card>

@@ -3,5 +3,6 @@ export interface Metric {
   displayName;
   wins: number;
   losses: number;
+  matches: number;
   badgesAwarded: number;
 }
