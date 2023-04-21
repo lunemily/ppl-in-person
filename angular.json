@@ -96,6 +96,47 @@
                 }
               ]
             },
+            "online": {
+              "styles": ["src/theme.east.scss", "src/styles.scss"],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.online.ts"
+                }
+              ],
+              "assets": [
+                {
+                  "glob": "**/*",
+                  "input": "src/assets/",
+                  "ignore": ["**/*-west.png", "**/*-aus.png"],
+                  "output": "/assets/"
+                },
+                {
+                  "glob": "favicon.ico",
+                  "input": "src/",
+                  "output": "/"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
             "west": {
               "styles": ["src/theme.west.scss", "src/styles.scss"],
               "fileReplacements": [
@@ -191,6 +232,9 @@
             },
             "east": {
               "browserTarget": "ppl-site:build:east"
+            },
+            "online": {
+              "browserTarget": "ppl-site:build:online"
             },
             "west": {
               "browserTarget": "ppl-site:build:west"

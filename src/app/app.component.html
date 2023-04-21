@@ -1,8 +1,8 @@
 <app-header (toggleSidenav)="toggleSidenav()"></app-header>
-<mat-sidenav-container>
+<mat-sidenav-container [hasBackdrop]="isMobileResolution">
   <!-- This toolbar is a spacer -->
   <mat-toolbar color="primary"></mat-toolbar>
-  <mat-sidenav #sidenav="matSidenav">
+  <mat-sidenav #sidenav="matSidenav" [opened]="!isMobileResolution">
     <app-sidenav (closeSidenav)="closeSidenav()"></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>

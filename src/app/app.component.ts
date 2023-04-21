@@ -9,8 +9,15 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class AppComponent {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
+  isMobileResolution: boolean;
 
-  constructor() {}
+  constructor() {
+    if (window.innerWidth < 768) {
+      this.isMobileResolution = true;
+    } else {
+      this.isMobileResolution = false;
+    }
+  }
 
   ngOnInit(): void {
     // this.dataService.getLeaderData().subscribe((data) => {

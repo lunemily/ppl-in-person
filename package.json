@@ -10,6 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "east": "ng serve -o --configuration=east",
+    "online": "ng serve -o --configuration=online",
     "west": "ng serve -o --configuration=west",
     "aus": "ng serve -o --configuration=aus",
     "deployToGithub": "ng deploy --base-href=/ppl-webapp/",

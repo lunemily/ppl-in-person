@@ -7,4 +7,7 @@ export interface Queue {
   challengerId?: string;
   position: number;
   badgeArt?: string;
+  // difficulty?: number;
+  // mechanic?: string;
+  // badgesEarned?: number;
 }
