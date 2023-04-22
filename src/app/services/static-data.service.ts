@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { int } from '@zxing/library/esm/customTypings';
 import { catchError, map, Observable, of, shareReplay, tap } from 'rxjs';
 
 import { api } from '../constants.data';

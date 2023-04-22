@@ -2,7 +2,7 @@
 <mat-sidenav-container [hasBackdrop]="isMobileResolution">
   <!-- This toolbar is a spacer -->
   <mat-toolbar color="primary"></mat-toolbar>
-  <mat-sidenav #sidenav="matSidenav" [opened]="!isMobileResolution">
+  <mat-sidenav #sidenav="matSidenav" [opened]="!isMobileResolution" [mode]="isMobileResolution ? 'over' : 'side'">
     <app-sidenav (closeSidenav)="closeSidenav()"></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>

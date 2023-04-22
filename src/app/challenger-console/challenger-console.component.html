@@ -6,16 +6,18 @@
       <app-queue-item [queue]="queue"></app-queue-item>
     </div>
     <br />
-    <p id="queue-help">Scan a leader's QR code to add yourself to their queue.</p>
-    <p id="queue-help">Or ask a leader to scan your QR code.</p>
-    <p id="queue-help">Or ask a leader to add you to their queue.</p>
-    <app-camera *ngIf="showCamera" [challengerId]="challenger.id"></app-camera>
-    <button mat-flat-button color="primary" (click)="enqueue()">
-      <mat-icon>qr_code</mat-icon>
-    </button>
-    <br />
-    <br />
-    <p id="queue-help">If you wish to leave a leader's queue, please go speak to them to remove you.</p>
+    <div id="qr-section" *ngIf="useQR">
+      <p id="queue-help">Scan a leader's QR code to add yourself to their queue.</p>
+      <p id="queue-help">Or ask a leader to scan your QR code.</p>
+      <p id="queue-help">Or ask a leader to add you to their queue.</p>
+      <app-camera *ngIf="showCamera" [challengerId]="challenger.id"></app-camera>
+      <button mat-flat-button color="primary" (click)="enqueue()">
+        <mat-icon>qr_code</mat-icon>
+      </button>
+      <br />
+      <br />
+      <p id="queue-help">If you wish to leave a leader's queue, please go speak to them to remove you.</p>
+    </div>
   </div>
 </mat-card>
 <mat-card>
@@ -26,7 +28,7 @@
     </div>
   </div>
 </mat-card>
-<mat-card>
+<mat-card *ngIf="useQR">
   <h2 class="left">Challenger QR Code</h2>
   <qrcode
     [qrdata]="myAngularxQrCode"

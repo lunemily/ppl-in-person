@@ -1,7 +1,7 @@
 /**
 * Generated theme by Material Theme Generator
 * https://materialtheme.arcsine.dev
-* Fork at: https://materialtheme.arcsine.dev/?c=YHBhbGV0dGU$YHByaW1hcnk$YF48I2Q5MWUxZSIsIj9lcjwjZjRiY2JjIiwiO2VyPCNjYTEyMTJ$LCIlPmBePCM3OTc5NzkiLCI~ZXI8I2Q3ZDdkNyIsIjtlcjwjNWM1YzVjfiwid2Fybj5gXjwjZmYwMDdjIiwiP2VyPCNmZmIzZDgiLCI7ZXI8I2ZmMDA1Zn4sIj9UZXh0PCMwMDAwMDAiLCI~PTwjZmFmYWZhIiwiO1RleHQ8I2ZmZmZmZiIsIjs9PCMyYzJjMmN$LCJmb250cz5bYEA8KC00fixgQDwoLTN$LGBAPCgtMn4sYEA8KC0xfixgQDxoZWFkbGluZX4sYEA8dGl0bGV$LGBAPHN1YiktMn4sYEA8c3ViKS0xfixgQDxib2R5LTJ$LGBAPGJvZHktMX4sYEA8YnV0dG9ufixgQDxjYXB0aW9ufixgQDxpbnB1dCIsInNpemU$bnVsbH1dLCJpY29uczxGaWxsZWQiLCI~bmVzcz50cnVlLCJ2ZXJzaW9uPjExfQ==
+* Fork at: https://materialtheme.arcsine.dev/?c=YHBhbGV0dGU$YHByaW1hcnk$YF48IzQ0YmYzMiIsIj9lcjwjYzdlY2MyIiwiO2VyPCMyZGE5MWZ$LCIlPmBePCNkOTc4ZjAiLCI~ZXI8I2Y0ZDdmYiIsIjtlcjwjY2E1YmU5fiwid2Fybj5gXjwjZWY1YTVhIiwiP2VyPCNmYWNlY2UiLCI7ZXI8I2U4M2YzZn4sIj9UZXh0PCMwMDAwMDAiLCI~PTwjZmFmYWZhIiwiO1RleHQ8I2ZmZmZmZiIsIjs9PCMyYzJjMmN$LCJmb250cz5bYEA8KC00fixgQDwoLTN$LGBAPCgtMn4sYEA8KC0xfixgQDxoZWFkbGluZX4sYEA8dGl0bGV$LGBAPHN1YiktMn4sYEA8c3ViKS0xfixgQDxib2R5LTJ$LGBAPGJvZHktMX4sYEA8YnV0dG9ufixgQDxjYXB0aW9ufixgQDxpbnB1dCIsInNpemU$bnVsbH1dLCJpY29uczxGaWxsZWQiLCI~bmVzcz50cnVlLCJ2ZXJzaW9uPjExfQ==
 */
 
 @import '@angular/material/theming';
@@ -11,36 +11,25 @@
 
 // Fonts
 @font-face {
-  font-family: ethnocentric;
-  src: url('assets/fonts/ethnocentric-rg.ttf') format('truetype');
+  font-family: nightmare;
+  src: url('assets/fonts/nightmare-codehack.ttf') format('truetype');
+}
+@font-face {
+  font-family: blox;
+  src: url('assets/fonts/Blox2.ttf') format('truetype');
 }
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
-// @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
-
-@font-face {
-  font-family: ethnocentric;
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('assets/fonts/ethnocentric-rg.ttf') format('truetype');
-}
-@font-face {
-  font-family: ethnocentric;
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('assets/fonts/ethnocentric-rg.ttf') format('truetype');
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 
 $fontConfig: (
   display-4: mat-typography-level(112px, 112px, 300, 'Roboto', -0.0134em),
   display-3: mat-typography-level(56px, 56px, 400, 'Roboto', -0.0089em),
   display-2: mat-typography-level(45px, 48px, 400, 'Roboto', 0em),
   display-1: mat-typography-level(34px, 40px, 400, 'Roboto', 0.0074em),
-  headline: mat-typography-level(1.25em, 1.25em, 400, 'ethnocentric', 0em),
-  title: mat-typography-level(1.25em, 1.25em, 400, 'ethnocentric', 0em),
-  subheading-2: mat-typography-level(16px, 28px, 400, 'ethnocentric', 0.0094em),
-  subheading-1: mat-typography-level(15px, 24px, 500, 'ethnocentric', 0.0067em),
+  headline: mat-typography-level(2em, 2em, 400, 'nightmare', 0em),
+  title: mat-typography-level(2em, 2em, 400, 'nightmare', 0em),
+  subheading-2: mat-typography-level(16px, 28px, 400, 'nightmare', 0.0094em),
+  subheading-1: mat-typography-level(15px, 24px, 500, 'nightmare', 0.0067em),
   body-2: mat-typography-level(14px, 24px, 500, 'Roboto', 0.0179em),
   body-1: mat-typography-level(14px, 20px, 400, 'Roboto', 0.0179em),
   button: mat-typography-level(14px, 14px, 500, 'Roboto', 0.0893em),
@@ -168,24 +157,24 @@ $mat-dark-theme-background: (
 // Theme Config
 
 body {
-  --primary-color: #d91e1e;
-  --primary-lighter-color: #f4bcbc;
-  --primary-darker-color: #ca1212;
-  --text-primary-color: #{$light-primary-text};
+  --primary-color: #44bf32;
+  --primary-lighter-color: #c7ecc2;
+  --primary-darker-color: #2da91f;
+  --text-primary-color: #{$dark-primary-text};
   --text-primary-lighter-color: #{$dark-primary-text};
   --text-primary-darker-color: #{$light-primary-text};
-  background-image: url('assets/images/wallpaper-east.png');
+  background-image: url('assets/images/wallpaper-online.png');
 }
 
 $mat-primary: (
-  main: #d91e1e,
-  lighter: #f4bcbc,
-  darker: #ca1212,
-  200: #d91e1e,
+  main: #44bf32,
+  lighter: #c7ecc2,
+  darker: #2da91f,
+  200: #44bf32,
   // For slide toggle,
   contrast:
     (
-      main: $light-primary-text,
+      main: $dark-primary-text,
       lighter: $dark-primary-text,
       darker: $light-primary-text,
     ),
@@ -194,18 +183,18 @@ $mat-primary: (
 $theme-primary: mat-palette($mat-primary, main, lighter, darker);
 
 body {
-  --accent-color: #ffa3a3;
-  --accent-lighter-color: #ffe3e3;
-  --accent-darker-color: #ff8888;
+  --accent-color: #d978f0;
+  --accent-lighter-color: #f4d7fb;
+  --accent-darker-color: #ca5be9;
   --text-accent-color: #{$dark-primary-text};
   --text-accent-lighter-color: #{$dark-primary-text};
   --text-accent-darker-color: #{$dark-primary-text};
 }
 $mat-accent: (
-  main: #ffa3a3,
-  lighter: #ffe3e3,
-  darker: #ff8888,
-  200: #ffa3a3,
+  main: #d978f0,
+  lighter: #f4d7fb,
+  darker: #ca5be9,
+  200: #d978f0,
   // For slide toggle,
   contrast:
     (
@@ -217,22 +206,22 @@ $mat-accent: (
 $theme-accent: mat-palette($mat-accent, main, lighter, darker);
 
 body {
-  --warn-color: #830000;
-  --warn-lighter-color: #dab3b3;
-  --warn-darker-color: #660000;
-  --text-warn-color: #{$light-primary-text};
+  --warn-color: #ef5a5a;
+  --warn-lighter-color: #facece;
+  --warn-darker-color: #e83f3f;
+  --text-warn-color: #{$dark-primary-text};
   --text-warn-lighter-color: #{$dark-primary-text};
   --text-warn-darker-color: #{$light-primary-text};
 }
 $mat-warn: (
-  main: #830000,
-  lighter: #dab3b3,
-  darker: #660000,
-  200: #830000,
+  main: #ef5a5a,
+  lighter: #facece,
+  darker: #e83f3f,
+  200: #ef5a5a,
   // For slide toggle,
   contrast:
     (
-      main: $light-primary-text,
+      main: $dark-primary-text,
       lighter: $dark-primary-text,
       darker: $light-primary-text,
     ),

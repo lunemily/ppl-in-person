@@ -20,6 +20,10 @@ export const sidenav = {
   bingoBoard: true,
 };
 
+export const features = {
+  useQR: true,
+};
+
 export const environment = {
   production: false,
 };

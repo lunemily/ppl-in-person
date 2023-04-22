@@ -3,7 +3,7 @@ import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Challenger } from '../models/challenger';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ChallengerService } from '../services/challenger.service';
-import { DataService } from '../services/static-data.service';
+import { features } from '../constants.data';
 
 export interface DialogData {
   previousName: string;
@@ -29,11 +29,14 @@ export class ChallengerConsoleComponent implements OnInit {
 
   leaderData: JSON;
 
-  constructor(public dialog: MatDialog, private challengerService: ChallengerService) {}
+  useQR: boolean;
+
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.showCamera = false;
     this.myAngularxQrCode = `https://paxpokemonleague.net/qr/?challenger=${this.challenger.id}`;
+    this.useQR = features.useQR;
   }
 
   enqueue(): void {

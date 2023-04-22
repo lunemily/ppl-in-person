@@ -13,8 +13,15 @@ import { DataService } from '../services/static-data.service';
 export class SidenavComponent implements OnInit {
   @Output('closeSidenav') callCloseSidenav: EventEmitter<any> = new EventEmitter();
   pplSettings: PPLSettings;
+  isMobileResolution: boolean;
 
-  constructor(private authenticationService: AuthenticationService, private dataService: DataService) {}
+  constructor(private authenticationService: AuthenticationService, private dataService: DataService) {
+    if (window.innerWidth < 768) {
+      this.isMobileResolution = true;
+    } else {
+      this.isMobileResolution = false;
+    }
+  }
 
   ngOnInit(): void {
     this.loadPPLSettings();
@@ -27,7 +34,9 @@ export class SidenavComponent implements OnInit {
   }
 
   closeSidenav() {
-    this.callCloseSidenav.emit();
+    if (this.isMobileResolution) {
+      this.callCloseSidenav.emit();
+    }
   }
 
   openChallenging() {
