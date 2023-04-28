@@ -73,7 +73,6 @@ export class LeaderService {
       challengerWin: win,
       badgeAwarded: badge,
     };
-    console.log(body);
 
     this.http.post<any>(url, body, this.httpOptions).subscribe(
       (data) => {

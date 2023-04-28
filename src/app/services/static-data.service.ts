@@ -8,7 +8,7 @@ import { PPLSettings } from '../models/settings';
 import { AuthenticationService } from './authentication.service';
 import { MessageService } from './message.service';
 
-import { sidenav } from '../constants.data';
+import { sidenav, battleFormatsMap, leaderTypesMap } from '../constants.data';
 
 @Injectable({
   providedIn: 'root',
@@ -42,7 +42,8 @@ export class DataService {
             badgeName: response[leaderId].badgeName as string,
             bio: response[leaderId].bio as string,
             tagline: response[leaderId].tagline as string,
-            leaderType: response[leaderId].leaderType as number,
+            leaderType: this.getLeaderTypesFromBitmask(response[leaderId].leaderType),
+            battleFormat: this.getBattleFormatsFromBitmask(response[leaderId].battleFormat),
           };
           leaders.push(leader);
           // Store individual leader data
@@ -154,6 +155,34 @@ export class DataService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
+  }
+
+  /**
+   * Convert bitmask for leaderTypes
+   */
+  private getLeaderTypesFromBitmask(bitmask: number): number[] {
+    let leaderTypes = [];
+    for (let key of Object.keys(leaderTypesMap)) {
+      if (bitmask & leaderTypesMap[key]) {
+        leaderTypes.push(leaderTypesMap[key]);
+      }
+    }
+
+    return leaderTypes;
+  }
+
+  /**
+   * Convert bitmask for leaderTypes
+   */
+  private getBattleFormatsFromBitmask(bitmask: number): number[] {
+    let battleFormats = [];
+    for (let key of Object.keys(battleFormatsMap)) {
+      if (bitmask & battleFormatsMap[key]) {
+        battleFormats.push(battleFormatsMap[key]);
+      }
+    }
+
+    return battleFormats;
   }
 
   constructor(

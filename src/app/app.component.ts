@@ -19,13 +19,7 @@ export class AppComponent {
     }
   }
 
-  ngOnInit(): void {
-    // this.dataService.getLeaderData().subscribe((data) => {
-    //   console.log('Leader data:');
-    //   console.log(data);
-    //   return data;
-    // });
-  }
+  ngOnInit(): void {}
 
   toggleSidenav(): void {
     this.sidenav.toggle();

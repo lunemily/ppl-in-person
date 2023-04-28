@@ -34,7 +34,7 @@
 
     <a mat-button color="primary" href="{{ feedbackSurveyUrl }}">Let us know what you thought!</a>
   </div>
-  <div *ngIf="championSurveyUrl" id="survey-container">
+  <div *ngIf="championSurveyUrl" id="survey-container" (ngInit)="shootConfetti()">
     <mat-divider></mat-divider>
     <h4>Congrats Champion!</h4>
 

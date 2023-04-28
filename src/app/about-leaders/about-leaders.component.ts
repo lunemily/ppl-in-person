@@ -16,7 +16,7 @@ export class AboutLeadersComponent implements OnInit {
   ngOnInit(): void {
     this.dataService.getLeaderData().subscribe((data) => {
       this.leaderData = data;
-      console.log(this.leaderData);
+      console.debug(this.leaderData);
     });
   }
 

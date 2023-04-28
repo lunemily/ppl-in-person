@@ -1,9 +1,21 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Inject,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  Renderer2,
+  SimpleChanges,
+} from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Challenger } from 'src/app/models/challenger';
 import { Leader } from 'src/app/models/leader';
 import { Person } from 'src/app/models/person';
 import { ChallengerService } from 'src/app/services/challenger.service';
+import * as confetti from 'canvas-confetti';
 
 export interface DialogData {
   previousName: string;
@@ -15,7 +27,7 @@ export interface DialogData {
   templateUrl: './name.component.html',
   styleUrls: ['./name.component.scss'],
 })
-export class NameComponent implements OnInit {
+export class NameComponent implements OnInit, OnChanges {
   @Input() leader: Leader;
   @Input() challenger: Challenger;
   @Input() person: Person;
@@ -24,7 +36,20 @@ export class NameComponent implements OnInit {
   @Input() feedbackSurveyUrl: string;
   @Input() championSurveyUrl: string;
 
-  constructor(public dialog: MatDialog, private challengerService: ChallengerService) {}
+  @Output('ngInit') initEvent: EventEmitter<any> = new EventEmitter();
+
+  constructor(
+    public dialog: MatDialog,
+    private challengerService: ChallengerService,
+    private renderer2: Renderer2,
+    private elementRef: ElementRef
+  ) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.championSurveyUrl) {
+      this.shootConfetti();
+    }
+  }
 
   ngOnInit(): void {}
 
@@ -38,7 +63,42 @@ export class NameComponent implements OnInit {
       this.challengerService.setChallengerName(this.challenger.id, this.newName);
     });
   }
+
+  shootConfetti(): void {
+    const canvas = this.renderer2.createElement('canvas');
+
+    this.renderer2.appendChild(this.elementRef.nativeElement, canvas);
+
+    const myConfetti = confetti.create(canvas, {
+      resize: true, // will fit all screen sizes
+    });
+
+    // 3 instances to increase realism
+    myConfetti({
+      shapes: ['square'],
+      particleCount: 150,
+      spread: 90,
+      ticks: 400,
+    });
+
+    myConfetti({
+      shapes: ['square'],
+      particleCount: 150,
+      spread: 130,
+      ticks: 400,
+    });
+
+    myConfetti({
+      shapes: ['square'],
+      particleCount: 150,
+      spread: 160,
+      ticks: 400,
+      startVelocity: 20,
+    });
+  }
 }
+
+// Separate component for the name dialog
 
 @Component({
   selector: 'set-name-dialog',

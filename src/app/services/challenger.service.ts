@@ -77,14 +77,12 @@ export class ChallengerService {
       map((response) => {
         return response['bingoBoard'].map(function (rawRow: []) {
           let row: [] = rawRow;
-          // console.log(row);
           return row.map(function (rawColumn: {}) {
             let intermediateColumn = Object.entries(rawColumn)[0];
             let column = {
               id: intermediateColumn[0] === '' ? 'missingno' : intermediateColumn[0],
               earned: intermediateColumn[1],
             };
-            console.log(column);
             return column;
           }, []);
         }, []);
@@ -97,7 +95,7 @@ export class ChallengerService {
   setChallengerName(id: string, displayName: string): void {
     const url = `${api.serverUrl}/challenger/${id}`;
 
-    console.log("Setting user's name to: " + displayName);
+    console.info("Setting user's name to: " + displayName);
 
     let display: string = displayName;
 

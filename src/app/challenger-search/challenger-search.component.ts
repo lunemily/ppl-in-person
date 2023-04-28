@@ -41,7 +41,7 @@ export class ChallengerSearchComponent implements OnInit {
 
   enqueue(): void {
     let challengerId = this.getChallengerIdByDisplayName(this.searchValue);
-    console.log('enqueueing challenger id: ' + challengerId);
+    console.info('enqueueing challenger id: ' + challengerId);
     this.leaderService.enqueueChallenger(this.leaderId, challengerId);
   }
 
