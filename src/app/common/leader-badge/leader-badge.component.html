@@ -1,31 +1,36 @@
 <div class="entry background-primary">
-  <div *ngIf="leader.bio" class="portraits-and-badges">
-    <div *ngIf="!leader.champion">
+  <div class="portraits-and-badges">
+    <!-- <div>
       <img class="badge" alt="{{ leader.displayName }}" src="assets/images/badges/{{ leader.leaderId }}.png" />
-    </div>
+    </div> -->
     <div>
       <img class="portrait" alt="{{ leader.displayName }}" src="assets/images/portraits/{{ leader.leaderId }}.png" />
     </div>
-    <div *ngIf="!leader.champion">
+    <!-- <div *ngIf="!leader.champion">
       <img class="tera badge" alt="{{ leader.displayName }}" src="assets/images/teras/{{ leader.leaderId }}.png" />
-    </div>
+    </div> -->
   </div>
-  <div *ngIf="!leader.bio" class="portraits-and-badges">
+  <!-- <div *ngIf="!leader.bio" class="portraits-and-badges">
     <div>
       <img class="portrait" alt="{{ leader.displayName }}" src="assets/images/portraits/{{ leader.leaderId }}.png" />
     </div>
     <div *ngIf="!leader.champion">
       <img class="badge" alt="{{ leader.displayName }}" src="assets/images/badges/{{ leader.leaderId }}.png" />
     </div>
-  </div>
+  </div> -->
   <div class="leader-data">
-    <div class="name-and-badge">
+    <div class="name-and-badge details background-accent">
       <h3>{{ leader.displayName }}</h3>
-      <h3 *ngIf="!leader.champion">{{ leader.badgeName }}</h3>
+      <!-- <h3 *ngIf="!leader.champion">{{ leader.badgeName }}</h3> -->
     </div>
-    <div *ngIf="leader.bio" class="details background-accent">
+    <!-- <div *ngIf="leader.bio" class="details background-accent">
       <p [innerHTML]="leader.bio"></p>
       <p [innerHTML]="leader.tagline"></p>
-    </div>
+    </div> -->
+  </div>
+  <div class="buttons">
+    <span *ngFor="let battleFormat of battleFormats" class="callout {{ battleFormat.name }}"
+      >&nbsp;{{ battleFormat.name }}&nbsp;</span
+    >
   </div>
 </div>

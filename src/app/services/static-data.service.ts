@@ -21,7 +21,7 @@ export class DataService {
   getLeaderData(): Observable<Leader[]> {
     let localLeaderList = localStorage.getItem('leader-data-list');
     if (localLeaderList) {
-      console.info('Leader data present.\nReturning...\n');
+      console.info('Leader data present.\nReturning from local storage...\n');
       return this.returnLocalLeaderData();
     } else {
       console.warn('Leader data not stored.\nFetching...\n');

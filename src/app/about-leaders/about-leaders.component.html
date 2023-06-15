@@ -1,8 +1,35 @@
 <mat-card id="about-card">
-  <div id="badges-earned">
-    <h2 class="left">About the leaders!</h2>
-    <div *ngFor="let leader of leaderData">
-      <app-leader-badge [leader]="leader"></app-leader-badge>
+  <div>
+    <h1>About the leaders!</h1>
+    <h2>Casual Leaders</h2>
+    <div id="casual-leaders" class="difficulty-section">
+      <div *ngFor="let leader of leaderData.casual">
+        <app-leader-badge [leader]="leader"></app-leader-badge>
+      </div>
+    </div>
+    <h2>Intermediate Leaders</h2>
+    <div id="intermediate-leaders" class="difficulty-section">
+      <div *ngFor="let leader of leaderData.intermediate">
+        <app-leader-badge [leader]="leader"></app-leader-badge>
+      </div>
+    </div>
+    <h2>Veteran Leaders</h2>
+    <div id="veteran-leaders" class="difficulty-section">
+      <div *ngFor="let leader of leaderData.veteran">
+        <app-leader-badge [leader]="leader"></app-leader-badge>
+      </div>
+    </div>
+    <h2>Elite Leaders</h2>
+    <div id="elite-leaders" class="difficulty-section">
+      <div *ngFor="let leader of leaderData.elite">
+        <app-leader-badge [leader]="leader"></app-leader-badge>
+      </div>
+    </div>
+    <h2>Champions</h2>
+    <div id="champion-leaders" class="difficulty-section">
+      <div *ngFor="let leader of leaderData.champion">
+        <app-leader-badge [leader]="leader"></app-leader-badge>
+      </div>
     </div>
   </div>
   <div class="example-button-container">

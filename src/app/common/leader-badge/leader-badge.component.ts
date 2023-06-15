@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { battleFormatsReverseMap } from 'src/app/constants.data';
 import { Leader } from 'src/app/models/leader';
 
 @Component({
@@ -8,8 +9,21 @@ import { Leader } from 'src/app/models/leader';
 })
 export class LeaderBadgeComponent implements OnInit {
   @Input() leader: Leader;
+  battleFormats: {
+    id: number;
+    name: string;
+  }[];
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Populate battleformats
+    this.battleFormats = [];
+    this.leader.battleFormat.forEach((format) => {
+      this.battleFormats.push({
+        id: format,
+        name: battleFormatsReverseMap[format],
+      });
+    });
+  }
 }

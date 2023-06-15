@@ -12,6 +12,7 @@ import { DataService } from '../services/static-data.service';
 })
 export class SidenavComponent implements OnInit {
   @Output('closeSidenav') callCloseSidenav: EventEmitter<any> = new EventEmitter();
+  @Output('openSidenav') callOpenSidenav: EventEmitter<any> = new EventEmitter();
   pplSettings: PPLSettings;
   isMobileResolution: boolean;
 
@@ -30,12 +31,20 @@ export class SidenavComponent implements OnInit {
   loadPPLSettings() {
     this.dataService.getPPLSettings().subscribe((pplSettings) => {
       this.pplSettings = pplSettings;
+      // Now that the sidenav is loaded, open it if we're on desktop.
+      this.openSidenav();
     });
   }
 
   closeSidenav() {
     if (this.isMobileResolution) {
       this.callCloseSidenav.emit();
+    }
+  }
+
+  openSidenav() {
+    if (!this.isMobileResolution) {
+      this.callOpenSidenav.emit();
     }
   }
 
