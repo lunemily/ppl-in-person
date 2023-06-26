@@ -19,7 +19,7 @@ export class LeaderBadgeComponent implements OnInit {
   ngOnInit(): void {
     // Populate battleformats
     this.battleFormats = [];
-    this.leader.battleFormat.forEach((format) => {
+    this.leader.battleFormat?.forEach((format) => {
       this.battleFormats.push({
         id: format,
         name: battleFormatsReverseMap[format],

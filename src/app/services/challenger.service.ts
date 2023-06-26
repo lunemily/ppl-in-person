@@ -24,7 +24,7 @@ export class ChallengerService {
 
   /** GET challenger from the server */
   getChallenger(id: string): Observable<Challenger> {
-    const url = `${api.serverUrl}/challenger/${id}`;
+    const url = `${api.serverUrl}/api/v2/challenger/${id}`;
 
     let response =
       '{"id":"433c4b55a17da084","displayName":"lunelleast","queuesEntered":[],"badgesEarned":[],"bingoBoard":[["9ddbf474802e","82ee137cec0a","505ae7cfcf50","3f2fdd84c972","b4ec415c761a"],["f27c016d37c9","94660e8e0cbc","5aa97464ba52","70022f182dab","354d81a64586"],["e4ce20138ea7","c881ce67b0b9","","6f6987c7fcb5","d13b6a996d12"],["694e553197d0","7944e32f799a","116e1c1e242b","4fc4e2f3e847","07e84bcc07cf"],["49b1a6453903","eb604a2a0eee","0f50d12ba4cc","a9f3e51dffc8","aed5dc645d93"]],"championDefeated":false}';
@@ -66,7 +66,7 @@ export class ChallengerService {
   }
 
   getBingoBoard(id: string): Observable<any> {
-    const url = `${api.serverUrl}/challenger/${id}/bingoBoard`;
+    const url = `${api.serverUrl}/api/v2/challenger/${id}/bingoBoard`;
     // Transform each object to {id: "value", earned: "bool"}
 
     let response =
@@ -93,20 +93,20 @@ export class ChallengerService {
   }
 
   setChallengerName(id: string, displayName: string): void {
-    const url = `${api.serverUrl}/challenger/${id}`;
+    const url = `${api.serverUrl}/api/v2/challenger/${id}`;
 
     console.info("Setting user's name to: " + displayName);
 
     let display: string = displayName;
 
-    this.http.post<any>(url, { displayName: displayName }, this.httpOptions).subscribe((data) => {
+    this.http.put<any>(url, { displayName: displayName }, this.httpOptions).subscribe((data) => {
       display = data.id;
       window.location.reload();
     });
   }
 
   enqueueLeader(challengerId: string, leaderId: string): void {
-    const url = `${api.serverUrl}/challenger/${challengerId}/enqueue/${leaderId}`;
+    const url = `${api.serverUrl}/api/v2/challenger/${challengerId}/enqueue/${leaderId}`;
 
     this.http.post<any>(url, {}, this.httpOptions).subscribe(
       (data) => {

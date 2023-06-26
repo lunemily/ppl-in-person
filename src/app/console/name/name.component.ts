@@ -78,23 +78,26 @@ export class NameComponent implements OnInit, OnChanges {
       shapes: ['square'],
       particleCount: 150,
       spread: 90,
-      ticks: 400,
+      ticks: 300,
     });
 
     myConfetti({
       shapes: ['square'],
       particleCount: 150,
       spread: 130,
-      ticks: 400,
+      ticks: 300,
     });
 
     myConfetti({
       shapes: ['square'],
       particleCount: 150,
       spread: 160,
-      ticks: 400,
+      ticks: 300,
       startVelocity: 20,
     });
+    setTimeout(() => {
+      this.renderer2.removeChild(this.elementRef.nativeElement, canvas);
+    }, 3000);
   }
 }
 

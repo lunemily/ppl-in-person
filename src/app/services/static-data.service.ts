@@ -30,7 +30,7 @@ export class DataService {
   }
 
   private fetchAndReturnLeaderData(): Observable<Leader[]> {
-    const url = `${api.serverUrl}/allleaderdata`;
+    const url = `${api.serverUrl}/api/v2/allleaderdata`;
 
     return this.http.get(url, this.httpOptions).pipe(
       map((response: JSON) => {
@@ -94,7 +94,7 @@ export class DataService {
   }
 
   getPPLSettings(): Observable<PPLSettings> {
-    const url = `${api.serverUrl}/appsettings`;
+    const url = `${api.serverUrl}/api/v2/appsettings`;
 
     return this.http.get(url, this.httpOptions).pipe(
       map((response: JSON) => {

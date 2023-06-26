@@ -26,7 +26,7 @@ export class LeaderService {
 
   /** GET leader from the server */
   getLeader(id: string): Observable<Leader> {
-    const url = `${api.serverUrl}/leader/${id}`;
+    const url = `${api.serverUrl}/api/v2/leader/${id}`;
 
     let reponse =
       '{"loginId":"73986cb938a84d6d","leaderId":"f00c087d1a2c","leaderName":"Lord Fingler, the Artiste","badgeName":"Artiste Badge","winCount":0,"lossCount":69,"badgesAwarded":69,"queue":[],"onHold":[]}';
@@ -68,7 +68,7 @@ export class LeaderService {
   }
 
   reportBattle(leaderId: string, challengerId: string, win: boolean, badge: boolean): void {
-    const url = `${api.serverUrl}/leader/${leaderId}/report/${challengerId}`;
+    const url = `${api.serverUrl}/api/v2/leader/${leaderId}/report/${challengerId}`;
     let body = {
       challengerWin: win,
       badgeAwarded: badge,
@@ -88,7 +88,7 @@ export class LeaderService {
   }
 
   getChallengers(leaderId: string): Observable<Challenger[]> {
-    const url = `${api.serverUrl}/leader/${leaderId}/allchallengers`;
+    const url = `${api.serverUrl}/api/v2/leader/${leaderId}/allchallengers`;
 
     // return of(challengers);
     // BEGIN: real data
@@ -113,7 +113,7 @@ export class LeaderService {
   }
 
   enqueueChallenger(leaderId: string, challengerId: string): void {
-    const url = `${api.serverUrl}/leader/${leaderId}/enqueue/${challengerId}`;
+    const url = `${api.serverUrl}/api/v2/leader/${leaderId}/enqueue/${challengerId}`;
 
     this.http.post<any>(url, {}, this.httpOptions).subscribe(
       (data) => {
@@ -129,7 +129,7 @@ export class LeaderService {
   }
 
   holdChallenger(leaderId: string, challengerId: string): void {
-    const url = `${api.serverUrl}/leader/${leaderId}/hold/${challengerId}`;
+    const url = `${api.serverUrl}/api/v2/leader/${leaderId}/hold/${challengerId}`;
 
     this.http.post<any>(url, {}, this.httpOptions).subscribe(
       (data) => {
@@ -145,7 +145,7 @@ export class LeaderService {
   }
 
   unholdChallenger(leaderId: string, challengerId: string, placeAtFront: boolean): void {
-    const url = `${api.serverUrl}/leader/${leaderId}/unhold/${challengerId}`;
+    const url = `${api.serverUrl}/api/v2/leader/${leaderId}/unhold/${challengerId}`;
 
     this.http.post<any>(url, { placeAtFront: placeAtFront }, this.httpOptions).subscribe(
       (data) => {
@@ -161,9 +161,9 @@ export class LeaderService {
   }
 
   removeChallenger(leaderId: string, challengerId: string): void {
-    const url = `${api.serverUrl}/leader/${leaderId}/dequeue/${challengerId}`;
+    const url = `${api.serverUrl}/api/v2/leader/${leaderId}/dequeue/${challengerId}`;
 
-    this.http.post<any>(url, {}, this.httpOptions).subscribe(
+    this.http.delete<any>(url, this.httpOptions).subscribe(
       (data) => {
         window.location.reload();
       },
