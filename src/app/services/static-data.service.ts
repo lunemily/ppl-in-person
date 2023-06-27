@@ -43,7 +43,7 @@ export class DataService {
             bio: response[leaderId].bio as string,
             tagline: response[leaderId].tagline as string,
             leaderType: this.getLeaderTypesFromBitmask(response[leaderId].leaderType),
-            battleFormat: this.getBattleFormatsFromBitmask(response[leaderId].battleFormat),
+            battleFormatIds: this.getBattleFormatsFromBitmask(response[leaderId].battleFormat),
           };
           leaders.push(leader);
           // Store individual leader data

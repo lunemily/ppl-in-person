@@ -45,7 +45,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { AboutLeadersComponent } from './about-leaders/about-leaders.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ConsoleComponent } from './console/console.component';
-import { LeaderBadgeComponent } from './about-leaders/leader-badge/leader-badge.component';
+import { LeaderBadgeComponent, LeaderDetailEnqueueDialog } from './about-leaders/leader-badge/leader-badge.component';
 import { NameComponent, SetNameDialog } from './console/name/name.component';
 import { BingoBoardComponent } from './bingo-board/bingo-board.component';
 
@@ -70,6 +70,7 @@ import { BingoBoardComponent } from './bingo-board/bingo-board.component';
     AboutLeadersComponent,
     ConsoleComponent,
     LeaderBadgeComponent,
+    LeaderDetailEnqueueDialog,
     NameComponent,
     SetNameDialog,
     BingoBoardComponent,

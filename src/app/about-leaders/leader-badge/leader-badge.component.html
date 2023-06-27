@@ -1,4 +1,4 @@
-<div class="entry background-primary">
+<div (click)="showLeaderDetail()" class="entry background-primary">
   <div class="portraits-and-badges">
     <!-- <div>
       <img class="badge" alt="{{ leader.displayName }}" src="assets/images/badges/{{ leader.leaderId }}.png" />
@@ -23,13 +23,9 @@
       <h3>{{ leader.displayName }}</h3>
       <!-- <h3 *ngIf="!leader.champion">{{ leader.badgeName }}</h3> -->
     </div>
-    <!-- <div *ngIf="leader.bio" class="details background-accent">
-      <p [innerHTML]="leader.bio"></p>
-      <p [innerHTML]="leader.tagline"></p>
-    </div> -->
   </div>
   <div class="buttons">
-    <span *ngFor="let battleFormat of battleFormats" class="callout {{ battleFormat.name }}"
+    <span *ngFor="let battleFormat of leader.battleFormats" class="callout {{ battleFormat.name }}"
       >&nbsp;{{ battleFormat.name }}&nbsp;</span
     >
   </div>

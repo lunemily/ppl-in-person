@@ -1,0 +1,71 @@
+<!-- <div mat-dialog-content>
+  <p>Change your display name here:</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Display Name</mat-label>
+    <input matInput [(ngModel)]="data.newName" />
+  </mat-form-field>
+</div> -->
+<!-- <div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.newName" cdkFocusInitial>SAVE</button>
+</div> -->
+<div class="entry background-primary">
+  <div class="portraits-and-badges">
+    <div>
+      <img
+        class="badge"
+        alt="{{ data.leader.displayName }}"
+        src="assets/images/badges/{{ data.leader.leaderId }}.png"
+      />
+    </div>
+    <div>
+      <img
+        class="portrait"
+        alt="{{ data.leader.displayName }}"
+        src="assets/images/portraits/{{ data.leader.leaderId }}.png"
+      />
+    </div>
+    <div *ngIf="!data.leader.champion">
+      <img
+        class="tera badge"
+        alt="{{ data.leader.displayName }}"
+        src="assets/images/teras/{{ data.leader.leaderId }}.png"
+      />
+    </div>
+  </div>
+  <!-- <div *ngIf="!leader.bio" class="portraits-and-badges">
+    <div>
+      <img class="portrait" alt="{{ leader.displayName }}" src="assets/images/portraits/{{ leader.leaderId }}.png" />
+    </div>
+    <div *ngIf="!leader.champion">
+      <img class="badge" alt="{{ leader.displayName }}" src="assets/images/badges/{{ leader.leaderId }}.png" />
+    </div>
+  </div> -->
+  <div class="leader-data">
+    <div class="name-and-badge details background-accent">
+      <h2>{{ data.leader.displayName }}</h2>
+      <!-- <h3 *ngIf="!leader.champion">{{ leader.badgeName }}</h3> -->
+    </div>
+    <div *ngIf="data.leader.bio" class="details background-accent">
+      <p [innerHTML]="data.leader.bio"></p>
+      <p [innerHTML]="data.leader.tagline"></p>
+    </div>
+  </div>
+  <!-- <div class="buttons">
+    <span *ngFor="let battleFormat of data.leader.battleFormats" class="callout {{ battleFormat.name }}"
+      >&nbsp;{{ battleFormat.name }}&nbsp;</span
+    >
+  </div> -->
+  <mat-form-field>
+    <mat-label>Select a battle format</mat-label>
+    <mat-select [(value)]="selectedFormat">
+      <mat-option *ngFor="let battleFormat of data.leader.battleFormats" value="{{ battleFormat.id }}"
+        >{{ battleFormat.name.toUpperCase() }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">GO BACK</button>
+    <button mat-button [mat-dialog-close]="selectedFormat" cdkFocusInitial>JOIN QUEUE</button>
+  </div>
+</div>

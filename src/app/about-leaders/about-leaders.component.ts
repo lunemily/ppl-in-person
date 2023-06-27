@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Leader } from '../models/leader';
 import { DataService } from '../services/static-data.service';
 import { leaderTypesMap, leaderTypesReverseMap } from '../constants.data';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-about-leaders',
@@ -17,10 +18,14 @@ export class AboutLeadersComponent implements OnInit {
     elite: Leader[];
     champion: Leader[];
   };
+  loginId: string;
+  isLeader: boolean;
 
-  constructor(private dataService: DataService, private router: Router) {}
+  constructor(private dataService: DataService, private router: Router, private cookieService: CookieService) {}
 
   ngOnInit(): void {
+    this.loginId = this.cookieService.get('loginId');
+    this.isLeader = 'true' == this.cookieService.get('isLeader');
     this.leaderData = {
       casual: [],
       intermediate: [],
