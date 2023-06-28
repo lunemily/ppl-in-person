@@ -37,16 +37,16 @@
 }
 
 img {
-  height: 120px;
-  width: 120px;
+  height: 110px;
+  width: 110px;
   // border: 2px solid #ffffff;
   border-radius: 100%;
   margin: auto;
 }
 
 img.badge {
-  height: 90px;
-  width: 90px;
+  height: 60px;
+  width: 60px;
 }
 
 img.tera {
@@ -121,5 +121,15 @@ p {
 @media (min-width: 600px) {
   .name-and-badge {
     flex-direction: row;
+  }
+
+  img {
+    height: 120px;
+    width: 120px;
+  }
+
+  img.badge {
+    height: 90px;
+    width: 90px;
   }
 }

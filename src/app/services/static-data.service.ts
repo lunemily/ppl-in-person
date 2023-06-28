@@ -42,7 +42,7 @@ export class DataService {
             badgeName: response[leaderId].badgeName as string,
             bio: response[leaderId].bio as string,
             tagline: response[leaderId].tagline as string,
-            leaderType: this.getLeaderTypesFromBitmask(response[leaderId].leaderType),
+            leaderTypeIds: this.getLeaderTypesFromBitmask(response[leaderId].leaderType),
             battleFormatIds: this.getBattleFormatsFromBitmask(response[leaderId].battleFormat),
           };
           leaders.push(leader);
@@ -52,10 +52,10 @@ export class DataService {
 
         // Sort list of leaders
         let sortedfLeaders: Leader[] = leaders.sort((a, b) => {
-          if (a.leaderType === b.leaderType) {
+          if (a.leaderTypeIds === b.leaderTypeIds) {
             return a.displayName < b.displayName ? -1 : 1;
           } else {
-            return a.leaderType < b.leaderType ? -1 : 1;
+            return a.leaderTypeIds < b.leaderTypeIds ? -1 : 1;
           }
         });
         let sortedListOfLeaders: string[] = [];

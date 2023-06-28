@@ -35,7 +35,7 @@ export class AboutLeadersComponent implements OnInit {
     };
     this.dataService.getLeaderData().subscribe((data) => {
       data.forEach((leader) => {
-        leader.leaderType.forEach((leaderType) => {
+        leader.leaderTypeIds.forEach((leaderType) => {
           this.leaderData[leaderTypesReverseMap[leaderType]].push(leader);
         });
       });

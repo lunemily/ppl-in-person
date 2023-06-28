@@ -15,7 +15,8 @@ export interface Leader extends Person {
   art?: string;
   bio?: string;
   tagline?: string;
-  leaderType?: number[];
+  leaderTypeIds?: number[];
+  leaderTypes?: Format[];
   champion?: boolean;
   battleFormatIds?: number[];
   battleFormats?: Format[];
