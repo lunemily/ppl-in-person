@@ -1,5 +1,6 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { CookieService } from 'ngx-cookie-service';
 import { battleFormatsReverseMap, leaderTypesReverseMap } from 'src/app/constants.data';
 import { Leader } from 'src/app/models/leader';
@@ -23,7 +24,8 @@ export class LeaderBadgeComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private challengerService: ChallengerService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -58,11 +60,18 @@ export class LeaderBadgeComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result?.enqueue) {
         if (!result?.selectedFormat || !result?.selectedDifficulty) {
-          console.error('No difficulty or format selected');
+          this.snackBar.open('No difficulty or format selected', 'Dismiss', {
+            duration: 2000,
+          });
         } else {
+          this.challengerService.enqueueLeader(
+            this.loginId,
+            this.leader.id,
+            result.selectedFormat,
+            result.selectedDifficulty
+          );
         }
       }
-      // this.newName = result;
       // this.challengerService.setChallengerName(this.challenger.id, this.newName);
     });
   }

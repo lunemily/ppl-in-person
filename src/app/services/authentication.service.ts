@@ -81,7 +81,7 @@ export class AuthenticationService {
 
   /** Log a AuthenticationService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`AuthenticationService: ${message}`);
+    console.info(`AuthenticationService: ${message}`);
   }
 
   /**

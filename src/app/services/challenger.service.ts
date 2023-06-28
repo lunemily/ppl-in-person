@@ -4,15 +4,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { CookieService } from 'ngx-cookie-service';
-import { MessageService } from './message.service';
 
 import { Challenger } from '../models/challenger';
 import { Queue } from '../models/queue';
 import { AuthenticationService } from './authentication.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { api } from '../constants.data';
+import { api, battleFormatsMap, leaderTypesMap } from '../constants.data';
 import { Leader } from '../models/leader';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root',
@@ -105,18 +104,26 @@ export class ChallengerService {
     });
   }
 
-  enqueueLeader(challengerId: string, leaderId: string): void {
+  enqueueLeader(
+    challengerId: string,
+    leaderId: string,
+    battleFormat: number = battleFormatsMap.singles,
+    leaderType: number = leaderTypesMap.casual
+  ): void {
     const url = `${api.serverUrl}/api/v2/challenger/${challengerId}/enqueue/${leaderId}`;
 
-    this.http.post<any>(url, {}, this.httpOptions).subscribe(
+    let postBody = {
+      battleFormat: battleFormat,
+      battleDifficulty: leaderType,
+    };
+
+    this.http.post<any>(url, postBody, this.httpOptions).subscribe(
       (data) => {
         window.location.reload();
       },
       (error) => {
         console.error(error);
-        this.snackBar.open(error['error']['error'], 'Dismiss', {
-          duration: 2000,
-        });
+        this.messageService.showError(error['error']['error']);
       }
     );
 
@@ -130,7 +137,7 @@ export class ChallengerService {
 
   /** Log a ChallengerService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`ChallengerService: ${message}`);
+    console.info(`ChallengerService: ${message}`);
   }
 
   /**
@@ -177,8 +184,7 @@ export class ChallengerService {
   constructor(
     private http: HttpClient,
     private authenticationService: AuthenticationService,
-    private messageService: MessageService,
     private cookieService: CookieService,
-    private snackBar: MatSnackBar
+    private messageService: MessageService
   ) {}
 }

@@ -6,7 +6,6 @@ import { api } from '../constants.data';
 import { Leader } from '../models/leader';
 import { PPLSettings } from '../models/settings';
 import { AuthenticationService } from './authentication.service';
-import { MessageService } from './message.service';
 
 import { sidenav, battleFormatsMap, leaderTypesMap } from '../constants.data';
 
@@ -113,7 +112,7 @@ export class DataService {
 
   /** Log a ChallengerService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`ChallengerService: ${message}`);
+    console.info(`ChallengerService: ${message}`);
   }
 
   /**
@@ -185,9 +184,5 @@ export class DataService {
     return battleFormats;
   }
 
-  constructor(
-    private http: HttpClient,
-    private authenticationService: AuthenticationService,
-    private messageService: MessageService
-  ) {}
+  constructor(private http: HttpClient, private authenticationService: AuthenticationService) {}
 }

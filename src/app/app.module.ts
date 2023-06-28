@@ -24,7 +24,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QRCodeModule } from 'angularx-qrcode';
 
 import { AppComponent } from './app.component';
-import { MessagesComponent } from './messages/messages.component';
 import { HeaderComponent, PPLHelpDialog } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LeaderConsoleComponent } from './leader-console/leader-console.component';
@@ -52,7 +51,6 @@ import { BingoBoardComponent } from './bingo-board/bingo-board.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MessagesComponent,
     HeaderComponent,
     FooterComponent,
     LeaderConsoleComponent,

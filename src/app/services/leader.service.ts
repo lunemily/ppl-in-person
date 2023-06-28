@@ -178,7 +178,7 @@ export class LeaderService {
 
   /** Log a LeaderService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`LeaderService: ${message}`);
+    console.info(`LeaderService: ${message}`);
   }
 
   /**
