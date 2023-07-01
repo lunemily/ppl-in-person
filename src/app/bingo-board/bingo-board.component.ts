@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { pplEvent } from '../constants.data';
-import { ChallengerService } from '../services/challenger.service';
 import { BingoSpace } from '../models/bingo-space';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-bingo-board',
@@ -21,7 +21,7 @@ export class BingoBoardComponent implements OnInit {
   bingoHowToAlt =
     'How it works: Each time you battle a gym leader, win or lose you will automatically catch their Signature Pokemon on your bingo card. Successfully capture 5 in a line to complete a bingo and win a prize!';
 
-  constructor(private challengerService: ChallengerService, private cookieService: CookieService) {}
+  constructor(private apiService: ApiService, private cookieService: CookieService) {}
 
   ngOnInit(): void {
     this.loginId = this.cookieService.get('loginId');
@@ -31,7 +31,7 @@ export class BingoBoardComponent implements OnInit {
     }
   }
   getBingoBoard() {
-    this.challengerService.getBingoBoard(this.loginId).subscribe((bingoBoard) => {
+    this.apiService.getBingoBoard(this.loginId).subscribe((bingoBoard) => {
       this.bingoBoard = bingoBoard;
     });
   }

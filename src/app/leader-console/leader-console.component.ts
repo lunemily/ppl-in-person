@@ -2,7 +2,6 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Leader } from '../models/leader';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LeaderService } from '../services/leader.service';
 
 export interface DialogData {
   previousName: string;
@@ -29,7 +28,7 @@ export class LeaderConsoleComponent implements OnInit {
 
   @Input() leader: Leader;
 
-  constructor(public dialog: MatDialog, private leaderService: LeaderService) {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.showCamera = false;

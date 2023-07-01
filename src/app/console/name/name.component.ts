@@ -14,8 +14,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { Challenger } from 'src/app/models/challenger';
 import { Leader } from 'src/app/models/leader';
 import { Person } from 'src/app/models/person';
-import { ChallengerService } from 'src/app/services/challenger.service';
 import * as confetti from 'canvas-confetti';
+import { ApiService } from 'src/app/services/api.service';
 
 export interface DialogData {
   previousName: string;
@@ -40,7 +40,7 @@ export class NameComponent implements OnInit, OnChanges {
 
   constructor(
     public dialog: MatDialog,
-    private challengerService: ChallengerService,
+    private apiService: ApiService,
     private renderer2: Renderer2,
     private elementRef: ElementRef
   ) {}
@@ -60,7 +60,7 @@ export class NameComponent implements OnInit, OnChanges {
     });
     dialogRef.afterClosed().subscribe((result) => {
       this.newName = result;
-      this.challengerService.setChallengerName(this.challenger.id, this.newName);
+      this.apiService.setChallengerName(this.challenger.id, this.newName);
     });
   }
 

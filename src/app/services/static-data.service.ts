@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, shareReplay, tap } from 'rxjs';
 
-import { api } from '../constants.data';
+import { api, battleFormatsReverseMap, leaderTypesReverseMap } from '../constants.data';
 import { Leader } from '../models/leader';
 import { PPLSettings } from '../models/settings';
 import { AuthenticationService } from './authentication.service';
 
 import { sidenav, battleFormatsMap, leaderTypesMap } from '../constants.data';
+import { Format } from '../models/format';
 
 @Injectable({
   providedIn: 'root',
@@ -42,7 +43,21 @@ export class DataService {
             bio: response[leaderId].bio as string,
             tagline: response[leaderId].tagline as string,
             leaderTypeIds: this.getLeaderTypesFromBitmask(response[leaderId].leaderType),
+            leaderTypes: this.getLeaderTypesFromBitmask(response[leaderId].leaderType).map(function (typeId) {
+              let type: Format = {
+                id: typeId,
+                name: leaderTypesReverseMap[typeId],
+              };
+              return type;
+            }, []),
             battleFormatIds: this.getBattleFormatsFromBitmask(response[leaderId].battleFormat),
+            battleFormats: this.getBattleFormatsFromBitmask(response[leaderId].battleFormat).map(function (formatId) {
+              let format: Format = {
+                id: formatId,
+                name: battleFormatsReverseMap[formatId],
+              };
+              return format;
+            }, []),
           };
           leaders.push(leader);
           // Store individual leader data
@@ -159,7 +174,7 @@ export class DataService {
   /**
    * Convert bitmask for leaderTypes
    */
-  private getLeaderTypesFromBitmask(bitmask: number): number[] {
+  getLeaderTypesFromBitmask(bitmask: number): number[] {
     let leaderTypes = [];
     for (let key of Object.keys(leaderTypesMap)) {
       if (bitmask & leaderTypesMap[key]) {
@@ -173,7 +188,7 @@ export class DataService {
   /**
    * Convert bitmask for leaderTypes
    */
-  private getBattleFormatsFromBitmask(bitmask: number): number[] {
+  getBattleFormatsFromBitmask(bitmask: number): number[] {
     let battleFormats = [];
     for (let key of Object.keys(battleFormatsMap)) {
       if (bitmask & battleFormatsMap[key]) {

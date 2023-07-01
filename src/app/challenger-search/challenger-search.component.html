@@ -17,6 +17,23 @@
     challenger.displayName | uppercase
   }}</mat-option></mat-autocomplete
 >
+
+<mat-form-field>
+  <mat-label>Select a battle format</mat-label>
+  <mat-select [(value)]="selectedFormat">
+    <mat-option *ngFor="let battleFormat of leader.battleFormats" value="{{ battleFormat.id }}">{{
+      battleFormat.name.toUpperCase()
+    }}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Select a difficulty</mat-label>
+  <mat-select [(value)]="selectedDifficulty">
+    <mat-option *ngFor="let leaderType of leader.leaderTypes" value="{{ leaderType.id }}">{{
+      leaderType.name.toUpperCase()
+    }}</mat-option>
+  </mat-select>
+</mat-form-field>
 <br />
 <button mat-flat-button color="primary" (click)="enqueueQR()">
   <mat-icon>qr_code</mat-icon>

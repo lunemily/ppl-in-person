@@ -1,16 +1,15 @@
 import { Component, VERSION, OnInit, ViewChild, Input, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { BarcodeFormat } from '@zxing/library';
 
 import { BehaviorSubject } from 'rxjs';
-import { ChallengerService } from '../services/challenger.service';
-import { LeaderService } from '../services/leader.service';
 
 export interface DialogData {
   challengerId: string;
   leaderId: string;
   isLeader: boolean;
+  battleFormat: number;
+  leaderType: number;
 }
 
 @Component({
@@ -45,12 +44,7 @@ export class CameraComponent implements OnInit {
   torchAvailable$ = new BehaviorSubject<boolean>(false);
   tryHarder = false;
 
-  constructor(
-    private challengerService: ChallengerService,
-    private leaderService: LeaderService,
-    private snackBar: MatSnackBar,
-    public dialog: MatDialog
-  ) {}
+  constructor(public dialog: MatDialog) {}
 
   onCodeResult(result: string): void {
     /*
@@ -173,9 +167,11 @@ export class CameraComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((doEnqueue) => {
       if (this.leaderId && doEnqueue === 'true') {
-        this.leaderService.enqueueChallenger(this.leaderId, challengerId);
+        // this.leaderService.enqueueChallenger(this.leaderId, challengerId);
+        console.error('Camera under construction.');
       } else if (this.challengerId && doEnqueue === 'true') {
-        this.challengerService.enqueueLeader(this.challengerId, leaderId);
+        // this.challengerService.enqueueLeader(this.challengerId, leaderId);
+        console.error('Camera under construction.');
       } else {
         window.location.reload();
       }

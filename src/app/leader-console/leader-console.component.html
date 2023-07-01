@@ -11,7 +11,7 @@
 <mat-card>
   <h3>Add Challengers to your queue</h3>
   <app-camera *ngIf="showCamera" [leaderId]="leader.id"></app-camera>
-  <app-challenger-search [leaderId]="leader.id" (enqueueQR)="enqueueQR()"></app-challenger-search>
+  <app-challenger-search [leader]="leader" (enqueueQR)="enqueueQR()"></app-challenger-search>
 </mat-card>
 <mat-card *ngIf="leader.onHold.length > 0">
   <div id="leader-onHold">

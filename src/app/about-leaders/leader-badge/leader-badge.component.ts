@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { CookieService } from 'ngx-cookie-service';
 import { battleFormatsReverseMap, leaderTypesReverseMap } from 'src/app/constants.data';
 import { Leader } from 'src/app/models/leader';
-import { ChallengerService } from 'src/app/services/challenger.service';
+import { ApiService } from 'src/app/services/api.service';
 
 export interface DialogData {
   challengerId?: string;
@@ -23,7 +23,7 @@ export class LeaderBadgeComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private challengerService: ChallengerService,
+    private api: ApiService,
     private cookieService: CookieService,
     private snackBar: MatSnackBar
   ) {}
@@ -31,24 +31,6 @@ export class LeaderBadgeComponent implements OnInit {
   ngOnInit(): void {
     this.loginId = this.cookieService.get('loginId');
     this.isLeader = 'true' == this.cookieService.get('isLeader');
-    // Populate battleformats with human-readable values
-    let battleFormats = [];
-    this.leader.battleFormatIds?.forEach((format) => {
-      battleFormats.push({
-        id: format,
-        name: battleFormatsReverseMap[format],
-      });
-    });
-    this.leader.battleFormats = battleFormats;
-    // Populate leader types with human-readable values
-    let leaderTypes = [];
-    this.leader.leaderTypeIds?.forEach((format) => {
-      leaderTypes.push({
-        id: format,
-        name: leaderTypesReverseMap[format],
-      });
-    });
-    this.leader.leaderTypes = leaderTypes;
   }
 
   showLeaderDetail(): void {
@@ -64,11 +46,12 @@ export class LeaderBadgeComponent implements OnInit {
             duration: 2000,
           });
         } else {
-          this.challengerService.enqueueLeader(
+          this.api.enqueue(
             this.loginId,
-            this.leader.id,
-            result.selectedFormat,
-            result.selectedDifficulty
+            this.leader.leaderId,
+            result?.selectedFormat,
+            result?.selectedDifficulty,
+            true
           );
         }
       }
@@ -90,9 +73,7 @@ export class LeaderDetailEnqueueDialog {
   constructor(
     public dialogRef: MatDialogRef<LeaderDetailEnqueueDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {
-    console.log(data);
-  }
+  ) {}
 
   onNoClick(): void {
     this.dialogRef.close();

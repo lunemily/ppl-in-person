@@ -1,28 +1,25 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Hold } from 'src/app/models/hold';
-import { LeaderService } from 'src/app/services/leader.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-leader-hold-item',
   templateUrl: './leader-hold-item.component.html',
-  styleUrls: ['./leader-hold-item.component.scss']
+  styleUrls: ['./leader-hold-item.component.scss'],
 })
 export class LeaderHoldItemComponent implements OnInit {
   @Input() leaderId: string;
   @Input() hold: Hold;
 
-  constructor(
-    private leaderService: LeaderService,) { }
+  constructor(private apiService: ApiService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   unholdFront(challengerId: string): void {
-    this.leaderService.unholdChallenger(this.leaderId, challengerId, true)
+    this.apiService.unholdChallenger(this.leaderId, challengerId, true);
   }
 
   unholdBack(challengerId: string): void {
-    this.leaderService.unholdChallenger(this.leaderId, challengerId, false)
+    this.apiService.unholdChallenger(this.leaderId, challengerId, false);
   }
-
 }

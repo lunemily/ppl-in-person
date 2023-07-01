@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class MessageService {
   showError(errorMessage: string) {
+    console.error(errorMessage);
     this.snackBar.open(errorMessage, 'Dismiss', {
       duration: 4000,
     });

@@ -2,7 +2,6 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Challenger } from '../models/challenger';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ChallengerService } from '../services/challenger.service';
 import { features } from '../constants.data';
 
 export interface DialogData {
