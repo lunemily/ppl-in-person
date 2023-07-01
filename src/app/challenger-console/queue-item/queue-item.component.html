@@ -9,6 +9,8 @@
     <td *ngIf="!onHold" class="panel position-panel">
       <span>Position in queue:</span>
       <span id="queue-position" class="color-primary">{{ queue.position }}</span>
+      <button class="hold-button" mat-stroked-button (click)="hold()">HOLD</button>
+      <button class="hold-button" mat-stroked-button (click)="drop()">DROP</button>
     </td>
     <td *ngIf="onHold" class="panel position-panel">
       <span>You are on</span>

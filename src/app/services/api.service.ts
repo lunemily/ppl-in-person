@@ -102,16 +102,29 @@ export class ApiService {
         let challenger: Challenger = {
           id: id,
           displayName: response['displayName'],
-          queuesEntered: response['queuesEntered'].reduce(function (result, item) {
-            let queue: Queue = {
-              displayName: item['leaderName'],
-              position: item['position'] + 1,
-              leaderId: item['leaderId'],
-              // badgeName: data[item['leaderId']]['badgeName'],
-            };
-            result.push(queue);
-            return result;
-          }, []),
+          queuesEntered: response['queuesEntered']
+            .reduce(function (result, item) {
+              let queue: Queue = {
+                displayName: item['leaderName'],
+                position: item['position'] + 1,
+                leaderId: item['leaderId'],
+                challengerId: id,
+              };
+              result.push(queue);
+              return result;
+            }, [])
+            .concat(
+              response['queuesOnHold'].reduce(function (result, item) {
+                let queue: Queue = {
+                  displayName: item['leaderName'],
+                  position: -1,
+                  leaderId: item['leaderId'],
+                  challengerId: id,
+                };
+                result.push(queue);
+                return result;
+              }, [])
+            ),
           badgesEarned: response['badgesEarned'].map(function (item: Leader) {
             let leader: Leader = {
               leaderId: item['leaderId'],
@@ -231,7 +244,7 @@ export class ApiService {
     );
   }
 
-  hold(leaderId: string, challengerId: string, challengerInitiated: boolean = true): void {
+  holdFromQueue(leaderId: string, challengerId: string, challengerInitiated: boolean = false): void {
     const url = challengerInitiated
       ? `${api.serverUrl}/api/v2/challenger/${challengerId}/hold/${leaderId}`
       : `${api.serverUrl}/api/v2/leader/${leaderId}/hold/${challengerId}`;
@@ -276,8 +289,10 @@ export class ApiService {
     );
   }
 
-  removeChallenger(leaderId: string, challengerId: string): void {
-    const url = `${api.serverUrl}/api/v2/leader/${leaderId}/dequeue/${challengerId}`;
+  removeFromQueue(leaderId: string, challengerId: string, challengerInitiated: boolean = false): void {
+    const url = challengerInitiated
+      ? `${api.serverUrl}/api/v2/challenger/${challengerId}/dequeue/${leaderId}`
+      : `${api.serverUrl}/api/v2/leader/${leaderId}/dequeue/${challengerId}`;
 
     this.http.delete<any>(url, this.httpOptions).subscribe(
       (data) => {

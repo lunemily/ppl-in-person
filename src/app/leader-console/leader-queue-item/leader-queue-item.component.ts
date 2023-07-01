@@ -26,11 +26,11 @@ export class LeaderQueueItemComponent implements OnInit {
   ngOnInit(): void {}
 
   holdChallenger(challengerId: string): void {
-    this.apiService.hold(this.leaderId, challengerId);
+    this.apiService.holdFromQueue(this.leaderId, challengerId);
   }
 
   removeChallenger(challengerId: string): void {
-    this.apiService.removeChallenger(this.leaderId, challengerId);
+    this.apiService.removeFromQueue(this.leaderId, challengerId);
   }
 
   reportBattle(): void {
