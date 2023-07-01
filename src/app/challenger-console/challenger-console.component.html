@@ -2,8 +2,9 @@
   <div id="queues-entered">
     <h2 class="left">Queues Entered</h2>
     <br />
-    <div *ngFor="let queue of challenger.queuesEntered" class="queue-container">
+    <div *ngFor="let queue of challenger.queuesEntered; last as last" class="queue-container">
       <app-queue-item [queue]="queue"></app-queue-item>
+      <mat-divider *ngIf="!last"></mat-divider>
     </div>
     <br />
     <div id="qr-section" *ngIf="useQR">

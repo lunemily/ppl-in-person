@@ -109,6 +109,14 @@ export class ApiService {
                 position: item['position'] + 1,
                 leaderId: item['leaderId'],
                 challengerId: id,
+                battleFormat: {
+                  id: item['format'],
+                  name: battleFormatsReverseMap[item['format']],
+                },
+                battleDifficulty: {
+                  id: item['difficulty'],
+                  name: leaderTypesReverseMap[item['difficulty']],
+                },
               };
               result.push(queue);
               return result;
@@ -120,6 +128,14 @@ export class ApiService {
                   position: -1,
                   leaderId: item['leaderId'],
                   challengerId: id,
+                  battleFormat: {
+                    id: item['format'],
+                    name: battleFormatsReverseMap[item['format']],
+                  },
+                  battleDifficulty: {
+                    id: item['difficulty'],
+                    name: leaderTypesReverseMap[item['difficulty']],
+                  },
                 };
                 result.push(queue);
                 return result;
