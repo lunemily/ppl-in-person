@@ -11,5 +11,6 @@ export interface Queue {
   badgeArt?: string;
   battleFormat?: Format;
   battleDifficulty?: Format;
+  battleCode?: string;
   // badgesEarned?: number;
 }

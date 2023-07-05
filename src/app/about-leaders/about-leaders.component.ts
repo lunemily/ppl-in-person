@@ -39,14 +39,18 @@ export class AboutLeadersComponent implements OnInit {
       elite: [],
       champion: [],
     };
-    this.dataService.getLeaderData().subscribe((data) => {
-      data.forEach((leader) => {
-        leader.leaderTypeIds.forEach((leaderType) => {
-          this.leaderData[leaderTypesReverseMap[leaderType]].push(leader);
+
+    this.apiService.getOpenQueues().subscribe((openQueues) => {
+      this.dataService.getLeaderData().subscribe((data) => {
+        data.forEach((leader) => {
+          leader.queueOpen = openQueues[leader.leaderId];
+          leader.leaderTypeIds.forEach((leaderType) => {
+            this.leaderData[leaderTypesReverseMap[leaderType]].push(leader);
+          });
         });
       });
+      console.warn(this.leaderData);
     });
-    this.apiService.getOpenQueues();
   }
 
   refreshData(): void {

@@ -1,4 +1,4 @@
-<div class="background-primary">
+<div [class.background-primary]="data.leader.queueOpen" [class.background-gray]="!data.leader.queueOpen">
   <div class="portraits-and-badges">
     <div>
       <img
@@ -32,7 +32,7 @@
     </div>
   </div>
   <br />
-  <div *ngIf="data.challengerId" id="challenger-form">
+  <div *ngIf="data.challengerId && data.leader.queueOpen" id="challenger-form">
     <mat-form-field>
       <mat-label>Select a battle format</mat-label>
       <mat-select [(value)]="selectedFormat">

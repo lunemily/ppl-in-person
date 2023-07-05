@@ -27,6 +27,13 @@ export class ApiService {
     // headers: new HttpHeaders({ Authorization: `Bearer ${this.cookieService.get('token')}` }),
   };
 
+  // UNAUTHENTICATED FUNCTIONS
+  getOpenQueues(): Observable<any> {
+    const url = `${api.serverUrl}/api/v2/openqueues`;
+
+    return this.http.get<any>(url);
+  }
+
   // GET OBJECT(S) FUNCTIONS
   getLeader(id: string): Observable<Leader> {
     const url = `${api.serverUrl}/api/v2/leader/${id}`;
@@ -68,6 +75,7 @@ export class ApiService {
             };
             return queue;
           }, []),
+          queueOpen: response['queueOpen'],
           onHold: response['onHold'].map(function (item) {
             let hold: Hold = {
               challengerId: item['challengerId'],
@@ -185,8 +193,7 @@ export class ApiService {
     // END: real data
   }
 
-  // CAHLLENGER FUNCTIONS
-
+  // CHALLENGER FUNCTIONS
   setChallengerName(id: string, displayName: string): void {
     const url = `${api.serverUrl}/api/v2/challenger/${id}`;
 
@@ -224,6 +231,32 @@ export class ApiService {
       }),
       tap((_) => console.debug(`fetched bingoBoard for challenger id=${id}`)),
       catchError(this.handleError<Challenger>(`bingoBoard id=${id}`))
+    );
+  }
+
+  // LEADER FUNCTIONS
+  openQueue(loginId: string, duoMode: boolean = false): void {
+    const url = `${api.serverUrl}/api/v2/leader/${loginId}/openqueue`;
+
+    this.http.post<any>(url, { duoMode: duoMode }, this.httpOptions).subscribe(
+      (data) => {
+        window.location.reload();
+      },
+      (error) => {
+        this.messageService.showError(error['error']['error']);
+      }
+    );
+  }
+  closeQueue(loginId: string): void {
+    const url = `${api.serverUrl}/api/v2/leader/${loginId}/closequeue`;
+
+    this.http.post<any>(url, {}, this.httpOptions).subscribe(
+      (data) => {
+        window.location.reload();
+      },
+      (error) => {
+        this.messageService.showError(error['error']['error']);
+      }
     );
   }
 

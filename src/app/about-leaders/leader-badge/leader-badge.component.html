@@ -1,4 +1,9 @@
-<div (click)="showLeaderDetail()" class="entry background-primary">
+<div
+  (click)="showLeaderDetail()"
+  class="entry"
+  [class.background-primary]="leader.queueOpen"
+  [class.background-gray]="!leader.queueOpen"
+>
   <div class="portraits-and-badges">
     <!-- <div>
       <img class="badge" alt="{{ leader.displayName }}" src="assets/images/badges/{{ leader.leaderId }}.png" />

@@ -1,0 +1,9 @@
+<div *ngIf="leader.queueOpen">
+  <span>Your queue is open </span>
+  <button mat-flat-button color="primary" (click)="closeQueue()">CLOSE</button>
+</div>
+<div *ngIf="!leader.queueOpen">
+  <span><mat-icon class="color-warn">warning</mat-icon> Your queue is closed </span>
+  <button mat-flat-button color="primary" (click)="openQueue()">OPEN</button>
+</div>
+<br />

@@ -222,6 +222,10 @@ $theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
   color: mat-color($theme-accent);
 }
 
+.color-warn {
+  color: mat-color($theme-warn);
+}
+
 .background-primary {
   background-color: mat-color($theme-primary);
   color: mat-color($theme-primary, default-contrast);
@@ -230,6 +234,10 @@ $theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
 .background-accent {
   background-color: mat-color($theme-accent);
   color: mat-color($theme-accent, default-contrast);
+}
+
+.background-gray {
+  background-color: gray;
 }
 
 // Specific component overrides, pieces that are not in line with the general theming

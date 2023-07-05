@@ -20,4 +20,5 @@ export interface Leader extends Person {
   champion?: boolean;
   battleFormatIds?: number[];
   battleFormats?: Format[];
+  queueOpen?: boolean;
 }
