@@ -4,21 +4,21 @@
       <img
         class="badge"
         alt="{{ data.leader.displayName }}"
-        src="assets/images/badges/{{ data.leader.leaderId }}.png"
+        src="{{ data.url }}/static/badge/{{ data.leader.leaderId }}.png"
       />
     </div>
     <div>
       <img
         class="portrait"
         alt="{{ data.leader.displayName }}"
-        src="assets/images/portraits/{{ data.leader.leaderId }}.png"
+        src="{{ data.url }}/static/profiles/{{ data.leader.leaderId }}.png"
       />
     </div>
     <div *ngIf="!data.leader.champion">
       <img
         class="tera badge"
         alt="{{ data.leader.displayName }}"
-        src="assets/images/teras/{{ data.leader.leaderId }}.png"
+        src="{{ data.url }}/static/bingo/{{ data.leader.leaderId }}.png"
       />
     </div>
   </div>

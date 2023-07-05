@@ -4,6 +4,7 @@ import { Leader } from '../models/leader';
 import { DataService } from '../services/static-data.service';
 import { leaderTypesMap, leaderTypesReverseMap } from '../constants.data';
 import { CookieService } from 'ngx-cookie-service';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-about-leaders',
@@ -21,7 +22,12 @@ export class AboutLeadersComponent implements OnInit {
   loginId: string;
   isLeader: boolean;
 
-  constructor(private dataService: DataService, private router: Router, private cookieService: CookieService) {}
+  constructor(
+    private dataService: DataService,
+    private router: Router,
+    private cookieService: CookieService,
+    private apiService: ApiService
+  ) {}
 
   ngOnInit(): void {
     this.loginId = this.cookieService.get('loginId');
@@ -40,6 +46,7 @@ export class AboutLeadersComponent implements OnInit {
         });
       });
     });
+    this.apiService.getOpenQueues();
   }
 
   refreshData(): void {

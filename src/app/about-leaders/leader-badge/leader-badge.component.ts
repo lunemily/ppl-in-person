@@ -2,11 +2,12 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CookieService } from 'ngx-cookie-service';
-import { battleFormatsReverseMap, leaderTypesReverseMap } from 'src/app/constants.data';
+import { api } from 'src/app/constants.data';
 import { Leader } from 'src/app/models/leader';
 import { ApiService } from 'src/app/services/api.service';
 
 export interface DialogData {
+  url: string;
   challengerId?: string;
   leader: Leader;
 }
@@ -20,6 +21,7 @@ export class LeaderBadgeComponent implements OnInit {
   loginId: string;
   isLeader: boolean;
   @Input() leader: Leader;
+  url: string;
 
   constructor(
     public dialog: MatDialog,
@@ -29,6 +31,7 @@ export class LeaderBadgeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.url = `${api.serverUrl}`;
     this.loginId = this.cookieService.get('loginId');
     this.isLeader = 'true' == this.cookieService.get('isLeader');
   }
@@ -37,7 +40,9 @@ export class LeaderBadgeComponent implements OnInit {
     const dialogRef = this.dialog.open(LeaderDetailEnqueueDialog, {
       width: '400px',
       data:
-        this.loginId && !this.isLeader ? { challengerId: this.loginId, leader: this.leader } : { leader: this.leader },
+        this.loginId && !this.isLeader
+          ? { url: this.url, challengerId: this.loginId, leader: this.leader }
+          : { url: this.url, leader: this.leader },
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result?.enqueue) {
