@@ -1,50 +1,71 @@
 <!-- This toolbar is a spacer -->
-<mat-toolbar color="primary"></mat-toolbar>
-<a
-  mat-icon-button
-  color="primary"
-  skipLocationChange
-  routerLink="/home"
-  routerLinkActive="active"
-  ariaCurrentWhenActive="page"
-  (click)="closeSidenav()"
->
-  <mat-icon>home</mat-icon>
-  <span>Home</span>
-</a>
-<a
-  *ngIf="sidenavFlags.trainerCard"
-  mat-icon-button
-  color="primary"
-  skipLocationChange
-  routerLink="/about"
-  routerLinkActive="active"
-  ariaCurrentWhenActive="page"
-  (click)="closeSidenav()"
->
-  <mat-icon>chrome_reader_mode</mat-icon>
-  <span>Trainer Card</span>
-</a>
-<button
-  *ngIf="sidenavFlags.howToChallenge"
-  mat-icon-button
-  color="primary"
-  (click)="openChallenging()"
-  aria-label="How to Challenge"
->
-  <mat-icon>videogame_asset</mat-icon>
-  <span>How to Challenge</span>
-</button>
-<button *ngIf="sidenavFlags.rules" mat-icon-button color="primary" (click)="openRules()" aria-label="PPL Rules">
-  <mat-icon>description</mat-icon>
-  <span>PPL Rules</span>
-</button>
-<button *ngIf="sidenavFlags.prizePools" mat-icon-button color="primary" (click)="openPrizes()" aria-label="Prize Pools">
-  <mat-icon>stars</mat-icon>
-  <span>Prize Pools</span>
-</button>
-<!-- <a https://discord.gg/ZGBxdVb -->
-<button mat-icon-button color="primary" (click)="logout()" aria-label="Logout">
-  <mat-icon>logout</mat-icon>
-  <span>Logout</span>
-</button>
+<div *ngIf="pplSettings">
+  <mat-toolbar color="primary"></mat-toolbar>
+  <a
+    mat-icon-button
+    color="primary"
+    skipLocationChange
+    routerLink="/home"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page"
+    (click)="closeSidenav()"
+  >
+    <mat-icon>home</mat-icon>
+    <span>Home</span>
+  </a>
+  <a
+    *ngIf="pplSettings.showTrainerCard"
+    mat-icon-button
+    color="primary"
+    skipLocationChange
+    routerLink="/about"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page"
+    (click)="closeSidenav()"
+  >
+    <mat-icon>chrome_reader_mode</mat-icon>
+    <span>Trainer Card</span>
+  </a>
+  <button
+    *ngIf="pplSettings.howToChallenge"
+    mat-icon-button
+    color="primary"
+    (click)="openChallenging()"
+    aria-label="How to Challenge"
+  >
+    <mat-icon>videogame_asset</mat-icon>
+    <span>How to Challenge</span>
+  </button>
+  <button *ngIf="pplSettings.rules" mat-icon-button color="primary" (click)="openRules()" aria-label="PPL Rules">
+    <mat-icon>description</mat-icon>
+    <span>PPL Rules</span>
+  </button>
+  <button
+    *ngIf="pplSettings.prizePools"
+    mat-icon-button
+    color="primary"
+    (click)="openPrizes()"
+    aria-label="Prize Pools"
+  >
+    <mat-icon>stars</mat-icon>
+    <span>Activities and Prizes</span>
+  </button>
+  <a
+    *ngIf="pplSettings.bingoBoard"
+    mat-icon-button
+    color="primary"
+    skipLocationChange
+    routerLink="/bingo"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page"
+    (click)="closeSidenav()"
+  >
+    <mat-icon>grid_on</mat-icon>
+    <span>Bingo Board</span>
+  </a>
+  <!-- <a https://discord.gg/ZGBxdVb -->
+  <button mat-icon-button color="primary" (click)="logout()" aria-label="Logout">
+    <mat-icon>logout</mat-icon>
+    <span>Logout</span>
+  </button>
+</div>

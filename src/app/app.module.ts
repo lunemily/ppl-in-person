@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { HttpClientModule } from '@angular/common/http';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
@@ -26,7 +25,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 
 import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages/messages.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent, PPLHelpDialog } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LeaderConsoleComponent } from './leader-console/leader-console.component';
 import {
@@ -49,6 +48,7 @@ import { ConsoleComponent } from './console/console.component';
 import { LeaderBadgeComponent } from './common/leader-badge/leader-badge.component';
 import { NameComponent, SetNameDialog } from './console/name/name.component';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { BingoBoardComponent } from './bingo-board/bingo-board.component';
 
 @NgModule({
   declarations: [
@@ -73,9 +73,10 @@ import { OverlayModule } from '@angular/cdk/overlay';
     LeaderBadgeComponent,
     NameComponent,
     SetNameDialog,
+    BingoBoardComponent,
+    PPLHelpDialog,
   ],
   imports: [
-    FlexLayoutModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatCardModule,

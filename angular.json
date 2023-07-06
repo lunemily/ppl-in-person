@@ -234,6 +234,20 @@
           "builder": "angular-cli-ghpages:deploy",
           "options": {
             "baseHref": "/ppl-in-person/",
+            "buildTarget": "ppl-site:build:east"
+          }
+        },
+        "deployWest": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/ppl-in-person/",
+            "buildTarget": "ppl-site:build:west"
+          }
+        },
+        "deployAus": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/ppl-in-person/",
             "buildTarget": "ppl-site:build:aus"
           }
         }

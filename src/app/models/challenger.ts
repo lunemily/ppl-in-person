@@ -6,4 +6,5 @@ import { Person } from './person';
 export interface Challenger extends Person {
   queuesEntered?: Queue[];
   badgesEarned?: Leader[];
+  championSurveyUrl?: string;
 }

@@ -6,7 +6,6 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 
 import { Leader } from '../models/leader';
-import { Badge } from '../models/badge';
 import { Queue } from '../models/queue';
 import { Hold } from '../models/hold';
 import { CookieService } from 'ngx-cookie-service';
@@ -58,6 +57,7 @@ export class LeaderService {
           wins: response['winCount'],
           losses: response['lossCount'],
           badgesAwarded: response['badgesAwarded'],
+          feedbackSurveyUrl: response['feedbackSurveyUrl'] ? response['feedbackSurveyUrl'] : null,
         };
         return leader;
       }),

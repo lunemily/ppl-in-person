@@ -21,6 +21,8 @@ export class NameComponent implements OnInit {
   @Input() person: Person;
   previousName: string;
   newName: string;
+  @Input() feedbackSurveyUrl: string;
+  @Input() championSurveyUrl: string;
 
   constructor(public dialog: MatDialog, private challengerService: ChallengerService) {}
 

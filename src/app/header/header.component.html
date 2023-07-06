@@ -2,5 +2,9 @@
   ><button mat-button (click)="toggleSidenav()" class="menu-button">
     <mat-icon>menu</mat-icon>
   </button>
-  <h1 color="primary">{{ title }}</h1>
+  <h3 color="primary">{{ title }}</h3>
+  <span class="spacer"></span>
+  <button mat-button class="menu-button" (click)="openHelp()">
+    <mat-icon>help</mat-icon>
+  </button>
 </mat-toolbar>
