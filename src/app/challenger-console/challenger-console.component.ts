@@ -44,4 +44,14 @@ export class ChallengerConsoleComponent implements OnInit {
       this.showCamera = false;
     }
   }
+
+  openHelp() {
+    this.dialog.open(PPLQueueHelpDialog);
+  }
 }
+
+@Component({
+  selector: 'ppl-help-dialog',
+  templateUrl: 'ppl-help-dialog.html',
+})
+export class PPLQueueHelpDialog {}

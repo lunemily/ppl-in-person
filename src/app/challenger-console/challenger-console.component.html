@@ -2,6 +2,9 @@
   <div id="queues-entered">
     <h2 class="left">Queues Entered</h2>
     <span>Visit the Trainer Card on the left to add yourself to an open queue!</span>
+    <button mat-button class="menu-button" (click)="openHelp()">
+      <mat-icon>help</mat-icon>
+    </button>
     <br />
     <div *ngFor="let queue of challenger.queuesEntered; last as last" class="queue-container">
       <app-queue-item [queue]="queue"></app-queue-item>

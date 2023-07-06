@@ -31,14 +31,14 @@ import {
   LeaderQueueItemComponent,
   ReportBattleDialog,
 } from './leader-console/leader-queue-item/leader-queue-item.component';
-import { ChallengerConsoleComponent } from './challenger-console/challenger-console.component';
+import { ChallengerConsoleComponent, PPLQueueHelpDialog } from './challenger-console/challenger-console.component';
 import { QueueItemComponent } from './challenger-console/queue-item/queue-item.component';
 import { LeaderHoldItemComponent } from './leader-console/leader-hold-item/leader-hold-item.component';
 import { CameraComponent, EnqueueDialog } from './camera/camera.component';
 import { AuthComponent } from './auth/auth.component';
 
 import { CookieService } from 'ngx-cookie-service';
-import { ChallengerSearchComponent } from './challenger-search/challenger-search.component';
+import { ChallengerSearchComponent } from './leader-console/challenger-search/challenger-search.component';
 import { HomeComponent } from './home/home.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { AboutLeadersComponent } from './about-leaders/about-leaders.component';
@@ -59,6 +59,7 @@ import { QueueMgmtComponent } from './leader-console/queue-mgmt/queue-mgmt.compo
     LeaderQueueItemComponent,
     ReportBattleDialog,
     ChallengerConsoleComponent,
+    PPLQueueHelpDialog,
     QueueItemComponent,
     LeaderHoldItemComponent,
     CameraComponent,
