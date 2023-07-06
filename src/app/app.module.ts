@@ -49,6 +49,7 @@ import { NameComponent, SetNameDialog } from './console/name/name.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { BingoBoardComponent } from './bingo-board/bingo-board.component';
 import { QueueMgmtComponent } from './leader-console/queue-mgmt/queue-mgmt.component';
+import { TrainerCardComponent } from './trainer-card/trainer-card.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { QueueMgmtComponent } from './leader-console/queue-mgmt/queue-mgmt.compo
     BingoBoardComponent,
     PPLHelpDialog,
     QueueMgmtComponent,
+    TrainerCardComponent,
   ],
   imports: [
     MatAutocompleteModule,
@@ -100,7 +102,6 @@ import { QueueMgmtComponent } from './leader-console/queue-mgmt/queue-mgmt.compo
     ClipboardModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    // NgQrScannerModule,
     QRCodeModule,
     ZXingScannerModule,
     AppRoutingModule,

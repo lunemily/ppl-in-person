@@ -34,6 +34,32 @@ export class ApiService {
     return this.http.get<any>(url);
   }
 
+  getTrainerCardForChallenger(id: string): Observable<Challenger> {
+    const url = `${api.serverUrl}/api/v2/badges/${id}`;
+
+    return this.http.get<Challenger>(url, this.httpOptions).pipe(
+      map((response) => {
+        /** Create object to return. Add in all leaders now. */
+        let challenger: Challenger = {
+          id: id,
+          displayName: response['displayName'],
+          badgesEarned: response['badgesEarned'].map(function (item: Leader) {
+            let leader: Leader = {
+              leaderId: item['leaderId'],
+              displayName: item['leaderName'],
+              badgeName: item['badgeName'],
+            };
+            return leader;
+          }, []),
+        };
+
+        return challenger;
+      }),
+      tap((_) => console.debug(`fetched challenger id=${id}`)),
+      catchError(this.handleError<Challenger>(`getChallenger id=${id}`))
+    );
+  }
+
   // GET OBJECT(S) FUNCTIONS
   getLeader(id: string): Observable<Leader> {
     const url = `${api.serverUrl}/api/v2/leader/${id}`;

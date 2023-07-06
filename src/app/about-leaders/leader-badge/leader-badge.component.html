@@ -1,8 +1,9 @@
 <div
   (click)="showLeaderDetail()"
   class="entry"
-  [class.background-primary]="leader.queueOpen"
-  [class.background-gray]="!leader.queueOpen"
+  [class.earned]="earned"
+  [class.background-primary]="leader.queueOpen || earned"
+  [class.background-gray]="!leader.queueOpen && !earned"
 >
   <div class="portraits-and-badges">
     <!-- <div>
@@ -29,7 +30,7 @@
       <!-- <h3 *ngIf="!leader.champion">{{ leader.badgeName }}</h3> -->
     </div>
   </div>
-  <div class="buttons">
+  <div *ngIf="earned" class="buttons">
     <span *ngFor="let battleFormat of leader.battleFormats" class="callout {{ battleFormat.name }}"
       >&nbsp;{{ battleFormat.name }}&nbsp;</span
     >

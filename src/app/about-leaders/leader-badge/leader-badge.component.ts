@@ -10,6 +10,7 @@ export interface DialogData {
   url: string;
   challengerId?: string;
   leader: Leader;
+  earned?: boolean;
 }
 
 @Component({
@@ -21,6 +22,7 @@ export class LeaderBadgeComponent implements OnInit {
   loginId: string;
   isLeader: boolean;
   @Input() leader: Leader;
+  @Input() earned: boolean;
   url = api.serverUrl;
 
   constructor(
@@ -40,8 +42,8 @@ export class LeaderBadgeComponent implements OnInit {
       width: '400px',
       data:
         this.loginId && !this.isLeader
-          ? { url: this.url, challengerId: this.loginId, leader: this.leader }
-          : { url: this.url, leader: this.leader },
+          ? { url: this.url, challengerId: this.loginId, leader: this.leader, earned: this.earned }
+          : { url: this.url, leader: this.leader, earned: this.earned },
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result?.enqueue) {

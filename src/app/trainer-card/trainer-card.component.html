@@ -1,0 +1,9 @@
+<app-name [person]="person"></app-name>
+<mat-card>
+  <div id="badges-earned">
+    <h2 class="left">Badges Earned</h2>
+    <div *ngFor="let badgeEarned of challenger.badgesEarned" class="queue-container">
+      <app-leader-badge [leader]="badgeEarned" [earned]="true"></app-leader-badge>
+    </div>
+  </div>
+</mat-card>

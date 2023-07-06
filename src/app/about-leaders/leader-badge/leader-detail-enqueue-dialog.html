@@ -1,4 +1,7 @@
-<div [class.background-primary]="data.leader.queueOpen" [class.background-gray]="!data.leader.queueOpen">
+<div
+  [class.background-primary]="data.leader.queueOpen || data.earned"
+  [class.background-gray]="!data.leader.queueOpen && !data.earned"
+>
   <div class="portraits-and-badges">
     <div>
       <img
