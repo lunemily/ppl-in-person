@@ -3,6 +3,7 @@ import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Challenger } from '../models/challenger';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { features } from '../constants.data';
+import { MessageService } from '../services/message.service';
 
 export interface DialogData {
   previousName: string;
@@ -29,12 +30,14 @@ export class ChallengerConsoleComponent implements OnInit {
   leaderData: JSON;
 
   useQR = features.useQR;
+  trainerCardLink: string;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private messageService: MessageService) {}
 
   ngOnInit(): void {
     this.showCamera = false;
     this.myAngularxQrCode = `https://paxpokemonleague.net/qr/?challenger=${this.challenger.id}`;
+    this.trainerCardLink = `https://paxpokemonleague.net/online/?id=${this.challenger.id}`;
   }
 
   enqueue(): void {
@@ -43,6 +46,10 @@ export class ChallengerConsoleComponent implements OnInit {
     } else {
       this.showCamera = false;
     }
+  }
+
+  shareTrainerCard() {
+    this.messageService.showError('Trainer Card link saved to clipboard');
   }
 
   openHelp() {

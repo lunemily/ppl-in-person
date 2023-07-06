@@ -28,6 +28,18 @@
 <mat-card>
   <div id="badges-earned">
     <h2 class="left">Badges Earned</h2>
+    <button
+      mat-button
+      color="primary"
+      [cdkCopyToClipboard]="trainerCardLink"
+      (click)="shareTrainerCard()"
+      aria-label="Share Trainer Card"
+    >
+      <mat-icon>share</mat-icon>
+      SHARE CARD
+    </button>
+
+    <!-- /trainercard?id=433c4b55a17da084 -->
     <div *ngFor="let badgeEarned of challenger.badgesEarned" class="queue-container">
       <app-leader-badge [leader]="badgeEarned" [earned]="true"></app-leader-badge>
     </div>
