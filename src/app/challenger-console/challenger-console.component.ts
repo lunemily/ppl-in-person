@@ -28,14 +28,13 @@ export class ChallengerConsoleComponent implements OnInit {
 
   leaderData: JSON;
 
-  useQR: boolean;
+  useQR = features.useQR;
 
   constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.showCamera = false;
     this.myAngularxQrCode = `https://paxpokemonleague.net/qr/?challenger=${this.challenger.id}`;
-    this.useQR = features.useQR;
   }
 
   enqueue(): void {

@@ -1,14 +1,17 @@
 <table>
   <tr>
     <td class="panel image-panel">
-      <img class="badge" alt="{{ queue.displayName }}" src="assets/images/portraits/{{ queue.leaderId }}.png" />
+      <img class="badge" alt="{{ queue.displayName }}" src="{{ url }}/static/profiles/{{ queue.leaderId }}.png" />
     </td>
     <td class="panel image-panel">
-      <img class="badge" alt="{{ queue.displayName }}" src="assets/images/badges/{{ queue.leaderId }}.png" />
+      <img class="badge" alt="{{ queue.displayName }}" src="{{ url }}/static/badge/{{ queue.leaderId }}.png" />
     </td>
     <td *ngIf="!onHold" class="panel position-panel">
       <span>Position in queue:</span>
       <span id="queue-position" class="color-primary">{{ queue.position }}</span>
+      <div *ngIf="queue.position === 1" id="battle-code">
+        <span id="queue-help">Your battle code is: </span><span id="battle-code">{{ queue.battleCode }}</span>
+      </div>
       <button class="hold-button" mat-stroked-button (click)="hold()">HOLD</button>
       <button class="hold-button" mat-stroked-button (click)="drop()">DROP</button>
     </td>

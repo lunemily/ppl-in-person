@@ -1,7 +1,9 @@
 <mat-card>
   <div id="leader-queue">
     <h3>Queue</h3>
-    <span id="queue-help">Your battle code is: </span><span id="battle-code">{{ battleCode }}</span>
+    <div *ngIf="leader.queue[0]">
+      <span id="queue-help">Your battle code is: </span><span id="battle-code">{{ leader.queue[0]?.battleCode }}</span>
+    </div>
     <br />
     <div *ngFor="let challenger of leader.queue" class="queue-container">
       <app-leader-queue-item [leaderId]="leader.id" [queue]="challenger"></app-leader-queue-item>
@@ -22,11 +24,11 @@
     </div>
   </div>
 </mat-card>
-<mat-card>
-  <h3>Leader QR Code</h3>
+<mat-card *ngIf="useQR">
+  <h2>Leader QR Code</h2>
   <qrcode
     [qrdata]="myAngularxQrCode"
-    [imageSrc]="'assets/images/badges/' + leader.leaderId + '.png'"
+    [imageSrc]="url + '/static/badge/' + leader.leaderId + '.png'"
     [imageHeight]="75"
     [imageWidth]="75"
     [width]="300"

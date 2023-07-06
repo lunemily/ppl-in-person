@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Queue } from 'src/app/models/queue';
 import { ApiService } from 'src/app/services/api.service';
+import { api } from 'src/app/constants.data';
 
 @Component({
   selector: 'app-queue-item',
@@ -10,6 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class QueueItemComponent implements OnInit {
   @Input() queue: Queue;
   onHold: boolean = false;
+  url = api.serverUrl;
 
   constructor(private apiService: ApiService) {}
 

@@ -72,6 +72,7 @@ export class ApiService {
               position: item['position'],
               challengerId: item['challengerId'],
               displayName: item['displayName'],
+              battleCode: item['linkCode'],
             };
             return queue;
           }, []),
@@ -125,6 +126,7 @@ export class ApiService {
                   id: item['difficulty'],
                   name: leaderTypesReverseMap[item['difficulty']],
                 },
+                battleCode: item['linkCode'],
               };
               result.push(queue);
               return result;
@@ -247,6 +249,7 @@ export class ApiService {
       }
     );
   }
+
   closeQueue(loginId: string): void {
     const url = `${api.serverUrl}/api/v2/leader/${loginId}/closequeue`;
 

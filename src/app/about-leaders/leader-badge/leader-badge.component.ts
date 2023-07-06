@@ -2,7 +2,7 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CookieService } from 'ngx-cookie-service';
-import { api } from 'src/app/constants.data';
+import { api } from '../../constants.data';
 import { Leader } from 'src/app/models/leader';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -21,17 +21,16 @@ export class LeaderBadgeComponent implements OnInit {
   loginId: string;
   isLeader: boolean;
   @Input() leader: Leader;
-  url: string;
+  url = api.serverUrl;
 
   constructor(
     public dialog: MatDialog,
-    private api: ApiService,
+    private apiService: ApiService,
     private cookieService: CookieService,
     private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
-    this.url = `${api.serverUrl}`;
     this.loginId = this.cookieService.get('loginId');
     this.isLeader = 'true' == this.cookieService.get('isLeader');
   }
@@ -51,7 +50,7 @@ export class LeaderBadgeComponent implements OnInit {
             duration: 2000,
           });
         } else {
-          this.api.enqueue(
+          this.apiService.enqueue(
             this.loginId,
             this.leader.leaderId,
             result?.selectedFormat,

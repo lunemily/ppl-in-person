@@ -1,5 +1,5 @@
 <mat-card>
-  <img class="external-graphic" alt="" src="{{ bingoHeader }}" />
+  <h1 class="shadow-primary">{{ title }}</h1>
   <div fxLayout="column" fxLayoutGap="1em" fxLayoutAlign="space-evenly space-evenly" class="bingo-row">
     <div
       *ngFor="let row of bingoBoard"
@@ -9,7 +9,7 @@
       class="bingo-row"
     >
       <div *ngFor="let column of row" class="bingo-space">
-        <img class="bingo tera-pokemon" alt="{{ column.id }}" src="assets/images/teras/{{ column.id }}.png" />
+        <img class="bingo tera-pokemon" alt="{{ column.id }}" src="{{ url }}/static/bingo/{{ column.id }}.png" />
         <img
           *ngIf="column.earned"
           class="bingo earned-pokeball"
@@ -19,5 +19,12 @@
       </div>
     </div>
   </div>
-  <img class="external-graphic" src="{{ bingoHowTo }}"
-/></mat-card>
+  <br />
+  <div class="how-to background-primary">
+    <p>How it works:</p>
+    <span
+      >Each time you battle a gym leader, win or lose you will automatically catch their Signature Pokémon on your bingo
+      card. Successfully capture {{ bingoBoard[0].length }} in a row to complete a bingo and win a prize!</span
+    >
+  </div>
+</mat-card>

@@ -226,6 +226,10 @@ $theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
   color: mat-color($theme-warn);
 }
 
+.shadow-primary {
+  text-shadow: 0px 0px 5px mat-color($theme-primary);
+}
+
 .background-primary {
   background-color: mat-color($theme-primary);
   color: mat-color($theme-primary, default-contrast);
