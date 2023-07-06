@@ -1,0 +1,12 @@
+.difficulty-section {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: space-evenly;
+  align-items: stretch;
+  justify-content: space-evenly;
+}
+
+app-leader-badge {
+  flex-basis: auto;
+}

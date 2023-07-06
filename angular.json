@@ -67,7 +67,48 @@
                 {
                   "glob": "**/*",
                   "input": "src/assets/",
-                  "ignore": ["**/*-west.png", "**/*-aus.png"],
+                  "ignore": ["**/*-west.png", "**/*-aus.png", "**/*-online.png"],
+                  "output": "/assets/"
+                },
+                {
+                  "glob": "favicon.ico",
+                  "input": "src/",
+                  "output": "/"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
+            "online": {
+              "styles": ["src/theme.online.scss", "src/styles.scss"],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.online.ts"
+                }
+              ],
+              "assets": [
+                {
+                  "glob": "**/*",
+                  "input": "src/assets/",
+                  "ignore": ["**/*-west.png", "**/*-east.png", "**/*-aus.png"],
                   "output": "/assets/"
                 },
                 {
@@ -108,7 +149,7 @@
                 {
                   "glob": "**/*",
                   "input": "src/assets/",
-                  "ignore": ["**/*-east.png", "**/*-aus.png"],
+                  "ignore": ["**/*-east.png", "**/*-aus.png", "**/*-online.png"],
                   "output": "/assets/"
                 },
                 {
@@ -149,7 +190,7 @@
                 {
                   "glob": "**/*",
                   "input": "src/assets/",
-                  "ignore": ["**/*-east.png", "**/*-west.png"],
+                  "ignore": ["**/*-east.png", "**/*-west.png", "**/*-online.png"],
                   "output": "/assets/"
                 },
                 {
@@ -191,6 +232,9 @@
             },
             "east": {
               "browserTarget": "ppl-site:build:east"
+            },
+            "online": {
+              "browserTarget": "ppl-site:build:online"
             },
             "west": {
               "browserTarget": "ppl-site:build:west"
@@ -234,7 +278,7 @@
           "builder": "angular-cli-ghpages:deploy",
           "options": {
             "baseHref": "/ppl-in-person/",
-            "buildTarget": "ppl-site:build:east"
+            "buildTarget": "ppl-site:build:online"
           }
         },
         "deployWest": {

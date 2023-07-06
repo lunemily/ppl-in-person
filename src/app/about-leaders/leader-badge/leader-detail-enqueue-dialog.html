@@ -1,0 +1,63 @@
+<div [class.background-primary]="data.leader.queueOpen" [class.background-gray]="!data.leader.queueOpen">
+  <div class="portraits-and-badges">
+    <div>
+      <img
+        class="badge"
+        alt="{{ data.leader.displayName }}"
+        src="{{ data.url }}/static/badge/{{ data.leader.leaderId }}.png"
+      />
+    </div>
+    <div>
+      <img
+        class="portrait"
+        alt="{{ data.leader.displayName }}"
+        src="{{ data.url }}/static/profiles/{{ data.leader.leaderId }}.png"
+      />
+    </div>
+    <div *ngIf="!data.leader.champion">
+      <img
+        class="tera badge"
+        alt="{{ data.leader.displayName }}"
+        src="{{ data.url }}/static/bingo/{{ data.leader.leaderId }}.png"
+      />
+    </div>
+  </div>
+  <div class="leader-data">
+    <div class="name-and-badge details background-accent">
+      <h2>{{ data.leader.displayName }}</h2>
+    </div>
+    <div *ngIf="data.leader.bio" class="details background-accent">
+      <p [innerHTML]="data.leader.bio"></p>
+      <p [innerHTML]="data.leader.tagline"></p>
+    </div>
+  </div>
+  <br />
+  <div *ngIf="data.challengerId && data.leader.queueOpen" id="challenger-form">
+    <mat-form-field>
+      <mat-label>Select a battle format</mat-label>
+      <mat-select [(value)]="selectedFormat">
+        <mat-option *ngFor="let battleFormat of data.leader.battleFormats" value="{{ battleFormat.id }}"
+          >{{ battleFormat.name.toUpperCase() }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Select a difficulty</mat-label>
+      <mat-select [(value)]="selectedDifficulty">
+        <mat-option *ngFor="let leaderType of data.leader.leaderTypes" value="{{ leaderType.id }}"
+          >{{ leaderType.name.toUpperCase() }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">GO BACK</button>
+      <button
+        mat-button
+        [mat-dialog-close]="{enqueue: true, selectedFormat: selectedFormat, selectedDifficulty: selectedDifficulty}"
+        cdkFocusInitial
+      >
+        JOIN QUEUE
+      </button>
+    </div>
+  </div>
+</div>

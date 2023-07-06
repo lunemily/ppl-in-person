@@ -4,7 +4,8 @@ import { FormControl } from '@angular/forms';
 import { map, Observable, startWith, Subject } from 'rxjs';
 
 import { Challenger } from '../models/challenger';
-import { LeaderService } from '../services/leader.service';
+import { Leader } from '../models/leader';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-challenger-search',
@@ -13,14 +14,16 @@ import { LeaderService } from '../services/leader.service';
 })
 export class ChallengerSearchComponent implements OnInit {
   myControl = new FormControl<string>('');
-  @Input() leaderId: string;
+  @Input() leader: Leader;
+  selectedFormat: number;
+  selectedDifficulty: number;
   challengers: Challenger[];
   searchValue = '';
   selected: string;
   filteredChallengers: Observable<Challenger[]>;
   @Output('enqueueQR') callEnqueueQR: EventEmitter<any> = new EventEmitter();
 
-  constructor(private leaderService: LeaderService) {}
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
     this.getChallengers();
@@ -28,7 +31,7 @@ export class ChallengerSearchComponent implements OnInit {
 
   getChallengers(): void {
     // this.challengers = challengers;
-    this.leaderService.getChallengers(this.leaderId).subscribe((challengers) => {
+    this.apiService.getChallengers(this.leader.id).subscribe((challengers) => {
       this.challengers = challengers;
       this.filteredChallengers = this.myControl.valueChanges.pipe(
         startWith(''),
@@ -41,8 +44,7 @@ export class ChallengerSearchComponent implements OnInit {
 
   enqueue(): void {
     let challengerId = this.getChallengerIdByDisplayName(this.searchValue);
-    console.log('enqueueing challenger id: ' + challengerId);
-    this.leaderService.enqueueChallenger(this.leaderId, challengerId);
+    this.apiService.enqueue(challengerId, this.leader.id, this.selectedFormat, this.selectedDifficulty, false);
   }
 
   enqueueQR() {

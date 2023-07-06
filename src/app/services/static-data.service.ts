@@ -1,15 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { int } from '@zxing/library/esm/customTypings';
 import { catchError, map, Observable, of, shareReplay, tap } from 'rxjs';
 
-import { api } from '../constants.data';
+import { api, battleFormatsReverseMap, leaderTypesReverseMap } from '../constants.data';
 import { Leader } from '../models/leader';
 import { PPLSettings } from '../models/settings';
 import { AuthenticationService } from './authentication.service';
-import { MessageService } from './message.service';
 
-import { sidenav } from '../constants.data';
+import { sidenav, battleFormatsMap, leaderTypesMap } from '../constants.data';
+import { Format } from '../models/format';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +21,7 @@ export class DataService {
   getLeaderData(): Observable<Leader[]> {
     let localLeaderList = localStorage.getItem('leader-data-list');
     if (localLeaderList) {
-      console.info('Leader data present.\nReturning...\n');
+      console.info('Leader data present.\nReturning from local storage...\n');
       return this.returnLocalLeaderData();
     } else {
       console.warn('Leader data not stored.\nFetching...\n');
@@ -31,7 +30,7 @@ export class DataService {
   }
 
   private fetchAndReturnLeaderData(): Observable<Leader[]> {
-    const url = `${api.serverUrl}/allleaderdata`;
+    const url = `${api.serverUrl}/api/v2/allleaderdata`;
 
     return this.http.get(url, this.httpOptions).pipe(
       map((response: JSON) => {
@@ -43,7 +42,22 @@ export class DataService {
             badgeName: response[leaderId].badgeName as string,
             bio: response[leaderId].bio as string,
             tagline: response[leaderId].tagline as string,
-            leaderType: response[leaderId].leaderType as number,
+            leaderTypeIds: this.getLeaderTypesFromBitmask(response[leaderId].leaderType),
+            leaderTypes: this.getLeaderTypesFromBitmask(response[leaderId].leaderType).map(function (typeId) {
+              let type: Format = {
+                id: typeId,
+                name: leaderTypesReverseMap[typeId],
+              };
+              return type;
+            }, []),
+            battleFormatIds: this.getBattleFormatsFromBitmask(response[leaderId].battleFormat),
+            battleFormats: this.getBattleFormatsFromBitmask(response[leaderId].battleFormat).map(function (formatId) {
+              let format: Format = {
+                id: formatId,
+                name: battleFormatsReverseMap[formatId],
+              };
+              return format;
+            }, []),
           };
           leaders.push(leader);
           // Store individual leader data
@@ -52,10 +66,10 @@ export class DataService {
 
         // Sort list of leaders
         let sortedfLeaders: Leader[] = leaders.sort((a, b) => {
-          if (a.leaderType === b.leaderType) {
+          if (a.leaderTypeIds === b.leaderTypeIds) {
             return a.displayName < b.displayName ? -1 : 1;
           } else {
-            return a.leaderType < b.leaderType ? -1 : 1;
+            return a.leaderTypeIds < b.leaderTypeIds ? -1 : 1;
           }
         });
         let sortedListOfLeaders: string[] = [];
@@ -94,7 +108,7 @@ export class DataService {
   }
 
   getPPLSettings(): Observable<PPLSettings> {
-    const url = `${api.serverUrl}/appsettings`;
+    const url = `${api.serverUrl}/api/v2/appsettings`;
 
     return this.http.get(url, this.httpOptions).pipe(
       map((response: JSON) => {
@@ -113,7 +127,7 @@ export class DataService {
 
   /** Log a ChallengerService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`ChallengerService: ${message}`);
+    console.info(`ChallengerService: ${message}`);
   }
 
   /**
@@ -157,9 +171,33 @@ export class DataService {
     };
   }
 
-  constructor(
-    private http: HttpClient,
-    private authenticationService: AuthenticationService,
-    private messageService: MessageService
-  ) {}
+  /**
+   * Convert bitmask for leaderTypes
+   */
+  getLeaderTypesFromBitmask(bitmask: number): number[] {
+    let leaderTypes = [];
+    for (let key of Object.keys(leaderTypesMap)) {
+      if (bitmask & leaderTypesMap[key]) {
+        leaderTypes.push(leaderTypesMap[key]);
+      }
+    }
+
+    return leaderTypes;
+  }
+
+  /**
+   * Convert bitmask for leaderTypes
+   */
+  getBattleFormatsFromBitmask(bitmask: number): number[] {
+    let battleFormats = [];
+    for (let key of Object.keys(battleFormatsMap)) {
+      if (bitmask & battleFormatsMap[key]) {
+        battleFormats.push(battleFormatsMap[key]);
+      }
+    }
+
+    return battleFormats;
+  }
+
+  constructor(private http: HttpClient, private authenticationService: AuthenticationService) {}
 }

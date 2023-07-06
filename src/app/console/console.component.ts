@@ -3,8 +3,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Challenger } from '../models/challenger';
 import { Leader } from '../models/leader';
 import { Person } from '../models/person';
-import { ChallengerService } from '../services/challenger.service';
-import { LeaderService } from '../services/leader.service';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-console',
@@ -20,11 +19,7 @@ export class ConsoleComponent implements OnInit {
   feedbackSurveyUrl: string;
   championSurveyUrl: string;
 
-  constructor(
-    private challengerService: ChallengerService,
-    private cookieService: CookieService,
-    private leaderService: LeaderService
-  ) {}
+  constructor(private cookieService: CookieService, private apiService: ApiService) {}
 
   ngOnInit(): void {
     this.loginId = this.cookieService.get('loginId');
@@ -39,7 +34,7 @@ export class ConsoleComponent implements OnInit {
   }
 
   getChallenger(): void {
-    this.challengerService.getChallenger(this.loginId).subscribe((challenger) => {
+    this.apiService.getChallenger(this.loginId).subscribe((challenger) => {
       this.challenger = challenger;
       this.person = challenger;
       this.feedbackSurveyUrl = this.person.feedbackSurveyUrl;
@@ -48,7 +43,7 @@ export class ConsoleComponent implements OnInit {
   }
 
   getLeader(): void {
-    this.leaderService.getLeader(this.loginId).subscribe((leader) => {
+    this.apiService.getLeader(this.loginId).subscribe((leader) => {
       this.leader = leader;
       this.person = leader;
       this.feedbackSurveyUrl = this.person.feedbackSurveyUrl;

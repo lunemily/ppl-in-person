@@ -1,13 +1,41 @@
 <mat-card id="about-card">
-  <div id="badges-earned">
-    <h2 class="left">About the leaders!</h2>
-    <div *ngFor="let leader of leaderData">
-      <app-leader-badge [leader]="leader"></app-leader-badge>
+  <div>
+    <h1>About the leaders!</h1>
+    <span>Select any leader to learn more.</span>
+    <h2 *ngIf="leaderData.casual.length > 0">Casual Leaders</h2>
+    <div id="casual-leaders" class="difficulty-section">
+      <div *ngFor="let leader of leaderData.casual">
+        <app-leader-badge [leader]="leader"></app-leader-badge>
+      </div>
+    </div>
+    <h2 *ngIf="leaderData.intermediate.length > 0">Intermediate Leaders</h2>
+    <div id="intermediate-leaders" class="difficulty-section">
+      <div *ngFor="let leader of leaderData.intermediate">
+        <app-leader-badge [leader]="leader"></app-leader-badge>
+      </div>
+    </div>
+    <h2 *ngIf="leaderData.veteran.length > 0">Veteran Leaders</h2>
+    <div id="veteran-leaders" class="difficulty-section">
+      <div *ngFor="let leader of leaderData.veteran">
+        <app-leader-badge [leader]="leader"></app-leader-badge>
+      </div>
+    </div>
+    <h2 *ngIf="leaderData.elite.length > 0">Elite Leaders</h2>
+    <div id="elite-leaders" class="difficulty-section">
+      <div *ngFor="let leader of leaderData.elite">
+        <app-leader-badge [leader]="leader"></app-leader-badge>
+      </div>
+    </div>
+    <h2 *ngIf="leaderData.champion.length > 0">Champions</h2>
+    <div id="champion-leaders" class="difficulty-section">
+      <div *ngFor="let leader of leaderData.champion">
+        <app-leader-badge [leader]="leader"></app-leader-badge>
+      </div>
     </div>
   </div>
-  <div class="example-button-container">
-    <a mat-fab color="primary" aria-label="Refresh the leader data" (click)="refreshData()">
-      <mat-icon>refresh</mat-icon>
-    </a>
-  </div>
 </mat-card>
+<div class="example-button-container">
+  <a mat-fab color="primary" aria-label="Refresh the leader data" (click)="refreshData()">
+    <mat-icon>refresh</mat-icon>
+  </a>
+</div>

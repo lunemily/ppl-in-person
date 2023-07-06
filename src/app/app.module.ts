@@ -24,7 +24,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QRCodeModule } from 'angularx-qrcode';
 
 import { AppComponent } from './app.component';
-import { MessagesComponent } from './messages/messages.component';
 import { HeaderComponent, PPLHelpDialog } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LeaderConsoleComponent } from './leader-console/leader-console.component';
@@ -45,15 +44,15 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { AboutLeadersComponent } from './about-leaders/about-leaders.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ConsoleComponent } from './console/console.component';
-import { LeaderBadgeComponent } from './common/leader-badge/leader-badge.component';
+import { LeaderBadgeComponent, LeaderDetailEnqueueDialog } from './about-leaders/leader-badge/leader-badge.component';
 import { NameComponent, SetNameDialog } from './console/name/name.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { BingoBoardComponent } from './bingo-board/bingo-board.component';
+import { QueueMgmtComponent } from './leader-console/queue-mgmt/queue-mgmt.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MessagesComponent,
     HeaderComponent,
     FooterComponent,
     LeaderConsoleComponent,
@@ -71,10 +70,12 @@ import { BingoBoardComponent } from './bingo-board/bingo-board.component';
     AboutLeadersComponent,
     ConsoleComponent,
     LeaderBadgeComponent,
+    LeaderDetailEnqueueDialog,
     NameComponent,
     SetNameDialog,
     BingoBoardComponent,
     PPLHelpDialog,
+    QueueMgmtComponent,
   ],
   imports: [
     MatAutocompleteModule,

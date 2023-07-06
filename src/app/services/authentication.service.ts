@@ -28,7 +28,7 @@ export class AuthenticationService {
   }
 
   loginOrRegister(username: string, password: string, endpoint: string): void {
-    const url = `${api.serverUrl}/${endpoint}`;
+    const url = `${api.serverUrl}/api/v2/${endpoint}`;
 
     let authorization: string = btoa(username + ':' + password);
     let httpOptions = {
@@ -68,7 +68,7 @@ export class AuthenticationService {
     let httpOptions = {
       headers: api.httpOtions.headers.append('Authorization', `Bearer ${this.cookieService.get('token')}`),
     };
-    const url = `${api.serverUrl}/logout/${id}`;
+    const url = `${api.serverUrl}/api/v2/logout/${id}`;
 
     // Delete cookies for local logout
     this.cookieService.deleteAll();
@@ -81,7 +81,7 @@ export class AuthenticationService {
 
   /** Log a AuthenticationService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`AuthenticationService: ${message}`);
+    console.info(`AuthenticationService: ${message}`);
   }
 
   /**

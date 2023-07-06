@@ -1,6 +1,7 @@
 import { Hold } from './hold';
 import { Queue } from './queue';
 import { Person } from './person';
+import { Format } from './format';
 
 /** This object represents a leader */
 export interface Leader extends Person {
@@ -14,6 +15,10 @@ export interface Leader extends Person {
   art?: string;
   bio?: string;
   tagline?: string;
-  leaderType?: number;
+  leaderTypeIds?: number[];
+  leaderTypes?: Format[];
   champion?: boolean;
+  battleFormatIds?: number[];
+  battleFormats?: Format[];
+  queueOpen?: boolean;
 }

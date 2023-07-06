@@ -1,6 +1,13 @@
 <mat-card>
-  <h2 *ngIf="person">{{ person.displayName.toUpperCase() }}'S TRAINER CARD</h2>
-  <button *ngIf="challenger" mat-stroked-button (click)="editName()">EDIT NAME</button>
+  <h2 *ngIf="person">
+    {{ person.displayName.toUpperCase() }}'S TRAINER CARD<button
+      *ngIf="challenger"
+      mat-icon-button
+      (click)="editName()"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+  </h2>
 
   <div *ngIf="leader" id="leader-record">
     <table id="record-table">
@@ -34,7 +41,7 @@
 
     <a mat-button color="primary" href="{{ feedbackSurveyUrl }}">Let us know what you thought!</a>
   </div>
-  <div *ngIf="championSurveyUrl" id="survey-container">
+  <div *ngIf="championSurveyUrl" id="survey-container" (ngInit)="shootConfetti()">
     <mat-divider></mat-divider>
     <h4>Congrats Champion!</h4>
 

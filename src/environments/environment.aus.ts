@@ -21,6 +21,10 @@ export const sidenav: PPLSettings = {
   bingoBoard: false,
 };
 
+export const features = {
+  useQR: true,
+};
+
 export const environment = {
   production: true,
 };

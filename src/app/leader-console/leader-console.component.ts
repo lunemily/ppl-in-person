@@ -2,7 +2,7 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Leader } from '../models/leader';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LeaderService } from '../services/leader.service';
+import { api, features } from '../constants.data';
 
 export interface DialogData {
   previousName: string;
@@ -23,13 +23,15 @@ export class LeaderConsoleComponent implements OnInit {
   options: UntypedFormGroup;
   hideRequiredControl = new UntypedFormControl(false);
   floatLabelControl = new UntypedFormControl('auto');
+  url = api.serverUrl;
+  useQR = features.useQR;
 
   previousName: string;
   newName: string;
 
   @Input() leader: Leader;
 
-  constructor(public dialog: MatDialog, private leaderService: LeaderService) {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.showCamera = false;

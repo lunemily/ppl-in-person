@@ -2,8 +2,7 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Challenger } from '../models/challenger';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ChallengerService } from '../services/challenger.service';
-import { DataService } from '../services/static-data.service';
+import { features } from '../constants.data';
 
 export interface DialogData {
   previousName: string;
@@ -29,7 +28,9 @@ export class ChallengerConsoleComponent implements OnInit {
 
   leaderData: JSON;
 
-  constructor(public dialog: MatDialog, private challengerService: ChallengerService) {}
+  useQR = features.useQR;
+
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.showCamera = false;

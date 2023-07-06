@@ -1,0 +1,135 @@
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
+
+@include mat.core();
+
+// Fonts
+@font-face {
+  font-family: nightmare;
+  src: url('assets/fonts/nightmare-codehack.ttf') format('truetype');
+}
+@font-face {
+  font-family: blox;
+  src: url('assets/fonts/Blox2.ttf') format('truetype');
+}
+
+// Light Theme Text
+$dark-text: #000000;
+$dark-primary-text: rgba($dark-text, 0.87);
+$dark-accent-text: rgba($dark-primary-text, 0.54);
+$dark-disabled-text: rgba($dark-primary-text, 0.38);
+$dark-dividers: rgba($dark-primary-text, 0.12);
+$dark-focused: rgba($dark-primary-text, 0.12);
+
+// Dark Theme text
+$light-text: #ffffff;
+$light-primary-text: $light-text;
+$light-accent-text: rgba($light-primary-text, 0.7);
+$light-disabled-text: rgba($light-primary-text, 0.5);
+$light-dividers: rgba($light-primary-text, 0.12);
+$light-focused: rgba($light-primary-text, 0.12);
+
+$ppl-primary: mat.define-palette(mat.$indigo-palette, 500);
+$ppl-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$ppl-typography: mat.define-typography-config();
+
+$ppl-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $ppl-primary,
+      accent: $ppl-accent,
+    ),
+    typography: $ppl-typography,
+  )
+);
+
+@include mat.all-component-themes($ppl-theme);
+
+$ppl-typography: mat.define-typography-config(
+  $headline-5:
+    mat.define-typography-level(
+      $font-family: nightmare,
+      $font-weight: 400,
+      $font-size: 2em,
+      $line-height: 2em,
+      $letter-spacing: normal,
+    ),
+  $headline-6:
+    mat.define-typography-level(
+      $font-family: nightmare,
+      $font-weight: 400,
+      $font-size: 1.5em,
+      $line-height: 1.5em,
+      $letter-spacing: normal,
+    ),
+  $subtitle-1:
+    mat.define-typography-level(
+      $font-family: nightmare,
+      $font-weight: 400,
+      $font-size: 1.25em,
+      $line-height: 1.25em,
+      $letter-spacing: normal,
+    ),
+  $subtitle-2:
+    mat.define-typography-level(
+      $font-family: nightmare,
+      $font-weight: 400,
+      $font-size: 2em,
+      $line-height: 1,
+      $letter-spacing: normal,
+    ),
+  $button:
+    mat.define-typography-level(
+      $font-family: Roboto,
+      $font-weight: 300,
+      $font-size: 1em,
+      $line-height: 1,
+      $letter-spacing: normal,
+    ),
+);
+@include mat.typography-hierarchy($ppl-typography);
+
+body {
+  background-image: url('assets/images/wallpaper-online.png');
+}
+.color-primary {
+  color: mat.get-color-from-palette($ppl-primary, default);
+}
+
+.color-accent {
+  color: mat.get-color-from-palette($ppl-accent, default);
+}
+
+.background-primary {
+  background-color: mat.get-color-from-palette($ppl-primary, default);
+  color: mat.get-color-from-palette($ppl-primary, default-contrast);
+}
+
+.background-accent {
+  background-color: mat.get-color-from-palette($ppl-accent, default);
+  color: mat.get-color-from-palette($ppl-accent, default-contrast);
+}
+// Specific component overrides, pieces that are not in line with the general theming
+
+// Handle buttons appropriately, with respect to line-height
+.mat-raised-button,
+.mat-stroked-button,
+.mat-flat-button {
+  padding: 0 1.15em;
+  margin: 0 0.65em;
+  min-width: 3em;
+  line-height: 36.4px;
+}
+
+.mat-standard-chip {
+  padding: 0.5em 0.85em;
+  min-height: 2.5em;
+}
+
+.material-icons {
+  font-size: 24px;
+  font-family: 'Material Icons', 'Material Icons';
+  .mat-badge-content {
+    font-family: 'Roboto';
+  }
+}

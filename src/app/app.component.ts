@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
@@ -9,16 +9,17 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class AppComponent {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
+  isMobileResolution: boolean;
 
-  constructor() {}
-
-  ngOnInit(): void {
-    // this.dataService.getLeaderData().subscribe((data) => {
-    //   console.log('Leader data:');
-    //   console.log(data);
-    //   return data;
-    // });
+  constructor() {
+    if (window.innerWidth < 768) {
+      this.isMobileResolution = true;
+    } else {
+      this.isMobileResolution = false;
+    }
   }
+
+  ngOnInit(): void {}
 
   toggleSidenav(): void {
     this.sidenav.toggle();
