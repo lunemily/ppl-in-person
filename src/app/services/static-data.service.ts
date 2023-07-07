@@ -58,6 +58,7 @@ export class DataService {
               };
               return format;
             }, []),
+            champion: this.getLeaderTypesFromBitmask(response[leaderId].leaderType).includes(16), // champion leaderType
           };
           leaders.push(leader);
           // Store individual leader data
@@ -81,7 +82,6 @@ export class DataService {
         // Store list of leaders
         localStorage.setItem(`leader-data-list`, JSON.stringify(sortedListOfLeaders));
 
-        sortedfLeaders[sortedfLeaders.length - 1].champion = true;
         return sortedfLeaders;
       }),
       tap((_) => this.log('fetched leader data')),
@@ -103,7 +103,6 @@ export class DataService {
       let leader: Leader = JSON.parse(localStorage.getItem(leaderEntry));
       leaders.push(leader);
     }
-    leaders[leaders.length - 1].champion = true;
     return of(leaders);
   }
 

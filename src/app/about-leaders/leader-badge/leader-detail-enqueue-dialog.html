@@ -3,18 +3,19 @@
   [class.background-gray]="!data.leader.queueOpen && !data.earned"
 >
   <div class="portraits-and-badges">
-    <div>
+    <div *ngIf="!data.leader.champion">
+      <!-- Champion does not have a badge. -->
       <img
         class="badge"
         alt="{{ data.leader.displayName }}"
-        src="{{ data.url }}/static/badge/{{ data.leader.leaderId }}.png"
+        src="{{ data.url }}/static/badges/{{ data.leader.leaderId }}.png"
       />
     </div>
     <div>
       <img
         class="portrait"
         alt="{{ data.leader.displayName }}"
-        src="{{ data.url }}/static/profiles/{{ data.leader.leaderId }}.png"
+        src="{{ data.url }}/static/portraits/{{ data.leader.leaderId }}.png"
       />
     </div>
     <div *ngIf="!data.leader.champion">

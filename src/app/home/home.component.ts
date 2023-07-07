@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { HeaderService } from '../services/header.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +11,21 @@ import { HeaderService } from '../services/header.service';
 export class HomeComponent implements OnInit {
   loginId: string;
   showLogin: boolean;
+  challengerId: string;
 
-  constructor(private cookieService: CookieService, private headerService: HeaderService) {}
+  constructor(
+    private cookieService: CookieService,
+    private headerService: HeaderService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   ngOnInit(): void {
+    if (this.route.snapshot.queryParams['id']) {
+      this.challengerId = this.route.snapshot.queryParamMap.get('id');
+    }
     this.showLogin = true;
     this.loginId = this.cookieService.get('loginId');
     if (this.loginId) {

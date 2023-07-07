@@ -1,2 +1,3 @@
-<app-auth id="login-register-form" *ngIf="showLogin"></app-auth>
-<app-console *ngIf="!showLogin"></app-console>
+<app-auth id="login-register-form" *ngIf="showLogin && !challengerId"></app-auth>
+<app-console *ngIf="!showLogin && !challengerId"></app-console>
+<app-trainer-card *ngIf="challengerId"></app-trainer-card>
