@@ -44,7 +44,8 @@ export class LeaderQueueItemComponent implements OnInit {
       this.badge = result['badge'];
       this.report = result['report'];
       if (this.report) {
-        this.apiService.reportBattle(this.leaderId, this.queue.challengerId, this.win, this.badge);
+        this.queue.leaderId = this.leaderId;
+        this.apiService.reportBattle(this.queue, this.win, this.badge);
       }
     });
   }

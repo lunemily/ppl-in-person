@@ -12,8 +12,8 @@ export class QueueMgmtComponent {
 
   constructor(private apiService: ApiService) {}
 
-  openQueue() {
-    this.apiService.openQueue(this.leader.id, false);
+  openQueue(duoMode = false) {
+    this.apiService.openQueue(this.leader.id, duoMode);
   }
 
   closeQueue() {

@@ -99,6 +99,14 @@ export class ApiService {
               challengerId: item['challengerId'],
               displayName: item['displayName'],
               battleCode: item['linkCode'],
+              battleFormat: {
+                id: item['format'],
+                name: battleFormatsReverseMap[item['format']],
+              },
+              battleDifficulty: {
+                id: item['difficulty'],
+                name: leaderTypesReverseMap[item['difficulty']],
+              },
             };
             return queue;
           }, []),
@@ -350,8 +358,20 @@ export class ApiService {
     );
   }
 
-  reportBattle(leaderId: string, challengerId: string, win: boolean, badge: boolean): void {
-    const url = `${api.serverUrl}/api/v2/leader/${leaderId}/report/${challengerId}`;
+  // reportBattle(leaderId: string, challengerId: string, win: boolean, badge: boolean): void {
+  reportBattle(queue: Queue, win: boolean, badge: boolean): void {
+    let leaderId = queue.leaderId;
+    let challengerId = queue.challengerId;
+    let url = `${api.serverUrl}/api/v2/leader/${leaderId}/report/${challengerId}`;
+    if (queue.battleFormat.id == 4) {
+      if ('otherChallengerId' in queue) {
+        let otherChallengerId = queue.otherChallengerId;
+        url += `/${otherChallengerId}`;
+      } else {
+        this.messageService.showError('Multi-battle challenger does not have additional challenger');
+        return;
+      }
+    }
     let body = {
       challengerWin: win,
       badgeAwarded: badge,

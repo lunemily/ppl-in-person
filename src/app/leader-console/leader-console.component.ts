@@ -3,6 +3,7 @@ import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Leader } from '../models/leader';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { api, features } from '../constants.data';
+import { Queue } from '../models/queue';
 
 export interface DialogData {
   previousName: string;
@@ -36,7 +37,31 @@ export class LeaderConsoleComponent implements OnInit {
   ngOnInit(): void {
     this.showCamera = false;
     this.myAngularxQrCode = `https://paxpokemonleague.net/qr/?leader=${this.leader.leaderId}`;
-    this.battleCode = this.generateCode();
+
+    // BEGIN: Post-process multi-queues
+    // TRhis entire section could *probably* be written into some clever
+    // JavaScript stream-like functions, but I was in a hurry. So yeah...
+    if (this.leader.battleFormatIds.includes(4)) {
+      let preprocessedQueue: Queue[] = this.leader.queue;
+      let nonMultiBattleQueue: Queue[] = [];
+      let mutliBattleQueue: Queue[] = preprocessedQueue.filter((item) => {
+        if (item.battleFormat.id == 4) {
+          return true;
+        } else {
+          nonMultiBattleQueue.push(item);
+        }
+      });
+
+      // Here's the logic to add the `otherChallengerId` for multi battles. Every position needs to know the next position's challengerId
+      for (let i = 1; i < mutliBattleQueue.length; i++) {
+        // Start on the 2nd person and update the previous record.
+        mutliBattleQueue[i - 1].otherChallengerId = mutliBattleQueue[i].challengerId;
+      }
+
+      this.leader.queue = nonMultiBattleQueue.concat(mutliBattleQueue).sort((a, b) => a.position - b.position);
+      console.info(this.leader);
+    }
+    // END: Post-process multi-queues
   }
 
   enqueueQR(): void {
@@ -45,14 +70,5 @@ export class LeaderConsoleComponent implements OnInit {
     } else {
       this.showCamera = false;
     }
-  }
-
-  generateCode(): string {
-    let code = '';
-    let possible = '0123456789';
-
-    for (let i = 0; i < 8; i++) code += possible.charAt(Math.floor(Math.random() * possible.length));
-
-    return code.match(/.{1,4}/g).join(' ');
   }
 }
