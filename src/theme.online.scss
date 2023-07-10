@@ -93,12 +93,20 @@ $mat-light-theme-background: (
 @include mat-core();
 
 $ppl-typography: mat.define-typography-config(
+  $headline-4:
+    mat.define-typography-level(
+      $font-family: nightmare,
+      $font-weight: 400,
+      $font-size: 2.5em,
+      $line-height: 2.5em,
+      $letter-spacing: normal,
+    ),
   $headline-5:
     mat.define-typography-level(
       $font-family: nightmare,
       $font-weight: 400,
-      $font-size: 2em,
-      $line-height: 2em,
+      $font-size: 2.5em,
+      $line-height: 2.5em,
       $letter-spacing: normal,
     ),
   $headline-6:

@@ -50,6 +50,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { BingoBoardComponent } from './bingo-board/bingo-board.component';
 import { QueueMgmtComponent } from './leader-console/queue-mgmt/queue-mgmt.component';
 import { TrainerCardComponent } from './trainer-card/trainer-card.component';
+import { HowToComponent } from './how-to/how-to.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { TrainerCardComponent } from './trainer-card/trainer-card.component';
     PPLHelpDialog,
     QueueMgmtComponent,
     TrainerCardComponent,
+    HowToComponent,
   ],
   imports: [
     MatAutocompleteModule,

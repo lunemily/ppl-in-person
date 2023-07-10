@@ -24,16 +24,18 @@
   <mat-icon>chrome_reader_mode</mat-icon>
   <span>Trainer Card</span>
 </a>
-<button
+<a
   *ngIf="pplSettings?.howToChallenge"
   mat-button
   color="primary"
-  (click)="openChallenging()"
-  aria-label="How to Challenge"
+  routerLink="/howto"
+  routerLinkActive="active"
+  ariaCurrentWhenActive="page"
+  (click)="closeSidenav()"
 >
   <mat-icon>videogame_asset</mat-icon>
   <span>How to Challenge</span>
-</button>
+</a>
 <button *ngIf="pplSettings?.rules" mat-button color="primary" (click)="openRules()" aria-label="PPL Rules">
   <mat-icon>description</mat-icon>
   <span>PPL Rules</span>
