@@ -15,6 +15,13 @@ import { api } from '../constants.data';
   providedIn: 'root',
 })
 export class AuthenticationService {
+  constructor(
+    private http: HttpClient,
+    private messageService: MessageService,
+    private cookieService: CookieService,
+    private snackBar: MatSnackBar
+  ) {}
+
   httpOptions = {
     headers: api.httpOtions.headers.append('Content-Type', 'application/json'),
   };
@@ -102,11 +109,4 @@ export class AuthenticationService {
       return of(result as T);
     };
   }
-
-  constructor(
-    private http: HttpClient,
-    private messageService: MessageService,
-    private cookieService: CookieService,
-    private snackBar: MatSnackBar
-  ) {}
 }

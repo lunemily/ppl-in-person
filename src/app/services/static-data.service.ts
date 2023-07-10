@@ -118,6 +118,7 @@ export class DataService {
           prizePools: sidenav['prizePools'],
           schedule: sidenav['schedule'],
           bingoBoard: sidenav['bingoBoard'],
+          eventIsOver: response['eventIsOver'],
         };
         return settings;
       })

@@ -1,7 +1,7 @@
 <mat-card>
   <div id="header">
-    <h2 *ngIf="isLogin">Please Sign In</h2>
-    <h2 *ngIf="isRegister">Please Register</h2>
+    <h1 *ngIf="isLogin">Please Sign In</h1>
+    <h1 *ngIf="isRegister">Please Register</h1>
   </div>
   <form id="login-form">
     <table>
@@ -43,4 +43,16 @@
     <br />
     <p>Already have an account? <button mat-stroked-button color="primary" (click)="showLogin()">Sign In</button></p>
   </div>
+</mat-card>
+<mat-card>
+  <p>Not sure where to start?</p>
+  <a
+    mat-flat-button
+    color="accent"
+    skipLocationChange
+    routerLink="/howto"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page"
+    >Learn More</a
+  >
 </mat-card>

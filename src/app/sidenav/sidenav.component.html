@@ -4,6 +4,7 @@
   mat-button
   color="primary"
   routerLink="/home"
+  skipLocationChange
   routerLinkActive="active"
   ariaCurrentWhenActive="page"
   (click)="closeSidenav()"
@@ -28,6 +29,7 @@
   *ngIf="pplSettings?.howToChallenge"
   mat-button
   color="primary"
+  skipLocationChange
   routerLink="/howto"
   routerLinkActive="active"
   ariaCurrentWhenActive="page"

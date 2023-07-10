@@ -276,3 +276,7 @@ $theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
     font-family: 'Roboto';
   }
 }
+
+mat-card {
+  padding: 2em;
+}

@@ -17,11 +17,21 @@ import { Format } from '../models/format';
 import { Queue } from '../models/queue';
 import { Hold } from '../models/hold';
 import { AuthenticationService } from './authentication.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
+  constructor(
+    private http: HttpClient,
+    private cookieService: CookieService,
+    private messageService: MessageService,
+    private dataService: DataService,
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {}
+
   httpOptions = {
     headers: api.httpOtions.headers.append('Authorization', `Bearer ${this.cookieService.get('token')}`),
     // headers: new HttpHeaders({ Authorization: `Bearer ${this.cookieService.get('token')}` }),
@@ -438,12 +448,4 @@ export class ApiService {
       return of(result as T);
     };
   }
-
-  constructor(
-    private http: HttpClient,
-    private cookieService: CookieService,
-    private messageService: MessageService,
-    private dataService: DataService,
-    private authenticationService: AuthenticationService
-  ) {}
 }
