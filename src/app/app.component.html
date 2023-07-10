@@ -6,7 +6,8 @@
     <app-sidenav (closeSidenav)="closeSidenav()" (openSidenav)="toggleSidenav()"></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>
-    <router-outlet></router-outlet>
+    <router-outlet *ngIf="!eventIsOver"></router-outlet>
+    <app-bueller *ngIf="eventIsOver"></app-bueller>
     <!-- <app-footer></app-footer> -->
   </mat-sidenav-content>
 </mat-sidenav-container>

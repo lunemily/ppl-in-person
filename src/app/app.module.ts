@@ -51,6 +51,7 @@ import { BingoBoardComponent } from './bingo-board/bingo-board.component';
 import { QueueMgmtComponent } from './leader-console/queue-mgmt/queue-mgmt.component';
 import { TrainerCardComponent } from './trainer-card/trainer-card.component';
 import { HowToComponent } from './how-to/how-to.component';
+import { BuellerComponent } from './bueller/bueller.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ import { HowToComponent } from './how-to/how-to.component';
     QueueMgmtComponent,
     TrainerCardComponent,
     HowToComponent,
+    BuellerComponent,
   ],
   imports: [
     MatAutocompleteModule,

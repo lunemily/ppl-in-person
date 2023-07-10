@@ -1,5 +1,6 @@
 import { Component, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { DataService } from './services/static-data.service';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,9 @@ export class AppComponent {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   isMobileResolution: boolean;
+  eventIsOver = false;
 
-  constructor() {
+  constructor(private dataService: DataService) {
     if (window.innerWidth < 768) {
       this.isMobileResolution = true;
     } else {
@@ -19,7 +21,9 @@ export class AppComponent {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadPPLSettings();
+  }
 
   toggleSidenav(): void {
     this.sidenav.toggle();
@@ -27,5 +31,15 @@ export class AppComponent {
 
   closeSidenav(): void {
     this.sidenav.close();
+  }
+
+  loadPPLSettings() {
+    this.dataService.getPPLSettings().subscribe((pplSettings) => {
+      this.eventIsOver = pplSettings.eventIsOver;
+      if (this.eventIsOver) {
+        console.error('What are you still doing here? PPL is over.');
+        this.eventIsOver = pplSettings.eventIsOver;
+      }
+    });
   }
 }

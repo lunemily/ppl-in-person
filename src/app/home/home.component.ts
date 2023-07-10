@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { HeaderService } from '../services/header.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DataService } from '../services/static-data.service';
 
 @Component({
   selector: 'app-home',

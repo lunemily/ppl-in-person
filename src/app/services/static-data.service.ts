@@ -118,7 +118,8 @@ export class DataService {
           prizePools: sidenav['prizePools'],
           schedule: sidenav['schedule'],
           bingoBoard: sidenav['bingoBoard'],
-          eventIsOver: response['eventIsOver'],
+          // eventIsOver: response['eventIsOver'],
+          eventIsOver: true,
         };
         return settings;
       })
