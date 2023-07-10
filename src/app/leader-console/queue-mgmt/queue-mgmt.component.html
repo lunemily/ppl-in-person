@@ -1,6 +1,7 @@
 <div *ngIf="leader.queueOpen">
   <span>Your queue is open </span>
   <button mat-flat-button color="primary" (click)="closeQueue()">CLOSE</button>
+  <button *ngIf="leader.twitchEnabled" mat-flat-button color="primary" (click)="goLive()">GO LIVE</button>
 </div>
 <div *ngIf="!leader.queueOpen">
   <span><mat-icon class="color-warn">warning</mat-icon> Your queue is closed </span>
@@ -8,5 +9,6 @@
   <button *ngIf="leader.battleFormatIds.includes(4)" mat-flat-button color="accent" (click)="openQueue(true)">
     OPEN IN DUO
   </button>
+  <button *ngIf="leader.twitchEnabled" mat-flat-button color="primary" (click)="goLive()">GO LIVE</button>
 </div>
 <br />

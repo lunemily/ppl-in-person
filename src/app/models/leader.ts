@@ -21,4 +21,5 @@ export interface Leader extends Person {
   battleFormatIds?: number[];
   battleFormats?: Format[];
   queueOpen?: boolean;
+  twitchEnabled?: boolean;
 }

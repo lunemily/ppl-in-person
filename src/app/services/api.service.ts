@@ -118,6 +118,7 @@ export class ApiService {
             };
             return hold;
           }, []),
+          twitchEnabled: response['twitchEnabled'],
           wins: response['winCount'],
           losses: response['lossCount'],
           badgesAwarded: response['badgesAwarded'],
@@ -290,6 +291,19 @@ export class ApiService {
     this.http.post<any>(url, {}, this.httpOptions).subscribe(
       (data) => {
         window.location.reload();
+      },
+      (error) => {
+        this.messageService.showError(error['error']['error']);
+      }
+    );
+  }
+
+  goLive(loginId: string): void {
+    const url = `${api.serverUrl}/api/v2/leader/${loginId}/live`;
+
+    this.http.post<any>(url, {}, this.httpOptions).subscribe(
+      (data) => {
+        this.messageService.showError("You've gone live!");
       },
       (error) => {
         this.messageService.showError(error['error']['error']);

@@ -19,4 +19,8 @@ export class QueueMgmtComponent {
   closeQueue() {
     this.apiService.closeQueue(this.leader.id);
   }
+
+  goLive() {
+    this.apiService.goLive(this.leader.id);
+  }
 }
