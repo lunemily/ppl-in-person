@@ -7,6 +7,7 @@ export let battleFormatsMap = {
   multi: 4,
   special: 8,
 };
+
 export let battleFormatsReverseMap = {
   // Bitmask; some leaders may support multiple battle formats
   1: 'singles',

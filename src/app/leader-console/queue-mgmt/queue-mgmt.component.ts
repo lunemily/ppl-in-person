@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Leader } from 'src/app/models/leader';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -7,10 +7,17 @@ import { ApiService } from 'src/app/services/api.service';
   templateUrl: './queue-mgmt.component.html',
   styleUrls: ['./queue-mgmt.component.scss'],
 })
-export class QueueMgmtComponent {
+export class QueueMgmtComponent implements OnInit {
   @Input() leader: Leader;
+  allowStandardQueue: boolean;
+  allowMultiQueue: boolean;
 
   constructor(private apiService: ApiService) {}
+
+  ngOnInit(): void {
+    this.allowMultiQueue = this.leader.battleFormatIds.includes(4);
+    this.allowStandardQueue = this.leader.battleFormatIds.some((item) => [1, 2, 8].includes(item));
+  }
 
   openQueue(duoMode = false) {
     this.apiService.openQueue(this.leader.id, duoMode);
