@@ -30,7 +30,7 @@
       <!-- <h3 *ngIf="!leader.champion">{{ leader.badgeName }}</h3> -->
     </div>
   </div>
-  <div *ngIf="earned" class="buttons">
+  <div class="buttons">
     <span *ngFor="let battleFormat of leader.battleFormats" class="callout {{ battleFormat.name }}"
       >&nbsp;{{ battleFormat.name }}&nbsp;</span
     >
