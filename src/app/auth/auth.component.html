@@ -3,7 +3,7 @@
     <h1 *ngIf="isLogin">Please Sign In</h1>
     <h1 *ngIf="isRegister">Please Register</h1>
   </div>
-  <form id="login-form">
+  <form *ngIf="!isRegister" id="login-form" (keydown.enter)="login()">
     <table>
       <tr>
         <td>
@@ -21,7 +21,27 @@
           </mat-form-field>
         </td>
       </tr>
-      <tr *ngIf="isRegister">
+    </table>
+  </form>
+  <form *ngIf="isRegister" id="login-form" (keydown.enter)="register()">
+    <table>
+      <tr>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input matInput [(ngModel)]="credentials.username" />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="'password'" [(ngModel)]="credentials.password" />
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
         <td>
           <mat-form-field appearance="fill">
             <mat-label>Confirm Password</mat-label>
