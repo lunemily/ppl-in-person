@@ -172,6 +172,7 @@ export class ApiService {
                   name: leaderTypesReverseMap[item['difficulty']],
                 },
                 battleCode: item['linkCode'],
+                isChampion: this.getLeaderTypesFromBitmask(item['difficulty']).includes(16), // champion leaderType
               };
               result.push(queue);
               return result;
@@ -191,6 +192,7 @@ export class ApiService {
                     id: item['difficulty'],
                     name: leaderTypesReverseMap[item['difficulty']],
                   },
+                  isChampion: this.getLeaderTypesFromBitmask(item['difficulty']).includes(16), // champion leaderType
                 };
                 result.push(queue);
                 return result;

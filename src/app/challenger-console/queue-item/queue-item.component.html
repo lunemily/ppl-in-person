@@ -3,7 +3,7 @@
     <td class="panel image-panel">
       <img class="badge" alt="{{ queue.displayName }}" src="{{ url }}/static/portraits/{{ queue.leaderId }}.png" />
     </td>
-    <td class="panel image-panel">
+    <td *ngIf="!queue.isChampion" class="panel image-panel">
       <img class="badge" alt="{{ queue.displayName }}" src="{{ url }}/static/badges/{{ queue.leaderId }}.png" />
     </td>
     <td *ngIf="!onHold" class="panel position-panel">
