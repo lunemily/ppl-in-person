@@ -3,7 +3,9 @@ import { PPLSettings } from '../app/models/settings';
 
 export const pplEvent = 'West';
 
-export const serverUrl = 'https://toastserv.com:26438';
+export const serverUrlQual = 'https://toastserv.com:26441';
+export const serverUrlProd = 'https://toastserv.com:26438';
+export const serverUrl = serverUrlQual;
 export const httpOtions = {
   headers: new HttpHeaders({ 'PPL-Event': pplEvent }),
 };
@@ -19,6 +21,7 @@ export const sidenav: PPLSettings = {
   prizePools: true,
   schedule: false,
   bingoBoard: false,
+  eventIsOver: false,
 };
 
 export const features = {

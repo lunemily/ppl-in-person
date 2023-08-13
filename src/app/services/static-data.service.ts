@@ -82,6 +82,11 @@ export class DataService {
         // Store list of leaders
         localStorage.setItem(`leader-data-list`, JSON.stringify(sortedListOfLeaders));
 
+        // Set TTL
+        let ttl = new Date();
+        ttl.setHours(ttl.getHours() + 4);
+        localStorage.setItem('leader-data-ttl', ttl.toString());
+
         return sortedfLeaders;
       }),
       tap((_) => this.log('fetched leader data')),
@@ -107,6 +112,19 @@ export class DataService {
   }
 
   getPPLSettings(): Observable<PPLSettings> {
+    let rawAppSettingsTTL = localStorage.getItem('app-settings-ttl');
+    if (rawAppSettingsTTL) {
+      let now = new Date().getTime();
+      let appSettingsTTL = Date.parse(rawAppSettingsTTL);
+      if (now < appSettingsTTL)
+        // We're before the settings expiration time, return the local values
+        return this.returnLocalPPLSettings();
+    }
+
+    return this.fetchAndReturnPPLSettings();
+  }
+
+  fetchAndReturnPPLSettings(): Observable<PPLSettings> {
     const url = `${api.serverUrl}/api/v2/appsettings`;
 
     return this.http.get(url, this.httpOptions).pipe(
@@ -118,11 +136,30 @@ export class DataService {
           prizePools: sidenav['prizePools'],
           schedule: sidenav['schedule'],
           bingoBoard: sidenav['bingoBoard'],
-          eventIsOver: response['eventIsOver'],
+          // eventIsOver: response['eventIsOver'],
+          eventIsOver: false,
         };
+
+        // Store settings
+        localStorage.setItem('app-settings', JSON.stringify(settings));
+
+        // Set TTL
+        let ttl = new Date();
+        ttl.setHours(ttl.getHours() + 4);
+        localStorage.setItem('app-settings-ttl', ttl.toString());
+
         return settings;
       })
     );
+  }
+
+  returnLocalPPLSettings(): Observable<PPLSettings> {
+    try {
+      return of(JSON.parse(localStorage.getItem('app-settings')));
+    } catch (error) {
+      console.error(error);
+      return this.fetchAndReturnPPLSettings();
+    }
   }
 
   /** Log a ChallengerService message with the MessageService */
