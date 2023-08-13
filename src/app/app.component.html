@@ -3,7 +3,7 @@
   <!-- This toolbar is a spacer -->
   <mat-toolbar color="primary"></mat-toolbar>
   <mat-sidenav #sidenav="matSidenav" [mode]="isMobileResolution ? 'over' : 'side'">
-    <app-sidenav (closeSidenav)="closeSidenav()" (openSidenav)="toggleSidenav()"></app-sidenav>
+    <app-sidenav (closeSidenav)="closeSidenav()"></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet *ngIf="!eventIsOver"></router-outlet>

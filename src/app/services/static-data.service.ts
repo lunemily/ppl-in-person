@@ -20,13 +20,21 @@ export class DataService {
 
   getLeaderData(): Observable<Leader[]> {
     let localLeaderList = localStorage.getItem('leader-data-list');
-    if (localLeaderList) {
-      console.info('Leader data present.\nReturning from local storage...\n');
-      return this.returnLocalLeaderData();
-    } else {
-      console.warn('Leader data not stored.\nFetching...\n');
-      return this.fetchAndReturnLeaderData();
+    let rawLeaderDataTTL = localStorage.getItem('leader-data-ttl');
+
+    if (rawLeaderDataTTL) {
+      let now = new Date().getTime();
+      let leaderDataTTL = Date.parse(rawLeaderDataTTL);
+      if (now < leaderDataTTL) {
+        if (localLeaderList) {
+          // We're before the settings expiration time, return the local values
+          console.info('Leader data present.\nReturning from local storage...\n');
+          return this.returnLocalLeaderData();
+        }
+      }
     }
+    console.warn('Leader data not stored.\nFetching...\n');
+    return this.fetchAndReturnLeaderData();
   }
 
   private fetchAndReturnLeaderData(): Observable<Leader[]> {
@@ -84,7 +92,7 @@ export class DataService {
 
         // Set TTL
         let ttl = new Date();
-        ttl.setHours(ttl.getHours() + 4);
+        ttl.setHours(ttl.getMonth() + 1);
         localStorage.setItem('leader-data-ttl', ttl.toString());
 
         return sortedfLeaders;
@@ -98,17 +106,19 @@ export class DataService {
     let localLeaderList = JSON.parse(localStorage.getItem('leader-data-list'));
     console.debug(localLeaderList);
 
-    const data =
-      '{"00c0b9669df8":{"name":"Roxas, the Overcaffeinated Admin","badgeName":"Iced Latte Badge","bio":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","tagline":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},"16fdeaef3799":{"name":"Etch, the Savvy Scientific Illustrator","badgeName":"Field Study Badge","bio":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","tagline":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},"2d0f49b297cd":{"name":"Rhonder, the Puzzle League Master","badgeName":"Puzzle League Badge","bio":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","tagline":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},"3056473e5679":{"name":"Jose, the Raucous","badgeName":"Cacophonous Badge","bio":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","tagline":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},"30d635b10187":{"name":"Bioram, the Blue Dude","badgeName":"Blue Badge","bio":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","tagline":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},"34c30492736c":{"name":"Mamoru Chiba, the Masked Observer","badgeName":"Elegant Badge","bio":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","tagline":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},"404a69cb5b9f":{"name":"Mike, the Giant","badgeName":"G-Max Badge","bio":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","tagline":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},"483a657b99c0":{"name":"Jules, the Traveler","badgeName":"Passport Badge","bio":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","tagline":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},"511b226c5749":{"name":"Doomy, the Max Raider","badgeName":"Novice Raider Badge","bio":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","tagline":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},"55a4b533dc78":{"name":"Kenny, the Max Raider","badgeName":"Expert Raider Badge","bio":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","tagline":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},"8f94033f58b7":{"name":"Chrys, the Hard-Shelled Trainer","badgeName":"Exoskeleton Badge","bio":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","tagline":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},"aeaf9468b4a2":{"name":"Monsoon, the Stains of Time","badgeName":"Storm Badge","bio":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","tagline":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},"bcbeb3764061":{"name":"Douglas, the Rising Fist","badgeName":"Steel Fist Badge","bio":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","tagline":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},"c6e73226e7c4":{"name":"Nancy Richardson II, the Dex Maniac","badgeName":"PokéDex Maniac Badge","bio":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","tagline":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},"cc31b0cbc4b5":{"name":"Dustin, Respite in the Dunes","badgeName":"Oasis Emblem","bio":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","tagline":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},"cddaba15d491":{"name":"Lord Fingler, the Socialite","badgeName":"Influencer Badge","bio":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","tagline":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},"f00c087d1a2c":{"name":"Lord Fingler, the Artiste","badgeName":"Artiste Badge","bio":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","tagline":"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."}}';
-
-    let leaders: Leader[] = [];
-    for (let leaderEntry of localLeaderList) {
-      console.debug(leaderEntry);
-      console.debug(localStorage.getItem(leaderEntry));
-      let leader: Leader = JSON.parse(localStorage.getItem(leaderEntry));
-      leaders.push(leader);
+    try {
+      let leaders: Leader[] = [];
+      for (let leaderEntry of localLeaderList) {
+        console.debug(leaderEntry);
+        console.debug(localStorage.getItem(leaderEntry));
+        let leader: Leader = JSON.parse(localStorage.getItem(leaderEntry));
+        leaders.push(leader);
+      }
+      return of(leaders);
+    } catch (error) {
+      console.error(error);
+      return this.fetchAndReturnLeaderData();
     }
-    return of(leaders);
   }
 
   getPPLSettings(): Observable<PPLSettings> {
@@ -124,7 +134,7 @@ export class DataService {
     return this.fetchAndReturnPPLSettings();
   }
 
-  fetchAndReturnPPLSettings(): Observable<PPLSettings> {
+  private fetchAndReturnPPLSettings(): Observable<PPLSettings> {
     const url = `${api.serverUrl}/api/v2/appsettings`;
 
     return this.http.get(url, this.httpOptions).pipe(
@@ -153,7 +163,7 @@ export class DataService {
     );
   }
 
-  returnLocalPPLSettings(): Observable<PPLSettings> {
+  private returnLocalPPLSettings(): Observable<PPLSettings> {
     try {
       return of(JSON.parse(localStorage.getItem('app-settings')));
     } catch (error) {
