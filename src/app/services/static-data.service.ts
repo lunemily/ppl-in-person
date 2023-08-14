@@ -155,7 +155,7 @@ export class DataService {
 
         // Set TTL
         let ttl = new Date();
-        ttl.setHours(ttl.getHours() + 4);
+        ttl.setHours(ttl.getMinutes() + 10);
         localStorage.setItem('app-settings-ttl', ttl.toString());
 
         return settings;
