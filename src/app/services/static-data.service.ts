@@ -147,7 +147,8 @@ export class DataService {
           schedule: sidenav['schedule'],
           bingoBoard: sidenav['bingoBoard'],
           // eventIsOver: response['eventIsOver'],
-          eventIsOver: response['eventIsOver'],
+          eventIsOver: false,
+          eventSupportsQueueState: response['eventSupportsQueueState'],
         };
 
         // Store settings
