@@ -37,7 +37,7 @@
     </div>
   </div>
   <br />
-  <div *ngIf="data.challengerId && data.leader.queueOpen" id="challenger-form">
+  <div *ngIf="pplEvent === 'online' && data.challengerId && data.leader.queueOpen" id="challenger-form">
     <mat-form-field>
       <mat-label>Select a battle format</mat-label>
       <mat-select [(value)]="selectedFormat">

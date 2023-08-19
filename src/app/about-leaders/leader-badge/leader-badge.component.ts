@@ -2,7 +2,7 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CookieService } from 'ngx-cookie-service';
-import { api } from '../../constants.data';
+import { api, pplEvent } from '../../constants.data';
 import { Leader } from 'src/app/models/leader';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -76,6 +76,9 @@ export class LeaderBadgeComponent implements OnInit {
 export class LeaderDetailEnqueueDialog {
   selectedFormat: number;
   selectedDifficulty: number;
+
+  pplEvent = pplEvent.toLowerCase();
+
   constructor(
     public dialogRef: MatDialogRef<LeaderDetailEnqueueDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
