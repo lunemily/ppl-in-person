@@ -5,7 +5,7 @@ export const pplEvent = 'West';
 
 export const serverUrlQual = 'https://toastserv.com:26441';
 export const serverUrlProd = 'https://toastserv.com:26438';
-export const serverUrl = serverUrlProd;
+export const serverUrl = serverUrlQual;
 export const httpOtions = {
   headers: new HttpHeaders({ 'PPL-Event': pplEvent }),
 };
