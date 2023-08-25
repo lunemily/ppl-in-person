@@ -4,10 +4,10 @@
   ></mat-card
 >
 <mat-card
-  ><h1>What is the Pax Pokemon League Online (PPLO)?</h1>
+  ><h1>What is the Pax Pokemon League?</h1>
   <p>
-    PPLO is an online Pokémon League where you can battle Gym Leaders for prizes! In addition to Pokémon Battles, we
-    have fun events planned during the weekend too! This event runs from July 14th-16th, 2023.
+    PPL is a{{ pplEvent.toLocaleLowerCase() === 'online' ? 'n online' : '' }} Pokémon League where you can battle Gym
+    Leaders for prizes! In addition to Pokémon Battles, we have fun events planned during the weekend too!
   </p>
   <img id="logo" src="assets/images/ppl-logo.png"
 /></mat-card>
@@ -24,7 +24,7 @@
   ><h2>Prizes</h2>
   <p>
     Beat any 8 Gym Leaders and you can challenge the Champion! Win against the Champion and you have beaten the Pax
-    Pokémon League Online 2023! You can see the list of prizes here!
+    Pokémon League {{ pplEvent }} {{ year }}! You can see the list of prizes here!
   </p>
   <img id="prizes" alt="prizes at this PPL Event" src="{{ prizesImage }}"
 /></mat-card>

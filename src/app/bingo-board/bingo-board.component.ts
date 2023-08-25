@@ -23,6 +23,10 @@ export class BingoBoardComponent implements OnInit {
   bingoHowToAlt =
     'How it works: Each time you battle a gym leader, win or lose you will automatically catch their Signature Pokemon on your bingo card. Successfully capture 5 in a line to complete a bingo and win a prize!';
   url = api.serverUrl;
+  bingoClaimPredicate =
+    pplEvent.toLowerCase() !== 'online'
+      ? 'show an Admin at the booth.'
+      : 'message @doomy8902 with a screenshot of your bingo board.';
 
   constructor(private apiService: ApiService, private cookieService: CookieService) {}
 

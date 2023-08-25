@@ -1,8 +1,11 @@
 <mat-card>
   <div id="queues-entered">
     <h2 class="left">Queues Entered</h2>
-    <span>Visit the Trainer Card on the left to add yourself to an open queue!</span>
-    <button mat-button class="menu-button" (click)="openHelp()">
+    <span
+      >Visit the Trainer Card on the left to
+      {{ useQR ? 'learn more about the leaders' : 'add yourself to an open queue' }}!</span
+    >
+    <button *ngIf="!useQR" mat-button class="menu-button" (click)="openHelp()">
       <mat-icon>help</mat-icon>
     </button>
     <br />
