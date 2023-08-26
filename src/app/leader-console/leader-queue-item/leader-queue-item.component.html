@@ -1,29 +1,34 @@
+<mat-divider *ngIf="queue.position !== 0"></mat-divider>
 <table>
   <tr>
-    <td class="panel name-panel">
+    <td id="name" class="panel name-panel">
       <span>{{ queue.displayName.toUpperCase() }}</span>
     </td>
-    <td class="panel name-panel">
+    <td id="battle-type" class="panel name-panel">
       <span>{{ queue.battleFormat.name.toLocaleUpperCase() }}</span>
-      <br />
+      <mat-divider></mat-divider>
       <span>{{ queue.battleDifficulty.name.toLocaleUpperCase() }}</span>
     </td>
-    <td>
-      <button
-        class="battle-button"
-        color="accent"
-        [disabled]="queue.position !== 0"
-        mat-flat-button
-        (click)="reportBattle()"
-      >
-        BATTLE
-      </button>
-    </td>
-    <td>
-      <button class="hold-button" mat-stroked-button (click)="holdChallenger(queue.challengerId)">HOLD</button>
-    </td>
-    <td>
-      <button class="remove-button" mat-stroked-button (click)="removeChallenger(queue.challengerId)">REMOVE</button>
+    <td id="battle-menu">
+      <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_horiz</mat-icon></button>
+      <mat-menu #menu="matMenu">
+        <button
+          class="battle-button"
+          color="accent"
+          [disabled]="queue.position !== 0"
+          mat-menu-item
+          (click)="reportBattle()"
+        >
+          <mat-icon>compare_arrows</mat-icon>
+          BATTLE
+        </button>
+        <button class="hold-button" mat-menu-item (click)="holdChallenger(queue.challengerId)">
+          <mat-icon>more_time</mat-icon>HOLD
+        </button>
+        <button class="remove-button" mat-menu-item (click)="removeChallenger(queue.challengerId)">
+          <mat-icon>eject</mat-icon>REMOVE
+        </button>
+      </mat-menu>
     </td>
   </tr>
 </table>

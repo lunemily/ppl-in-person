@@ -1,17 +1,18 @@
 <table>
   <tr>
-    <td class="panel name-panel">
+    <td id="name" class="panel name-panel">
       <span>{{ hold.displayName.toUpperCase() }}</span>
     </td>
-    <td>
-      <button class="unhold-button" mat-stroked-button color="primary" (click)="unholdFront(hold.challengerId)">
-        FRONT
-      </button>
-    </td>
-    <td>
-      <button class="unhold-button" mat-stroked-button color="primary" (click)="unholdBack(hold.challengerId)">
-        BACK
-      </button>
+    <td id="hold-menu">
+      <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_horiz</mat-icon></button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item class="unhold-button" color="primary" (click)="unholdFront(hold.challengerId)">
+          <mat-icon>first_page</mat-icon>FRONT
+        </button>
+        <button mat-menu-item class="unhold-button" color="primary" (click)="unholdBack(hold.challengerId)">
+          <mat-icon>last_page</mat-icon>BACK
+        </button>
+      </mat-menu>
     </td>
   </tr>
 </table>

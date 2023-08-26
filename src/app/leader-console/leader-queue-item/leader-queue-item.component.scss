@@ -4,10 +4,25 @@ table {
 }
 
 td {
-  width: 19%;
   word-wrap: break-word;
+}
+
+#name {
+  width: 50%;
+}
+
+#battle-type {
+  width: 30%;
+}
+
+#battle-menu {
+  width: 20%;
 }
 
 .name-panel {
   max-width: 80px;
+}
+
+mat-menu {
+  display: block;
 }

@@ -1,8 +1,16 @@
 table {
-    border: 2px black;
-    width: 100%;
+  border: 2px black;
+  width: 100%;
 }
 
 .name-panel {
-    max-width: 80px;
+  max-width: 80px;
+}
+
+#name {
+  width: 80%;
+}
+
+#hold-menu {
+  width: 20%;
 }
