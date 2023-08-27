@@ -18,6 +18,7 @@
     <td *ngIf="onHold" class="panel position-panel">
       <span>You are on</span>
       <span id="queue-position">HOLD</span>
+      <button class="hold-button" mat-stroked-button (click)="drop()">DROP</button>
     </td>
   </tr>
   <tr>

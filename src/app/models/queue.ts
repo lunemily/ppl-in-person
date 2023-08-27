@@ -13,6 +13,6 @@ export interface Queue {
   battleDifficulty?: Format;
   battleCode?: string;
   otherChallengerId?: string;
-  isChampion?: string;
+  isChampion?: boolean;
   // badgesEarned?: number;
 }

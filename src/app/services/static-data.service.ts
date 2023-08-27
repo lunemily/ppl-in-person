@@ -50,8 +50,8 @@ export class DataService {
             badgeName: response[leaderId].badgeName as string,
             bio: response[leaderId].bio as string,
             tagline: response[leaderId].tagline as string,
-            leaderTypeIds: this.getLeaderTypesFromBitmask(response[leaderId].leaderType),
-            leaderTypes: this.getLeaderTypesFromBitmask(response[leaderId].leaderType).map(function (typeId) {
+            leaderTypeIds: DataService.getLeaderTypesFromBitmask(response[leaderId].leaderType),
+            leaderTypes: DataService.getLeaderTypesFromBitmask(response[leaderId].leaderType).map(function (typeId) {
               let type: Format = {
                 id: typeId,
                 name: leaderTypesReverseMap[typeId],
@@ -66,7 +66,7 @@ export class DataService {
               };
               return format;
             }, []),
-            champion: this.getLeaderTypesFromBitmask(response[leaderId].leaderType).includes(16), // champion leaderType
+            champion: DataService.getLeaderTypesFromBitmask(response[leaderId].leaderType).includes(16), // champion leaderType
           };
           leaders.push(leader);
           // Store individual leader data
@@ -222,7 +222,7 @@ export class DataService {
   /**
    * Convert bitmask for leaderTypes
    */
-  getLeaderTypesFromBitmask(bitmask: number): number[] {
+  static getLeaderTypesFromBitmask(bitmask: number): number[] {
     let leaderTypes = [];
     for (let key of Object.keys(leaderTypesMap)) {
       if (bitmask & leaderTypesMap[key]) {

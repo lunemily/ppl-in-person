@@ -95,8 +95,8 @@ export class ApiService {
               };
               return format;
             }, []),
-          leaderTypeIds: this.dataService.getLeaderTypesFromBitmask(response['leaderType']),
-          leaderTypes: this.dataService.getLeaderTypesFromBitmask(response['leaderType']).map(function (typeId) {
+          leaderTypeIds: DataService.getLeaderTypesFromBitmask(response['leaderType']),
+          leaderTypes: DataService.getLeaderTypesFromBitmask(response['leaderType']).map(function (typeId) {
             let type: Format = {
               id: typeId,
               name: leaderTypesReverseMap[typeId],
@@ -152,6 +152,7 @@ export class ApiService {
     // return of(JSON.parse(response)).pipe(
     return this.http.get<Challenger>(url, this.httpOptions).pipe(
       map((response) => {
+        console.warn(response);
         /** Create object to return. Add in all leaders now. */
         let challenger: Challenger = {
           id: id,
@@ -172,7 +173,7 @@ export class ApiService {
                   name: leaderTypesReverseMap[item['difficulty']],
                 },
                 battleCode: item['linkCode'],
-                isChampion: this.getLeaderTypesFromBitmask(item['difficulty']).includes(16), // champion leaderType
+                isChampion: DataService.getLeaderTypesFromBitmask(item['difficulty']).includes(16), // champion leaderType
               };
               result.push(queue);
               return result;
@@ -192,7 +193,7 @@ export class ApiService {
                     id: item['difficulty'],
                     name: leaderTypesReverseMap[item['difficulty']],
                   },
-                  isChampion: this.getLeaderTypesFromBitmask(item['difficulty']).includes(16), // champion leaderType
+                  isChampion: DataService.getLeaderTypesFromBitmask(item['difficulty']).includes(16), // champion leaderType
                 };
                 result.push(queue);
                 return result;
