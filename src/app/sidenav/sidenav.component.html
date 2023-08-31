@@ -46,6 +46,10 @@
   <mat-icon>stars</mat-icon>
   <span>Activities and Prizes</span>
 </button>
+<button *ngIf="pplSettings?.map" mat-button color="primary" (click)="openMap()" aria-label="Map">
+  <mat-icon>map</mat-icon>
+  <span>Location</span>
+</button>
 <a
   *ngIf="pplSettings?.bingoBoard"
   mat-button

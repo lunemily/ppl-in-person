@@ -60,6 +60,10 @@ export class SidenavComponent implements OnInit {
     window.open(`assets/images/rules-${pplEvent.toLowerCase()}.png`);
   }
 
+  openMap() {
+    window.open(`assets/images/map-${pplEvent.toLowerCase()}.png`);
+  }
+
   openAboutLeaders() {
     window.location.reload();
   }

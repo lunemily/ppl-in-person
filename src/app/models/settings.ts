@@ -7,4 +7,5 @@ export interface PPLSettings {
   bingoBoard: boolean;
   eventIsOver: boolean;
   eventSupportsQueueState: boolean;
+  map: boolean;
 }

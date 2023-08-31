@@ -149,6 +149,7 @@ export class DataService {
           eventIsOver: response['eventIsOver'],
           // eventIsOver: false,
           eventSupportsQueueState: response['eventSupportsQueueState'],
+          map: sidenav['map'],
         };
 
         // Store settings
