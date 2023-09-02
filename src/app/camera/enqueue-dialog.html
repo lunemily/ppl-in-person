@@ -1,6 +1,22 @@
 <h2 mat-dialog-title *ngIf="!data.isLeader">Would you like to add yourself to this leader's queue?</h2>
 <h2 mat-dialog-title *ngIf="data.isLeader">Would you like to add this challenger to your queue?</h2>
 <div mat-dialog-actions>
+  <mat-form-field>
+    <mat-label>Select a battle format</mat-label>
+    <mat-select [(value)]="selectedFormat">
+      <mat-option *ngFor="let battleFormat of data.battleFormats" value="{{ battleFormat.id }}"
+        >{{ battleFormat.name.toUpperCase() }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Select a difficulty</mat-label>
+    <mat-select [(value)]="selectedDifficulty">
+      <mat-option *ngFor="let leaderType of data.leaderTypes" value="{{ leaderType.id }}"
+        >{{ leaderType.name.toUpperCase() }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
   <button mat-stroked-button (click)="onNoClick()">No Thanks</button>
   <button mat-flat-button (click)="onYesClick()" color="primary" cdkFocusInitial>Yes</button>
 </div>

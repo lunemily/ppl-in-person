@@ -92,7 +92,7 @@ export class DataService {
 
         // Set TTL
         let ttl = new Date();
-        ttl.setHours(ttl.getMonth() + 1);
+        ttl.setMonth(ttl.getMonth() + 1);
         localStorage.setItem('leader-data-ttl', ttl.toString());
 
         return sortedfLeaders;
