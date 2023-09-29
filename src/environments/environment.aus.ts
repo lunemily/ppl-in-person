@@ -5,7 +5,7 @@ export const pplEvent = 'Aus';
 
 export const serverUrlStaging = 'https://toastserv.com:26441';
 export const serverUrlProd = 'https://toastserv.com:26438';
-export const serverUrl = serverUrlProd;
+export const serverUrl = serverUrlStaging;
 export const httpOtions = {
   headers: new HttpHeaders({ 'PPL-Event': pplEvent }),
 };
@@ -20,7 +20,7 @@ export const sidenav: PPLSettings = {
   rules: true,
   prizePools: false,
   schedule: false,
-  bingoBoard: false,
+  bingoBoard: true,
   eventIsOver: false,
   eventSupportsQueueState: false,
   map: false,
