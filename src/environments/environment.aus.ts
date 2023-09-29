@@ -3,7 +3,9 @@ import { PPLSettings } from '../app/models/settings';
 
 export const pplEvent = 'Aus';
 
-export const serverUrl = 'https://toastserv.com:26438';
+export const serverUrlStaging = 'https://toastserv.com:26441';
+export const serverUrlProd = 'https://toastserv.com:26438';
+export const serverUrl = serverUrlStaging;
 export const httpOtions = {
   headers: new HttpHeaders({ 'PPL-Event': pplEvent }),
 };

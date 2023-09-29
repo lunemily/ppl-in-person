@@ -4,6 +4,7 @@
 * Fork at: https://materialtheme.arcsine.dev/?c=YHBhbGV0dGU$YHByaW1hcnk$YF48IzA0MDA4MCIsIj9lcjwjYjRiM2Q5IiwiO2VyPCMwMjAwNjN$LCIlPmBePCM3OTc5NzkiLCI~ZXI8I2Q3ZDdkNyIsIjtlcjwjNWM1YzVjfiwid2Fybj5gXjwjMDBjZWZmIiwiP2VyPCNiM2YwZmYiLCI7ZXI8IzAwYmNmZn4sIj9UZXh0PCMwMDAwMDAiLCI~PTwjZmFmYWZhIiwiO1RleHQ8I2ZmZmZmZiIsIjs9PCMyYzJjMmN$LCJmb250cz5bYEA8KC00fixgQDwoLTN$LGBAPCgtMn4sYEA8KC0xfixgQDxoZWFkbGluZX4sYEA8dGl0bGV$LGBAPHN1YiktMn4sYEA8c3ViKS0xfixgQDxib2R5LTJ$LGBAPGJvZHktMX4sYEA8YnV0dG9ufixgQDxjYXB0aW9ufixgQDxpbnB1dCIsInNpemU$bnVsbH1dLCJpY29uczxGaWxsZWQiLCI~bmVzcz50cnVlLCJ2ZXJzaW9uPjExfQ==
 */
 
+@use '@angular/material' as mat;
 @import '@angular/material/theming';
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -15,38 +16,7 @@
   src: url('assets/fonts/theboldfont.ttf') format('truetype');
 }
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
-// @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
-
-@font-face {
-  font-family: theboldfont;
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('assets/fonts/theboldfont.ttf') format('truetype');
-}
-@font-face {
-  font-family: theboldfont;
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('assets/fonts/theboldfont.ttf') format('truetype');
-}
-
-$fontConfig: (
-  display-4: mat-typography-level(112px, 112px, 300, 'Roboto', -0.0134em),
-  display-3: mat-typography-level(56px, 56px, 400, 'Roboto', -0.0089em),
-  display-2: mat-typography-level(45px, 48px, 400, 'Roboto', 0em),
-  display-1: mat-typography-level(34px, 40px, 400, 'Roboto', 0.0074em),
-  headline: mat-typography-level(1.5em, 1.5em, 400, 'theboldfont', 0em),
-  title: mat-typography-level(1.25em, 1.25em, 400, 'theboldfont', 0em),
-  subheading-2: mat-typography-level(16px, 28px, 400, 'theboldfont', 0.05em),
-  subheading-1: mat-typography-level(15px, 24px, 500, 'theboldfont', 0.0067em),
-  body-2: mat-typography-level(14px, 24px, 500, 'Roboto', 0.0179em),
-  body-1: mat-typography-level(14px, 20px, 400, 'Roboto', 0.0179em),
-  button: mat-typography-level(14px, 14px, 500, 'Roboto', 0.0893em),
-  caption: mat-typography-level(12px, 20px, 400, 'Roboto', 0.0333em),
-  input: mat-typography-level(inherit, 1.125, 400, 'Roboto', 1.5px),
-);
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 
 // Foreground Elements
 
@@ -85,25 +55,6 @@ $light-disabled-text: rgba($light-primary-text, 0.5);
 $light-dividers: rgba($light-primary-text, 0.12);
 $light-focused: rgba($light-primary-text, 0.12);
 
-$mat-dark-theme-foreground: (
-  base: $light-text,
-  divider: $light-dividers,
-  dividers: $light-dividers,
-  disabled: $light-disabled-text,
-  disabled-button: rgba($light-text, 0.3),
-  disabled-text: $light-disabled-text,
-  elevation: black,
-  hint-text: $light-disabled-text,
-  secondary-text: $light-accent-text,
-  accent-text: $light-accent-text,
-  icon: $light-text,
-  icons: $light-text,
-  text: $light-text,
-  slider-min: $light-text,
-  slider-off: rgba($light-text, 0.3),
-  slider-off-active: rgba($light-text, 0.3),
-);
-
 // Background config
 // Light bg
 $light-background: #fafafa;
@@ -134,36 +85,60 @@ $mat-light-theme-background: (
   disabled-list-option: $light-bg-darker-10,
 );
 
-// Dark bg
-$dark-background: #2c2c2c;
-$dark-bg-lighter-5: lighten($dark-background, 5%);
-$dark-bg-lighter-10: lighten($dark-background, 10%);
-$dark-bg-lighter-20: lighten($dark-background, 20%);
-$dark-bg-lighter-30: lighten($dark-background, 30%);
-$light-bg-alpha-4: rgba(#fafafa, 0.04);
-$light-bg-alpha-12: rgba(#fafafa, 0.12);
-
-// Background palette for dark themes.
-$mat-dark-theme-background: (
-  background: $dark-background,
-  status-bar: $dark-bg-lighter-20,
-  app-bar: $dark-bg-lighter-5,
-  hover: $light-bg-alpha-4,
-  card: $dark-bg-lighter-5,
-  dialog: $dark-bg-lighter-5,
-  tooltip: $dark-bg-lighter-20,
-  disabled-button: $light-bg-alpha-12,
-  raised-button: $dark-bg-lighter-5,
-  focused-button: $light-focused,
-  selected-button: $dark-bg-lighter-20,
-  selected-disabled-button: $dark-bg-lighter-30,
-  disabled-button-toggle: $dark-bg-lighter-10,
-  unselected-chip: $dark-bg-lighter-20,
-  disabled-list-option: $dark-bg-lighter-10,
-);
-
 // Compute font config
-@include mat-core($fontConfig);
+@include mat-core();
+
+$ppl-typography: mat.define-typography-config(
+  $headline-4:
+    mat.define-typography-level(
+      $font-family: theboldfont,
+      $font-weight: 400,
+      $font-size: 2.5em,
+      $line-height: 2.5em,
+      $letter-spacing: normal,
+    ),
+  $headline-5:
+    mat.define-typography-level(
+      $font-family: theboldfont,
+      $font-weight: 400,
+      $font-size: 2.5em,
+      $line-height: 2.5em,
+      $letter-spacing: normal,
+    ),
+  $headline-6:
+    mat.define-typography-level(
+      $font-family: theboldfont,
+      $font-weight: 400,
+      $font-size: 1.5em,
+      $line-height: 1.5em,
+      $letter-spacing: normal,
+    ),
+  $subtitle-1:
+    mat.define-typography-level(
+      $font-family: theboldfont,
+      $font-weight: 400,
+      $font-size: 1em,
+      $line-height: 1em,
+      $letter-spacing: normal,
+    ),
+  $subtitle-2:
+    mat.define-typography-level(
+      $font-family: theboldfont,
+      $font-weight: 400,
+      $font-size: 2em,
+      $line-height: 1,
+      $letter-spacing: normal,
+    ),
+  $button:
+    mat.define-typography-level(
+      $font-family: Roboto,
+      $font-weight: 300,
+      $font-size: 1em,
+      $line-height: 1,
+      $letter-spacing: normal,
+    ),
+);
+@include mat.typography-hierarchy($ppl-typography);
 
 // Theme Config
 
@@ -239,14 +214,9 @@ $mat-warn: (
 );
 $theme-warn: mat-palette($mat-warn, main, lighter, darker);
 $theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
-$altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
 
 // Theme Init
 @include angular-material-theme($theme);
-
-.theme-alternate {
-  @include angular-material-theme($altTheme);
-}
 
 .color-primary {
   color: mat-color($theme-primary);
@@ -254,6 +224,14 @@ $altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
 
 .color-accent {
   color: mat-color($theme-accent);
+}
+
+.color-warn {
+  color: mat-color($theme-warn);
+}
+
+.shadow-primary {
+  text-shadow: 0px 0px 5px mat-color($theme-primary);
 }
 
 .background-primary {
@@ -264,6 +242,10 @@ $altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
 .background-accent {
   background-color: mat-color($theme-accent);
   color: mat-color($theme-accent, default-contrast);
+}
+
+.background-gray {
+  background-color: gray;
 }
 
 // Specific component overrides, pieces that are not in line with the general theming
@@ -289,4 +271,8 @@ $altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
   .mat-badge-content {
     font-family: 'Roboto';
   }
+}
+
+mat-card {
+  padding: 2em;
 }

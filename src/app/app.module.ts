@@ -20,6 +20,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+// import { NgxScannerQrcodeModule, LOAD_WASM } from 'ngx-scanner-qrcode';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QRCodeModule } from 'angularx-qrcode';
 
@@ -52,6 +53,8 @@ import { QueueMgmtComponent } from './leader-console/queue-mgmt/queue-mgmt.compo
 import { TrainerCardComponent } from './trainer-card/trainer-card.component';
 import { HowToComponent } from './how-to/how-to.component';
 import { BuellerComponent } from './bueller/bueller.component';
+
+// LOAD_WASM().subscribe((res: any) => console.log('LOAD_WASM', res));
 
 @NgModule({
   declarations: [
@@ -108,6 +111,7 @@ import { BuellerComponent } from './bueller/bueller.component';
     BrowserAnimationsModule,
     QRCodeModule,
     ZXingScannerModule,
+    // NgxScannerQrcodeModule,
     AppRoutingModule,
   ],
   providers: [CookieService, Title],

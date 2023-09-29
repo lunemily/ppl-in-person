@@ -4,6 +4,7 @@ import { Leader } from '../models/leader';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { api, features } from '../constants.data';
 import { Queue } from '../models/queue';
+import { DataService } from '../services/static-data.service';
 
 export interface DialogData {
   previousName: string;
@@ -26,13 +27,14 @@ export class LeaderConsoleComponent implements OnInit {
   floatLabelControl = new UntypedFormControl('auto');
   url = api.serverUrl;
   useQR = features.useQR;
+  eventSupportsQueueState = false;
 
   previousName: string;
   newName: string;
 
   @Input() leader: Leader;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private dataService: DataService) {}
 
   ngOnInit(): void {
     this.showCamera = false;
@@ -63,6 +65,9 @@ export class LeaderConsoleComponent implements OnInit {
       console.info(this.leader);
     }
     // END: Post-process multi-queues
+    this.dataService.getPPLSettings().subscribe((settings) => {
+      this.eventSupportsQueueState = settings.eventSupportsQueueState;
+    });
   }
 
   enqueueQR(): void {
