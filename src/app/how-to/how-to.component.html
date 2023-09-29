@@ -23,8 +23,11 @@
 <mat-card
   ><h2>Prizes</h2>
   <p>
-    Beat any 16 Gym Leaders and you can challenge the Champion! Win against the Champion and you have beaten the Pax
-    Pokémon League {{ pplEvent }} {{ year }}! You can see the list of prizes here!
+    Beat any {{ leadersToDefeat }} Gym Leaders<span *ngIf="elitesToDefeat > 0">
+      followed by {{ elitesToDefeat }} Elites</span
+    >
+    and you can challenge the Champion! Win against the Champion and you have beaten the Pax Pokémon League
+    {{ pplEvent }} {{ year }}! You can see the list of prizes here!
   </p>
   <img id="prizes" alt="prizes at this PPL Event" src="{{ prizesImage }}"
 /></mat-card>

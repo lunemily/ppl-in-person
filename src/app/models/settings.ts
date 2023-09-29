@@ -7,5 +7,7 @@ export interface PPLSettings {
   bingoBoard: boolean;
   eventIsOver: boolean;
   eventSupportsQueueState: boolean;
+  leadersToDefeat: number;
+  elitesToDefeat: number;
   map: boolean;
 }

@@ -5,7 +5,7 @@ export const pplEvent = 'Online';
 
 export const serverUrlQual = 'https://toastserv.com:26439';
 export const serverUrlProd = 'https://toastserv.com:26438';
-export const serverUrl = serverUrlProd;
+export const serverUrl = serverUrlStaging;
 export const httpOtions = {
   headers: new HttpHeaders({ 'PPL-Event': pplEvent }),
 };
@@ -23,6 +23,8 @@ export const sidenav: PPLSettings = {
   bingoBoard: true,
   eventIsOver: false,
   eventSupportsQueueState: true,
+  leadersToDefeat: 8,
+  elitesToDefeat: 4,
   map: false,
 };
 

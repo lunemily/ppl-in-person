@@ -149,6 +149,8 @@ export class DataService {
           eventIsOver: response['eventIsOver'],
           // eventIsOver: false,
           eventSupportsQueueState: response['eventSupportsQueueState'],
+          leadersToDefeat: response['leadersToDefeat'],
+          elitesToDefeat: response['elitesToDefeat'],
           map: sidenav['map'],
         };
 

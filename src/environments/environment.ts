@@ -21,6 +21,9 @@ export const sidenav: PPLSettings = {
   bingoBoard: true,
   eventIsOver: false,
   eventSupportsQueueState: true,
+  leadersToDefeat: 8,
+  elitesToDefeat: 4,
+  map: true,
 };
 
 export const features = {
