@@ -1,6 +1,6 @@
 <!-- This toolbar is a spacer -->
 <mat-toolbar color="primary"></mat-toolbar>
-<a
+<!-- <a
   mat-button
   color="primary"
   routerLink="/home"
@@ -24,8 +24,8 @@
 >
   <mat-icon>chrome_reader_mode</mat-icon>
   <span>Trainer Card</span>
-</a>
-<a
+</a> -->
+<!-- <a
   *ngIf="pplSettings?.howToChallenge"
   mat-button
   color="primary"
@@ -37,7 +37,7 @@
 >
   <mat-icon>videogame_asset</mat-icon>
   <span>How to Challenge</span>
-</a>
+</a> -->
 <button *ngIf="pplSettings?.rules" mat-button color="primary" (click)="openRules()" aria-label="PPL Rules">
   <mat-icon>description</mat-icon>
   <span>PPL Rules</span>
@@ -50,7 +50,7 @@
   <mat-icon>map</mat-icon>
   <span>Location</span>
 </button>
-<a
+<!-- <a
   *ngIf="pplSettings?.bingoBoard"
   mat-button
   color="primary"
@@ -62,9 +62,9 @@
 >
   <mat-icon>grid_on</mat-icon>
   <span>Bingo Board</span>
-</a>
+</a> -->
 <!-- <a https://discord.gg/ZGBxdVb -->
-<button mat-button color="primary" (click)="logout()" aria-label="Logout">
+<!-- <button mat-button color="primary" (click)="logout()" aria-label="Logout">
   <mat-icon>logout</mat-icon>
   <span>Logout</span>
-</button>
+</button> -->

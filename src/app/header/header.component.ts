@@ -4,6 +4,7 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { pplEvent } from '../constants.data';
 
 import { HeaderService } from '../services/header.service';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,12 @@ export class HeaderComponent implements OnInit {
   showLogs: boolean = false;
   @Output('toggleSidenav') callToggleSidenav: EventEmitter<any> = new EventEmitter();
 
-  constructor(public headerService: HeaderService, private htmlTitle: Title, public dialog: MatDialog) {}
+  constructor(
+    private authenticationService: AuthenticationService,
+    public headerService: HeaderService,
+    private htmlTitle: Title,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     // Add year
@@ -32,6 +38,10 @@ export class HeaderComponent implements OnInit {
 
   openHelp() {
     this.dialog.open(PPLHelpDialog);
+  }
+
+  logout() {
+    this.authenticationService.logout();
   }
 }
 

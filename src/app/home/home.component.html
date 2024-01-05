@@ -1,4 +1,21 @@
-<app-auth id="login-register-form" *ngIf="showLogin && !challengerId"></app-auth>
-<app-console *ngIf="!showLogin && !challengerId"></app-console>
-<app-trainer-card *ngIf="challengerId"></app-trainer-card>
 <!-- <app-socket-connector></app-socket-connector> -->
+<mat-tab-group backgroundColor="primary" headerPosition="above">
+  <mat-tab>
+    <ng-template mat-tab-label><mat-icon>home</mat-icon></ng-template
+    ><app-auth id="login-register-form" *ngIf="showLogin && !challengerId"></app-auth>
+    <app-console *ngIf="!showLogin && !challengerId"></app-console>
+    <app-trainer-card *ngIf="challengerId"></app-trainer-card
+  ></mat-tab>
+  <mat-tab disabled="!loginId">
+    <ng-template mat-tab-label><mat-icon>chrome_reader_mode</mat-icon></ng-template
+    ><app-trainer-card *ngIf="loginId"></app-trainer-card
+  ></mat-tab>
+  <mat-tab
+    ><ng-template mat-tab-label><mat-icon>videogame_asset</mat-icon></ng-template
+    ><app-how-to></app-how-to
+  ></mat-tab>
+  <mat-tab *ngIf="pplSettings?.bingoBoard" disabled="!loginId">
+    <ng-template mat-tab-label><mat-icon>grid_on</mat-icon></ng-template
+    ><app-bingo-board *ngIf="loginId"></app-bingo-board
+  ></mat-tab>
+</mat-tab-group>
