@@ -53,6 +53,7 @@ import { QueueMgmtComponent } from './leader-console/queue-mgmt/queue-mgmt.compo
 import { TrainerCardComponent } from './trainer-card/trainer-card.component';
 import { HowToComponent } from './how-to/how-to.component';
 import { BuellerComponent } from './bueller/bueller.component';
+import { SocketConnectorComponent } from './socket-connector/socket-connector.component';
 
 // LOAD_WASM().subscribe((res: any) => console.log('LOAD_WASM', res));
 
@@ -86,6 +87,7 @@ import { BuellerComponent } from './bueller/bueller.component';
     TrainerCardComponent,
     HowToComponent,
     BuellerComponent,
+    SocketConnectorComponent,
   ],
   imports: [
     MatAutocompleteModule,

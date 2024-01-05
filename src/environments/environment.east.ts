@@ -3,12 +3,22 @@ import { PPLSettings } from '../app/models/settings';
 
 export const pplEvent = 'East';
 
-export const serverUrl = 'https://toastserv.com:26438';
+export const prod = {
+  server: 'https://toastserv.com:26438',
+  socket: 'wss://toastserv.com:26439',
+};
+export const staging = {
+  server: 'https://toastserv.com:26440',
+  socket: 'wss://toastserv.com:26441',
+};
+export const serverUrl = staging.server;
+export const socketUrl = staging.socket;
 export const httpOtions = {
   headers: new HttpHeaders({ 'PPL-Event': pplEvent }),
 };
 export const api = {
   serverUrl: serverUrl,
+  socketUrl: socketUrl,
   httpOtions: httpOtions,
 };
 

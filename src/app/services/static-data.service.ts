@@ -137,8 +137,23 @@ export class DataService {
   private fetchAndReturnPPLSettings(): Observable<PPLSettings> {
     const url = `${api.serverUrl}/api/v2/appsettings`;
 
-    return this.http.get(url, this.httpOptions).pipe(
-      map((response: JSON) => {
+    const sampleSettings = {
+      showTrainerCard: true,
+      howToChallenge: true,
+      rules: true,
+      prizePools: true,
+      schedule: false,
+      bingoBoard: true,
+      eventIsOver: false,
+      eventSupportsQueueState: false,
+      leadersToDefeat: 8,
+      elitesToDefeat: 8,
+      map: true,
+    };
+
+    return of(sampleSettings).pipe(
+      // return this.http.get(url, this.httpOptions).pipe(
+      map((response) => {
         let settings: PPLSettings = {
           showTrainerCard: response['showTrainerCard'],
           howToChallenge: sidenav['howToChallenge'],
