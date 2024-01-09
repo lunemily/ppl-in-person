@@ -1,9 +1,9 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import { Challenger } from '../models/challenger';
+import { Challenger } from '../../models/challenger';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { features } from '../constants.data';
-import { MessageService } from '../services/message.service';
+import { features } from '../../constants.data';
+import { MessageService } from '../../services/message.service';
 
 export interface DialogData {
   previousName: string;

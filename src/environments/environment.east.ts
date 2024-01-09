@@ -5,10 +5,10 @@ export const pplEvent = 'East';
 
 export const prod = {
   server: 'https://toastserv.com:26438',
-  socket: 'wss://toastserv.com:26439',
+  socket: 'wss://toastserv.com:26438',
 };
 export const staging = {
-  server: 'https://toastserv.com:26440',
+  server: 'https://toastserv.com:26441',
   socket: 'wss://toastserv.com:26441',
 };
 export const serverUrl = staging.server;

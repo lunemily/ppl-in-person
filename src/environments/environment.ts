@@ -4,7 +4,7 @@ import { PPLSettings } from 'src/app/models/settings';
 export const pplEvent = 'Local';
 
 export const serverUrl = 'https://toastserv.com:26438';
-export const socketUrl = 'wss://toastserv.com:26439';
+export const socketUrl = 'wss://toastserv.com:26441';
 export const httpOtions = {
   headers: new HttpHeaders({ 'PPL-Event': pplEvent }),
 };

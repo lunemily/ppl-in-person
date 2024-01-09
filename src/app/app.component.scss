@@ -1,7 +1,6 @@
 /* AppComponent's private CSS styles */
 
-.mat-drawer-container {
-  background-color: transparent;
+app-home {
   height: 100vh;
   padding-top: 56px;
 }
@@ -15,7 +14,7 @@ app-footer {
 }
 
 @media (min-width: 600px) {
-  .mat-drawer-container {
+  app-home {
     padding-top: 64px;
   }
 }

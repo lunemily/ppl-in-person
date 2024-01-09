@@ -1,13 +1,3 @@
-<app-header (toggleSidenav)="toggleSidenav()"></app-header>
-<mat-sidenav-container [hasBackdrop]="isMobileResolution">
-  <!-- This toolbar is a spacer -->
-  <mat-toolbar color="primary"></mat-toolbar>
-  <mat-sidenav #sidenav="matSidenav" [mode]="isMobileResolution ? 'over' : 'side'">
-    <app-sidenav (closeSidenav)="closeSidenav()"></app-sidenav>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <router-outlet *ngIf="!eventIsOver"></router-outlet>
-    <app-bueller *ngIf="eventIsOver"></app-bueller>
-    <!-- <app-footer></app-footer> -->
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<app-header></app-header>
+<app-home *ngIf="!eventIsOver"></app-home>
+<app-bueller *ngIf="eventIsOver"></app-bueller>

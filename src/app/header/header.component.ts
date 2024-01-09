@@ -15,7 +15,6 @@ export class HeaderComponent implements OnInit {
   // Base string
   title: string = 'PPL';
   showLogs: boolean = false;
-  @Output('toggleSidenav') callToggleSidenav: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -30,14 +29,6 @@ export class HeaderComponent implements OnInit {
     // Add location
     this.title += ` ${pplEvent}`;
     this.htmlTitle.setTitle(`PAX ${pplEvent} Pokémon League`);
-  }
-
-  toggleSidenav() {
-    this.callToggleSidenav.emit();
-  }
-
-  openHelp() {
-    this.dialog.open(PPLHelpDialog);
   }
 
   logout() {

@@ -28,21 +28,23 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { AppComponent } from './app.component';
 import { HeaderComponent, PPLHelpDialog } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { LeaderConsoleComponent } from './leader-console/leader-console.component';
+import { LeaderConsoleComponent } from './console/leader-console/leader-console.component';
 import {
   LeaderQueueItemComponent,
   ReportBattleDialog,
-} from './leader-console/leader-queue-item/leader-queue-item.component';
-import { ChallengerConsoleComponent, PPLQueueHelpDialog } from './challenger-console/challenger-console.component';
-import { QueueItemComponent } from './challenger-console/queue-item/queue-item.component';
-import { LeaderHoldItemComponent } from './leader-console/leader-hold-item/leader-hold-item.component';
+} from './console/leader-console/leader-queue-item/leader-queue-item.component';
+import {
+  ChallengerConsoleComponent,
+  PPLQueueHelpDialog,
+} from './console/challenger-console/challenger-console.component';
+import { QueueItemComponent } from './console/challenger-console/queue-item/queue-item.component';
+import { LeaderHoldItemComponent } from './console/leader-console/leader-hold-item/leader-hold-item.component';
 import { CameraComponent, EnqueueDialog } from './camera/camera.component';
 import { AuthComponent } from './auth/auth.component';
 
 import { CookieService } from 'ngx-cookie-service';
-import { ChallengerSearchComponent } from './leader-console/challenger-search/challenger-search.component';
+import { ChallengerSearchComponent } from './console/leader-console/challenger-search/challenger-search.component';
 import { HomeComponent } from './home/home.component';
-import { SidenavComponent } from './sidenav/sidenav.component';
 import { AboutLeadersComponent } from './about-leaders/about-leaders.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ConsoleComponent } from './console/console.component';
@@ -50,11 +52,12 @@ import { LeaderBadgeComponent, LeaderDetailEnqueueDialog } from './about-leaders
 import { NameComponent, SetNameDialog } from './console/name/name.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { BingoBoardComponent } from './bingo-board/bingo-board.component';
-import { QueueMgmtComponent } from './leader-console/queue-mgmt/queue-mgmt.component';
+import { QueueMgmtComponent } from './console/leader-console/queue-mgmt/queue-mgmt.component';
 import { TrainerCardComponent } from './trainer-card/trainer-card.component';
 import { HowToComponent } from './how-to/how-to.component';
 import { BuellerComponent } from './bueller/bueller.component';
 import { SocketConnectorComponent } from './socket-connector/socket-connector.component';
+import { StaticImageComponent } from './static-image/static-image.component';
 
 // LOAD_WASM().subscribe((res: any) => console.log('LOAD_WASM', res));
 
@@ -75,7 +78,6 @@ import { SocketConnectorComponent } from './socket-connector/socket-connector.co
     AuthComponent,
     ChallengerSearchComponent,
     HomeComponent,
-    SidenavComponent,
     AboutLeadersComponent,
     ConsoleComponent,
     LeaderBadgeComponent,
@@ -89,6 +91,7 @@ import { SocketConnectorComponent } from './socket-connector/socket-connector.co
     HowToComponent,
     BuellerComponent,
     SocketConnectorComponent,
+    StaticImageComponent,
   ],
   imports: [
     MatAutocompleteModule,

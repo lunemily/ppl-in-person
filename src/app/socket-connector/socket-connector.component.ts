@@ -20,12 +20,7 @@ export class SocketConnectorComponent implements OnInit {
     this.webSocketService.socket$.subscribe(
       (message) => {
         this.isConnected = true;
-        var arrTodo: string[] = [];
-        message.forEach((element: any) => {
-          arrTodo.push(element.replace('"', '').replace('"', ''));
-        });
-        console.log(arrTodo);
-        this.todos = arrTodo;
+        console.log(JSON.stringify(message));
       },
       (error) => console.error('WebSocket error:', error),
       () => {
@@ -34,27 +29,13 @@ export class SocketConnectorComponent implements OnInit {
       }
     );
   }
-  addTodo() {
-    if (this.newTodo.trim() !== '') {
-      this.webSocketService.send(this.newTodo); // Send new to-do item to the server
-      this.newTodo = '';
-    }
-  }
-  resetList() {
-    this.webSocketService.send('reset!*(@h9890138ch1908'); // Send a special message to reset the to-do list
-  }
   connectWebSocket() {
     // Establish WebSocket connection
     this.webSocketService.socket$ = webSocket(api.socketUrl);
     this.webSocketService.socket$.subscribe(
       (message) => {
         this.isConnected = true;
-        var arrTodo: string[] = [];
-        message.forEach((element: any) => {
-          arrTodo.push(element.replace('"', '').replace('"', ''));
-        });
-        console.log(arrTodo);
-        this.todos = arrTodo;
+        console.log(JSON.stringify(message));
       },
       (error) => console.error('WebSocket error:', error),
       () => {

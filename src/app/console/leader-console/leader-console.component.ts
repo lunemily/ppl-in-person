@@ -1,10 +1,10 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import { Leader } from '../models/leader';
+import { Leader } from '../../models/leader';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { api, features } from '../constants.data';
-import { Queue } from '../models/queue';
-import { DataService } from '../services/static-data.service';
+import { api, features } from '../../constants.data';
+import { Queue } from '../../models/queue';
+import { DataService } from '../../services/static-data.service';
 
 export interface DialogData {
   previousName: string;

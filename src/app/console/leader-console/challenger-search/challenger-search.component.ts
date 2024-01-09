@@ -3,9 +3,9 @@ import { FormControl } from '@angular/forms';
 
 import { map, Observable, startWith, Subject } from 'rxjs';
 
-import { Challenger } from '../../models/challenger';
-import { Leader } from '../../models/leader';
-import { ApiService } from '../../services/api.service';
+import { Challenger } from '../../../models/challenger';
+import { Leader } from '../../../models/leader';
+import { ApiService } from '../../../services/api.service';
 
 @Component({
   selector: 'app-challenger-search',
