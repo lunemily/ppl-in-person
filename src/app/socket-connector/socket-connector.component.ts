@@ -11,46 +11,20 @@ export class SocketConnectorComponent implements OnInit {
   todos: string[] = [];
   newTodo: string = '';
   isConnected: boolean = false;
-  constructor(private webSocketService: WebSocketService) {
-    this.todos = this.webSocketService.getTodoArr();
-  }
+  constructor(private webSocketService: WebSocketService) {}
   ngOnInit() {
     this.webSocketService.socket$ = webSocket(api.socketUrl); // Establish WebSocket connection
     // Subscribe to the incoming messages from the WebSocket server
     this.webSocketService.socket$.subscribe(
       (message) => {
         this.isConnected = true;
-        console.log(JSON.stringify(message));
+        console.info(JSON.stringify(message));
       },
       (error) => console.error('WebSocket error:', error),
       () => {
         this.isConnected = false;
-        console.log('WebSocket connection closed');
+        console.warn('WebSocket connection closed');
       }
     );
-  }
-  connectWebSocket() {
-    // Establish WebSocket connection
-    this.webSocketService.socket$ = webSocket(api.socketUrl);
-    this.webSocketService.socket$.subscribe(
-      (message) => {
-        this.isConnected = true;
-        console.log(JSON.stringify(message));
-      },
-      (error) => console.error('WebSocket error:', error),
-      () => {
-        this.isConnected = false;
-        console.log('WebSocket connection closed');
-      }
-    );
-  }
-  disconnectWebSocket() {
-    this.webSocketService.disconnect(); // Close WebSocket connection
-  }
-  isWebSocketConnected(): boolean {
-    return this.webSocketService.isConnected(); // Check if WebSocket connection is established
-  }
-  refresh() {
-    this.todos = this.webSocketService.getTodoArr(); // Update the to-do list by retrieving it from the WebSocket service
   }
 }

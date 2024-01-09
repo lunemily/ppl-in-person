@@ -59,8 +59,6 @@ import { BuellerComponent } from './bueller/bueller.component';
 import { SocketConnectorComponent } from './socket-connector/socket-connector.component';
 import { StaticImageComponent } from './static-image/static-image.component';
 
-// LOAD_WASM().subscribe((res: any) => console.log('LOAD_WASM', res));
-
 @NgModule({
   declarations: [
     AppComponent,

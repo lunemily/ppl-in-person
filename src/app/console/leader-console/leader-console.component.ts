@@ -40,7 +40,7 @@ export class LeaderConsoleComponent implements OnInit {
     this.showCamera = false;
     this.myAngularxQrCode = `https://paxpokemonleague.net/qr/?leader=${this.leader.leaderId}`;
 
-    console.log(this.myAngularxQrCode);
+    console.info(`QR Code URL: ${this.myAngularxQrCode}`);
     // BEGIN: Post-process multi-queues
     // TRhis entire section could *probably* be written into some clever
     // JavaScript stream-like functions, but I was in a hurry. So yeah...

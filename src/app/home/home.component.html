@@ -1,4 +1,3 @@
-<app-socket-connector></app-socket-connector>
 <mat-tab-group class="home-container" backgroundColor="primary" headerPosition="below" dynamicHeight>
   <mat-tab>
     <ng-template mat-tab-label><mat-icon>home</mat-icon></ng-template>
@@ -8,7 +7,7 @@
   </mat-tab>
   <mat-tab disabled="!loginId">
     <ng-template mat-tab-label><mat-icon>chrome_reader_mode</mat-icon></ng-template>
-    <app-trainer-card id="tab-container" *ngIf="loginId"></app-trainer-card>
+    <app-trainer-card id="tab-container" *ngIf="loginId && !isLeader"></app-trainer-card>
   </mat-tab>
   <mat-tab>
     <ng-template mat-tab-label><mat-icon>videogame_asset</mat-icon></ng-template>
@@ -16,7 +15,7 @@
   </mat-tab>
   <mat-tab *ngIf="pplSettings?.bingoBoard" disabled="!loginId">
     <ng-template mat-tab-label><mat-icon>grid_on</mat-icon></ng-template>
-    <app-bingo-board id="tab-container" *ngIf="loginId"></app-bingo-board>
+    <app-bingo-board id="tab-container" *ngIf="loginId && !isLeader"></app-bingo-board>
   </mat-tab>
   <mat-tab *ngIf="pplSettings?.rules">
     <ng-template mat-tab-label><mat-icon>description</mat-icon></ng-template>

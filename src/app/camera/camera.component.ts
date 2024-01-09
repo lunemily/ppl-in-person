@@ -163,15 +163,9 @@ export class CameraComponent implements OnInit {
 
   openEnqueueDialog(challengerId: string, leaderLoginId: string): void {
     // We know the leaderId. Now get the specific leader data.
-    console.log(`ChallengerId: ${challengerId} LeaderId: ${leaderLoginId}`);
-    console.log(this.allLeaderData);
     this.leaderData = this.allLeaderData.filter((leader) => {
-      console.log(leaderLoginId);
-      console.log(this.leaderId);
-      console.log(leader);
       return leader.leaderId === leaderLoginId || leader.leaderId === this.leaderId;
     })[0];
-    console.log(this.leaderData);
     const dialogRef = this.dialog.open(EnqueueDialog, {
       width: '250px',
       data: {
