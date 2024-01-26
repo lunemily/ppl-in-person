@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Challenger } from '../models/challenger';
 import { Leader } from '../models/leader';
 import { Person } from '../models/person';
 import { ApiService } from '../services/api.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-console',
@@ -18,6 +19,8 @@ export class ConsoleComponent implements OnInit {
   challenger: Challenger;
   feedbackSurveyUrl: string;
   championSurveyUrl: string;
+  @Input() reloadConsole: EventEmitter<any>;
+  private subscription: Subscription;
 
   constructor(private cookieService: CookieService, private apiService: ApiService) {}
 
@@ -31,6 +34,10 @@ export class ConsoleComponent implements OnInit {
         this.getChallenger();
       }
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   getChallenger(): void {
@@ -47,6 +54,12 @@ export class ConsoleComponent implements OnInit {
       this.leader = leader;
       this.person = leader;
       this.feedbackSurveyUrl = this.person.feedbackSurveyUrl;
+    });
+  }
+
+  subscribeToParentEmitter(): void {
+    this.subscription = this.reloadConsole.subscribe(() => {
+      this.ngOnInit();
     });
   }
 }

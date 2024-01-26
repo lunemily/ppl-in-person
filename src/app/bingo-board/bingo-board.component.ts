@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { pplEvent } from '../constants.data';
 import { BingoSpace } from '../models/bingo-space';
 import { ApiService } from '../services/api.service';
 import { api } from '../constants.data';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-bingo-board',
@@ -15,6 +16,8 @@ export class BingoBoardComponent implements OnInit {
   isLeader: boolean;
   bingoBoard: BingoSpace[][];
   title: string = 'PPL';
+  @Input() reloadBingoBoard: EventEmitter<any>;
+  private subscription: Subscription;
 
   // Copy
   bingoHeader = `assets/images/bingo-header-${pplEvent.toLowerCase()}.png`;
@@ -40,9 +43,20 @@ export class BingoBoardComponent implements OnInit {
       this.getBingoBoard();
     }
   }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
   getBingoBoard() {
     this.apiService.getBingoBoard(this.loginId).subscribe((bingoBoard) => {
       this.bingoBoard = bingoBoard;
+    });
+  }
+
+  subscribeToParentEmitter(): void {
+    this.subscription = this.reloadBingoBoard.subscribe(() => {
+      this.ngOnInit();
     });
   }
 }

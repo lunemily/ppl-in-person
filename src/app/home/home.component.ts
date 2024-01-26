@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { HeaderService } from '../services/header.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../services/static-data.service';
 import { PPLSettings } from '../models/settings';
-import { WebSocketService } from '../services/web-socket.service';
-import { webSocket } from 'rxjs/webSocket';
+import { WebSocketSubject, webSocket } from 'rxjs/webSocket';
 import { api } from '../constants.data';
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +20,9 @@ export class HomeComponent implements OnInit {
   challengerId: string;
   pplSettings: PPLSettings;
   isWebSocketConnected = false;
+  public socket$!: WebSocketSubject<any>;
+  @Output() reloadConsole: EventEmitter<any> = new EventEmitter();
+  @Output() reloadBingoBoard: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private cookieService: CookieService,
@@ -27,7 +30,7 @@ export class HomeComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private dataService: DataService,
-    private webSocketService: WebSocketService
+    private messageService: MessageService
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
@@ -35,7 +38,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.startUp();
     this.loadPPLSettings();
-    this.webSocketService.setupWebSocket();
+    this.setupWebSocket();
   }
 
   startUp() {
@@ -55,5 +58,63 @@ export class HomeComponent implements OnInit {
     this.dataService.getPPLSettings().subscribe((pplSettings) => {
       this.pplSettings = pplSettings;
     });
+  }
+
+  connect() {
+    this.socket$ = webSocket(api.socketUrl); // Establish WebSocket connection
+  }
+  disconnect() {
+    this.socket$.complete();
+  }
+  isConnected(): boolean {
+    return this.socket$ === null ? false : !this.socket$.closed;
+  }
+  onMessage(message: { action: number }) {
+    console.info(JSON.stringify(message));
+    switch (message.action) {
+      case 0:
+        // Connection established but server needs loginId to correlate user
+        console.info('Authentication requested by server. Sending credentials.');
+        this.send({
+          action: 0,
+          id: this.cookieService.get('loginId'),
+          token: `Bearer ${this.cookieService.get('token')}`,
+        });
+        break;
+      case 1:
+        console.info('No action from server. Nothing to reload.');
+        break;
+      case 2:
+        console.info('Reload console.');
+        this.reloadConsole.emit();
+        break;
+      case 3:
+        console.info('Reload bingo board.');
+        this.reloadBingoBoard.emit();
+        break;
+      default:
+        // Unknown action, error out
+        this.messageService.showError('Unknown action requested from server');
+        break;
+    }
+  }
+  send(message: any) {
+    this.socket$.next(message);
+  }
+
+  setupWebSocket() {
+    this.connect();
+    // Subscribe to the incoming messages from the WebSocket server
+    this.socket$.subscribe(
+      (message) => {
+        this.isWebSocketConnected = true;
+        this.onMessage(message);
+      },
+      (error) => console.error('WebSocket error:', error),
+      () => {
+        this.isWebSocketConnected = false;
+        console.warn('WebSocket connection closed');
+      }
+    );
   }
 }
