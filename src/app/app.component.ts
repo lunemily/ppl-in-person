@@ -1,6 +1,7 @@
 import { Component, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { DataService } from './services/static-data.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent {
   isMobileResolution: boolean;
   eventIsOver = false;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, public dialog: MatDialog) {
     if (window.innerWidth < 768) {
       this.isMobileResolution = true;
     } else {
@@ -39,7 +40,19 @@ export class AppComponent {
       if (this.eventIsOver) {
         console.error('What are you still doing here? PPL is over.');
         this.eventIsOver = pplSettings.eventIsOver;
+        this.openEventOverDialog();
       }
     });
   }
+
+  openEventOverDialog() {
+    this.dialog.open(EventOverDialog);
+  }
 }
+
+@Component({
+  selector: 'event-over-dialog',
+  templateUrl: 'event-over-dialog.html',
+  styleUrls: ['./event-over-dialog.scss'],
+})
+export class EventOverDialog {}

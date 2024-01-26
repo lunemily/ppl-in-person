@@ -25,7 +25,7 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QRCodeModule } from 'angularx-qrcode';
 
-import { AppComponent } from './app.component';
+import { AppComponent, EventOverDialog } from './app.component';
 import { HeaderComponent, PPLHelpDialog } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LeaderConsoleComponent } from './console/leader-console/leader-console.component';
@@ -55,8 +55,6 @@ import { BingoBoardComponent } from './bingo-board/bingo-board.component';
 import { QueueMgmtComponent } from './console/leader-console/queue-mgmt/queue-mgmt.component';
 import { TrainerCardComponent } from './trainer-card/trainer-card.component';
 import { HowToComponent } from './how-to/how-to.component';
-import { BuellerComponent } from './bueller/bueller.component';
-import { SocketConnectorComponent } from './socket-connector/socket-connector.component';
 import { StaticImageComponent } from './static-image/static-image.component';
 
 @NgModule({
@@ -87,8 +85,7 @@ import { StaticImageComponent } from './static-image/static-image.component';
     QueueMgmtComponent,
     TrainerCardComponent,
     HowToComponent,
-    BuellerComponent,
-    SocketConnectorComponent,
+    EventOverDialog,
     StaticImageComponent,
   ],
   imports: [

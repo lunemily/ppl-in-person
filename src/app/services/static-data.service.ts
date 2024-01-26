@@ -162,7 +162,7 @@ export class DataService {
           schedule: sidenav['schedule'],
           bingoBoard: sidenav['bingoBoard'],
           eventIsOver: response['eventIsOver'],
-          // eventIsOver: false,
+          // eventIsOver: true,
           eventSupportsQueueState: response['eventSupportsQueueState'],
           leadersToDefeat: response['leadersToDefeat'],
           elitesToDefeat: response['elitesToDefeat'],

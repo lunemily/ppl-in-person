@@ -75,14 +75,17 @@ export class HomeComponent implements OnInit {
       case 0:
         // Connection established but server needs loginId to correlate user
         console.info('Authentication requested by server. Sending credentials.');
-        this.send({
-          action: 0,
-          id: this.cookieService.get('loginId'),
-          token: `Bearer ${this.cookieService.get('token')}`,
-        });
+        const token = this.cookieService.get('token');
+        if (token) {
+          this.send({
+            action: 0,
+            id: this.cookieService.get('loginId'),
+            token: `Bearer ${token}`,
+          });
+        }
         break;
       case 1:
-        console.info('No action from server. Nothing to reload.');
+        console.info('Authentication successful.');
         break;
       case 2:
         console.info('Reload console.');
