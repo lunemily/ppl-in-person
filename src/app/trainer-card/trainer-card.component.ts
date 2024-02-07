@@ -17,6 +17,7 @@ export class TrainerCardComponent implements OnInit {
   constructor(private route: ActivatedRoute, private apiService: ApiService) {}
 
   ngOnInit(): void {
+    // console.warn(this);
     this.challengerId = this.route.snapshot.queryParamMap.get('id');
     this.apiService.getTrainerCardForChallenger(this.challengerId).subscribe((challenger) => {
       this.person = {

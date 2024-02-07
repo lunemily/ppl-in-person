@@ -63,12 +63,16 @@
                 }
               ]
             },
-            "east": {
+            "eastPrd": {
               "styles": ["src/theme.east.scss", "src/styles.scss"],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.east.ts"
+                },
+                {
+                  "replace": "src/environments/ports.ts",
+                  "with": "src/environments/ports.prd.ts"
                 }
               ],
               "assets": [
@@ -104,12 +108,16 @@
                 }
               ]
             },
-            "online": {
+            "onlinePrd": {
               "styles": ["src/theme.online.scss", "src/styles.scss"],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.online.ts"
+                },
+                {
+                  "replace": "src/environments/ports.ts",
+                  "with": "src/environments/ports.prd.ts"
                 }
               ],
               "assets": [
@@ -145,12 +153,16 @@
                 }
               ]
             },
-            "west": {
+            "westPrd": {
               "styles": ["src/theme.west.scss", "src/styles.scss"],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.west.ts"
+                },
+                {
+                  "replace": "src/environments/ports.ts",
+                  "with": "src/environments/ports.prd.ts"
                 }
               ],
               "assets": [
@@ -186,12 +198,196 @@
                 }
               ]
             },
-            "aus": {
+            "ausPrd": {
               "styles": ["src/theme.aus.scss", "src/styles.scss"],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.aus.ts"
+                },
+                {
+                  "replace": "src/environments/ports.ts",
+                  "with": "src/environments/ports.prd.ts"
+                }
+              ],
+              "assets": [
+                {
+                  "glob": "**/*",
+                  "input": "src/assets/",
+                  "ignore": ["**/*-east.png", "**/*-west.png", "**/*-online.png"],
+                  "output": "/assets/"
+                },
+                {
+                  "glob": "favicon.ico",
+                  "input": "src/",
+                  "output": "/"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
+            "eastStg": {
+              "styles": ["src/theme.east.scss", "src/styles.scss"],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.east.ts"
+                },
+                {
+                  "replace": "src/environments/ports.ts",
+                  "with": "src/environments/ports.stg.ts"
+                }
+              ],
+              "assets": [
+                {
+                  "glob": "**/*",
+                  "input": "src/assets/",
+                  "ignore": ["**/*-west.png", "**/*-aus.png", "**/*-online.png"],
+                  "output": "/assets/"
+                },
+                {
+                  "glob": "favicon.ico",
+                  "input": "src/",
+                  "output": "/"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
+            "onlineStg": {
+              "styles": ["src/theme.online.scss", "src/styles.scss"],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.online.ts"
+                },
+                {
+                  "replace": "src/environments/ports.ts",
+                  "with": "src/environments/ports.stg.ts"
+                }
+              ],
+              "assets": [
+                {
+                  "glob": "**/*",
+                  "input": "src/assets/",
+                  "ignore": ["**/*-west.png", "**/*-east.png", "**/*-aus.png"],
+                  "output": "/assets/"
+                },
+                {
+                  "glob": "favicon.ico",
+                  "input": "src/",
+                  "output": "/"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
+            "westStg": {
+              "styles": ["src/theme.west.scss", "src/styles.scss"],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.west.ts"
+                },
+                {
+                  "replace": "src/environments/ports.ts",
+                  "with": "src/environments/ports.stg.ts"
+                }
+              ],
+              "assets": [
+                {
+                  "glob": "**/*",
+                  "input": "src/assets/",
+                  "ignore": ["**/*-east.png", "**/*-aus.png", "**/*-online.png"],
+                  "output": "/assets/"
+                },
+                {
+                  "glob": "favicon.ico",
+                  "input": "src/",
+                  "output": "/"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            },
+            "ausStg": {
+              "styles": ["src/theme.aus.scss", "src/styles.scss"],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.aus.ts"
+                },
+                {
+                  "replace": "src/environments/ports.ts",
+                  "with": "src/environments/ports.stg.ts"
                 }
               ],
               "assets": [
@@ -238,17 +434,29 @@
             "production": {
               "browserTarget": "ppl-site:build:production"
             },
-            "east": {
-              "browserTarget": "ppl-site:build:east"
+            "eastPrd": {
+              "browserTarget": "ppl-site:build:eastPrd"
             },
-            "online": {
-              "browserTarget": "ppl-site:build:online"
+            "onlinePrd": {
+              "browserTarget": "ppl-site:build:onlinePrd"
             },
-            "west": {
-              "browserTarget": "ppl-site:build:west"
+            "westPrd": {
+              "browserTarget": "ppl-site:build:westPrd"
             },
-            "aus": {
-              "browserTarget": "ppl-site:build:aus"
+            "ausPrd": {
+              "browserTarget": "ppl-site:build:ausPrd"
+            },
+            "eastStg": {
+              "browserTarget": "ppl-site:build:eastStg"
+            },
+            "onlineStg": {
+              "browserTarget": "ppl-site:build:onlineStg"
+            },
+            "westStg": {
+              "browserTarget": "ppl-site:build:westStg"
+            },
+            "ausStg": {
+              "browserTarget": "ppl-site:build:ausStg"
             }
           }
         },
@@ -286,21 +494,7 @@
           "builder": "angular-cli-ghpages:deploy",
           "options": {
             "baseHref": "/ppl-in-person/",
-            "buildTarget": "ppl-site:build:east"
-          }
-        },
-        "deployWest": {
-          "builder": "angular-cli-ghpages:deploy",
-          "options": {
-            "baseHref": "/ppl-in-person/",
-            "buildTarget": "ppl-site:build:west"
-          }
-        },
-        "deployAus": {
-          "builder": "angular-cli-ghpages:deploy",
-          "options": {
-            "baseHref": "/ppl-in-person/",
-            "buildTarget": "ppl-site:build:aus"
+            "buildTarget": "ppl-site:build:eastStg"
           }
         }
       }

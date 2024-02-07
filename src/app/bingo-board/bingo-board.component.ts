@@ -51,6 +51,10 @@ export class BingoBoardComponent implements OnInit {
   getBingoBoard() {
     this.apiService.getBingoBoard(this.loginId).subscribe((bingoBoard) => {
       this.bingoBoard = bingoBoard;
+      if (this.bingoBoard.length === 0) {
+        this.bingoBoard.push([]);
+        this.bingoBoard[0].push({ id: 'missingno', earned: false });
+      }
     });
   }
 

@@ -52,6 +52,7 @@ export class HomeComponent implements OnInit {
     }
     this.isLeader = 'true' == this.cookieService.get('isLeader');
     this.headerService.setUrl(window.location.href);
+    console.warn(this);
   }
 
   loadPPLSettings() {
@@ -73,10 +74,11 @@ export class HomeComponent implements OnInit {
     console.info(JSON.stringify(message));
     switch (message.action) {
       case 0:
-        // Connection established but server needs loginId to correlate user
-        console.info('Authentication requested by server. Sending credentials.');
+        // Connection established but server needs token to correlate user
+        console.info('Authentication requested by server.');
         const token = this.cookieService.get('token');
         if (token) {
+          console.info('Sending credentials.');
           this.send({
             action: 0,
             id: this.cookieService.get('loginId'),

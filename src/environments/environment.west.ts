@@ -1,16 +1,16 @@
 import { HttpHeaders } from '@angular/common/http';
 import { PPLSettings } from '../app/models/settings';
+import { port } from './ports';
 
 export const pplEvent = 'West';
 
-export const serverUrlStaging = 'https://toastserv.com:26441';
-export const serverUrlProd = 'https://toastserv.com:26438';
-export const serverUrl = serverUrlStaging;
 export const httpOtions = {
   headers: new HttpHeaders({ 'PPL-Event': pplEvent }),
 };
+
 export const api = {
-  serverUrl: serverUrl,
+  serverUrl: `https://toastserv.com:${port}`,
+  socketUrl: `wss://toastserv.com:${port}`,
   httpOtions: httpOtions,
 };
 
