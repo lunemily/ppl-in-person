@@ -36,7 +36,7 @@ export class BingoBoardComponent implements OnInit {
   ngOnInit(): void {
     // Add year
     this.title += " '" + new Date().getFullYear().toString().substring(2);
-    this.title = `PAX ${pplEvent.toUpperCase()} ${new Date().getFullYear().toString()} POKÉMON LEAGUE\nTERA BINGO`;
+    this.title = `PAX ${pplEvent.toUpperCase()} ${new Date().getFullYear().toString()} POKÉMON LEAGUE\nSIGNATURE BINGO`;
     this.loginId = this.cookieService.get('loginId');
     this.isLeader = 'true' == this.cookieService.get('isLeader');
     if (this.loginId && !this.isLeader) {

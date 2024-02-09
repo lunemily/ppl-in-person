@@ -1,9 +1,34 @@
-<app-name [person]="person"></app-name>
-<mat-card>
+<app-name *ngIf="person && !hideName" [person]="person"></app-name>
+<mat-card *ngIf="challenger">
   <div id="badges-earned">
     <h2 class="left">Badges Earned</h2>
-    <div *ngFor="let badgeEarned of challenger.badgesEarned" class="queue-container">
-      <app-leader-badge [leader]="badgeEarned" [earned]="true"></app-leader-badge>
-    </div>
+    <button
+      mat-button
+      color="primary"
+      [cdkCopyToClipboard]="trainerCardLink"
+      (click)="shareTrainerCard()"
+      aria-label="Share Trainer Card"
+    >
+      <mat-icon>share</mat-icon>
+      SHARE CARD
+    </button>
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let earnedBadge of challenger.badgesEarned" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <img
+              class="portrait"
+              alt="{{ earnedBadge.badgeName }}"
+              src="{{ url }}/static/portraits/{{ earnedBadge.leaderId }}.png"
+            />
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ earnedBadge.badgeName }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>{{ earnedBadge.displayName }}</p>
+        <p>{{ earnedBadge.bio }}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
 </mat-card>

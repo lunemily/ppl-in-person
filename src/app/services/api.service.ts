@@ -152,7 +152,6 @@ export class ApiService {
     // return of(JSON.parse(response)).pipe(
     return this.http.get<Challenger>(url, this.httpOptions).pipe(
       map((response) => {
-        // console.warn(response);
         /** Create object to return. Add in all leaders now. */
         let challenger: Challenger = {
           id: id,

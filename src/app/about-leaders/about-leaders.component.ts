@@ -49,7 +49,6 @@ export class AboutLeadersComponent implements OnInit {
           });
         });
       });
-      console.warn(this.leaderData);
     });
   }
 

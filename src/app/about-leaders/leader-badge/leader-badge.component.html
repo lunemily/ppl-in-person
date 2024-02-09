@@ -6,28 +6,13 @@
   [class.background-gray]="!leader.queueOpen && !earned"
 >
   <div class="portraits-and-badges">
-    <!-- <div>
-      <img class="badge" alt="{{ leader.displayName }}" src="assets/images/badges/{{ leader.leaderId }}.png" />
-    </div> -->
     <div>
       <img class="portrait" alt="{{ leader.displayName }}" src="{{ url }}/static/portraits/{{ leader.leaderId }}.png" />
     </div>
-    <!-- <div *ngIf="!leader.champion">
-      <img class="tera badge" alt="{{ leader.displayName }}" src="assets/images/teras/{{ leader.leaderId }}.png" />
-    </div> -->
   </div>
-  <!-- <div *ngIf="!leader.bio" class="portraits-and-badges">
-    <div>
-      <img class="portrait" alt="{{ leader.displayName }}" src="assets/images/portraits/{{ leader.leaderId }}.png" />
-    </div>
-    <div *ngIf="!leader.champion">
-      <img class="badge" alt="{{ leader.displayName }}" src="assets/images/badges/{{ leader.leaderId }}.png" />
-    </div>
-  </div> -->
   <div class="leader-data">
     <div class="name-and-badge details background-accent">
-      <h3>{{ leader.displayName }}</h3>
-      <!-- <h3 *ngIf="!leader.champion">{{ leader.badgeName }}</h3> -->
+      <p>{{ leader.displayName }}</p>
     </div>
   </div>
   <div class="buttons">

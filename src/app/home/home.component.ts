@@ -52,7 +52,6 @@ export class HomeComponent implements OnInit {
     }
     this.isLeader = 'true' == this.cookieService.get('isLeader');
     this.headerService.setUrl(window.location.href);
-    console.warn(this);
   }
 
   loadPPLSettings() {
