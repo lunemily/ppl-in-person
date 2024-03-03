@@ -146,10 +146,6 @@ export class ApiService {
   getChallenger(id: string): Observable<Challenger> {
     const url = `${api.serverUrl}/api/v2/challenger/${id}`;
 
-    let response =
-      '{"id":"433c4b55a17da084","displayName":"lunelleast","queuesEntered":[],"badgesEarned":[],"bingoBoard":[["9ddbf474802e","82ee137cec0a","505ae7cfcf50","3f2fdd84c972","b4ec415c761a"],["f27c016d37c9","94660e8e0cbc","5aa97464ba52","70022f182dab","354d81a64586"],["e4ce20138ea7","c881ce67b0b9","","6f6987c7fcb5","d13b6a996d12"],["694e553197d0","7944e32f799a","116e1c1e242b","4fc4e2f3e847","07e84bcc07cf"],["49b1a6453903","eb604a2a0eee","0f50d12ba4cc","a9f3e51dffc8","aed5dc645d93"]],"championDefeated":false}';
-
-    // return of(JSON.parse(response)).pipe(
     return this.http.get<Challenger>(url, this.httpOptions).pipe(
       map((response) => {
         /** Create object to return. Add in all leaders now. */
@@ -203,6 +199,8 @@ export class ApiService {
               leaderId: item['leaderId'],
               displayName: item['leaderName'],
               badgeName: item['badgeName'],
+              battleFormatIds: [item['format']],
+              leaderTypeIds: [item['difficulty']],
             };
             return leader;
           }, []),

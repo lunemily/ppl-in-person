@@ -29,26 +29,6 @@
   </div>
 </mat-card>
 <app-trainer-card [challenger]="challenger"></app-trainer-card>
-<!-- https://paxpokemonleague.net/online/?id=ff6ef05603575410 -->
-<!-- <mat-card>
-  <div id="badges-earned">
-    <h2 class="left">Badges Earned</h2>
-    <button
-      mat-button
-      color="primary"
-      [cdkCopyToClipboard]="trainerCardLink"
-      (click)="shareTrainerCard()"
-      aria-label="Share Trainer Card"
-    >
-      <mat-icon>share</mat-icon>
-      SHARE CARD
-    </button>
-    /trainercard?id=433c4b55a17da084
-    <div *ngFor="let badgeEarned of challenger.badgesEarned" class="queue-container">
-      <app-leader-badge [leader]="badgeEarned" [earned]="true"></app-leader-badge>
-    </div>
-  </div>
-</mat-card> -->
 <mat-card *ngIf="useQR">
   <h2 class="left">Challenger QR Code</h2>
   <qrcode
@@ -58,5 +38,6 @@
     [imageWidth]="75"
     [width]="250"
     [errorCorrectionLevel]="'M'"
-  ></qrcode>
+  >
+  </qrcode>
 </mat-card>

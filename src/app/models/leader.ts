@@ -2,6 +2,7 @@ import { Hold } from './hold';
 import { Queue } from './queue';
 import { Person } from './person';
 import { Format } from './format';
+import { leaderTypesMap } from '../constants.data';
 
 /** This object represents a leader */
 export interface Leader extends Person {
@@ -22,6 +23,12 @@ export interface Leader extends Person {
   battleFormats?: Format[];
   queueOpen?: boolean;
   twitchEnabled?: boolean;
+
+  // Used for match results only!!!
+  format?: number;
+  difficulty?: number;
 }
 
-// export isEliteLeader
+export function isEliteLeader(leader: Leader): boolean {
+  return leader.leaderTypeIds!.includes(leaderTypesMap.elite);
+}

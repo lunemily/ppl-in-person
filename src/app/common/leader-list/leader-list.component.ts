@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { api } from 'src/app/constants.data';
-import { Leader } from 'src/app/models/leader';
+import { Leader, isEliteLeader } from 'src/app/models/leader';
 
 @Component({
   selector: 'app-leader-list',
@@ -13,10 +13,13 @@ export class LeaderListComponent implements OnInit {
   @Input() highlightLeaders: boolean;
 
   ngOnInit(): void {
-    console.warn(this.leaderList);
     if (!this.highlightLeaders) {
       this.highlightLeaders = false;
     }
+  }
+
+  isEliteLeader(leader: Leader): boolean {
+    return isEliteLeader(leader);
   }
 
   constructor() {}

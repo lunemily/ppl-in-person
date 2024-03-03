@@ -2,3 +2,24 @@
   justify-content: space-between;
   align-items: center;
 }
+
+mat-panel-description {
+  margin: 0;
+}
+
+mat-expansion-panel-header {
+  padding-right: 1em;
+}
+
+img {
+  height: 92px;
+  width: 92px;
+  // border: 2px solid #ffffff;
+  border-radius: 100%;
+  margin: auto;
+}
+
+img.highlight-image {
+  height: 64px;
+  width: 64px;
+}

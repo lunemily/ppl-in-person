@@ -3,18 +3,18 @@
     <mat-expansion-panel-header>
       <mat-panel-title>
         <img
-          class="portrait"
+          class="highlight-image"
           alt="{{ highlightLeaders ? leader.displayName : leader.badgeName }}"
           src="{{ url }}/static/{{ highlightLeaders ? 'portaits' : 'badges' }}/{{ leader.leaderId }}.png"
         />
       </mat-panel-title>
       <mat-panel-description>
         {{ highlightLeaders ? leader.displayName : leader.badgeName }}
-        <mat-icon>exposure_plus_2</mat-icon>
+        <mat-icon *ngIf="leader.leaderTypeIds && isEliteLeader(leader)">exposure_plus_2</mat-icon>
       </mat-panel-description>
     </mat-expansion-panel-header>
     <img
-      class="portrait"
+      class="detail-image"
       alt="{{ !highlightLeaders ? leader.displayName : leader.badgeName }}"
       src="{{ url }}/static/{{ !highlightLeaders ? 'portaits' : 'badges' }}/{{ leader.leaderId }}.png"
     />

@@ -6,7 +6,7 @@ import { Challenger } from '../models/challenger';
 import { MessageService } from '../services/message.service';
 import { api, pplEvent } from '../constants.data';
 import { DataService } from '../services/static-data.service';
-import { Leader } from '../models/leader';
+import { Leader, isEliteLeader } from '../models/leader';
 
 @Component({
   selector: 'app-trainer-card',
@@ -60,5 +60,18 @@ export class TrainerCardComponent implements OnInit {
       challenger.badgesEarned = detailedBadgesEarned;
     });
     return challenger;
+  }
+
+  badgeCount(): number {
+    let badgeCount = 0;
+    this.challenger.badgesEarned.map((leader) => {
+      if (isEliteLeader(leader)) {
+        badgeCount += 2;
+      } else {
+        badgeCount += 1;
+      }
+    });
+
+    return badgeCount;
   }
 }

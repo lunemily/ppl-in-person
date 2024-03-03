@@ -1,6 +1,6 @@
 export * from '../environments/environment';
 
-export let battleFormatsMap = {
+export const battleFormatsMap = {
   // Bitmask; some leaders may support multiple battle formats
   singles: 1,
   doubles: 2,
@@ -8,7 +8,7 @@ export let battleFormatsMap = {
   special: 8,
 };
 
-export let battleFormatsReverseMap = {
+export const battleFormatsReverseMap = {
   // Bitmask; some leaders may support multiple battle formats
   1: 'singles',
   2: 'doubles',
@@ -16,7 +16,7 @@ export let battleFormatsReverseMap = {
   8: 'special',
 };
 
-export let leaderTypesMap = {
+export const leaderTypesMap = {
   // Bitmask; regular leaders can have teams for multiple difficulty tiers
   casual: 1,
   intermediate: 2,
@@ -25,7 +25,7 @@ export let leaderTypesMap = {
   elite: 8,
   champion: 16,
 };
-export let leaderTypesReverseMap = {
+export const leaderTypesReverseMap = {
   // Bitmask; regular leaders can have teams for multiple difficulty tiers
   1: 'casual',
   2: 'intermediate',
