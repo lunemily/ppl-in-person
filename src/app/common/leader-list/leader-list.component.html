@@ -5,7 +5,7 @@
         <img
           class="highlight-image"
           alt="{{ highlightLeaders ? leader.displayName : leader.badgeName }}"
-          src="{{ url }}/static/{{ highlightLeaders ? 'portaits' : 'badges' }}/{{ leader.leaderId }}.png"
+          src="{{ url }}/static/{{ highlightLeaders ? 'portraits' : 'badges' }}/{{ leader.leaderId }}.png"
         />
       </mat-panel-title>
       <mat-panel-description>
@@ -16,7 +16,7 @@
     <img
       class="detail-image"
       alt="{{ !highlightLeaders ? leader.displayName : leader.badgeName }}"
-      src="{{ url }}/static/{{ !highlightLeaders ? 'portaits' : 'badges' }}/{{ leader.leaderId }}.png"
+      src="{{ url }}/static/{{ !highlightLeaders ? 'portraits' : 'badges' }}/{{ leader.leaderId }}.png"
     />
     <p>{{ !highlightLeaders ? leader.displayName : leader.badgeName }}</p>
     <p>{{ leader.bio }}</p>

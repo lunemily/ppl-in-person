@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { HeaderService } from '../services/header.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -21,8 +21,8 @@ export class HomeComponent implements OnInit {
   pplSettings: PPLSettings;
   isWebSocketConnected = false;
   public socket$!: WebSocketSubject<any>;
-  @Output() reloadConsole: EventEmitter<any> = new EventEmitter();
-  @Output() reloadBingoBoard: EventEmitter<any> = new EventEmitter();
+  reloadConsole: EventEmitter<any> = new EventEmitter();
+  reloadBingoBoard: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private cookieService: CookieService,
