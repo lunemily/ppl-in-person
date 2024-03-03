@@ -57,6 +57,7 @@ import { QueueMgmtComponent } from './console/leader-console/queue-mgmt/queue-mg
 import { TrainerCardComponent } from './trainer-card/trainer-card.component';
 import { HowToComponent } from './how-to/how-to.component';
 import { StaticImageComponent } from './static-image/static-image.component';
+import { LeaderListComponent } from './common/leader-list/leader-list.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { StaticImageComponent } from './static-image/static-image.component';
     HowToComponent,
     EventOverDialog,
     StaticImageComponent,
+    LeaderListComponent,
   ],
   imports: [
     MatAutocompleteModule,

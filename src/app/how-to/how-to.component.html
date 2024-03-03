@@ -1,5 +1,5 @@
 <mat-card>
-  <a mat-flat-button color="primary" skipLocationChange routerLink="/home" routerLinkActive="active"
+  <a mat-flat-button color="primary" skipLocationChange (click)="goToConsoleTab()"
     >Take me to my trainer card</a
   ></mat-card
 >
@@ -14,7 +14,7 @@
 <mat-card
   ><h2>How to play!</h2>
   <a mat-flat-button color="primary" href="https://discord.gg/paxpokemon">Join our Discord!</a>
-  <a mat-flat-button color="accent" routerLink="/home" routerLinkActive="active">Register to play!</a>
+  <a mat-flat-button color="accent" (click)="goToConsoleTab()">Register to play!</a>
   <p>
     From the webapp, you can enter/exit Gym Leader queues to battle them and earn badges! While most things will be run
     through the webapp, but make sure to keep an eye on the Discord for announcements!
@@ -38,10 +38,16 @@
     limited. We have a couple of other rules, too! Check out the full rules image link in the menu for specifics, or
     click below for a full written list of the rules if an image is not your thing!
   </p>
-  <a mat-flat-button color="primary" href="https://paxpokemonleague.net/rules/">Full Rules</a></mat-card
+  <a
+    mat-flat-button
+    color="primary"
+    href="https://paxpokemonleague.net/rules/"
+    target="_blank"
+    rel="noopener noreferrer"
+    >Full Rules</a
+  ></mat-card
 >
-<!-- Commented for PPL West 2023 -->
-<!-- <mat-card
+<mat-card *ngIf="pplSettings?.schedule"
   ><h2>Schedule</h2>
-  <img alt="schedule for this PPL Event" src="{{ scheduleImage }}"
-/></mat-card> -->
+  <img alt="Schedule for this PPL Event" src="{{ scheduleImage }}"
+/></mat-card>

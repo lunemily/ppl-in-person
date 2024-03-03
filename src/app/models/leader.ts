@@ -23,3 +23,5 @@ export interface Leader extends Person {
   queueOpen?: boolean;
   twitchEnabled?: boolean;
 }
+
+// export isEliteLeader

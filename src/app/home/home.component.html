@@ -1,4 +1,10 @@
-<mat-tab-group class="home-container" backgroundColor="primary" headerPosition="below" dynamicHeight>
+<mat-tab-group
+  #tabGroup="matTabGroup"
+  class="home-container"
+  backgroundColor="primary"
+  headerPosition="below"
+  dynamicHeight
+>
   <mat-tab>
     <ng-template mat-tab-label><mat-icon>home</mat-icon></ng-template>
     <app-auth id="tab-container" id="login-register-form" *ngIf="showLogin && !challengerId"></app-auth>
@@ -11,7 +17,7 @@
   </mat-tab>
   <mat-tab>
     <ng-template mat-tab-label><mat-icon>videogame_asset</mat-icon></ng-template>
-    <app-how-to id="tab-container"></app-how-to>
+    <app-how-to id="tab-container" [tabGroup]="tabGroup"></app-how-to>
   </mat-tab>
   <mat-tab *ngIf="pplSettings?.bingoBoard && !isLeader" disabled="{{ !loginId }}">
     <ng-template mat-tab-label><mat-icon>grid_on</mat-icon></ng-template>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Leader } from '../models/leader';
 import { DataService } from '../services/static-data.service';
-import { leaderTypesMap, leaderTypesReverseMap } from '../constants.data';
+import { api, leaderTypesMap, leaderTypesReverseMap } from '../constants.data';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from '../services/api.service';
 
@@ -21,6 +21,7 @@ export class AboutLeadersComponent implements OnInit {
   };
   loginId: string;
   isLeader: boolean;
+  url = api.serverUrl;
 
   constructor(
     private dataService: DataService,

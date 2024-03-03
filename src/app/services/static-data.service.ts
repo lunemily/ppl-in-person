@@ -191,6 +191,8 @@ export class DataService {
     }
   }
 
+  // isElite(leaderId: string): boolean
+
   /** Log a ChallengerService message with the MessageService */
   private log(message: string) {
     console.info(`ChallengerService: ${message}`);
