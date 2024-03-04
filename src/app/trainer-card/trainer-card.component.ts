@@ -22,6 +22,8 @@ export class TrainerCardComponent implements OnInit {
   @Input() challenger: Challenger;
   trainerCardLink: string;
   url = api.serverUrl;
+  isBattleFrontierFormat: boolean = false;
+  elitesInLeague: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -50,6 +52,7 @@ export class TrainerCardComponent implements OnInit {
     } else {
       console.error('No challenger ID available.');
     }
+    this.identifyLeagueFormat();
   }
 
   shareTrainerCard() {
@@ -67,27 +70,48 @@ export class TrainerCardComponent implements OnInit {
     return challenger;
   }
 
+  badgePointCount(): number {
+    let badgePointCount = 0;
+    this.challenger.badgesEarned.map((leader) => {
+      if (isEliteLeader(leader)) {
+        if (this.pplSettings.leagueFormat.badgesForChamp > 0)
+          badgePointCount += this.pplSettings.leagueFormat.emblemWeight;
+      } else {
+        badgePointCount += 1;
+      }
+    });
+    return badgePointCount;
+  }
+
   badgeCount(): number {
     let badgeCount = 0;
     this.challenger.badgesEarned.map((leader) => {
-      if (isEliteLeader(leader)) {
-        if (this.pplSettings.leagueFormat.badgesForChamp > 0) badgeCount += this.pplSettings.leagueFormat.emblemWeight;
-      } else {
+      if (!isEliteLeader(leader)) {
         badgeCount += 1;
       }
     });
-
     return badgeCount;
   }
 
   emblemCount(): number {
     let emblemCount = 0;
     this.challenger.badgesEarned.map((leader) => {
-      if (isEliteLeader(leader) && this.pplSettings.leagueFormat.emblemsForChamp > 0) {
+      if (isEliteLeader(leader)) {
         emblemCount += 1;
       }
     });
-
     return emblemCount;
+  }
+
+  identifyLeagueFormat(): void {
+    if (this.pplSettings.leagueFormat.emblemsForChamp === 0) {
+      // Emblems not required for champ
+      // assume battle frontier
+      this.isBattleFrontierFormat = true;
+    }
+    if (this.pplSettings.leagueFormat.emblemWeight > 0) {
+      // Elites present in league format
+      this.elitesInLeague = true;
+    }
   }
 }

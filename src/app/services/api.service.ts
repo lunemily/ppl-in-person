@@ -290,7 +290,9 @@ export class ApiService {
     const url = `${api.serverUrl}/api/v2/leader/${loginId}/openqueue`;
 
     this.http.post<any>(url, { duoMode: duoMode }, this.httpOptions).subscribe(
-      (data) => {},
+      (data) => {
+        window.location.reload();
+      },
       (error) => {
         this.messageService.showError(error['error']['error']);
       }
@@ -301,7 +303,9 @@ export class ApiService {
     const url = `${api.serverUrl}/api/v2/leader/${loginId}/closequeue`;
 
     this.http.post<any>(url, {}, this.httpOptions).subscribe(
-      (data) => {},
+      (data) => {
+        window.location.reload();
+      },
       (error) => {
         this.messageService.showError(error['error']['error']);
       }
@@ -344,7 +348,9 @@ export class ApiService {
     };
 
     this.http.post<any>(url, postBody, this.httpOptions).subscribe(
-      (data) => {},
+      (data) => {
+        window.location.reload();
+      },
       (error) => {
         console.error(`Posted to url: ${url} with body: ${JSON.stringify(postBody)}`);
         this.messageService.showError(error['error']['error']);
@@ -358,7 +364,9 @@ export class ApiService {
       : `${api.serverUrl}/api/v2/leader/${leaderId}/hold/${challengerId}`;
 
     this.http.post<any>(url, {}, this.httpOptions).subscribe(
-      (data) => {},
+      (data) => {
+        window.location.reload();
+      },
       (error) => {
         this.messageService.showError(error['error']['error']);
       }
@@ -369,7 +377,9 @@ export class ApiService {
     const url = `${api.serverUrl}/api/v2/leader/${leaderId}/unhold/${challengerId}`;
 
     this.http.post<any>(url, { placeAtFront: placeAtFront }, this.httpOptions).subscribe(
-      (data) => {},
+      (data) => {
+        window.location.reload();
+      },
       (error) => {
         this.messageService.showError(error['error']['error']);
       }
@@ -396,7 +406,9 @@ export class ApiService {
     };
 
     this.http.post<any>(url, body, this.httpOptions).subscribe(
-      (data) => {},
+      (data) => {
+        window.location.reload();
+      },
       (error) => {
         this.messageService.showError(error['error']['error']);
       }
@@ -409,7 +421,9 @@ export class ApiService {
       : `${api.serverUrl}/api/v2/leader/${leaderId}/dequeue/${challengerId}`;
 
     this.http.delete<any>(url, this.httpOptions).subscribe(
-      (data) => {},
+      (data) => {
+        window.location.reload();
+      },
       (error) => {
         this.messageService.showError(error['error']['error']);
       }

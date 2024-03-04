@@ -1,16 +1,23 @@
 <app-name *ngIf="person && !hideName" [person]="person"></app-name>
 <mat-card *ngIf="challenger">
   <div id="badges-earned">
-    <h2 class="left">
-      Badges Earned: {{ badgeCount()
-      }}{{ pplSettings.leagueFormat.badgesForChamp > 0 ? '/' + pplSettings.leagueFormat.badgesForChamp : '' }}
-      <mat-icon
-        *ngIf="pplSettings.leagueFormat.badgesForChamp > 0"
-        matTooltip="Elite leaders can count toward badges required to battle the Champ, but are not required."
-        >info</mat-icon
-      >
-    </h2>
-    <h2 class="left" *ngIf="emblemCount()">Emblems Earned: {{ emblemCount() }}</h2>
+    <div *ngIf="isBattleFrontierFormat">
+      <h2 class="left">
+        Total Badge Points Earned: {{ badgePointCount()
+        }}{{ pplSettings.leagueFormat.badgesForChamp > 0 ? '/' + pplSettings.leagueFormat.badgesForChamp : '' }}
+        <mat-icon
+          *ngIf="pplSettings.leagueFormat.badgesForChamp > 0"
+          matTooltip="Elite leaders can count toward badges required to battle the Champ, but are not required."
+          >info</mat-icon
+        >
+      </h2>
+      <h3 class="left" *ngIf="badgeCount()">Badges Earned: {{ badgeCount() }}</h3>
+      <h3 class="left" *ngIf="emblemCount()">Emblems Earned: {{ emblemCount() }}</h3>
+    </div>
+    <div *ngIf="!isBattleFrontierFormat">
+      <h2 class="left">Badges Earned: {{ badgeCount() }}</h2>
+      <h2 class="left" *ngIf="emblemCount()">Emblems Earned: {{ emblemCount() }}</h2>
+    </div>
     <mat-expansion-panel *ngIf="challenger.battleStats" class="mat-elevation-z0">
       <mat-expansion-panel-header>
         <mat-panel-title>Show Battle Statistics</mat-panel-title>
