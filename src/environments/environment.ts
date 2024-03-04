@@ -13,20 +13,6 @@ export const api = {
   httpOtions: httpOtions,
 };
 
-export const sidenav: PPLSettings = {
-  showTrainerCard: true,
-  howToChallenge: true,
-  rules: true,
-  prizePools: true,
-  schedule: true,
-  bingoBoard: true,
-  eventIsOver: false,
-  eventSupportsQueueState: true,
-  leadersToDefeat: 8,
-  elitesToDefeat: 4,
-  map: true,
-};
-
 export const features = {
   useQR: true,
 };

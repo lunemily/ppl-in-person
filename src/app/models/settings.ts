@@ -1,3 +1,10 @@
+interface leagueFormat {
+  badgesForElites: number;
+  badgesForChamp: number;
+  emblemsForChamp: number;
+  emblemWeight: number;
+}
+
 export interface PPLSettings {
   showTrainerCard: boolean;
   howToChallenge: boolean;
@@ -10,4 +17,5 @@ export interface PPLSettings {
   leadersToDefeat: number;
   elitesToDefeat: number;
   map: boolean;
+  leagueFormat: leagueFormat;
 }

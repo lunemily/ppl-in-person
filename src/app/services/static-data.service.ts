@@ -7,7 +7,7 @@ import { Leader } from '../models/leader';
 import { PPLSettings } from '../models/settings';
 import { AuthenticationService } from './authentication.service';
 
-import { sidenav, battleFormatsMap, leaderTypesMap } from '../constants.data';
+import { battleFormatsMap, leaderTypesMap } from '../constants.data';
 import { Format } from '../models/format';
 
 @Injectable({
@@ -137,36 +137,23 @@ export class DataService {
   private fetchAndReturnPPLSettings(): Observable<PPLSettings> {
     const url = `${api.serverUrl}/api/v2/appsettings`;
 
-    const sampleSettings = {
-      showTrainerCard: true,
-      howToChallenge: true,
-      rules: true,
-      prizePools: true,
-      schedule: false,
-      bingoBoard: true,
-      eventIsOver: false,
-      eventSupportsQueueState: false,
-      leadersToDefeat: 8,
-      elitesToDefeat: 8,
-      map: true,
-    };
-
-    return of(sampleSettings).pipe(
-      // return this.http.get(url, this.httpOptions).pipe(
-      map((response) => {
+    // return of(sampleSettings).pipe(
+    return this.http.get(url, this.httpOptions).pipe(
+      map((response: PPLSettings) => {
         let settings: PPLSettings = {
           showTrainerCard: response['showTrainerCard'],
-          howToChallenge: sidenav['howToChallenge'],
-          rules: sidenav['rules'],
-          prizePools: sidenav['prizePools'],
-          schedule: sidenav['schedule'],
-          bingoBoard: sidenav['bingoBoard'],
+          howToChallenge: response['howToChallenge'],
+          rules: response['rules'],
+          prizePools: response['prizePools'],
+          schedule: response['schedule'],
+          bingoBoard: response['bingoBoard'],
           eventIsOver: response['eventIsOver'],
           // eventIsOver: true,
           eventSupportsQueueState: response['eventSupportsQueueState'],
           leadersToDefeat: response['leadersToDefeat'],
           elitesToDefeat: response['elitesToDefeat'],
-          map: sidenav['map'],
+          map: response['map'],
+          leagueFormat: response['leagueFormat'],
         };
 
         // Store settings
