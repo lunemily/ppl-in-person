@@ -27,6 +27,15 @@ export class ConsoleComponent implements OnInit {
   ngOnInit(): void {
     this.loginId = this.cookieService.get('loginId');
     this.isLeader = 'true' == this.cookieService.get('isLeader');
+    this.loadUser();
+    this.subscribeToParentEmitter();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  loadUser(): void {
     if (this.loginId) {
       if (this.isLeader) {
         this.getLeader();
@@ -34,10 +43,6 @@ export class ConsoleComponent implements OnInit {
         this.getChallenger();
       }
     }
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 
   getChallenger(): void {
@@ -59,7 +64,8 @@ export class ConsoleComponent implements OnInit {
 
   subscribeToParentEmitter(): void {
     this.subscription = this.reloadConsole.subscribe(() => {
-      this.ngOnInit();
+      console.info(`Reloading console for user ${this.loginId}`);
+      this.loadUser();
     });
   }
 }
