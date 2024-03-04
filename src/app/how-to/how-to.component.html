@@ -1,27 +1,21 @@
 <mat-card>
-  <a mat-flat-button color="primary" skipLocationChange (click)="goToConsoleTab()"
-    >Take me to my trainer card</a
-  ></mat-card
->
-<mat-card
-  ><h1>What is the Pax Pokemon League?</h1>
+  <h1>What is the Pax Pokemon League?</h1>
   <p>
     PPL is a{{ pplEvent.toLocaleLowerCase() === 'online' ? 'n online' : '' }} Pokémon League where you can battle Gym
     Leaders for prizes! In addition to Pokémon Battles, we have fun events planned during the weekend too!
   </p>
-  <img id="logo" src="assets/images/ppl-logo.png"
-/></mat-card>
-<mat-card
-  ><h2>How to play!</h2>
+  <img src="assets/images/ppl-logo.png" />
+</mat-card>
+<mat-card>
+  <h2>How to play!</h2>
   <a mat-flat-button color="primary" href="https://discord.gg/paxpokemon">Join our Discord!</a>
+
+  <a mat-flat-button color="primary" skipLocationChange (click)="goToConsoleTab()">Take me to my trainer card</a>
   <a mat-flat-button color="accent" (click)="goToConsoleTab()">Register to play!</a>
-  <p>
-    From the webapp, you can enter/exit Gym Leader queues to battle them and earn badges! While most things will be run
-    through the webapp, but make sure to keep an eye on the Discord for announcements!
-  </p></mat-card
->
-<mat-card
-  ><h2>Prizes</h2>
+  <img alt="How to challenge the PPL" src="{{ challengingImage }}" />
+</mat-card>
+<mat-card>
+  <h2>Prizes</h2>
   <p>
     Beat any {{ leadersToDefeat }} Gym Leaders<span *ngIf="elitesToDefeat > 0">
       followed by {{ elitesToDefeat }} Elites</span
@@ -29,10 +23,10 @@
     and you can challenge the Champion! Win against the Champion and you have beaten the Pax Pokémon League
     {{ pplEvent }} {{ year }}! You can see the list of prizes here!
   </p>
-  <img id="prizes" alt="prizes at this PPL Event" src="{{ prizesImage }}"
-/></mat-card>
-<mat-card
-  ><h2>Rules</h2>
+  <img alt="prizes at this PPL Event" src="{{ prizesImage }}" />
+</mat-card>
+<mat-card>
+  <h2>Rules</h2>
   <p>
     Pretty much all major legendaries (plus Regieleki) are banned, while most minor legendaries and paradox 'mons are
     limited. We have a couple of other rules, too! Check out the full rules image link in the menu for specifics, or
@@ -44,10 +38,11 @@
     href="https://paxpokemonleague.net/rules/"
     target="_blank"
     rel="noopener noreferrer"
-    >Full Rules</a
-  ></mat-card
->
-<mat-card *ngIf="pplSettings?.schedule"
-  ><h2>Schedule</h2>
-  <img alt="Schedule for this PPL Event" src="{{ scheduleImage }}"
-/></mat-card>
+  >
+    Full Rules
+  </a>
+</mat-card>
+<mat-card *ngIf="pplSettings?.schedule">
+  <h2>Schedule</h2>
+  <img alt="Schedule for this PPL Event" src="{{ scheduleImage }}" />
+</mat-card>

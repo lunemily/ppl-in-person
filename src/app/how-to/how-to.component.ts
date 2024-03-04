@@ -13,6 +13,7 @@ export class HowToComponent implements OnInit {
   pplSettings: PPLSettings;
   pplEvent = pplEvent;
   year: string;
+  challengingImage = `assets/images/challenging-${pplEvent.toLowerCase()}.png`;
   prizesImage = `assets/images/prizes-${pplEvent.toLowerCase()}.png`;
   scheduleImage = `assets/images/schedule-${pplEvent.toLowerCase()}.png`;
   leadersToDefeat = 0;

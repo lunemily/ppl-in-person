@@ -1,0 +1,28 @@
+<mat-accordion class="example-headers-align">
+  <mat-expansion-panel *ngFor="let queue of queues">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <img class="highlight-image" src="{{ url }}/static/badges/{{ queue.leaderId }}.png" />
+      </mat-panel-title>
+      <mat-panel-description>
+        {{ queue.displayName }}
+        <span id="queue-position" class="color-primary">{{ queue.position !== -1 ? queue.position : 'ON HOLD' }}</span>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <span>Your battle code is: </span><span id="battle-code">{{ queue.battleCode }}</span>
+    <br />
+    <span>{{ queue.battleFormat.name.toLocaleUpperCase() }}</span>
+    |
+    <span>{{ queue.battleDifficulty.name.toLocaleUpperCase() }}</span>
+    <br />
+    <button *ngIf="queue.position !== -1" class="hold-button" mat-stroked-button (click)="hold(queue)">HOLD</button>
+    <button class="hold-button" mat-stroked-button (click)="drop(queue)">DROP</button>
+    <!-- <img
+      class="detail-image"
+      alt="{{ !highlightLeaders ? leader.displayName : leader.badgeName }}"
+      src="{{ url }}/static/{{ !highlightLeaders ? 'portraits' : 'badges' }}/{{ leader.leaderId }}.png"
+    />
+    <p>{{ !highlightLeaders ? leader.displayName : leader.badgeName }}</p>
+    <p>{{ leader.bio }}</p> -->
+  </mat-expansion-panel>
+</mat-accordion>

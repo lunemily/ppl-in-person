@@ -7,6 +7,7 @@ import { MessageService } from '../services/message.service';
 import { api, pplEvent } from '../constants.data';
 import { DataService } from '../services/static-data.service';
 import { Leader, isEliteLeader } from '../models/leader';
+import { PPLSettings } from '../models/settings';
 
 @Component({
   selector: 'app-trainer-card',
@@ -14,6 +15,7 @@ import { Leader, isEliteLeader } from '../models/leader';
   styleUrls: ['./trainer-card.component.scss'],
 })
 export class TrainerCardComponent implements OnInit {
+  pplSettings: PPLSettings;
   @Input() hideName: boolean;
   challengerId: string;
   person: Person;
@@ -29,6 +31,9 @@ export class TrainerCardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.dataService.getPPLSettings().subscribe((pplSettings) => {
+      this.pplSettings = pplSettings;
+    });
     this.challengerId = this.route.snapshot.queryParamMap.get('id');
     if (this.challengerId) {
       this.apiService.getTrainerCardForChallenger(this.challengerId).subscribe((challenger) => {
@@ -66,12 +71,23 @@ export class TrainerCardComponent implements OnInit {
     let badgeCount = 0;
     this.challenger.badgesEarned.map((leader) => {
       if (isEliteLeader(leader)) {
-        badgeCount += 2;
+        if (this.pplSettings.leagueFormat.badgesForChamp > 0) badgeCount += this.pplSettings.leagueFormat.emblemWeight;
       } else {
         badgeCount += 1;
       }
     });
 
     return badgeCount;
+  }
+
+  emblemCount(): number {
+    let emblemCount = 0;
+    this.challenger.badgesEarned.map((leader) => {
+      if (isEliteLeader(leader) && this.pplSettings.leagueFormat.emblemsForChamp > 0) {
+        emblemCount += 1;
+      }
+    });
+
+    return emblemCount;
   }
 }

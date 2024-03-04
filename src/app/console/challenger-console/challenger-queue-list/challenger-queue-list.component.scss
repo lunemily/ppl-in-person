@@ -1,0 +1,19 @@
+img {
+  height: 92px;
+  width: 92px;
+  // border: 2px solid #ffffff;
+  border-radius: 100%;
+  margin: auto;
+}
+
+img.highlight-image {
+  height: 64px;
+  width: 64px;
+}
+
+#battle-code {
+  color: #444;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 1.25em;
+}

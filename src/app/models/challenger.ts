@@ -7,4 +7,8 @@ export interface Challenger extends Person {
   queuesEntered?: Queue[];
   badgesEarned?: Leader[];
   championSurveyUrl?: string;
+  battleStats?: {
+    winCount: number;
+    lossCount: number;
+  };
 }

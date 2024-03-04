@@ -58,6 +58,7 @@ import { TrainerCardComponent } from './trainer-card/trainer-card.component';
 import { HowToComponent } from './how-to/how-to.component';
 import { StaticImageComponent } from './static-image/static-image.component';
 import { LeaderListComponent } from './common/leader-list/leader-list.component';
+import { ChallengerQueueListComponent } from './console/challenger-console/challenger-queue-list/challenger-queue-list.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { LeaderListComponent } from './common/leader-list/leader-list.component'
     EventOverDialog,
     StaticImageComponent,
     LeaderListComponent,
+    ChallengerQueueListComponent,
   ],
   imports: [
     MatAutocompleteModule,
