@@ -7,16 +7,19 @@
 >
   <mat-tab>
     <ng-template mat-tab-label><mat-icon>home</mat-icon></ng-template>
+    <app-meetup-times></app-meetup-times>
     <app-auth id="tab-container" id="login-register-form" *ngIf="showLogin && !challengerId"></app-auth>
     <app-console id="tab-container" *ngIf="!showLogin && !challengerId" [reloadConsole]="reloadConsole"></app-console>
     <app-trainer-card id="tab-container" *ngIf="challengerId"></app-trainer-card>
   </mat-tab>
   <mat-tab>
     <ng-template mat-tab-label><mat-icon>chrome_reader_mode</mat-icon></ng-template>
+    <app-meetup-times></app-meetup-times>
     <app-about-leaders id="tab-container"></app-about-leaders>
   </mat-tab>
   <mat-tab>
     <ng-template mat-tab-label><mat-icon>help</mat-icon></ng-template>
+    <app-meetup-times></app-meetup-times>
     <app-how-to id="tab-container" [tabGroup]="tabGroup"></app-how-to>
   </mat-tab>
   <mat-tab *ngIf="pplSettings?.bingoBoard && !isLeader" disabled="{{ !loginId }}">

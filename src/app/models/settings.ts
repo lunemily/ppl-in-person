@@ -5,6 +5,13 @@ interface leagueFormat {
   emblemWeight: number;
 }
 
+export interface meetupTime {
+  location: string;
+  startTime: number; // millis
+  duration: number; // Minutes
+  endTime: number; // millis
+}
+
 export interface PPLSettings {
   showTrainerCard: boolean;
   howToChallenge: boolean;
@@ -18,4 +25,5 @@ export interface PPLSettings {
   elitesToDefeat: number;
   map: boolean;
   leagueFormat: leagueFormat;
+  meetupTimes: meetupTime[];
 }

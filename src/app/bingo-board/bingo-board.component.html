@@ -1,5 +1,5 @@
 <mat-card *ngIf="bingoBoard && bingoBoard[0] && bingoBoard[0][0]">
-  <h1 class="shadow-primary">{{ title }}</h1>
+  <h2 class="shadow-primary">{{ title }}</h2>
   <div fxLayout="column" fxLayoutGap="1em" fxLayoutAlign="space-evenly space-evenly" class="bingo-row">
     <div
       *ngFor="let row of bingoBoard"

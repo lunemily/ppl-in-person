@@ -59,6 +59,7 @@ import { HowToComponent } from './how-to/how-to.component';
 import { StaticImageComponent } from './static-image/static-image.component';
 import { LeaderListComponent } from './common/leader-list/leader-list.component';
 import { ChallengerQueueListComponent } from './console/challenger-console/challenger-queue-list/challenger-queue-list.component';
+import { MeetupPopup, MeetupTimesComponent } from './home/meetup-times/meetup-times.component';
 
 @NgModule({
   declarations: [
@@ -92,6 +93,8 @@ import { ChallengerQueueListComponent } from './console/challenger-console/chall
     StaticImageComponent,
     LeaderListComponent,
     ChallengerQueueListComponent,
+    MeetupTimesComponent,
+    MeetupPopup,
   ],
   imports: [
     MatAutocompleteModule,

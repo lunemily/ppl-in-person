@@ -2,6 +2,7 @@ import { Component, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { DataService } from './services/static-data.service';
 import { MatDialog } from '@angular/material/dialog';
+import { PPLSettings } from './models/settings';
 
 @Component({
   selector: 'app-root',

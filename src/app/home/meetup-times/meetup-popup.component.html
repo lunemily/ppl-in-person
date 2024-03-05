@@ -1,0 +1,9 @@
+<br />
+<h3>Hey Champ-in-the-making!</h3>
+<p>Here are the meetup times for PPL:</p>
+<mat-list>
+  <mat-list-item *ngFor="let meetup of pplSettings.meetupTimes">
+    <span matListItemTitle>{{ getHumanReadableTimeSpan(meetup) }}</span>
+    <span matListItemLine>{{ meetup.location }}</span>
+  </mat-list-item>
+</mat-list>

@@ -139,7 +139,7 @@ export class DataService {
 
     // return of(sampleSettings).pipe(
     return this.http.get(url, this.httpOptions).pipe(
-      map((response: PPLSettings) => {
+      map((response) => {
         let settings: PPLSettings = {
           showTrainerCard: response['showTrainerCard'],
           howToChallenge: response['howToChallenge'],
@@ -154,6 +154,16 @@ export class DataService {
           elitesToDefeat: response['elitesToDefeat'],
           map: response['map'],
           leagueFormat: response['leagueFormat'],
+          meetupTimes: response['meetupTimes']
+            .map((meetupTime) => {
+              return {
+                location: meetupTime.location,
+                startTime: Date.parse(meetupTime.startTime),
+                duration: meetupTime.duration,
+                endTime: Date.parse(meetupTime.startTime) + meetupTime.duration * 60 * 1000,
+              };
+            })
+            .sort((a, b) => (a.startTime > b.startTime ? 1 : b.startTime > a.startTime ? -1 : 0)),
         };
 
         // Store settings
