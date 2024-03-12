@@ -22,5 +22,10 @@
       <p>{{ !highlightLeaders ? leader.displayName : leader.badgeName }}</p>
       <p>{{ leader.bio }}</p>
     </div>
+    <div class="leader-formats">
+      <span *ngFor="let format of leader.battleFormats" class="callout {{ format.name }}-font">
+        {{ format.name.toUpperCase() }}
+      </span>
+    </div>
   </mat-expansion-panel>
 </mat-accordion>
