@@ -1,0 +1,95 @@
+$casual: #ffe400;
+$intermediate: #ffa800;
+$veteran: #ff2400;
+$elite: #720000;
+$champion: #000000;
+
+$singles: #248bff;
+$doubles: #b450d9;
+$multi: #ff08c8;
+$special: #00d25e;
+
+$dark-text: #000000;
+$light-text: #ffffff;
+
+.casual {
+  color: $dark-text;
+  text-shadow: 0px 0px 5px $casual;
+}
+
+.intermediate {
+  color: $dark-text;
+  text-shadow: 0px 0px 5px $intermediate;
+}
+
+.veteran {
+  color: $dark-text;
+  text-shadow: 0px 0px 5px $veteran;
+}
+
+.elite {
+  color: $dark-text;
+  text-shadow: 0px 0px 5px $elite;
+}
+
+.champion {
+  color: $dark-text;
+  text-shadow: 0px 0px 5px $champion;
+}
+
+.singles-font {
+  color: $singles;
+}
+
+.doubles-font {
+  color: $doubles;
+}
+
+.multi-font {
+  color: $multi;
+}
+
+.special-font {
+  color: $special;
+}
+
+.casual-background {
+  color: $dark-text;
+  background-color: $casual;
+}
+
+.intermediate-background {
+  color: $dark-text;
+  background-color: $intermediate;
+}
+
+.veteran-background {
+  color: $dark-text;
+  background-color: $veteran;
+}
+
+.elite-background {
+  color: $light-text;
+  background-color: $elite;
+}
+
+.champion-background {
+  color: $light-text;
+  background-color: $champion;
+}
+
+.singles-background {
+  background-color: $singles;
+}
+
+.doubles-background {
+  background-color: $doubles;
+}
+
+.multi-background {
+  background-color: $multi;
+}
+
+.special-background {
+  background-color: $special;
+}

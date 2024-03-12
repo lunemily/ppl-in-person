@@ -3,19 +3,39 @@
     <h1>About the leaders!</h1>
     <span>Select any leader to learn more.</span>
     <h2 *ngIf="leaderData.casual.length > 0">Casual Leaders</h2>
-    <app-leader-list [leaderList]="leaderData.casual" [highlightLeaders]="true"></app-leader-list>
+    <app-leader-list
+      [leaderList]="leaderData.casual"
+      [highlightLeaders]="true"
+      [leaderDifficulty]="'casual'"
+    ></app-leader-list>
     <br />
     <h2 *ngIf="leaderData.intermediate.length > 0">Intermediate Leaders</h2>
-    <app-leader-list [leaderList]="leaderData.intermediate" [highlightLeaders]="true"></app-leader-list>
+    <app-leader-list
+      [leaderList]="leaderData.intermediate"
+      [highlightLeaders]="true"
+      [leaderDifficulty]="'intermediate'"
+    ></app-leader-list>
     <br />
     <h2 *ngIf="leaderData.veteran.length > 0">Veteran Leaders</h2>
-    <app-leader-list [leaderList]="leaderData.veteran" [highlightLeaders]="true"></app-leader-list>
+    <app-leader-list
+      [leaderList]="leaderData.veteran"
+      [highlightLeaders]="true"
+      [leaderDifficulty]="'veteran'"
+    ></app-leader-list>
     <br />
     <h2 *ngIf="leaderData.elite.length > 0">Elite Leaders</h2>
-    <app-leader-list [leaderList]="leaderData.elite" [highlightLeaders]="true"></app-leader-list>
+    <app-leader-list
+      [leaderList]="leaderData.elite"
+      [highlightLeaders]="true"
+      [leaderDifficulty]="'elite'"
+    ></app-leader-list>
     <br />
     <h2 *ngIf="leaderData.champion.length > 0">Champion{{ leaderData.champion.length > 1 ? 's' : '' }}</h2>
-    <app-leader-list [leaderList]="leaderData.champion" [highlightLeaders]="true"></app-leader-list>
+    <app-leader-list
+      [leaderList]="leaderData.champion"
+      [highlightLeaders]="true"
+      [leaderDifficulty]="'champion'"
+    ></app-leader-list>
   </div>
 </mat-card>
 <div class="fab-wrapper">

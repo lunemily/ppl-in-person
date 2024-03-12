@@ -11,8 +11,10 @@ export class LeaderListComponent implements OnInit {
   url = api.serverUrl;
   @Input() leaderList: Leader[];
   @Input() highlightLeaders: boolean;
+  @Input() leaderDifficulty: string;
 
   ngOnInit(): void {
+    console.info(this.leaderList);
     if (!this.highlightLeaders) {
       this.highlightLeaders = false;
     }

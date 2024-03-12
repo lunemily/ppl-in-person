@@ -8,16 +8,19 @@
           src="{{ url }}/static/{{ highlightLeaders ? 'portraits' : 'badges' }}/{{ leader.leaderId }}.png"
         />
       </mat-panel-title>
-      <mat-panel-description>
+      <mat-panel-description class="{{ this.leaderDifficulty }}">
         {{ highlightLeaders ? leader.displayName : leader.badgeName }}
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <img
-      class="detail-image"
-      alt="{{ !highlightLeaders ? leader.displayName : leader.badgeName }}"
-      src="{{ url }}/static/{{ !highlightLeaders ? 'portraits' : 'badges' }}/{{ leader.leaderId }}.png"
-    />
-    <p>{{ !highlightLeaders ? leader.displayName : leader.badgeName }}</p>
-    <p>{{ leader.bio }}</p>
+    <br />
+    <div class="{{ leaderDifficulty }}-background expansion-panel-detail">
+      <img
+        class="detail-image"
+        alt="{{ !highlightLeaders ? leader.displayName : leader.badgeName }}"
+        src="{{ url }}/static/{{ !highlightLeaders ? 'portraits' : 'badges' }}/{{ leader.leaderId }}.png"
+      />
+      <p>{{ !highlightLeaders ? leader.displayName : leader.badgeName }}</p>
+      <p>{{ leader.bio }}</p>
+    </div>
   </mat-expansion-panel>
 </mat-accordion>
