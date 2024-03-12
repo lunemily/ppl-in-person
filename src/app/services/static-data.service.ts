@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of, shareReplay, tap } from 'rxjs';
+import { catchError, map, Observable, of, share, shareReplay, tap } from 'rxjs';
 
 import { api, battleFormatsReverseMap, leaderTypesReverseMap } from '../constants.data';
 import { Leader } from '../models/leader';
-import { PPLSettings } from '../models/settings';
+import { meetupTime, PPLSettings } from '../models/settings';
 import { AuthenticationService } from './authentication.service';
 
 import { battleFormatsMap, leaderTypesMap } from '../constants.data';
@@ -17,6 +17,10 @@ export class DataService {
   httpOptions = {
     headers: api.httpOtions.headers.append('Content-Type', 'application/json'),
   };
+
+  private readonly _pplData: Observable<JSON>;
+
+  constructor(private http: HttpClient, private authenticationService: AuthenticationService) {}
 
   getLeaderData(): Observable<Leader[]> {
     let localLeaderList = localStorage.getItem('leader-data-list');
@@ -35,6 +39,19 @@ export class DataService {
     }
     console.warn('Leader data not stored.\nFetching...\n');
     return this.fetchAndReturnLeaderData();
+  }
+
+  getPPLSettings(): Observable<PPLSettings> {
+    let rawAppSettingsTTL = localStorage.getItem('app-settings-ttl');
+    if (rawAppSettingsTTL) {
+      let now = new Date().getTime();
+      let appSettingsTTL = Date.parse(rawAppSettingsTTL);
+      if (now < appSettingsTTL)
+        // We're before the settings expiration time, return the local values
+        return this.returnLocalPPLSettings();
+    }
+
+    return this.fetchAndReturnPPLSettings();
   }
 
   private fetchAndReturnLeaderData(): Observable<Leader[]> {
@@ -121,24 +138,11 @@ export class DataService {
     }
   }
 
-  getPPLSettings(): Observable<PPLSettings> {
-    let rawAppSettingsTTL = localStorage.getItem('app-settings-ttl');
-    if (rawAppSettingsTTL) {
-      let now = new Date().getTime();
-      let appSettingsTTL = Date.parse(rawAppSettingsTTL);
-      if (now < appSettingsTTL)
-        // We're before the settings expiration time, return the local values
-        return this.returnLocalPPLSettings();
-    }
-
-    return this.fetchAndReturnPPLSettings();
-  }
-
   private fetchAndReturnPPLSettings(): Observable<PPLSettings> {
     const url = `${api.serverUrl}/api/v2/appsettings`;
 
-    // return of(sampleSettings).pipe(
     return this.http.get(url, this.httpOptions).pipe(
+      tap(() => console.info(`++ /api/v2/appsettings was newly called at ${new Date().toLocaleTimeString()} ++`)),
       map((response) => {
         let settings: PPLSettings = {
           showTrainerCard: response['showTrainerCard'],
@@ -171,7 +175,7 @@ export class DataService {
 
         // Set TTL
         let ttl = new Date();
-        ttl.setHours(ttl.getMinutes() + 10);
+        ttl.setHours(ttl.getMinutes() + 15);
         localStorage.setItem('app-settings-ttl', ttl.toString());
 
         return settings;
@@ -187,8 +191,6 @@ export class DataService {
       return this.fetchAndReturnPPLSettings();
     }
   }
-
-  // isElite(leaderId: string): boolean
 
   /** Log a ChallengerService message with the MessageService */
   private log(message: string) {
@@ -263,6 +265,4 @@ export class DataService {
 
     return battleFormats;
   }
-
-  constructor(private http: HttpClient, private authenticationService: AuthenticationService) {}
 }
