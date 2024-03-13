@@ -53,29 +53,24 @@ $light-text: #ffffff;
   color: $special;
 }
 
-.casual-background {
-  color: $dark-text;
-  background-color: $casual;
+.casual-border {
+  border-color: $casual !important;
 }
 
-.intermediate-background {
-  color: $dark-text;
-  background-color: $intermediate;
+.intermediate-border {
+  border-color: $intermediate !important;
 }
 
-.veteran-background {
-  color: $dark-text;
-  background-color: $veteran;
+.veteran-border {
+  border-color: $veteran !important;
 }
 
-.elite-background {
-  color: $light-text;
-  background-color: $elite;
+.elite-border {
+  border-color: $elite !important;
 }
 
-.champion-background {
-  color: $light-text;
-  background-color: $champion;
+.champion-border {
+  border-color: $champion !important;
 }
 
 .singles-background {
