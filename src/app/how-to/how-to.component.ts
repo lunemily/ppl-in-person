@@ -12,20 +12,18 @@ import { PPLSettings } from '../models/settings';
 export class HowToComponent implements OnInit {
   pplSettings: PPLSettings;
   pplEvent = pplEvent;
+  isBattleFrontierFormat: boolean = false;
+  elitesInLeague: boolean = false;
   year: string;
   challengingImage = `assets/images/challenging-${pplEvent.toLowerCase()}.png`;
   prizesImage = `assets/images/prizes-${pplEvent.toLowerCase()}.png`;
   scheduleImage = `assets/images/schedule-${pplEvent.toLowerCase()}.png`;
-  leadersToDefeat = 0;
-  elitesToDefeat = 0;
   @Input() tabGroup: MatTabGroup;
 
   ngOnInit(): void {
     this.year = new Date().getFullYear().toString();
-    this.dataService.getPPLSettings().subscribe((settings) => {
-      this.leadersToDefeat = settings.leadersToDefeat;
-      this.elitesToDefeat = settings.elitesToDefeat;
-    });
+    this.loadPPLSettings();
+    this.identifyLeagueFormat();
   }
 
   goToConsoleTab(): void {
@@ -36,6 +34,18 @@ export class HowToComponent implements OnInit {
     this.dataService.getPPLSettings().subscribe((pplSettings) => {
       this.pplSettings = pplSettings;
     });
+  }
+
+  identifyLeagueFormat(): void {
+    if (this.pplSettings.leagueFormat.emblemsForChamp === 0) {
+      // Emblems not required for champ
+      // assume battle frontier
+      this.isBattleFrontierFormat = true;
+    }
+    if (this.pplSettings.leagueFormat.emblemWeight > 0) {
+      // Elites present in league format
+      this.elitesInLeague = true;
+    }
   }
 
   constructor(private dataService: DataService) {}

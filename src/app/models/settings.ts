@@ -5,7 +5,7 @@ interface leagueFormat {
   emblemWeight: number;
 }
 
-export interface meetupTime {
+export interface MeetupTime {
   location: string;
   startTime: number; // millis
   duration: number; // Minutes
@@ -25,5 +25,5 @@ export interface PPLSettings {
   elitesToDefeat: number;
   map: boolean;
   leagueFormat: leagueFormat;
-  meetupTimes: meetupTime[];
+  meetupTimes: MeetupTime[];
 }

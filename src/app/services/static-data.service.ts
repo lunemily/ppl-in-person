@@ -4,7 +4,7 @@ import { catchError, map, Observable, of, share, shareReplay, tap } from 'rxjs';
 
 import { api, battleFormatsReverseMap, leaderTypesReverseMap } from '../constants.data';
 import { Leader } from '../models/leader';
-import { meetupTime, PPLSettings } from '../models/settings';
+import { MeetupTime, PPLSettings } from '../models/settings';
 import { AuthenticationService } from './authentication.service';
 
 import { battleFormatsMap, leaderTypesMap } from '../constants.data';

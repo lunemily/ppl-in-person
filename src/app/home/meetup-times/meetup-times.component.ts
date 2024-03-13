@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PPLSettings, meetupTime } from 'src/app/models/settings';
+import { PPLSettings, MeetupTime } from 'src/app/models/settings';
 import { DataService } from 'src/app/services/static-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Dialog } from '@angular/cdk/dialog';
@@ -56,7 +56,7 @@ export class MeetupPopup implements OnInit {
     });
   }
 
-  getHumanReadableTimeSpan(meetup: meetupTime): string {
+  getHumanReadableTimeSpan(meetup: MeetupTime): string {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     let startDatetime: Date = new Date(meetup.startTime);
     let endDateTime: Date = new Date(meetup.endTime);

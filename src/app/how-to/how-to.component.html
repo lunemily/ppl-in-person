@@ -16,12 +16,21 @@
 </mat-card>
 <mat-card>
   <h2>Prizes</h2>
+  <p>Defeat {{ pplSettings.leagueFormat.badgesForElites }} Gym Leaders to challenge the Elites.</p>
   <p>
-    Beat any {{ leadersToDefeat }} Gym Leaders<span *ngIf="elitesToDefeat > 0">
-      followed by {{ elitesToDefeat }} Elites</span
-    >
-    and you can challenge the Champion! Win against the Champion and you have beaten the Pax Pokémon League
-    {{ pplEvent }} {{ year }}! You can see the list of prizes here!
+    Then, earn
+    {{
+      pplSettings.leagueFormat.badgesForChamp > 0
+        ? pplSettings.leagueFormat.badgesForChamp +
+          ' badge points total (badges count for 1 point and elite emblems count for ' +
+          pplSettings.leagueFormat.emblemWeight +
+          ' points)'
+        : pplSettings.leagueFormat.emblemsForChamp + ' emblems'
+    }}
+    to challenge the Champion.
+  </p>
+  <p>
+    Defeat the Champion and you've beaten the Pax Pokémon League {{ pplEvent }} {{ year }}! Check out the prizes below!
   </p>
   <img alt="prizes at this PPL Event" src="{{ prizesImage }}" />
 </mat-card>
@@ -29,8 +38,8 @@
   <h2>Rules</h2>
   <p>
     Pretty much all major legendaries (plus Regieleki) are banned, while most minor legendaries and paradox 'mons are
-    limited. We have a couple of other rules, too! Check out the full rules image link in the menu for specifics, or
-    click below for a full written list of the rules if an image is not your thing!
+    limited. We have a couple of other rules, too! Check out the full rules tab to the right for specifics, or click
+    below for a full written list of the rules if an image is not your thing!
   </p>
   <a
     mat-flat-button
