@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Credential } from './credential';
 import { CookieService } from 'ngx-cookie-service';
-import { AuthenticationService } from '../services/authentication.service';
-import { MessageService } from '../services/message.service';
+import { AuthenticationService } from '../../services/authentication.service';
+import { MessageService } from '../../services/message.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DataService } from '../services/static-data.service';
+import { DataService } from '../../services/static-data.service';
 
 @Component({
   selector: 'app-auth',

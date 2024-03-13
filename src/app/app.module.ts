@@ -40,8 +40,8 @@ import {
 } from './console/challenger-console/challenger-console.component';
 import { QueueItemComponent } from './console/challenger-console/queue-item/queue-item.component';
 import { LeaderHoldItemComponent } from './console/leader-console/leader-hold-item/leader-hold-item.component';
-import { CameraComponent, EnqueueDialog } from './camera/camera.component';
-import { AuthComponent } from './auth/auth.component';
+import { CameraComponent, EnqueueDialog } from './console/camera/camera.component';
+import { AuthComponent } from './home/auth/auth.component';
 
 import { CookieService } from 'ngx-cookie-service';
 import { ChallengerSearchComponent } from './console/leader-console/challenger-search/challenger-search.component';
@@ -54,7 +54,7 @@ import { NameComponent, SetNameDialog } from './console/name/name.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { BingoBoardComponent } from './bingo-board/bingo-board.component';
 import { QueueMgmtComponent } from './console/leader-console/queue-mgmt/queue-mgmt.component';
-import { TrainerCardComponent } from './trainer-card/trainer-card.component';
+import { TrainerCardComponent } from './common/trainer-card/trainer-card.component';
 import { HowToComponent } from './how-to/how-to.component';
 import { StaticImageComponent } from './static-image/static-image.component';
 import { LeaderListComponent } from './common/leader-list/leader-list.component';

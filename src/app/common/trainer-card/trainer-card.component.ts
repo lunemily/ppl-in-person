@@ -1,13 +1,13 @@
 import { Component, ComponentFactoryResolver, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Person } from '../models/person';
-import { ApiService } from '../services/api.service';
-import { Challenger } from '../models/challenger';
-import { MessageService } from '../services/message.service';
-import { api, pplEvent } from '../constants.data';
-import { DataService } from '../services/static-data.service';
-import { Leader, isEliteLeader } from '../models/leader';
-import { PPLSettings } from '../models/settings';
+import { Person } from '../../models/person';
+import { ApiService } from '../../services/api.service';
+import { Challenger } from '../../models/challenger';
+import { MessageService } from '../../services/message.service';
+import { api, pplEvent } from '../../constants.data';
+import { DataService } from '../../services/static-data.service';
+import { Leader, isEliteLeader } from '../../models/leader';
+import { PPLSettings } from '../../models/settings';
 
 @Component({
   selector: 'app-trainer-card',

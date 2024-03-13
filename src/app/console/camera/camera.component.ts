@@ -3,10 +3,10 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { BarcodeFormat } from '@zxing/library';
 
 import { BehaviorSubject } from 'rxjs';
-import { ApiService } from '../services/api.service';
-import { DataService } from '../services/static-data.service';
-import { Leader } from '../models/leader';
-import { Format } from '../models/format';
+import { ApiService } from '../../services/api.service';
+import { DataService } from '../../services/static-data.service';
+import { Leader } from '../../models/leader';
+import { Format } from '../../models/format';
 
 export interface DialogData {
   challengerId: string;
