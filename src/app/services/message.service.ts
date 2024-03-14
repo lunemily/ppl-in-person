@@ -11,6 +11,11 @@ export class MessageService {
       duration: 4000,
     });
   }
+  showMessage(message: string) {
+    this.snackBar.open(message, 'Dismiss', {
+      duration: 4000,
+    });
+  }
 
   constructor(private snackBar: MatSnackBar) {}
 }

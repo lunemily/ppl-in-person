@@ -114,4 +114,10 @@ export class TrainerCardComponent implements OnInit {
       this.elitesInLeague = true;
     }
   }
+
+  showBadgesForChampTooltip() {
+    this.messageService.showMessage(
+      'Elite leaders can count toward badges required to battle the Champ, but are not required.'
+    );
+  }
 }

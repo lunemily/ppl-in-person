@@ -5,11 +5,9 @@
       <h2 class="left">
         Total Badge Points Earned: {{ badgePointCount()
         }}{{ pplSettings.leagueFormat.badgesForChamp > 0 ? '/' + pplSettings.leagueFormat.badgesForChamp : '' }}
-        <mat-icon
-          *ngIf="pplSettings.leagueFormat.badgesForChamp > 0"
-          matTooltip="Elite leaders can count toward badges required to battle the Champ, but are not required."
-          >info</mat-icon
-        >
+        <a (click)="showBadgesForChampTooltip()">
+          <mat-icon *ngIf="pplSettings.leagueFormat.badgesForChamp > 0">info</mat-icon>
+        </a>
       </h2>
       <h3 class="left" *ngIf="badgeCount()">Badges Earned: {{ badgeCount() }}</h3>
       <h3 class="left" *ngIf="emblemCount()">Emblems Earned: {{ emblemCount() }}</h3>

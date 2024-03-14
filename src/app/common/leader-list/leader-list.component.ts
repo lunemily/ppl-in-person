@@ -14,7 +14,6 @@ export class LeaderListComponent implements OnInit {
   @Input() leaderDifficulty: string;
 
   ngOnInit(): void {
-    console.info(this.leaderList);
     if (!this.highlightLeaders) {
       this.highlightLeaders = false;
     }
