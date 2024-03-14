@@ -66,13 +66,5 @@
 </mat-card>
 <mat-card>
   <p>Not sure where to start?</p>
-  <a
-    mat-flat-button
-    color="accent"
-    skipLocationChange
-    routerLink="/howto"
-    routerLinkActive="active"
-    ariaCurrentWhenActive="page"
-    >Learn More</a
-  >
+  <button mat-flat-button color="accent" (click)="goToHowToTab()">Learn More</button>
 </mat-card>

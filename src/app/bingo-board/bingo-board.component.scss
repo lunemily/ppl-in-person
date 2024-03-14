@@ -3,18 +3,20 @@
   border: 4px solid black;
   position: relative;
   margin: -2px;
+  max-width: 17%;
 }
 
 .bingo {
-  height: 45px;
-  width: 45px;
-  padding: 3px 3px 0 3px;
+  width: 100%;
+  height: auto;
+  padding: 3px 3px 0 0;
+  margin-bottom: -3px;
 }
 
 .earned-pokeball {
   position: absolute;
-  bottom: 3px;
-  right: 0;
+  bottom: 6px;
+  right: -3px;
   opacity: 0.5;
 }
 
@@ -30,9 +32,9 @@
   line-height: 1em;
 }
 
-@media (min-width: 600px) {
-  .bingo {
-    height: 100px;
-    width: 100px;
-  }
-}
+// @media (min-width: 600px) {
+//   .bingo {
+//     height: 100px;
+//     width: 100px;
+//   }
+// }

@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Credential } from './credential';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { MessageService } from '../../services/message.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataService } from '../../services/static-data.service';
+import { MatTabGroup } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-auth',
@@ -19,6 +20,7 @@ export class AuthComponent implements OnInit {
   win: string;
   badge: string;
   report: boolean;
+  @Input() tabGroup: MatTabGroup;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -35,9 +37,6 @@ export class AuthComponent implements OnInit {
       password: '',
       confirmPassword: '',
     };
-
-    // Cache data
-    // this.dataService.cacheData();
   }
 
   login(): void {
@@ -67,5 +66,9 @@ export class AuthComponent implements OnInit {
   showRegister(): void {
     this.isLogin = false;
     this.isRegister = true;
+  }
+
+  goToHowToTab(): void {
+    this.tabGroup.selectedIndex = 2;
   }
 }

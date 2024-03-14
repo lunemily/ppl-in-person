@@ -28,7 +28,7 @@ export class BingoBoardComponent implements OnInit {
   url = api.serverUrl;
   bingoClaimPredicate =
     pplEvent.toLowerCase() !== 'online'
-      ? 'show an Admin at the booth.'
+      ? 'show an Admin.'
       : 'message @doomy8902 with a screenshot of your bingo board.';
 
   constructor(private apiService: ApiService, private cookieService: CookieService) {}
