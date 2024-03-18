@@ -1,5 +1,5 @@
 <app-name *ngIf="person && !hideName" [person]="person"></app-name>
-<mat-card *ngIf="challenger">
+<mat-card *ngIf="challenger && pplSettings">
   <div id="badges-earned">
     <div *ngIf="isBattleFrontierFormat">
       <h2 class="left">

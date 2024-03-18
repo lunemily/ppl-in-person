@@ -14,7 +14,7 @@
   <a mat-flat-button color="accent" (click)="goToConsoleTab()">Register to play!</a>
   <img alt="How to challenge the PPL" src="{{ challengingImage }}" />
 </mat-card>
-<mat-card *ngIf="pplSettings.leagueFormat">
+<mat-card *ngIf="pplSettings">
   <h2>Prizes</h2>
   <p>Defeat {{ pplSettings.leagueFormat.badgesForElites }} Gym Leaders to challenge the Elites.</p>
   <p>

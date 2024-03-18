@@ -12,8 +12,8 @@ import { PPLSettings } from '../models/settings';
 export class HowToComponent implements OnInit {
   pplSettings: PPLSettings;
   pplEvent = pplEvent;
-  isBattleFrontierFormat: boolean = false;
-  elitesInLeague: boolean = false;
+  isBattleFrontierFormat = false;
+  elitesInLeague = false;
   year: string;
   challengingImage = `assets/images/challenging-${pplEvent.toLowerCase()}.png`;
   prizesImage = `assets/images/prizes-${pplEvent.toLowerCase()}.png`;
@@ -23,16 +23,16 @@ export class HowToComponent implements OnInit {
   ngOnInit(): void {
     this.year = new Date().getFullYear().toString();
     this.loadPPLSettings();
-    this.identifyLeagueFormat();
   }
 
   goToConsoleTab(): void {
     this.tabGroup.selectedIndex = 0;
   }
 
-  loadPPLSettings() {
+  loadPPLSettings(): void {
     this.dataService.getPPLSettings().subscribe((pplSettings) => {
       this.pplSettings = pplSettings;
+      this.identifyLeagueFormat();
     });
   }
 

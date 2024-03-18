@@ -14,21 +14,35 @@ import { Format } from '../models/format';
   providedIn: 'root',
 })
 export class DataService {
+
+  constructor(private http: HttpClient, private authenticationService: AuthenticationService) {}
   httpOptions = {
     headers: api.httpOtions.headers.append('Content-Type', 'application/json'),
   };
 
   private readonly _pplData: Observable<JSON>;
 
-  constructor(private http: HttpClient, private authenticationService: AuthenticationService) {}
+  /**
+   * Convert bitmask for leaderTypes
+   */
+  static getLeaderTypesFromBitmask(bitmask: number): number[] {
+    const leaderTypes = [];
+    for (const key of Object.keys(leaderTypesMap)) {
+      if (bitmask & leaderTypesMap[key]) {
+        leaderTypes.push(leaderTypesMap[key]);
+      }
+    }
+
+    return leaderTypes;
+  }
 
   getLeaderData(): Observable<Leader[]> {
-    let localLeaderList = localStorage.getItem('leader-data-list');
-    let rawLeaderDataTTL = localStorage.getItem('leader-data-ttl');
+    const localLeaderList = localStorage.getItem('leader-data-list');
+    const rawLeaderDataTTL = localStorage.getItem('leader-data-ttl');
 
     if (rawLeaderDataTTL) {
-      let now = new Date().getTime();
-      let leaderDataTTL = Date.parse(rawLeaderDataTTL);
+      const now = new Date().getTime();
+      const leaderDataTTL = Date.parse(rawLeaderDataTTL);
       if (now < leaderDataTTL) {
         if (localLeaderList) {
           // We're before the settings expiration time, return the local values
@@ -42,13 +56,14 @@ export class DataService {
   }
 
   getPPLSettings(): Observable<PPLSettings> {
-    let rawAppSettingsTTL = localStorage.getItem('app-settings-ttl');
+    const rawAppSettingsTTL = localStorage.getItem('app-settings-ttl');
     if (rawAppSettingsTTL) {
-      let now = new Date().getTime();
-      let appSettingsTTL = Date.parse(rawAppSettingsTTL);
-      if (now < appSettingsTTL)
+      const now = new Date().getTime();
+      const appSettingsTTL = Date.parse(rawAppSettingsTTL);
+      if (now < appSettingsTTL) {
         // We're before the settings expiration time, return the local values
         return this.returnLocalPPLSettings();
+      }
     }
 
     return this.fetchAndReturnPPLSettings();
@@ -59,25 +74,25 @@ export class DataService {
 
     return this.http.get(url, this.httpOptions).pipe(
       map((response: JSON) => {
-        let leaders: Leader[] = [];
-        for (let leaderId of Object.keys(response)) {
-          let leader: Leader = {
-            leaderId: leaderId,
+        const leaders: Leader[] = [];
+        for (const leaderId of Object.keys(response)) {
+          const leader: Leader = {
+            leaderId,
             displayName: response[leaderId].name as string,
             badgeName: response[leaderId].badgeName as string,
             bio: response[leaderId].bio as string,
             tagline: response[leaderId].tagline as string,
             leaderTypeIds: DataService.getLeaderTypesFromBitmask(response[leaderId].leaderType),
-            leaderTypes: DataService.getLeaderTypesFromBitmask(response[leaderId].leaderType).map(function (typeId) {
-              let type: Format = {
+            leaderTypes: DataService.getLeaderTypesFromBitmask(response[leaderId].leaderType).map(function(typeId) {
+              const type: Format = {
                 id: typeId,
                 name: leaderTypesReverseMap[typeId],
               };
               return type;
             }, []),
             battleFormatIds: this.getBattleFormatsFromBitmask(response[leaderId].battleFormat),
-            battleFormats: this.getBattleFormatsFromBitmask(response[leaderId].battleFormat).map(function (formatId) {
-              let format: Format = {
+            battleFormats: this.getBattleFormatsFromBitmask(response[leaderId].battleFormat).map(function(formatId) {
+              const format: Format = {
                 id: formatId,
                 name: battleFormatsReverseMap[formatId],
               };
@@ -91,15 +106,15 @@ export class DataService {
         }
 
         // Sort list of leaders
-        let sortedfLeaders: Leader[] = leaders.sort((a, b) => {
+        const sortedfLeaders: Leader[] = leaders.sort((a, b) => {
           if (a.leaderTypeIds === b.leaderTypeIds) {
             return a.displayName < b.displayName ? -1 : 1;
           } else {
             return a.leaderTypeIds < b.leaderTypeIds ? -1 : 1;
           }
         });
-        let sortedListOfLeaders: string[] = [];
-        for (let leader of sortedfLeaders) {
+        const sortedListOfLeaders: string[] = [];
+        for (const leader of sortedfLeaders) {
           // Lower bit is higher tier
           sortedListOfLeaders.push(`leader-data-${leader.leaderId}`);
         }
@@ -108,7 +123,7 @@ export class DataService {
         localStorage.setItem(`leader-data-list`, JSON.stringify(sortedListOfLeaders));
 
         // Set TTL
-        let ttl = new Date();
+        const ttl = new Date();
         ttl.setMonth(ttl.getMonth() + 1);
         localStorage.setItem('leader-data-ttl', ttl.toString());
 
@@ -120,15 +135,15 @@ export class DataService {
   }
 
   private returnLocalLeaderData(): Observable<Leader[]> {
-    let localLeaderList = JSON.parse(localStorage.getItem('leader-data-list'));
+    const localLeaderList = JSON.parse(localStorage.getItem('leader-data-list'));
     console.debug(localLeaderList);
 
     try {
-      let leaders: Leader[] = [];
-      for (let leaderEntry of localLeaderList) {
+      const leaders: Leader[] = [];
+      for (const leaderEntry of localLeaderList) {
         console.debug(leaderEntry);
         console.debug(localStorage.getItem(leaderEntry));
-        let leader: Leader = JSON.parse(localStorage.getItem(leaderEntry));
+        const leader: Leader = JSON.parse(localStorage.getItem(leaderEntry));
         leaders.push(leader);
       }
       return of(leaders);
@@ -143,22 +158,22 @@ export class DataService {
 
     return this.http.get(url, this.httpOptions).pipe(
       tap(() => console.info(`++ /api/v2/appsettings was newly called at ${new Date().toLocaleTimeString()} ++`)),
-      map((response) => {
-        let settings: PPLSettings = {
-          showTrainerCard: response['showTrainerCard'],
-          howToChallenge: response['howToChallenge'],
-          rules: response['rules'],
-          prizePools: response['prizePools'],
-          schedule: response['schedule'],
-          bingoBoard: response['bingoBoard'],
-          eventIsOver: response['eventIsOver'],
+      map((response: any) => {
+        const settings: PPLSettings = {
+          showTrainerCard: response.showTrainerCard,
+          howToChallenge: response.howToChallenge,
+          rules: response.rules,
+          prizePools: response.prizePools,
+          schedule: response.schedule,
+          bingoBoard: response.bingoBoard,
+          eventIsOver: response.eventIsOver,
           // eventIsOver: true,
-          eventSupportsQueueState: response['eventSupportsQueueState'],
-          leadersToDefeat: response['leadersToDefeat'],
-          elitesToDefeat: response['elitesToDefeat'],
-          map: response['map'],
-          leagueFormat: response['leagueFormat'],
-          meetupTimes: response['meetupTimes']
+          eventSupportsQueueState: response.eventSupportsQueueState,
+          leadersToDefeat: response.leadersToDefeat,
+          elitesToDefeat: response.elitesToDefeat,
+          map: response.map,
+          leagueFormat: response.leagueFormat,
+          meetupTimes: response.meetupTimes
             .map((meetupTime) => {
               return {
                 location: meetupTime.location,
@@ -174,7 +189,7 @@ export class DataService {
         localStorage.setItem('app-settings', JSON.stringify(settings));
 
         // Set TTL
-        let ttl = new Date();
+        const ttl = new Date();
         ttl.setHours(ttl.getMinutes() + 15);
         localStorage.setItem('app-settings-ttl', ttl.toString());
 
@@ -241,23 +256,9 @@ export class DataService {
   /**
    * Convert bitmask for leaderTypes
    */
-  static getLeaderTypesFromBitmask(bitmask: number): number[] {
-    let leaderTypes = [];
-    for (let key of Object.keys(leaderTypesMap)) {
-      if (bitmask & leaderTypesMap[key]) {
-        leaderTypes.push(leaderTypesMap[key]);
-      }
-    }
-
-    return leaderTypes;
-  }
-
-  /**
-   * Convert bitmask for leaderTypes
-   */
   getBattleFormatsFromBitmask(bitmask: number): number[] {
-    let battleFormats = [];
-    for (let key of Object.keys(battleFormatsMap)) {
+    const battleFormats = [];
+    for (const key of Object.keys(battleFormatsMap)) {
       if (bitmask & battleFormatsMap[key]) {
         battleFormats.push(battleFormatsMap[key]);
       }

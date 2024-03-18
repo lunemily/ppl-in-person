@@ -18,7 +18,7 @@
     "ausStg": "ng serve --configuration=ausStg",
     "ausPrd": "ng serve --configuration=ausPrd",
     "deployToGithub": "ng deploy --base-href=/ppl-webapp/",
-    "build-east": "ng build --base-href /east/ --configuration=eastPrd",
+    "build-east": "ng build --output-path docs/east/Prd --base-href /east/ --configuration=eastPrd",
     "build-west": "ng build --base-href /west/ --configuration=westPrd",
     "build-aus": "ng build --base-href /aus/ --configuration=ausPrd",
     "build-online": "ng build --base-href /online/ --configuration=onlinePrd",
