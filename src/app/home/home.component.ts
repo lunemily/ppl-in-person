@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
     this.setupWebSocket();
   }
 
-  startUp() {
+  startUp(): void {
     if (this.route.snapshot.queryParams['id']) {
       this.challengerId = this.route.snapshot.queryParamMap.get('id');
     }
@@ -50,11 +50,11 @@ export class HomeComponent implements OnInit {
     if (this.loginId) {
       this.showLogin = false;
     }
-    this.isLeader = 'true' == this.cookieService.get('isLeader');
+    this.isLeader = 'true' === this.cookieService.get('isLeader');
     this.headerService.setUrl(window.location.href);
   }
 
-  loadPPLSettings() {
+  loadPPLSettings(): void {
     this.dataService.getPPLSettings().subscribe((pplSettings) => {
       this.pplSettings = pplSettings;
     });

@@ -17,7 +17,7 @@
     <app-console id="tab-container" *ngIf="!showLogin && !challengerId" [reloadConsole]="reloadConsole"></app-console>
     <app-trainer-card id="tab-container" *ngIf="challengerId"></app-trainer-card>
   </mat-tab>
-  <mat-tab disabled="!pplSettings?.showTrainerCard">
+  <mat-tab disabled="{{!pplSettings?.showTrainerCard}}">
     <ng-template mat-tab-label><mat-icon>chrome_reader_mode</mat-icon></ng-template>
     <app-meetup-times></app-meetup-times>
     <app-about-leaders id="tab-container"></app-about-leaders>
