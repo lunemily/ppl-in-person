@@ -1,8 +1,10 @@
 Set-Variable -Name "ppl" -Value $args[0]
 
-ng build --output-path docs\$ppl --base-href /$ppl/ --configuration=$ppl
+Set-Variable -Name "env" -Value $args[1]
 
-Copy-Item ".\docs\$ppl\index.html" ".\docs\$ppl\404.html"
+ng build --output-path docs\$ppl\$env --base-href /$ppl/$env --configuration=$ppl$env
+
+Copy-Item ".\docs\$ppl\$env\index.html" ".\docs\$ppl\$env\404.html"
 
 git add .
 

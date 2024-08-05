@@ -1,0 +1,12 @@
+<mat-card>
+  <h2 class="left">{{ isLeader ? "Leader" : "Challenger" }} QR Code</h2>
+  <qrcode
+    [qrdata]="qrCode"
+    [imageSrc]="qrImgSrc"
+    [imageHeight]="75"
+    [imageWidth]="75"
+    [width]="250"
+    [errorCorrectionLevel]="'M'"
+  >
+  </qrcode>
+</mat-card>

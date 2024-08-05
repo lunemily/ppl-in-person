@@ -16,11 +16,7 @@ export class AppComponent {
   eventIsOver = false;
 
   constructor(private dataService: DataService, public dialog: MatDialog) {
-    if (window.innerWidth < 768) {
-      this.isMobileResolution = true;
-    } else {
-      this.isMobileResolution = false;
-    }
+    this.isMobileResolution = window.innerWidth < 768;
   }
 
   ngOnInit(): void {
@@ -35,7 +31,7 @@ export class AppComponent {
     this.sidenav.close();
   }
 
-  loadPPLSettings() {
+  loadPPLSettings = () => {
     this.dataService.getPPLSettings().subscribe((pplSettings) => {
       this.eventIsOver = pplSettings.eventIsOver;
       if (this.eventIsOver) {
@@ -46,7 +42,7 @@ export class AppComponent {
     });
   }
 
-  openEventOverDialog() {
+  openEventOverDialog = () => {
     this.dialog.open(EventOverDialog);
   }
 }

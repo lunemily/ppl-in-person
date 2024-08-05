@@ -21,8 +21,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { ZXingScannerModule } from '@zxing/ngx-scanner';
-// import { NgxScannerQrcodeModule, LOAD_WASM } from 'ngx-scanner-qrcode';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QRCodeModule } from 'angularx-qrcode';
 
@@ -40,7 +38,6 @@ import {
 } from './console/challenger-console/challenger-console.component';
 import { QueueItemComponent } from './console/challenger-console/queue-item/queue-item.component';
 import { LeaderHoldItemComponent } from './console/leader-console/leader-hold-item/leader-hold-item.component';
-import { CameraComponent, EnqueueDialog } from './console/camera/camera.component';
 import { AuthComponent } from './home/auth/auth.component';
 
 import { CookieService } from 'ngx-cookie-service';
@@ -60,6 +57,8 @@ import { StaticImageComponent } from './static-image/static-image.component';
 import { LeaderListComponent } from './common/leader-list/leader-list.component';
 import { ChallengerQueueListComponent } from './console/challenger-console/challenger-queue-list/challenger-queue-list.component';
 import { MeetupPopup, MeetupTimesComponent } from './home/meetup-times/meetup-times.component';
+import { QrCodeComponent } from './common/qr-code/qr-code.component';
+import { QrEnqueueComponent, EnqueueDialog } from './common/qr-enqueue/qr-enqueue.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +72,6 @@ import { MeetupPopup, MeetupTimesComponent } from './home/meetup-times/meetup-ti
     PPLQueueHelpDialog,
     QueueItemComponent,
     LeaderHoldItemComponent,
-    CameraComponent,
     EnqueueDialog,
     AuthComponent,
     ChallengerSearchComponent,
@@ -95,6 +93,8 @@ import { MeetupPopup, MeetupTimesComponent } from './home/meetup-times/meetup-ti
     ChallengerQueueListComponent,
     MeetupTimesComponent,
     MeetupPopup,
+    QrCodeComponent,
+    QrEnqueueComponent,
   ],
   imports: [
     MatAutocompleteModule,
@@ -121,8 +121,6 @@ import { MeetupPopup, MeetupTimesComponent } from './home/meetup-times/meetup-ti
     HttpClientModule,
     BrowserAnimationsModule,
     QRCodeModule,
-    ZXingScannerModule,
-    // NgxScannerQrcodeModule,
     AppRoutingModule,
   ],
   providers: [CookieService, Title],

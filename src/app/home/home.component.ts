@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
   }
 
   startUp(): void {
-    if (this.route.snapshot.queryParams['id']) {
+    if (this.route.snapshot.queryParams.id) {
       this.challengerId = this.route.snapshot.queryParamMap.get('id');
     }
     this.showLogin = true;
@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  connect() {
+  connect = () => {
     this.socket$ = webSocket(api.socketUrl); // Establish WebSocket connection
   }
   disconnect() {
@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
   isConnected(): boolean {
     return this.socket$ === null ? false : !this.socket$.closed;
   }
-  onMessage(message: { action: number }) {
+  onMessage = (message: { action: number }) => {
     console.info(JSON.stringify(message));
     switch (message.action) {
       case 0:
@@ -102,11 +102,11 @@ export class HomeComponent implements OnInit {
         break;
     }
   }
-  send(message: any) {
+  send = (message: any) => {
     this.socket$.next(message);
   }
 
-  setupWebSocket() {
+  setupWebSocket = () => {
     this.connect();
     // Subscribe to the incoming messages from the WebSocket server
     this.socket$.subscribe(

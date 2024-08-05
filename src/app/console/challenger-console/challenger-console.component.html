@@ -21,7 +21,6 @@
     <app-challenger-queue-list [queues]="challenger.queuesEntered"></app-challenger-queue-list>
     <br />
     <div id="qr-section" *ngIf="useQR">
-      <app-camera *ngIf="showCamera" [challengerId]="challenger.id"></app-camera>
       <button mat-flat-button color="primary" (click)="enqueue()">
         <mat-icon>qr_code</mat-icon>
       </button>
@@ -29,15 +28,5 @@
   </div>
 </mat-card>
 <app-trainer-card [challenger]="challenger"></app-trainer-card>
-<mat-card *ngIf="useQR">
-  <h2 class="left">Challenger QR Code</h2>
-  <qrcode
-    [qrdata]="myAngularxQrCode"
-    [imageSrc]="'assets/images/pokeball.png'"
-    [imageHeight]="75"
-    [imageWidth]="75"
-    [width]="250"
-    [errorCorrectionLevel]="'M'"
-  >
-  </qrcode>
-</mat-card>
+<app-qr-code  *ngIf="useQR && challenger.id" [isLeader]="false" [id]="challenger.id"></app-qr-code>
+<app-qr-enqueue [inputChallengerId]="challenger.id"></app-qr-enqueue>

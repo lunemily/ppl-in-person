@@ -36,7 +36,6 @@ export class ChallengerConsoleComponent implements OnInit {
 
   ngOnInit(): void {
     this.showCamera = false;
-    this.myAngularxQrCode = `https://paxpokemonleague.net/qr/?challenger=${this.challenger.id}`;
     this.trainerCardLink = `https://paxpokemonleague.net/online/?id=${this.challenger.id}`;
   }
 
@@ -48,11 +47,7 @@ export class ChallengerConsoleComponent implements OnInit {
     }
   }
 
-  shareTrainerCard() {
-    this.messageService.showError('Trainer Card link saved to clipboard');
-  }
-
-  openHelp() {
+  openHelp = () => {
     this.dialog.open(PPLQueueHelpDialog);
   }
 }

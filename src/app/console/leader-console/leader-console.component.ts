@@ -17,9 +17,6 @@ export interface DialogData {
   styleUrls: ['./leader-console.component.scss'],
 })
 export class LeaderConsoleComponent implements OnInit {
-  badgeImageUrl = 'assets/images/pokeball.png';
-  leaderImageUrl = 'assets/images/pokeball.png';
-  myAngularxQrCode: string;
   battleCode: string;
   showCamera: boolean;
   options: UntypedFormGroup;
@@ -37,12 +34,8 @@ export class LeaderConsoleComponent implements OnInit {
   constructor(public dialog: MatDialog, private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.showCamera = false;
-    this.myAngularxQrCode = `https://paxpokemonleague.net/qr/?leader=${this.leader.leaderId}`;
-
-    console.info(`QR Code URL: ${this.myAngularxQrCode}`);
     // BEGIN: Post-process multi-queues
-    // TRhis entire section could *probably* be written into some clever
+    // This entire section could *probably* be written into some clever
     // JavaScript stream-like functions, but I was in a hurry. So yeah...
     if (this.leader.battleFormatIds.includes(4)) {
       let preprocessedQueue: Queue[] = this.leader.queue;
@@ -68,13 +61,5 @@ export class LeaderConsoleComponent implements OnInit {
     this.dataService.getPPLSettings().subscribe((settings) => {
       this.eventSupportsQueueState = settings.eventSupportsQueueState;
     });
-  }
-
-  enqueueQR(): void {
-    if (this.showCamera === false) {
-      this.showCamera = true;
-    } else {
-      this.showCamera = false;
-    }
   }
 }

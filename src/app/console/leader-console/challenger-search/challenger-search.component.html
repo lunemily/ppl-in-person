@@ -8,7 +8,7 @@
     [(ngModel)]="searchValue"
     [matAutocomplete]="auto"
   />
-  <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="searchValue = ''">
+  <button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="searchValue = ''">
     <mat-icon>close</mat-icon>
   </button>
 </mat-form-field>
@@ -35,7 +35,4 @@
   </mat-select>
 </mat-form-field>
 <br />
-<button mat-flat-button color="primary" (click)="enqueueQR()">
-  <mat-icon>qr_code</mat-icon>
-</button>
 <button mat-flat-button color="primary" (click)="enqueue()">ADD TO QUEUE</button>

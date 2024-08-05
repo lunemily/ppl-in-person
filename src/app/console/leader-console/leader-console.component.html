@@ -13,8 +13,7 @@
 <mat-card>
   <h3>Add Challengers to your queue</h3>
   <app-queue-mgmt *ngIf="eventSupportsQueueState" [leader]="leader"></app-queue-mgmt>
-  <app-camera *ngIf="showCamera" [leaderLoginId]="leader.id" [leaderId]="leader.leaderId"></app-camera>
-  <app-challenger-search [leader]="leader" (enqueueQR)="enqueueQR()"></app-challenger-search>
+  <app-challenger-search [leader]="leader"></app-challenger-search>
 </mat-card>
 <mat-card *ngIf="leader.onHold.length > 0">
   <div id="leader-onHold">
@@ -24,14 +23,5 @@
     </div>
   </div>
 </mat-card>
-<mat-card *ngIf="useQR">
-  <h2>Leader QR Code</h2>
-  <qrcode
-    [qrdata]="myAngularxQrCode"
-    [imageSrc]="url + '/static/badges/' + leader.leaderId + '.png'"
-    [imageHeight]="75"
-    [imageWidth]="75"
-    [width]="250"
-    [errorCorrectionLevel]="'M'"
-  ></qrcode>
-</mat-card>
+<app-qr-code  *ngIf="useQR && leader.leaderId" [isLeader]="true" [id]="leader.leaderId"></app-qr-code>
+<app-qr-enqueue [inputLeaderLoginId]="leader.id" [inputLeaderId]="leader.leaderId"></app-qr-enqueue>

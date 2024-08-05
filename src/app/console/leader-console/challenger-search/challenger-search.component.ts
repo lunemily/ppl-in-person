@@ -21,7 +21,6 @@ export class ChallengerSearchComponent implements OnInit {
   searchValue = '';
   selected: string;
   filteredChallengers: Observable<Challenger[]>;
-  @Output('enqueueQR') callEnqueueQR: EventEmitter<any> = new EventEmitter();
 
   constructor(private apiService: ApiService) {}
 
@@ -45,10 +44,6 @@ export class ChallengerSearchComponent implements OnInit {
   enqueue(): void {
     let challengerId = this.getChallengerIdByDisplayName(this.searchValue);
     this.apiService.enqueue(challengerId, this.leader.id, this.selectedFormat, this.selectedDifficulty, false);
-  }
-
-  enqueueQR() {
-    this.callEnqueueQR.emit();
   }
 
   private _filter(name: string): Challenger[] {

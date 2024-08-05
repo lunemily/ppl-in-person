@@ -26,7 +26,7 @@ export class ConsoleComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginId = this.cookieService.get('loginId');
-    this.isLeader = 'true' == this.cookieService.get('isLeader');
+    this.isLeader = 'true' === this.cookieService.get('isLeader');
     this.loadUser();
     this.subscribeToParentEmitter();
   }
