@@ -27,6 +27,13 @@ export interface Leader extends Person {
   // Used for match results only!!!
   format?: number;
   difficulty?: number;
+
+  //   Discrepancies with API
+  leaderName?: string;
+  winCount?: number;
+  lossCount?: number;
+  leaderType?: number;
+  battleFormat?: number;
 }
 
 export function isEliteLeader(leader: Leader): boolean {

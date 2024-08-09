@@ -1,0 +1,11 @@
+<div mat-dialog-content>
+  <p>Set or Update your Link Code here:</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Custom Link Code</mat-label>
+    <input matInput [(ngModel)]="data.linkCode" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.linkCode" cdkFocusInitial>SAVE</button>
+</div>

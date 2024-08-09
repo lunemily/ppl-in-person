@@ -15,4 +15,9 @@ export interface Queue {
   otherChallengerId?: string;
   isChampion?: boolean;
   // badgesEarned?: number;
+
+  //   Discrepancies with API
+  difficulty?: number;
+  format?: number;
+  linkCode?: string;
 }

@@ -2,8 +2,9 @@
   <div id="leader-queue">
     <h3>Queue</h3>
     <div *ngIf="leader.queue[0]">
-      <span id="queue-help">Your battle code is: </span><span id="battle-code">{{ leader.queue[0]?.battleCode }}</span>
+      <span id="queue-help">The code for your next battle is: </span><span id="battle-code">{{ leader.queue[0]?.battleCode }}</span>
     </div>
+    <app-link-code></app-link-code>
     <br />
     <div *ngFor="let challenger of leader.queue" class="queue-container">
       <app-leader-queue-item [leaderId]="leader.id" [queue]="challenger"></app-leader-queue-item>

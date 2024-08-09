@@ -59,6 +59,7 @@ import { ChallengerQueueListComponent } from './console/challenger-console/chall
 import { MeetupPopup, MeetupTimesComponent } from './home/meetup-times/meetup-times.component';
 import { QrCodeComponent } from './common/qr-code/qr-code.component';
 import { QrEnqueueComponent, EnqueueDialog } from './common/qr-enqueue/qr-enqueue.component';
+import { LinkCodeComponent, SetLinkCodeDialog } from './console/leader-console/link-code/link-code.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +96,8 @@ import { QrEnqueueComponent, EnqueueDialog } from './common/qr-enqueue/qr-enqueu
     MeetupPopup,
     QrCodeComponent,
     QrEnqueueComponent,
+    LinkCodeComponent,
+    SetLinkCodeDialog,
   ],
   imports: [
     MatAutocompleteModule,

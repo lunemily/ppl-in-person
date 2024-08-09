@@ -11,4 +11,11 @@ export interface Challenger extends Person {
     winCount: number;
     lossCount: number;
   };
+
+  //   Discrepancies with API
+  name?: string;
+  winCount?: number;
+  lossCount?: number;
+  championDefeated?: boolean;
+  queuesOnHold?: Queue[];
 }
