@@ -6,7 +6,6 @@ import {
   leaderTypesMap,
   leaderTypesReverseMap,
 } from '../constants.data';
-import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { catchError, map, Observable, of, tap } from 'rxjs';
@@ -17,7 +16,6 @@ import { Format } from '../models/format';
 import { Queue } from '../models/queue';
 import { Hold } from '../models/hold';
 import { AuthenticationService } from './authentication.service';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -25,14 +23,13 @@ import { Router } from '@angular/router';
 export class ApiService {
   constructor(
     private http: HttpClient,
-    private cookieService: CookieService,
     private messageService: MessageService,
     private dataService: DataService,
     private authenticationService: AuthenticationService,
   ) {}
 
   httpOptions = {
-    headers: api.httpOtions.headers.append('Authorization', `Bearer ${this.cookieService.get('token')}`),
+    headers: api.httpOtions.headers.append('Authorization', `Bearer ${this.dataService.getToken()}`),
   };
 
   // UNAUTHENTICATED FUNCTIONS
@@ -420,7 +417,7 @@ export class ApiService {
   }
 
   setLinkCode(newLinkCode: string) {
-    const leaderId = this.cookieService.get('loginId');
+    const leaderId = this.dataService.getLoginId();
     const url = `${api.serverUrl}/api/v2/leader/${leaderId}`;
 
     // Validation

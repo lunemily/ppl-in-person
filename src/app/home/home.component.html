@@ -9,39 +9,41 @@
     <ng-template mat-tab-label><mat-icon>home</mat-icon></ng-template>
     <app-meetup-times></app-meetup-times>
     <app-auth
-      id="tab-container"
+      class="tab-container"
       id="login-register-form"
       *ngIf="showLogin && !challengerId"
       [tabGroup]="tabGroup"
     ></app-auth>
-    <app-console id="tab-container" *ngIf="!showLogin && !challengerId" [reloadConsole]="reloadConsole"></app-console>
-    <app-trainer-card id="tab-container" *ngIf="challengerId"></app-trainer-card>
+    <app-console class="tab-container" *ngIf="!showLogin && !challengerId" [reloadConsole]="reloadConsole" [tabGroup]="tabGroup"></app-console>
+    <app-trainer-card class="tab-container" *ngIf="challengerId"></app-trainer-card>
   </mat-tab>
   <mat-tab disabled="{{!pplSettings?.showTrainerCard}}">
     <ng-template mat-tab-label><mat-icon>chrome_reader_mode</mat-icon></ng-template>
     <app-meetup-times></app-meetup-times>
-    <app-about-leaders id="tab-container"></app-about-leaders>
+    <app-about-leaders class="tab-container"></app-about-leaders>
   </mat-tab>
   <mat-tab>
     <ng-template mat-tab-label><mat-icon>help</mat-icon></ng-template>
     <app-meetup-times></app-meetup-times>
-    <app-how-to id="tab-container" [tabGroup]="tabGroup"></app-how-to>
+    <app-how-to class="tab-container" [tabGroup]="tabGroup"></app-how-to>
   </mat-tab>
   <mat-tab *ngIf="pplSettings?.bingoBoard && !isLeader" disabled="{{ !loginId }}">
     <ng-template mat-tab-label><mat-icon>grid_on</mat-icon></ng-template>
-    <app-bingo-board id="tab-container" *ngIf="loginId && !isLeader" [reloadBingoBoard]="reloadBingoBoard">
-    </app-bingo-board>
+    <ng-template matTabContent>
+      <app-bingo-board class="tab-container" *ngIf="loginId && !isLeader" [reloadBingoBoard]="reloadBingoBoard">
+      </app-bingo-board>
+    </ng-template>
   </mat-tab>
   <mat-tab *ngIf="pplSettings?.rules">
     <ng-template mat-tab-label><mat-icon>description</mat-icon></ng-template>
-    <app-static-image id="tab-container" [image]="'rules'"></app-static-image>
+    <app-static-image class="tab-container" [image]="'rules'"></app-static-image>
   </mat-tab>
   <mat-tab *ngIf="pplSettings?.prizePools">
     <ng-template mat-tab-label><mat-icon>stars</mat-icon></ng-template>
-    <app-static-image id="tab-container" [image]="'prizes'"></app-static-image>
+    <app-static-image class="tab-container" [image]="'prizes'"></app-static-image>
   </mat-tab>
   <mat-tab *ngIf="pplSettings?.map">
     <ng-template mat-tab-label><mat-icon>map</mat-icon></ng-template>
-    <app-static-image id="tab-container" [image]="'map'"></app-static-image>
+    <app-static-image class="tab-container" [image]="'map'"></app-static-image>
   </mat-tab>
 </mat-tab-group>

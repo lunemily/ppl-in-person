@@ -4,18 +4,22 @@ import { catchError, map, Observable, of, share, shareReplay, tap } from 'rxjs';
 
 import { api, battleFormatsReverseMap, leaderTypesReverseMap } from '../constants.data';
 import { Leader } from '../models/leader';
-import { MeetupTime, PPLSettings } from '../models/settings';
+import { PPLSettings } from '../models/settings';
 import { AuthenticationService } from './authentication.service';
 
 import { battleFormatsMap, leaderTypesMap } from '../constants.data';
 import { Format } from '../models/format';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-
-  constructor(private http: HttpClient, private authenticationService: AuthenticationService) {}
+  constructor(
+    private http: HttpClient,
+    private authenticationService: AuthenticationService,
+    private cookieService: CookieService,
+  ) {}
   httpOptions = {
     headers: api.httpOtions.headers.append('Content-Type', 'application/json'),
   };
@@ -83,7 +87,7 @@ export class DataService {
             bio: response[leaderId].bio as string,
             tagline: response[leaderId].tagline as string,
             leaderTypeIds: DataService.getLeaderTypesFromBitmask(response[leaderId].leaderType),
-            leaderTypes: DataService.getLeaderTypesFromBitmask(response[leaderId].leaderType).map(function(typeId) {
+            leaderTypes: DataService.getLeaderTypesFromBitmask(response[leaderId].leaderType).map(function (typeId) {
               const type: Format = {
                 id: typeId,
                 name: leaderTypesReverseMap[typeId],
@@ -91,7 +95,7 @@ export class DataService {
               return type;
             }, []),
             battleFormatIds: this.getBattleFormatsFromBitmask(response[leaderId].battleFormat),
-            battleFormats: this.getBattleFormatsFromBitmask(response[leaderId].battleFormat).map(function(formatId) {
+            battleFormats: this.getBattleFormatsFromBitmask(response[leaderId].battleFormat).map(function (formatId) {
               const format: Format = {
                 id: formatId,
                 name: battleFormatsReverseMap[formatId],
@@ -130,7 +134,7 @@ export class DataService {
         return sortedfLeaders;
       }),
       tap((_) => this.log('fetched leader data')),
-      catchError(this.handleErrorNoLogout<Leader[]>('fetchLeaderData', []))
+      catchError(this.handleErrorNoLogout<Leader[]>('fetchLeaderData', [])),
     );
   }
 
@@ -167,14 +171,13 @@ export class DataService {
           schedule: response.schedule,
           bingoBoard: response.bingoBoard,
           eventIsOver: response.eventIsOver,
-          // eventIsOver: true,
           eventSupportsQueueState: response.eventSupportsQueueState,
           leadersToDefeat: response.leadersToDefeat,
           elitesToDefeat: response.elitesToDefeat,
           map: response.map,
           leagueFormat: response.leagueFormat,
           meetupTimes: response.meetupTimes
-            .map((meetupTime) => {
+            .map((meetupTime: { location: any; startTime: string; duration: number }) => {
               return {
                 location: meetupTime.location,
                 startTime: Date.parse(meetupTime.startTime),
@@ -194,7 +197,7 @@ export class DataService {
         localStorage.setItem('app-settings-ttl', ttl.toString());
 
         return settings;
-      })
+      }),
     );
   }
 
@@ -265,5 +268,37 @@ export class DataService {
     }
 
     return battleFormats;
+  }
+
+  //   Cookies
+  getLoginId(): string {
+    return this.cookieService.get('loginId');
+  }
+  setLoginId(loginId: string) {
+    return this.cookieService.set('loginId', loginId, 1);
+  }
+  getIsLeader(): boolean {
+    return 'true' === this.cookieService.get('isLeader');
+  }
+  setLeaderId(leaderId: string) {
+    return this.cookieService.set('leaderId', leaderId, 1);
+  }
+  getToken(): string {
+    return this.cookieService.get('token');
+  }
+  setToken(token: string) {
+    return this.cookieService.set('token', token, 1);
+  }
+  setIsLeader(isLeader: boolean) {
+    return this.cookieService.set('isLeader', String(isLeader), 1);
+  }
+  getBingoViewed(): boolean {
+    return 'true' === this.cookieService.get('bingoViewed');
+  }
+  setBingoViewed() {
+    return this.cookieService.set('bingoViewed', String(true), 7);
+  }
+  clearCookies() {
+    return this.cookieService.deleteAll();
   }
 }

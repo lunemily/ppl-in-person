@@ -1,7 +1,6 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CookieService } from 'ngx-cookie-service';
 import { api, pplEvent } from '../../constants.data';
 import { Leader } from 'src/app/models/leader';
 import { ApiService } from 'src/app/services/api.service';
@@ -33,13 +32,12 @@ export class LeaderBadgeComponent implements OnInit {
     public dialog: MatDialog,
     private apiService: ApiService,
     private dataService: DataService,
-    private cookieService: CookieService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
-    this.loginId = this.cookieService.get('loginId');
-    this.isLeader = 'true' == this.cookieService.get('isLeader');
+    this.loginId = this.dataService.getLoginId();
+    this.isLeader = this.dataService.getIsLeader();
     this.dataService.getPPLSettings().subscribe((settings) => {
       this.settings = settings;
     });
@@ -71,7 +69,7 @@ export class LeaderBadgeComponent implements OnInit {
             this.leader.leaderId,
             result?.selectedFormat,
             result?.selectedDifficulty,
-            true
+            true,
           );
         }
       }
@@ -93,7 +91,7 @@ export class LeaderDetailEnqueueDialog {
 
   constructor(
     public dialogRef: MatDialogRef<LeaderDetailEnqueueDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {}
 
   onNoClick(): void {

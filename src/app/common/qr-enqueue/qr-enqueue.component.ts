@@ -1,7 +1,5 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MessageService } from '../../services/message.service';
-import { CookieService } from 'ngx-cookie-service';
 import { Leader } from '../../models/leader';
 import { DataService } from '../../services/static-data.service';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -27,8 +25,6 @@ export class QrEnqueueComponent implements OnInit {
     private route: ActivatedRoute,
     private apiService: ApiService,
     private dataService: DataService,
-    private messageService: MessageService,
-    private cookieService: CookieService
   ) {}
   @Input() inputLeaderLoginId: string;
   @Input() inputLeaderId: string;
@@ -38,7 +34,7 @@ export class QrEnqueueComponent implements OnInit {
   isLeader: boolean;
 
   ngOnInit(): void {
-    this.isLeader = this.cookieService.get('isLeader') === 'true';
+    this.isLeader = this.dataService.getIsLeader();
     // Load all leader data because this could be a challenger using the camera.
     this.dataService.getLeaderData().subscribe((data) => {
       this.allLeaderData = data;
@@ -98,7 +94,7 @@ export class QrEnqueueComponent implements OnInit {
           this.inputLeaderLoginId,
           dialogData.selectedFormat,
           dialogData.selectedDifficulty,
-          false
+          false,
         );
       } else if (this.inputChallengerId && dialogData.doEnqueue === 'true') {
         this.apiService.enqueue(
@@ -106,7 +102,7 @@ export class QrEnqueueComponent implements OnInit {
           leaderLoginId,
           dialogData.selectedFormat,
           dialogData.selectedDifficulty,
-          true
+          true,
         );
       } else {
         window.location.reload();

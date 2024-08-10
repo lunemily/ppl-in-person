@@ -11,7 +11,7 @@
       </span>
       <div id="qr-section" *ngIf="useQR">
         <p id="queue-help">Scan a leader's QR code to add yourself to their queue.</p>
-        <p id="queue-help">Or ask a leader to scan your QR code.</p>
+        <p id="queue-help">Or ask a leader to scan your QR code (below).</p>
         <p id="queue-help">Or ask a leader to add you to their queue.</p>
       </div>
     </mat-expansion-panel>
@@ -19,12 +19,6 @@
       <mat-icon>help</mat-icon>
     </button>
     <app-challenger-queue-list [queues]="challenger.queuesEntered"></app-challenger-queue-list>
-    <br />
-    <div id="qr-section" *ngIf="useQR">
-      <button mat-flat-button color="primary" (click)="enqueue()">
-        <mat-icon>qr_code</mat-icon>
-      </button>
-    </div>
   </div>
 </mat-card>
 <app-trainer-card [challenger]="challenger"></app-trainer-card>

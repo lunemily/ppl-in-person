@@ -4,6 +4,7 @@ import { Challenger } from '../../models/challenger';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { features } from '../../constants.data';
 import { MessageService } from '../../services/message.service';
+import { MatTabGroup } from '@angular/material/tabs';
 
 export interface DialogData {
   previousName: string;
@@ -16,18 +17,9 @@ export interface DialogData {
   styleUrls: ['./challenger-console.component.scss'],
 })
 export class ChallengerConsoleComponent implements OnInit {
-  myAngularxQrCode: string;
   showCamera: boolean;
   options: UntypedFormGroup;
-  hideRequiredControl = new UntypedFormControl(false);
-  floatLabelControl = new UntypedFormControl('auto');
-
-  previousName: string;
-  newName: string;
-
   @Input() challenger: Challenger;
-
-  leaderData: JSON;
 
   useQR = features.useQR;
   trainerCardLink: string;
@@ -49,7 +41,7 @@ export class ChallengerConsoleComponent implements OnInit {
 
   openHelp = () => {
     this.dialog.open(PPLQueueHelpDialog);
-  }
+  };
 }
 
 @Component({

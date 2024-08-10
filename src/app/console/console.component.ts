@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { Challenger } from '../models/challenger';
 import { Leader } from '../models/leader';
 import { Person } from '../models/person';
 import { ApiService } from '../services/api.service';
 import { Subscription } from 'rxjs';
+import { DataService } from '../services/static-data.service';
+import { MatTabGroup } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-console',
@@ -20,15 +21,18 @@ export class ConsoleComponent implements OnInit {
   feedbackSurveyUrl: string;
   championSurveyUrl: string;
   @Input() reloadConsole: EventEmitter<any>;
+  @Input() tabGroup: MatTabGroup;
   private subscription: Subscription;
+  seenBingo = false;
 
-  constructor(private cookieService: CookieService, private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.loginId = this.cookieService.get('loginId');
-    this.isLeader = 'true' === this.cookieService.get('isLeader');
+    this.loginId = this.dataService.getLoginId();
+    this.isLeader = this.dataService.getIsLeader();
     this.loadUser();
     this.subscribeToParentEmitter();
+    this.seenBingo = this.dataService.getBingoViewed();
   }
 
   ngOnDestroy(): void {
@@ -67,5 +71,10 @@ export class ConsoleComponent implements OnInit {
       console.info(`Reloading console for user ${this.loginId}`);
       this.loadUser();
     });
+  }
+
+  goToBingoTab(): void {
+    // Bad. Don't do this
+    this.tabGroup.selectedIndex = 3;
   }
 }

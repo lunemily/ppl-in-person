@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Leader } from '../models/leader';
 import { DataService } from '../services/static-data.service';
-import { api, leaderTypesMap, leaderTypesReverseMap } from '../constants.data';
-import { CookieService } from 'ngx-cookie-service';
+import { api, leaderTypesReverseMap } from '../constants.data';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -23,16 +21,11 @@ export class AboutLeadersComponent implements OnInit {
   isLeader: boolean;
   url = api.serverUrl;
 
-  constructor(
-    private dataService: DataService,
-    private router: Router,
-    private cookieService: CookieService,
-    private apiService: ApiService
-  ) {}
+  constructor(private dataService: DataService, private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.loginId = this.cookieService.get('loginId');
-    this.isLeader = 'true' == this.cookieService.get('isLeader');
+    this.loginId = this.dataService.getLoginId();
+    this.isLeader = this.dataService.getIsLeader();
     this.leaderData = {
       casual: [],
       intermediate: [],

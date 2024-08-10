@@ -1,3 +1,7 @@
+<div *ngIf="challenger && !seenBingo" id="bingo-banner">
+  <br>
+  <button mat-flat-button color="accent" (click)="goToBingoTab()">Hey Champ-in-the-making! We have a Bingo side game!</button>
+</div>
 <app-name
   [person]="person"
   [leader]="leader"

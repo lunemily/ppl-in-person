@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { pplEvent } from '../constants.data';
 import { BingoSpace } from '../models/bingo-space';
 import { ApiService } from '../services/api.service';
 import { api } from '../constants.data';
 import { Subscription } from 'rxjs';
+import { DataService } from '../services/static-data.service';
 
 @Component({
   selector: 'app-bingo-board',
@@ -31,21 +31,18 @@ export class BingoBoardComponent implements OnInit {
       ? 'show an Admin.'
       : 'message @doomy8902 with a screenshot of your bingo board.';
 
-  constructor(private apiService: ApiService, private cookieService: CookieService) {}
+  constructor(private apiService: ApiService, private dataService: DataService) {}
 
   ngOnInit(): void {
     // Add year
     this.title += " '" + new Date().getFullYear().toString().substring(2);
     this.title = `PAX ${pplEvent.toUpperCase()} ${new Date().getFullYear().toString()} POKÉMON LEAGUE\nSIGNATURE BINGO`;
-    this.loginId = this.cookieService.get('loginId');
-    this.isLeader = 'true' == this.cookieService.get('isLeader');
+    this.loginId = this.dataService.getLoginId();
+    this.isLeader = this.dataService.getIsLeader();
     if (this.loginId && !this.isLeader) {
       this.getBingoBoard();
     }
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.dataService.setBingoViewed();
   }
 
   getBingoBoard() {

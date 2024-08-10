@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { HeaderService } from '../services/header.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../services/static-data.service';
@@ -25,12 +24,11 @@ export class HomeComponent implements OnInit {
   reloadBingoBoard: EventEmitter<any> = new EventEmitter();
 
   constructor(
-    private cookieService: CookieService,
     private headerService: HeaderService,
     private route: ActivatedRoute,
     private router: Router,
     private dataService: DataService,
-    private messageService: MessageService
+    private messageService: MessageService,
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
@@ -46,11 +44,11 @@ export class HomeComponent implements OnInit {
       this.challengerId = this.route.snapshot.queryParamMap.get('id');
     }
     this.showLogin = true;
-    this.loginId = this.cookieService.get('loginId');
+    this.loginId = this.dataService.getLoginId();
     if (this.loginId) {
       this.showLogin = false;
     }
-    this.isLeader = 'true' === this.cookieService.get('isLeader');
+    this.isLeader = this.dataService.getIsLeader();
     this.headerService.setUrl(window.location.href);
   }
 
@@ -62,7 +60,7 @@ export class HomeComponent implements OnInit {
 
   connect = () => {
     this.socket$ = webSocket(api.socketUrl); // Establish WebSocket connection
-  }
+  };
   disconnect() {
     this.socket$.complete();
   }
@@ -75,12 +73,12 @@ export class HomeComponent implements OnInit {
       case 0:
         // Connection established but server needs token to correlate user
         console.info('Authentication requested by server.');
-        const token = this.cookieService.get('token');
+        const token = this.dataService.getToken();
         if (token) {
           console.info('Sending credentials.');
           this.send({
             action: 0,
-            id: this.cookieService.get('loginId'),
+            id: this.dataService.getLoginId(),
             token: `Bearer ${token}`,
           });
         }
@@ -101,10 +99,10 @@ export class HomeComponent implements OnInit {
         this.messageService.showError('Unknown action requested from server');
         break;
     }
-  }
+  };
   send = (message: any) => {
     this.socket$.next(message);
-  }
+  };
 
   setupWebSocket = () => {
     this.connect();
@@ -118,7 +116,7 @@ export class HomeComponent implements OnInit {
       () => {
         this.isWebSocketConnected = false;
         console.warn('WebSocket connection closed');
-      }
+      },
     );
-  }
+  };
 }
