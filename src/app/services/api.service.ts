@@ -199,6 +199,7 @@ export class ApiService {
             winCount: response.winCount,
             lossCount: response.lossCount,
           },
+          hasBingo: response.hasBingo,
         };
 
         return challenger;

@@ -11,6 +11,7 @@ export interface Challenger extends Person {
     winCount: number;
     lossCount: number;
   };
+  hasBingo?: boolean;
 
   //   Discrepancies with API
   name?: string;
