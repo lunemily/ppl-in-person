@@ -4,6 +4,8 @@
   backgroundColor="primary"
   headerPosition="below"
   dynamicHeight
+  mat-stretch-tabs="true"
+  disablePagination="true"
 >
   <mat-tab>
     <ng-template mat-tab-label><mat-icon>home</mat-icon></ng-template>
@@ -34,16 +36,16 @@
       </app-bingo-board>
     </ng-template>
   </mat-tab>
-  <mat-tab *ngIf="pplSettings?.assets.rules">
-    <ng-template mat-tab-label><mat-icon>description</mat-icon></ng-template>
-    <app-static-image class="tab-container" [imageSrcPath]="'rules'"></app-static-image>
-  </mat-tab>
-  <mat-tab *ngIf="pplSettings?.assets.prizePools">
-    <ng-template mat-tab-label><mat-icon>stars</mat-icon></ng-template>
-    <app-static-image class="tab-container" [imageSrcPath]="'prizes'"></app-static-image>
-  </mat-tab>
-  <mat-tab *ngIf="pplSettings?.assets.map">
-    <ng-template mat-tab-label><mat-icon>map</mat-icon></ng-template>
-    <app-static-image class="tab-container" [imageSrcPath]="'map'"></app-static-image>
-  </mat-tab>
+<!--  <mat-tab *ngIf="pplSettings?.assets.rules">-->
+<!--    <ng-template mat-tab-label><mat-icon>description</mat-icon></ng-template>-->
+<!--    <app-static-image class="tab-container" [imageSrcPath]="pplSettings.assets.rules"></app-static-image>-->
+<!--  </mat-tab>-->
+<!--  <mat-tab *ngIf="pplSettings?.assets.prizePools">-->
+<!--    <ng-template mat-tab-label><mat-icon>stars</mat-icon></ng-template>-->
+<!--    <app-static-image class="tab-container" [imageSrcPath]="pplSettings.assets.prizePools"></app-static-image>-->
+<!--  </mat-tab>-->
+<!--  <mat-tab *ngIf="pplSettings?.assets.map">-->
+<!--    <ng-template mat-tab-label><mat-icon>map</mat-icon></ng-template>-->
+<!--    <app-static-image class="tab-container" [imageSrcPath]="pplSettings.assets.map"></app-static-image>-->
+<!--  </mat-tab>-->
 </mat-tab-group>
