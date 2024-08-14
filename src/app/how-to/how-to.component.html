@@ -6,25 +6,25 @@
   </p>
   <img src="assets/images/ppl-logo.png" />
 </mat-card>
-<mat-card>
-  <h2>How to play!</h2>
+<mat-expansion-panel>
+  <mat-expansion-panel-header><h2>How to play!</h2></mat-expansion-panel-header>
   <a mat-flat-button color="primary" href="https://discord.gg/paxpokemon">Join our Discord!</a>
 
   <a mat-flat-button color="primary" skipLocationChange (click)="goToConsoleTab()">Take me to my trainer card</a>
   <a mat-flat-button color="accent" (click)="goToConsoleTab()">Register to play!</a>
   <img alt="How to challenge the PPL" src="{{ challengingImage }}" />
-</mat-card>
-<mat-card *ngIf="pplSettings">
-  <h2>Prizes</h2>
-  <p>Defeat {{ pplSettings.leagueFormat.badgesForElites }} Gym Leaders to challenge the Elites.</p>
+</mat-expansion-panel>
+<mat-expansion-panel *ngIf="pplSettings?.assets.prizePools">
+  <mat-expansion-panel-header><h2>Prizes</h2></mat-expansion-panel-header>
+  <p *ngIf="pplSettings.leagueFormat.badgesForElites > 0">Defeat {{ pplSettings.leagueFormat.badgesForElites }} Gym Leaders to challenge the Elites.</p>
   <p>
-    Then, earn
+    {{ pplSettings.leagueFormat.badgesForElites > 0 ? 'Then, earn' : 'Earn'}}
     {{
       pplSettings.leagueFormat.badgesForChamp > 0
         ? pplSettings.leagueFormat.badgesForChamp +
-          ' badge points total (badges count for 1 point and elite emblems count for ' +
-          pplSettings.leagueFormat.emblemWeight +
-          ' points)'
+        ' badge points total (badges count for 1 point and elite emblems count for ' +
+        pplSettings.leagueFormat.emblemWeight +
+        ' points)'
         : pplSettings.leagueFormat.emblemsForChamp + ' emblems'
     }}
     to challenge the Champion.
@@ -32,14 +32,14 @@
   <p>
     Defeat the Champion and you've beaten the Pax Pokémon League {{ pplEvent }} {{ year }}! Check out the prizes below!
   </p>
-  <img alt="prizes at this PPL Event" src="{{ prizesImage }}" />
-</mat-card>
-<mat-card>
-  <h2>Rules</h2>
+  <app-static-image class="tab-container" [imageSrcPath]="pplSettings.assets.prizePools"></app-static-image>
+</mat-expansion-panel>
+<mat-expansion-panel *ngIf="pplSettings?.assets.rules">
+  <mat-expansion-panel-header><h2>Rules</h2></mat-expansion-panel-header>
   <p>
     Pretty much all major legendaries (plus Regieleki) are banned, while most minor legendaries and paradox 'mons are
-    limited. We have a couple of other rules, too! Check out the full rules tab to the right for specifics, or click
-    below for a full written list of the rules if an image is not your thing!
+    limited. We have a couple of other rules, too! Check out the full rules for specifics, or click
+    the link below for a full written list of the rules if an image is not your thing!
   </p>
   <a
     mat-flat-button
@@ -50,8 +50,13 @@
   >
     Full Rules
   </a>
-</mat-card>
-<mat-card *ngIf="pplSettings?.assets.schedule">
-  <h2>Schedule</h2>
-  <img alt="Schedule for this PPL Event" src="{{ pplSettings.assets.schedule }}" />
-</mat-card>
+  <app-static-image class="tab-container" [imageSrcPath]="pplSettings.assets.rules"></app-static-image>
+</mat-expansion-panel>
+<mat-expansion-panel *ngIf="pplSettings?.assets.schedule">
+  <mat-expansion-panel-header><h2>Schedule</h2></mat-expansion-panel-header>
+  <app-static-image class="tab-container" [imageSrcPath]="pplSettings.assets.schedule"></app-static-image>
+</mat-expansion-panel>
+<mat-expansion-panel>
+  <mat-expansion-panel-header *ngIf="pplSettings?.assets.map"><h2>Map</h2></mat-expansion-panel-header>
+  <app-static-image class="tab-container" [imageSrcPath]="pplSettings.assets.map"></app-static-image>
+</mat-expansion-panel>
