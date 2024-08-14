@@ -34,16 +34,16 @@
       </app-bingo-board>
     </ng-template>
   </mat-tab>
-  <mat-tab *ngIf="pplSettings?.rules">
+  <mat-tab *ngIf="pplSettings?.assets.rules">
     <ng-template mat-tab-label><mat-icon>description</mat-icon></ng-template>
-    <app-static-image class="tab-container" [image]="'rules'"></app-static-image>
+    <app-static-image class="tab-container" [imageSrcPath]="'rules'"></app-static-image>
   </mat-tab>
-  <mat-tab *ngIf="pplSettings?.prizePools">
+  <mat-tab *ngIf="pplSettings?.assets.prizePools">
     <ng-template mat-tab-label><mat-icon>stars</mat-icon></ng-template>
-    <app-static-image class="tab-container" [image]="'prizes'"></app-static-image>
+    <app-static-image class="tab-container" [imageSrcPath]="'prizes'"></app-static-image>
   </mat-tab>
-  <mat-tab *ngIf="pplSettings?.map">
+  <mat-tab *ngIf="pplSettings?.assets.map">
     <ng-template mat-tab-label><mat-icon>map</mat-icon></ng-template>
-    <app-static-image class="tab-container" [image]="'map'"></app-static-image>
+    <app-static-image class="tab-container" [imageSrcPath]="'map'"></app-static-image>
   </mat-tab>
 </mat-tab-group>

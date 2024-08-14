@@ -1,4 +1,4 @@
-interface leagueFormat {
+interface LeagueFormat {
   badgesForElites: number;
   badgesForChamp: number;
   emblemsForChamp: number;
@@ -12,18 +12,22 @@ export interface MeetupTime {
   endTime: number; // millis
 }
 
+interface Assets {
+  howToChallenge?: string;
+  rules?: string;
+  prizePools?: string;
+  schedule?: string;
+  map?: string;
+}
+
 export interface PPLSettings {
   showTrainerCard: boolean;
-  howToChallenge: boolean;
-  rules: boolean;
-  prizePools: boolean;
-  schedule: boolean;
   bingoBoard: boolean;
   eventIsOver: boolean;
   eventSupportsQueueState: boolean;
   leadersToDefeat: number;
   elitesToDefeat: number;
-  map: boolean;
-  leagueFormat: leagueFormat;
+  leagueFormat: LeagueFormat;
   meetupTimes: MeetupTime[];
+  assets: Assets;
 }

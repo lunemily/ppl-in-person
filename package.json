@@ -43,6 +43,7 @@
     "angularx-qrcode": "^17.0.0",
     "canvas-confetti": "^1.6.0",
     "ngx-cookie-service": "^16.0.0",
+    "ppl-schema": "^1.0.2",
     "rxjs": "~7.8.1",
     "tslib": "^2.6.0",
     "zlib": "^1.0.5",

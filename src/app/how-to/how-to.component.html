@@ -51,7 +51,7 @@
     Full Rules
   </a>
 </mat-card>
-<mat-card *ngIf="pplSettings?.schedule">
+<mat-card *ngIf="pplSettings?.assets.schedule">
   <h2>Schedule</h2>
-  <img alt="Schedule for this PPL Event" src="{{ scheduleImage }}" />
+  <img alt="Schedule for this PPL Event" src="{{ pplSettings.assets.schedule }}" />
 </mat-card>

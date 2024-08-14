@@ -165,17 +165,13 @@ export class DataService {
       map((response: any) => {
         const settings: PPLSettings = {
           showTrainerCard: response.showTrainerCard,
-          howToChallenge: response.howToChallenge,
-          rules: response.rules,
-          prizePools: response.prizePools,
-          schedule: response.schedule,
           bingoBoard: response.bingoBoard,
           eventIsOver: response.eventIsOver,
           eventSupportsQueueState: response.eventSupportsQueueState,
           leadersToDefeat: response.leadersToDefeat,
           elitesToDefeat: response.elitesToDefeat,
-          map: response.map,
           leagueFormat: response.leagueFormat,
+          assets: response.assets,
           meetupTimes: response.meetupTimes
             .map((meetupTime: { location: any; startTime: string; duration: number }) => {
               return {

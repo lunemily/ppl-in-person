@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { pplEvent } from '../constants.data';
+import { api } from '../../environments/environment';
 
 @Component({
   selector: 'app-static-image',
@@ -7,8 +7,10 @@ import { pplEvent } from '../constants.data';
   styleUrls: ['./static-image.component.scss'],
 })
 export class StaticImageComponent implements OnInit {
-  @Input() image;
-  pplEvent = pplEvent;
+  @Input() imageSrcPath: string;
+  fullImgSrc: string;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.fullImgSrc = api.serverUrl + this.imageSrcPath;
+  }
 }

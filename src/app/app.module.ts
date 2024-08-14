@@ -60,6 +60,7 @@ import { MeetupPopup, MeetupTimesComponent } from './home/meetup-times/meetup-ti
 import { QrCodeComponent } from './common/qr-code/qr-code.component';
 import { QrEnqueueComponent, EnqueueDialog } from './common/qr-enqueue/qr-enqueue.component';
 import { LinkCodeComponent, SetLinkCodeDialog } from './console/leader-console/link-code/link-code.component';
+import { NgOptimizedImage } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -125,6 +126,7 @@ import { LinkCodeComponent, SetLinkCodeDialog } from './console/leader-console/l
     BrowserAnimationsModule,
     QRCodeModule,
     AppRoutingModule,
+    NgOptimizedImage,
   ],
   providers: [CookieService, Title],
   bootstrap: [AppComponent],
