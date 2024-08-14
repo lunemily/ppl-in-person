@@ -50,7 +50,7 @@ export class DataService {
       if (now < leaderDataTTL) {
         if (localLeaderList) {
           // We're before the settings expiration time, return the local values
-          console.info('Leader data present.\nReturning from local storage...\n');
+          console.debug('Leader data present.\nReturning from local storage...\n');
           return this.returnLocalLeaderData();
         }
       }
@@ -161,7 +161,7 @@ export class DataService {
     const url = `${api.serverUrl}/api/v2/appsettings`;
 
     return this.http.get(url, this.httpOptions).pipe(
-      tap(() => console.info(`++ /api/v2/appsettings was newly called at ${new Date().toLocaleTimeString()} ++`)),
+      tap(() => console.debug(`++ /api/v2/appsettings was newly called at ${new Date().toLocaleTimeString()} ++`)),
       map((response: any) => {
         const settings: PPLSettings = {
           showTrainerCard: response.showTrainerCard,
@@ -208,7 +208,7 @@ export class DataService {
 
   /** Log a ChallengerService message with the MessageService */
   private log(message: string) {
-    console.info(`ChallengerService: ${message}`);
+    console.debug(`ChallengerService: ${message}`);
   }
 
   /**

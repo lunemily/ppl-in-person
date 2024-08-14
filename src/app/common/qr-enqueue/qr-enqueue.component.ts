@@ -42,6 +42,10 @@ export class QrEnqueueComponent implements OnInit {
     if (this.validateQrEnqueue()) {
       if (this.inputLeaderLoginId) {
         this.openEnqueueDialog(this.route.snapshot.queryParams.opponentId, this.inputLeaderLoginId);
+      } else if (this.inputChallengerId) {
+        this.openEnqueueDialog(this.inputChallengerId, this.route.snapshot.queryParams.opponentId);
+      } else {
+        console.error('Invalid QR Enqueue attempt');
       }
     }
   }

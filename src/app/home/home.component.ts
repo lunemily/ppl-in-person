@@ -68,14 +68,14 @@ export class HomeComponent implements OnInit {
     return this.socket$ === null ? false : !this.socket$.closed;
   }
   onMessage = (message: { action: number }) => {
-    console.info(JSON.stringify(message));
+    console.debug(JSON.stringify(message));
     switch (message.action) {
       case 0:
         // Connection established but server needs token to correlate user
-        console.info('Authentication requested by server.');
+        console.debug('Authentication requested by server.');
         const token = this.dataService.getToken();
         if (token) {
-          console.info('Sending credentials.');
+          console.debug('Sending credentials.');
           this.send({
             action: 0,
             id: this.dataService.getLoginId(),
@@ -84,14 +84,14 @@ export class HomeComponent implements OnInit {
         }
         break;
       case 1:
-        console.info('Authentication successful.');
+        console.debug('Authentication successful.');
         break;
       case 2:
-        console.info('Reload console.');
+        console.debug('Reload console.');
         this.reloadConsole.emit();
         break;
       case 3:
-        console.info('Reload bingo board.');
+        console.debug('Reload bingo board.');
         this.reloadBingoBoard.emit();
         break;
       default:
