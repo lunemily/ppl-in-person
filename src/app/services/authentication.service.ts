@@ -6,14 +6,19 @@ import { CookieService } from 'ngx-cookie-service';
 import { Login } from '../models/login';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { api } from '../constants.data';
+import { api, isLeader, leaderId, loginId, token } from '../constants.data';
 import { DataService } from './static-data.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
-  constructor(private http: HttpClient, private dataService: DataService, private snackBar: MatSnackBar) {}
+  constructor(
+    private http: HttpClient,
+    private dataService: DataService,
+    private snackBar: MatSnackBar,
+    private cookieService: CookieService,
+  ) {}
 
   httpOptions = {
     headers: api.httpOtions.headers.append('Content-Type', 'application/json'),
@@ -44,11 +49,11 @@ export class AuthenticationService {
           isLeader: data.isLeader,
           token: data.token,
         };
-        this.dataService.setLoginId(login.loginId);
-        this.dataService.setIsLeader(login.isLeader);
-        this.dataService.setToken(login.token);
+        this.cookieService.set(loginId, login.loginId, 1);
+        this.cookieService.set(isLeader, String(login.isLeader), 1);
+        this.cookieService.set(token, login.token, 1);
         if (login.isLeader) {
-          this.dataService.setLeaderId(login.leaderId);
+          this.cookieService.set(leaderId, login.leaderId, 1);
         }
         window.location.reload();
       },
@@ -63,14 +68,17 @@ export class AuthenticationService {
 
   logout(): void {
     // Get id and token
-    const id = this.dataService.getLoginId();
+    const id = this.cookieService.get(loginId);
     const httpOptions = {
-      headers: api.httpOtions.headers.append('Authorization', `Bearer ${this.dataService.getToken()}`),
+      headers: api.httpOtions.headers.append('Authorization', `Bearer ${this.cookieService.get(token)}`),
     };
     const url = `${api.serverUrl}/api/v2/logout/${id}`;
 
     // Delete cookies for local logout
-    this.dataService.clearCookies();
+    this.cookieService.delete(loginId);
+    this.cookieService.delete(token);
+    this.cookieService.delete(isLeader);
+    this.cookieService.delete(leaderId);
 
     // Log out of idp
     this.http.post<any>(url, {}, httpOptions).subscribe((data) => {

@@ -34,3 +34,9 @@ export const leaderTypesReverseMap = {
   8: 'elite',
   16: 'champion',
 };
+
+export const loginId = 'loginId';
+export const leaderId = 'leaderId';
+export const isLeader = 'isLeader';
+export const token = 'token';
+export const bingoViewed = 'bingoViewed';
