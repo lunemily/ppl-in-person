@@ -16,19 +16,20 @@
 </mat-expansion-panel>
 <mat-expansion-panel *ngIf="pplSettings?.assets.prizePools">
   <mat-expansion-panel-header><h2>Prizes</h2></mat-expansion-panel-header>
+<!--  Standard League -->
   <p *ngIf="pplSettings.leagueFormat.badgesForElites > 0">Defeat {{ pplSettings.leagueFormat.badgesForElites }} Gym Leaders to challenge the Elites.</p>
-  <p>
-    {{ pplSettings.leagueFormat.badgesForElites > 0 ? 'Then, earn' : 'Earn'}}
-    {{
-      pplSettings.leagueFormat.badgesForChamp > 0
-        ? pplSettings.leagueFormat.badgesForChamp +
-        ' badge points total (badges count for 1 point and elite emblems count for ' +
-        pplSettings.leagueFormat.emblemWeight +
-        ' points)'
-        : pplSettings.leagueFormat.emblemsForChamp + ' emblems'
-    }}
-    to challenge the Champion.
+  <p *ngIf="pplSettings.leagueFormat.emblemsForChamp > 0">Then defeat {{ pplSettings.leagueFormat.emblemsForChamp }} Elites to challenge the Champion.</p>
+<!--  Battle Frontier League -->
+  <p *ngIf="pplSettings.leagueFormat.badgesForChamp > 0 && pplSettings.leagueFormat.badgesForElites === 0">
+    Defeat
+    {{pplSettings.leagueFormat.badgesForChamp}} Gym Leaders to challenge the Champion.
   </p>
+<!--  Hybrid League -->
+  <p *ngIf="pplSettings.leagueFormat.badgesForChamp > 0 && pplSettings.leagueFormat.badgesForElites > 0">
+    Then collect {{ pplSettings.leagueFormat.badgesForChamp }} badge points to challenge the Champion.
+    (Badges count for 1 badge point and elite emblems count for {{ pplSettings.leagueFormat.emblemWeight }} badge points.)
+  </p>
+<!--  Champion -->
   <p>
     Defeat the Champion and you've beaten the Pax Pokémon League {{ pplEvent }} {{ year }}! Check out the prizes below!
   </p>
