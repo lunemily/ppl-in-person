@@ -12,7 +12,7 @@
 
   <a mat-flat-button color="primary" skipLocationChange (click)="goToConsoleTab()">Take me to my trainer card</a>
   <a mat-flat-button color="accent" (click)="goToConsoleTab()">Register to play!</a>
-  <img alt="How to challenge the PPL" src="{{ challengingImage }}" />
+  <app-static-image *ngIf="pplSettings?.assets" class="tab-container" [imageSrcPath]="pplSettings.assets.howToChallenge"></app-static-image>
 </mat-expansion-panel>
 <mat-expansion-panel *ngIf="pplSettings?.assets.prizePools">
   <mat-expansion-panel-header><h2>Prizes</h2></mat-expansion-panel-header>

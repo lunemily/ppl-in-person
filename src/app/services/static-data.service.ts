@@ -41,35 +41,10 @@ export class DataService {
   }
 
   getLeaderData(): Observable<Leader[]> {
-    const localLeaderList = localStorage.getItem('leader-data-list');
-    const rawLeaderDataTTL = localStorage.getItem('leader-data-ttl');
-
-    if (rawLeaderDataTTL) {
-      const now = new Date().getTime();
-      const leaderDataTTL = Date.parse(rawLeaderDataTTL);
-      if (now < leaderDataTTL) {
-        if (localLeaderList) {
-          // We're before the settings expiration time, return the local values
-          console.debug('Leader data present.\nReturning from local storage...\n');
-          return this.returnLocalLeaderData();
-        }
-      }
-    }
-    console.warn('Leader data not stored.\nFetching...\n');
     return this.fetchAndReturnLeaderData();
   }
 
   getPPLSettings(): Observable<PPLSettings> {
-    const rawAppSettingsTTL = localStorage.getItem('app-settings-ttl');
-    if (rawAppSettingsTTL) {
-      const now = new Date().getTime();
-      const appSettingsTTL = Date.parse(rawAppSettingsTTL);
-      if (now < appSettingsTTL) {
-        // We're before the settings expiration time, return the local values
-        return this.returnLocalPPLSettings();
-      }
-    }
-
     return this.fetchAndReturnPPLSettings();
   }
 
@@ -138,30 +113,10 @@ export class DataService {
     );
   }
 
-  private returnLocalLeaderData(): Observable<Leader[]> {
-    const localLeaderList = JSON.parse(localStorage.getItem('leader-data-list'));
-    console.debug(localLeaderList);
-
-    try {
-      const leaders: Leader[] = [];
-      for (const leaderEntry of localLeaderList) {
-        console.debug(leaderEntry);
-        console.debug(localStorage.getItem(leaderEntry));
-        const leader: Leader = JSON.parse(localStorage.getItem(leaderEntry));
-        leaders.push(leader);
-      }
-      return of(leaders);
-    } catch (error) {
-      console.error(error);
-      return this.fetchAndReturnLeaderData();
-    }
-  }
-
   private fetchAndReturnPPLSettings(): Observable<PPLSettings> {
     const url = `${api.serverUrl}/api/v2/appsettings`;
 
     return this.http.get(url, this.httpOptions).pipe(
-      tap(() => console.debug(`++ /api/v2/appsettings was newly called at ${new Date().toLocaleTimeString()} ++`)),
       map((response: any) => {
         const settings: PPLSettings = {
           showTrainerCard: response.showTrainerCard,
@@ -195,15 +150,6 @@ export class DataService {
         return settings;
       }),
     );
-  }
-
-  private returnLocalPPLSettings(): Observable<PPLSettings> {
-    try {
-      return of(JSON.parse(localStorage.getItem('app-settings')));
-    } catch (error) {
-      console.error(error);
-      return this.fetchAndReturnPPLSettings();
-    }
   }
 
   /** Log a ChallengerService message with the MessageService */
