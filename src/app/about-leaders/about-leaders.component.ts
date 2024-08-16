@@ -45,16 +45,4 @@ export class AboutLeadersComponent implements OnInit {
       });
     });
   }
-
-  refreshData(): void {
-    this.leaderData = {
-      casual: [],
-      intermediate: [],
-      veteran: [],
-      elite: [],
-      champion: [],
-    };
-    localStorage.clear();
-    this.ngOnInit();
-  }
 }
