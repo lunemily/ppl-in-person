@@ -29,12 +29,13 @@ export class TrainerCardComponent implements OnInit {
     private route: ActivatedRoute,
     private apiService: ApiService,
     private messageService: MessageService,
-    private dataService: DataService
+    private dataService: DataService,
   ) {}
 
   ngOnInit(): void {
     this.dataService.getPPLSettings().subscribe((pplSettings) => {
       this.pplSettings = pplSettings;
+      this.identifyLeagueFormat();
     });
     this.challengerId = this.route.snapshot.queryParamMap.get('id');
     if (this.challengerId) {
@@ -52,7 +53,6 @@ export class TrainerCardComponent implements OnInit {
     } else {
       console.error('No challenger ID available.');
     }
-    this.identifyLeagueFormat();
   }
 
   shareTrainerCard() {
@@ -117,7 +117,7 @@ export class TrainerCardComponent implements OnInit {
 
   showBadgesForChampTooltip() {
     this.messageService.showMessage(
-      'Elite leaders can count toward badges required to battle the Champ, but are not required.'
+      'Elite leaders can count toward badges required to battle the Champ, but are not required.',
     );
   }
 }

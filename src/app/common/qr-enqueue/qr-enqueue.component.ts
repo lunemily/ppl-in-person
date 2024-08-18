@@ -38,16 +38,17 @@ export class QrEnqueueComponent implements OnInit {
     // Load all leader data because this could be a challenger using the camera.
     this.dataService.getLeaderData().subscribe((data) => {
       this.allLeaderData = data;
-    });
-    if (this.validateQrEnqueue()) {
-      if (this.inputLeaderLoginId) {
-        this.openEnqueueDialog(this.route.snapshot.queryParams.opponentId, this.inputLeaderLoginId);
-      } else if (this.inputChallengerId) {
-        this.openEnqueueDialog(this.inputChallengerId, this.route.snapshot.queryParams.opponentId);
-      } else {
-        console.error('Invalid QR Enqueue attempt');
+
+      if (this.validateQrEnqueue()) {
+        if (this.inputLeaderLoginId) {
+          this.openEnqueueDialog(this.route.snapshot.queryParams.opponentId, this.inputLeaderLoginId);
+        } else if (this.inputChallengerId) {
+          this.openEnqueueDialog(this.inputChallengerId, this.route.snapshot.queryParams.opponentId);
+        } else {
+          console.error('Invalid QR Enqueue attempt');
+        }
       }
-    }
+    });
   }
 
   validateQrEnqueue = (): boolean => {
@@ -125,7 +126,7 @@ export class EnqueueDialog {
   constructor(public dialogRef: MatDialogRef<EnqueueDialog>, @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close({ doEnqueue: false });
   }
 
   onYesClick(): void {
