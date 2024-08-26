@@ -54,10 +54,10 @@
   <app-static-image class="tab-container" [imageSrcPath]="pplSettings.assets.rules"></app-static-image>
 </mat-expansion-panel>
 <mat-expansion-panel *ngIf="pplSettings?.assets.schedule">
-  <mat-expansion-panel-header><h2>Schedule</h2></mat-expansion-panel-header>
+  <mat-expansion-panel-header><h2>Meetup Times</h2></mat-expansion-panel-header>
   <app-static-image class="tab-container" [imageSrcPath]="pplSettings.assets.schedule"></app-static-image>
 </mat-expansion-panel>
 <mat-expansion-panel>
   <mat-expansion-panel-header *ngIf="pplSettings?.assets.map"><h2>Map</h2></mat-expansion-panel-header>
-  <app-static-image class="tab-container" [imageSrcPath]="pplSettings?.assets.map"></app-static-image>
+  <app-static-image class="tab-container" [imageSrcPath]="pplSettings.assets.map"></app-static-image>
 </mat-expansion-panel>

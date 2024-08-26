@@ -109,15 +109,16 @@ export class TrainerCardComponent implements OnInit {
       // assume battle frontier
       this.isBattleFrontierFormat = true;
     }
-    if (this.pplSettings.leagueFormat.emblemWeight > 0) {
+    if (this.pplSettings.leagueFormat.badgesForElites > 0 || this.pplSettings.leagueFormat.emblemsForChamp > 0) {
       // Elites present in league format
       this.elitesInLeague = true;
     }
   }
 
   showBadgesForChampTooltip() {
-    this.messageService.showMessage(
-      'Elite leaders can count toward badges required to battle the Champ, but are not required.',
-    );
+    // Entering this method implies isBattleFrontierFormat===true
+    let message = '';
+    message = 'Elite leaders can count toward badges required to battle the Champ, but are not required.';
+    this.messageService.showMessage(message);
   }
 }

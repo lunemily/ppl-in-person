@@ -3,10 +3,10 @@
   <div id="badges-earned">
     <div *ngIf="isBattleFrontierFormat">
       <h2 class="left">
-        Total Badge Points Earned: {{ badgePointCount()
+        Total {{ elitesInLeague ? 'Badge Points' : 'Badges' }} Earned: {{ badgePointCount()
         }}{{ pplSettings.leagueFormat.badgesForChamp > 0 ? '/' + pplSettings.leagueFormat.badgesForChamp : '' }}
-        <a (click)="showBadgesForChampTooltip()">
-          <mat-icon *ngIf="pplSettings.leagueFormat.badgesForChamp > 0">info</mat-icon>
+        <a *ngIf="elitesInLeague && pplSettings.leagueFormat.badgesForChamp > 0" (click)="showBadgesForChampTooltip()">
+          <mat-icon>info</mat-icon>
         </a>
       </h2>
       <h3 class="left" *ngIf="badgeCount()">Badges Earned: {{ badgeCount() }}</h3>
