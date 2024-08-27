@@ -440,6 +440,7 @@ export class ApiService {
    * Let the app continue.
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
+   * @param logout
    */
   private handleError<T>(operation = 'operation', result?: T, logout: boolean = false) {
     return (error: any): Observable<T> => {

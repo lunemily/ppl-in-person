@@ -35,6 +35,10 @@
   </p>
   <app-static-image class="tab-container" [imageSrcPath]="pplSettings.assets.prizePools"></app-static-image>
 </mat-expansion-panel>
+<mat-expansion-panel>
+  <mat-expansion-panel-header *ngIf="pplSettings?.assets.sideActivities"><h2>Side Activities</h2></mat-expansion-panel-header>
+  <app-static-image class="tab-container" [imageSrcPath]="pplSettings.assets.sideActivities"></app-static-image>
+</mat-expansion-panel>
 <mat-expansion-panel *ngIf="pplSettings?.assets.rules">
   <mat-expansion-panel-header><h2>Rules</h2></mat-expansion-panel-header>
   <p>

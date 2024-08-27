@@ -79,6 +79,7 @@ export class AuthenticationService {
     this.cookieService.delete(token);
     this.cookieService.delete(isLeader);
     this.cookieService.delete(leaderId);
+    this.cookieService.deleteAll();
 
     // Log out of idp
     this.http.post<any>(url, {}, httpOptions).subscribe((data) => {

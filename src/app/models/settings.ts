@@ -18,6 +18,7 @@ interface Assets {
   prizePools?: string;
   schedule?: string;
   map?: string;
+  sideActivities?: string;
 }
 
 export interface PPLSettings {
