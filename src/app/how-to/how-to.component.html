@@ -35,8 +35,8 @@
   </p>
   <app-static-image class="tab-container" [imageSrcPath]="pplSettings.assets.prizePools"></app-static-image>
 </mat-expansion-panel>
-<mat-expansion-panel>
-  <mat-expansion-panel-header *ngIf="pplSettings?.assets.sideActivities"><h2>Side Activities</h2></mat-expansion-panel-header>
+<mat-expansion-panel *ngIf="pplSettings?.assets.sideActivities">
+  <mat-expansion-panel-header><h2>Side Activities</h2></mat-expansion-panel-header>
   <app-static-image class="tab-container" [imageSrcPath]="pplSettings.assets.sideActivities"></app-static-image>
 </mat-expansion-panel>
 <mat-expansion-panel *ngIf="pplSettings?.assets.rules">
@@ -61,7 +61,7 @@
   <mat-expansion-panel-header><h2>Meetup Times</h2></mat-expansion-panel-header>
   <app-static-image class="tab-container" [imageSrcPath]="pplSettings.assets.schedule"></app-static-image>
 </mat-expansion-panel>
-<mat-expansion-panel>
-  <mat-expansion-panel-header *ngIf="pplSettings?.assets.map"><h2>Map</h2></mat-expansion-panel-header>
+<mat-expansion-panel *ngIf="pplSettings?.assets.map">
+  <mat-expansion-panel-header><h2>Map</h2></mat-expansion-panel-header>
   <app-static-image class="tab-container" [imageSrcPath]="pplSettings.assets.map"></app-static-image>
 </mat-expansion-panel>
