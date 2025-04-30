@@ -13,7 +13,8 @@ export interface Leader extends Person {
   wins?: number;
   losses?: number;
   badgesAwarded?: number;
-  art?: string;
+  leaderArt?: string;
+  badgeArt?: string;
   bio?: string;
   tagline?: string;
   leaderTypeIds?: number[];

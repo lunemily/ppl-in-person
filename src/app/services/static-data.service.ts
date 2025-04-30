@@ -60,6 +60,8 @@ export class DataService {
             displayName: response[leaderId].name as string,
             badgeName: response[leaderId].badgeName as string,
             bio: response[leaderId].bio as string,
+            leaderArt: `${url}/static/portraits/${leaderId}.png`,
+            badgeArt: `${url}/static/badges/${leaderId}.png`,
             tagline: response[leaderId].tagline as string,
             leaderTypeIds: DataService.getLeaderTypesFromBitmask(response[leaderId].leaderType),
             leaderTypes: DataService.getLeaderTypesFromBitmask(response[leaderId].leaderType).map(function (typeId) {

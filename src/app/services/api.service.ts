@@ -102,6 +102,7 @@ export class ApiService {
                 id: item.format,
                 name: battleFormatsReverseMap[item.format],
               },
+              badgeArt: `${url}/static/badges/${response.leaderId}.png`,
               battleDifficulty: {
                 id: item.difficulty,
                 name: leaderTypesReverseMap[item.difficulty],
