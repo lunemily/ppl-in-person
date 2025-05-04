@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, share, shareReplay, tap } from 'rxjs';
 
-import { api, battleFormatsReverseMap, leaderTypesReverseMap } from '../constants.data';
+import { api, battleFormatsReverseMap, leaderTypesReverseMap, champHasBadge } from '../constants.data';
 import { Leader } from '../models/leader';
 import { PPLSettings } from '../models/settings';
 import { AuthenticationService } from './authentication.service';
@@ -139,6 +139,7 @@ export class DataService {
               };
             })
             .sort((a, b) => (a.startTime > b.startTime ? 1 : b.startTime > a.startTime ? -1 : 0)),
+          champHasBadge: 'champHasBadge' in Object.keys(response) ? response.champHasBadge : champHasBadge,
         };
 
         // Store settings

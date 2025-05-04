@@ -20,3 +20,5 @@ export const features = {
 export const environment = {
   production: false,
 };
+
+export const champHasBadge = false;

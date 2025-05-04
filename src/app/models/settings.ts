@@ -31,4 +31,5 @@ export interface PPLSettings {
   leagueFormat: LeagueFormat;
   meetupTimes: MeetupTime[];
   assets: Assets;
+  champHasBadge: boolean
 }
