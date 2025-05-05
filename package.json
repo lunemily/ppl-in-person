@@ -2,6 +2,7 @@
   "name": "ppl-site",
   "sideEffects": false,
   "version": "2.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",
@@ -17,12 +18,13 @@
     "runWestPrd": "ng serve --configuration=westPrd",
     "runAusStg": "ng serve --configuration=ausStg",
     "runAusPrd": "ng serve --configuration=ausPrd",
-    "deployToGithub": "ng deploy --base-href=/ppl-webapp/",
+    "deployToGithub": "ng deploy --base-href=/ppl-in-person/",
     "build-east": "ng build --output-path docs/east/Prd --base-href /east/ --configuration=eastPrd",
     "build-west": "ng build --base-href /west/ --configuration=westStg",
     "build-aus": "ng build --base-href /aus/ --configuration=ausPrd",
     "build-online": "ng build --base-href /online/ --configuration=onlinePrd",
-    "build-unplugged": "ng build --base-href /unplugged/ --configuration=unpluggedPrd"
+    "build-unplugged": "ng build --base-href /unplugged/ --configuration=unpluggedPrd",
+    "generateQrCodes": "node bin/generateQrCodesWithBadges.js"
   },
   "private": true,
   "dependencies": {
@@ -57,6 +59,7 @@
     "@types/jasminewd2": "~2.0.10",
     "@types/node": "^20.4.0",
     "angular-cli-ghpages": "^1.0.6",
+    "canvas": "^3.1.0",
     "codelyzer": "^6.0.2",
     "eslint": "^9.9.0",
     "eslint-config-prettier": "^9.1.0",
@@ -70,6 +73,8 @@
     "karma-jasmine-html-reporter": "^2.1.0",
     "prettier": "^2.8.8",
     "protractor": "~7.0.0",
+    "qrcode": "^1.5.4",
+    "qrcode-with-logos": "^1.1.1",
     "sass": "^1.63.6",
     "schematics-scss-migrate": "^2.3.17",
     "ts-node": "^10.9.1",
