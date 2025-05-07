@@ -13,6 +13,7 @@ export class HowToComponent implements OnInit {
   pplSettings: PPLSettings;
   pplEvent = pplEvent;
   isBattleFrontierFormat = false;
+  isLeader: boolean;
   elitesInLeague = false;
   year: string;
   challengingImage = `assets/images/challenging-${pplEvent.toLowerCase()}.png`;
@@ -23,6 +24,7 @@ export class HowToComponent implements OnInit {
   ngOnInit(): void {
     this.year = new Date().getFullYear().toString();
     this.loadPPLSettings();
+    this.isLeader = this.dataService.getIsLeader();
   }
 
   goToConsoleTab(): void {

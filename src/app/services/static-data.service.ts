@@ -139,6 +139,9 @@ export class DataService {
               };
             })
             .sort((a, b) => (a.startTime > b.startTime ? 1 : b.startTime > a.startTime ? -1 : 0)),
+          leaderFeedbackSurveyUrl: response.leaderFeedbackSurveyUrl,
+          challengerFeedbackSurveyUrl: response.challengerFeedbackSurveyUrl,
+          showSurveyBanner: response.showSurveyBanner,
           champHasBadge: 'champHasBadge' in Object.keys(response) ? response.champHasBadge : champHasBadge,
         };
 

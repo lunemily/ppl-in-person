@@ -22,6 +22,9 @@ interface Assets {
 }
 
 export interface PPLSettings {
+  leaderFeedbackSurveyUrl: string;
+  challengerFeedbackSurveyUrl: string;
+  showSurveyBanner: boolean;
   showTrainerCard: boolean;
   bingoBoard: boolean;
   eventIsOver: boolean;

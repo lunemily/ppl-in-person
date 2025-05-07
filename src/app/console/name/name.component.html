@@ -35,11 +35,11 @@
       </tr>
     </table>
   </div>
-  <div *ngIf="feedbackSurveyUrl" id="survey-container">
+  <div *ngIf="pplSettings?.showSurveyBanner" id="survey-container">
     <mat-divider></mat-divider>
     <h4>Thanks for participating!</h4>
 
-    <a mat-button color="primary" href="{{ feedbackSurveyUrl }}">Let us know what you thought!</a>
+    <a mat-button color="primary" href="{{ isLeader ? pplSettings?.leaderFeedbackSurveyUrl : pplSettings.challengerFeedbackSurveyUrl }}">Let us know what you thought!</a>
   </div>
   <div *ngIf="championSurveyUrl" id="survey-container" (ngInit)="shootConfetti()">
     <mat-divider></mat-divider>

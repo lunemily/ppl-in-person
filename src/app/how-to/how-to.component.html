@@ -65,3 +65,8 @@
   <mat-expansion-panel-header><h2>Map</h2></mat-expansion-panel-header>
   <app-static-image class="tab-container" [imageSrcPath]="pplSettings.assets.map"></app-static-image>
 </mat-expansion-panel>
+
+<mat-card *ngIf="(pplSettings?.challengerFeedbackSurveyUrl || pplSettings?.leaderFeedbackSurveyUrl)">
+    <h4>Thanks for participating!</h4>
+    <a mat-button color="primary" href="{{ isLeader ? pplSettings?.leaderFeedbackSurveyUrl : pplSettings.challengerFeedbackSurveyUrl }}">Enjoyed your experience? please let us know what you think!</a>
+</mat-card>

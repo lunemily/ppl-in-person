@@ -16,6 +16,8 @@ import { Leader } from 'src/app/models/leader';
 import { Person } from 'src/app/models/person';
 import * as confetti from 'canvas-confetti';
 import { ApiService } from 'src/app/services/api.service';
+import { PPLSettings } from '../../models/settings';
+import { DataService } from '../../services/static-data.service';
 
 export interface DialogData {
   previousName: string;
@@ -35,6 +37,8 @@ export class NameComponent implements OnInit, OnChanges {
   newName: string;
   @Input() feedbackSurveyUrl: string;
   @Input() championSurveyUrl: string;
+  pplSettings: PPLSettings;
+  isLeader: boolean;
 
   @Output('ngInit') initEvent: EventEmitter<any> = new EventEmitter();
 
@@ -42,7 +46,8 @@ export class NameComponent implements OnInit, OnChanges {
     public dialog: MatDialog,
     private apiService: ApiService,
     private renderer2: Renderer2,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private dataService: DataService
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -51,7 +56,16 @@ export class NameComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadPPLSettings();
+    this.isLeader = this.dataService.getIsLeader();
+  }
+
+  loadPPLSettings(): void {
+    this.dataService.getPPLSettings().subscribe((pplSettings) => {
+      this.pplSettings = pplSettings;
+    });
+  }
 
   editName(): void {
     const dialogRef = this.dialog.open(SetNameDialog, {
