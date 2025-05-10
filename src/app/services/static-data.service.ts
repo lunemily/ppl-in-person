@@ -82,8 +82,6 @@ export class DataService {
             champion: DataService.getLeaderTypesFromBitmask(response[leaderId].leaderType).includes(16), // champion leaderType
           };
           leaders.push(leader);
-          // Store individual leader data
-          localStorage.setItem(`leader-data-${leaderId}`, JSON.stringify(leader));
         }
 
         // Sort list of leaders
@@ -94,19 +92,6 @@ export class DataService {
             return a.leaderTypeIds < b.leaderTypeIds ? -1 : 1;
           }
         });
-        const sortedListOfLeaders: string[] = [];
-        for (const leader of sortedfLeaders) {
-          // Lower bit is higher tier
-          sortedListOfLeaders.push(`leader-data-${leader.leaderId}`);
-        }
-
-        // Store list of leaders
-        localStorage.setItem(`leader-data-list`, JSON.stringify(sortedListOfLeaders));
-
-        // Set TTL
-        const ttl = new Date();
-        ttl.setMonth(ttl.getMonth() + 1);
-        localStorage.setItem('leader-data-ttl', ttl.toString());
 
         return sortedfLeaders;
       }),
@@ -144,14 +129,6 @@ export class DataService {
           showSurveyBanner: response.showSurveyBanner,
           champHasBadge: 'champHasBadge' in Object.keys(response) ? response.champHasBadge : champHasBadge,
         };
-
-        // Store settings
-        localStorage.setItem('app-settings', JSON.stringify(settings));
-
-        // Set TTL
-        const ttl = new Date();
-        ttl.setHours(ttl.getMinutes() + 15);
-        localStorage.setItem('app-settings-ttl', ttl.toString());
 
         return settings;
       }),
