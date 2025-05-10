@@ -39,15 +39,13 @@
     <mat-divider></mat-divider>
     <h4>Thanks for participating!</h4>
 
-    <a mat-button color="primary" href="{{ isLeader ? pplSettings?.leaderFeedbackSurveyUrl : pplSettings.challengerFeedbackSurveyUrl }}">Let us know what you thought!</a>
+    <a mat-button color="primary" href="{{ isLeader ? pplSettings?.leaderFeedbackSurveyUrl : pplSettings.challengerFeedbackSurveyUrl }}">Let us know what you thought</a>
   </div>
   <div *ngIf="championSurveyUrl" class="survey-container" (ngInit)="shootConfetti()">
     <mat-divider></mat-divider>
     <h4>Congrats Champion!</h4>
-    <h5>Click the button below to submit your team to the Hall of Fame.</h5>
-
-    <a mat-flat-button color="primary" href="{{ championSurveyUrl }}">
-      <mat-icon class="star-icon">star</mat-icon>Hall of Fame! <mat-icon class="star-icon" iconPositionEnd>star</mat-icon></a
+    <a mat-button color="primary" href="{{ championSurveyUrl }}">
+      <mat-icon class="star-icon">star</mat-icon>Submit your team to the<br/>Hall of Fame<mat-icon class="star-icon" iconPositionEnd>star</mat-icon></a
     >
   </div>
 </mat-card>
