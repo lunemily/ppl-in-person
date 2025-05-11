@@ -18,6 +18,11 @@
         alt="{{ !highlightLeaders ? leader.displayName : leader.badgeName }}"
         src="{{ url }}/static/{{ !highlightLeaders ? 'portraits' : 'badges' }}/{{ leader.leaderId }}.png"
       />
+      <img
+        class="detail-image"
+        alt="{{leader.displayName}}"
+        src="{{ url }}/static/bingo/{{ leader.leaderId }}.png"
+      />
       <p [innerHTML]="!highlightLeaders ? leader.displayName : leader.badgeName"></p>
       <p>{{ leader.bio }}</p>
     </div>
