@@ -8,6 +8,6 @@ Copy-Item ".\docs\$ppl\$env\index.html" ".\docs\$ppl\$env\404.html"
 
 git add .
 
-git commit -m "Build for deploy $ppl"
+git commit -m "Build artifact for $ppl $env"
 
 git push
