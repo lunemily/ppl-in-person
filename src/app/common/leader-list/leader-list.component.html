@@ -24,7 +24,7 @@
         src="{{ url }}/static/bingo/{{ leader.leaderId }}.png"
       />
       <p [innerHTML]="!highlightLeaders ? leader.displayName : leader.badgeName"></p>
-      <p>{{ leader.bio }}</p>
+      <p [innerHTML]="leader.bio"></p>
     </div>
     <div class="leader-formats">
       <span *ngFor="let format of leader.battleFormats" class="callout {{ format.name }}-font">
