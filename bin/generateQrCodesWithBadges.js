@@ -3,14 +3,12 @@ import { createCanvas, loadImage } from 'canvas';
 import fs from 'fs';
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-const prod = false;
+const prod = true;
 const port = prod ? 26438 : 26441;
 const paxEvent = 'west';
 
 function cleanup() {
-  try {
-    fs.rmdirSync('bin/qr');
-  } catch (error) {}
+  fs.rmdirSync('bin/qr', { recursive: true, force: true });
   fs.mkdirSync('bin/qr');
 }
 
@@ -66,6 +64,16 @@ async function getLeaderData() {
 cleanup();
 
 const leaderData = await getLeaderData();
+
+// add bingler
+leaderData.push({ id: 'be24de2c8b94', name: 'Lord Bingler, King of the Bingo Hall' });
+
+// add followingler
+leaderData.push({ id: 'cddaba15d491', name: 'Lord Fingler, the Socialite' });
+
+// add artingler
+leaderData.push({ id: 'f00c087d1a2c', name: 'Lord Fingler, the Artiste' });
+
 console.info(JSON.stringify(leaderData));
 leaderData.map((leader) => {
   main(leader);
