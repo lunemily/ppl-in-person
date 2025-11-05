@@ -4,13 +4,13 @@ import { port } from './ports';
 
 export const pplEvent = 'Local';
 
-export const httpOtions = {
+export const httpOptions = {
   headers: new HttpHeaders({ 'PPL-Event': pplEvent }),
 };
 export const api = {
   serverUrl: `https://toastserv.com:${port}`,
   socketUrl: `wss://toastserv.com:${port}`,
-  httpOtions: httpOtions,
+  httpOptions: httpOptions,
 };
 
 export const features = {

@@ -29,7 +29,7 @@ export class ApiService {
   ) {}
 
   httpOptions = {
-    headers: api.httpOtions.headers.append('Authorization', `Bearer ${this.dataService.getToken()}`),
+    headers: api.httpOptions.headers.append('Authorization', `Bearer ${this.dataService.getToken()}`),
   };
 
   // UNAUTHENTICATED FUNCTIONS

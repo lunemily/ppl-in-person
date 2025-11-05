@@ -21,7 +21,7 @@ export class AuthenticationService {
   ) {}
 
   httpOptions = {
-    headers: api.httpOtions.headers.append('Content-Type', 'application/json'),
+    headers: api.httpOptions.headers.append('Content-Type', 'application/json'),
   };
 
   login(username: string, password: string): void {
@@ -37,7 +37,7 @@ export class AuthenticationService {
 
     const authorization: string = btoa(username + ':' + password);
     const httpOptions = {
-      headers: api.httpOtions.headers.append('Authorization', `Basic ${authorization}`),
+      headers: api.httpOptions.headers.append('Authorization', `Basic ${authorization}`),
     };
 
     // BEGIN: real data
@@ -70,7 +70,7 @@ export class AuthenticationService {
     // Get id and token
     const id = this.cookieService.get(loginId);
     const httpOptions = {
-      headers: api.httpOtions.headers.append('Authorization', `Bearer ${this.cookieService.get(token)}`),
+      headers: api.httpOptions.headers.append('Authorization', `Bearer ${this.cookieService.get(token)}`),
     };
     const url = `${api.serverUrl}/api/v2/logout/${id}`;
 

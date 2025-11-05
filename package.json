@@ -12,6 +12,8 @@
     "e2e": "ng e2e",
     "runEastStg": "ng serve --configuration=eastStg",
     "runEastPrd": "ng serve --configuration=eastPrd",
+    "runUnpluggedStg": "ng serve --configuration=unpluggedStg",
+    "runUnpluggedPrd": "ng serve --configuration=unpluggedPrd",
     "runOnlineStg": "ng serve --configuration=onlineStg",
     "runOnlinePrd": "ng serve --configuration=onlinePrd",
     "runWestStg": "ng serve --configuration=westStg",

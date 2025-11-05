@@ -21,7 +21,7 @@ export class DataService {
     private cookieService: CookieService,
   ) {}
   httpOptions = {
-    headers: api.httpOtions.headers.append('Content-Type', 'application/json'),
+    headers: api.httpOptions.headers.append('Content-Type', 'application/json'),
   };
 
   private readonly _pplData: Observable<JSON>;

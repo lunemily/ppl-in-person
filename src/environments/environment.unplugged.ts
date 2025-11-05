@@ -2,7 +2,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { PPLSettings } from '../app/models/settings';
 import { port } from './ports';
 
-export const pplEvent = 'Online';
+export const pplEvent = 'Unplugged';
 
 export const httpOptions = {
   headers: new HttpHeaders({ 'PPL-Event': pplEvent }),
@@ -15,11 +15,11 @@ export const api = {
 };
 
 export const features = {
-  useQR: false,
+  useQR: true,
 };
 
 export const environment = {
   production: true,
 };
 
-export const champHasBadge = false;
+export const champHasBadge = true;

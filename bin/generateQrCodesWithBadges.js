@@ -3,9 +3,10 @@ import { createCanvas, loadImage } from 'canvas';
 import fs from 'fs';
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-const prod = true;
+const prod = false;
 const port = prod ? 26438 : 26441;
-const paxEvent = 'west';
+const prodPort = 26438;
+const paxEvent = 'aus';
 
 function cleanup() {
   fs.rmdirSync('bin/qr', { recursive: true, force: true });

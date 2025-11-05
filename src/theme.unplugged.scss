@@ -13,7 +13,7 @@
 // Fonts
 @font-face {
   font-family: header-font;
-  src: url('assets/fonts/ethnocentric-rg.ttf') format('truetype');
+  src: url('assets/fonts/PermanentMarker.ttf') format('truetype');
 }
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
@@ -143,20 +143,20 @@ $ppl-typography: mat.define-typography-config(
 // Theme Config
 
 body {
-  --primary-color: #d91e1e;
-  --primary-lighter-color: #f4bcbc;
-  --primary-darker-color: #ca1212;
+  --primary-color: #8d1bbc;
+  --primary-lighter-color: #c09bd1;
+  --primary-darker-color: #720c9a;
   --text-primary-color: #{$light-primary-text};
   --text-primary-lighter-color: #{$dark-primary-text};
   --text-primary-darker-color: #{$light-primary-text};
-  background-image: url('assets/images/wallpaper-east.png');
+  background-image: url('assets/images/wallpaper-unplugged.png');
 }
 
 $mat-primary: (
-  main: #d91e1e,
-  lighter: #f4bcbc,
-  darker: #ca1212,
-  200: #d91e1e,
+  main: #8d1bbc,
+  lighter: #c09bd1,
+  darker: #720c9a,
+  200: #8d1bbc,
   // For slide toggle,
   contrast:
     (
@@ -169,18 +169,18 @@ $mat-primary: (
 $theme-primary: mat-palette($mat-primary, main, lighter, darker);
 
 body {
-  --accent-color: #ffa3a3;
-  --accent-lighter-color: #ffe3e3;
-  --accent-darker-color: #ff8888;
+  --accent-color: #c09bd1;
+  --accent-lighter-color: #e6ddea;
+  --accent-darker-color: #ae7ec6;
   --text-accent-color: #{$dark-primary-text};
   --text-accent-lighter-color: #{$dark-primary-text};
   --text-accent-darker-color: #{$dark-primary-text};
 }
 $mat-accent: (
-  main: #ffa3a3,
-  lighter: #ffe3e3,
-  darker: #ff8888,
-  200: #ffa3a3,
+  main: #c09bd1,
+  lighter: #e6ddea,
+  darker: #ae7ec6,
+  200: #c09bd1,
   // For slide toggle,
   contrast:
     (
@@ -192,18 +192,18 @@ $mat-accent: (
 $theme-accent: mat-palette($mat-accent, main, lighter, darker);
 
 body {
-  --warn-color: #830000;
-  --warn-lighter-color: #dab3b3;
-  --warn-darker-color: #660000;
+  --warn-color: #9a0c72;
+  --warn-lighter-color: #c575a7;
+  --warn-darker-color: #700353;
   --text-warn-color: #{$light-primary-text};
   --text-warn-lighter-color: #{$dark-primary-text};
   --text-warn-darker-color: #{$light-primary-text};
 }
 $mat-warn: (
-  main: #830000,
-  lighter: #dab3b3,
-  darker: #660000,
-  200: #830000,
+  main: #9a0c72,
+  lighter: #c575a7,
+  darker: #700353,
+  200: #9a0c72,
   // For slide toggle,
   contrast:
     (
