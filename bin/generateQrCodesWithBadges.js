@@ -6,7 +6,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 const prod = false;
 const port = prod ? 26438 : 26441;
 const prodPort = 26438;
-const paxEvent = 'aus';
+const paxEvent = 'unplugged';
 
 function cleanup() {
   fs.rmdirSync('bin/qr', { recursive: true, force: true });
@@ -67,13 +67,16 @@ cleanup();
 const leaderData = await getLeaderData();
 
 // add bingler
-leaderData.push({ id: 'be24de2c8b94', name: 'Lord Bingler, King of the Bingo Hall' });
+// leaderData.push({ id: 'be24de2c8b94', name: 'Lord Bingler, King of the Bingo Hall' });
 
 // add followingler
-leaderData.push({ id: 'cddaba15d491', name: 'Lord Fingler, the Socialite' });
+// leaderData.push({ id: 'cddaba15d491', name: 'Lord Fingler, the Socialite' });
 
 // add artingler
 leaderData.push({ id: 'f00c087d1a2c', name: 'Lord Fingler, the Artiste' });
+
+// add Guesler
+leaderData.push({ id: 'be24de2c8b94', name: 'Lord Guesler, the Detective' });
 
 console.info(JSON.stringify(leaderData));
 leaderData.map((leader) => {

@@ -12,6 +12,7 @@ export class LeaderListComponent implements OnInit {
   @Input() leaderList: Leader[];
   @Input() highlightLeaders: boolean;
   @Input() leaderDifficulty: string;
+  @Input() showBingoImage: boolean;
 
   ngOnInit(): void {
     if (!this.highlightLeaders) {
