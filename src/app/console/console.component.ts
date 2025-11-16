@@ -6,6 +6,7 @@ import { ApiService } from '../services/api.service';
 import { Subscription } from 'rxjs';
 import { DataService } from '../services/static-data.service';
 import { MatTabGroup } from '@angular/material/tabs';
+import { PPLSettings } from '../models/settings';
 
 @Component({
   selector: 'app-console',
@@ -24,10 +25,12 @@ export class ConsoleComponent implements OnInit {
   @Input() tabGroup: MatTabGroup;
   private subscription: Subscription;
   seenBingo = false;
+  pplSettings: PPLSettings;
 
   constructor(private apiService: ApiService, private dataService: DataService) {}
 
   ngOnInit(): void {
+    this.loadPPLSettings();
     this.loginId = this.dataService.getLoginId();
     this.isLeader = this.dataService.getIsLeader();
     this.loadUser();
@@ -37,6 +40,12 @@ export class ConsoleComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  loadPPLSettings(): void {
+    this.dataService.getPPLSettings().subscribe((pplSettings) => {
+      this.pplSettings = pplSettings;
+    });
   }
 
   loadUser(): void {
