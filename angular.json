@@ -590,7 +590,7 @@
           "builder": "angular-cli-ghpages:deploy",
           "options": {
             "baseHref": "/ppl-in-person/",
-            "buildTarget": "ppl-site:build:unpluggedStg"
+            "buildTarget": "ppl-site:build:eastStg"
           }
         }
       }

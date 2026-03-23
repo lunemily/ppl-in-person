@@ -422,18 +422,19 @@ export class ApiService {
     const leaderId = this.dataService.getLoginId();
     const url = `${api.serverUrl}/api/v2/leader/${leaderId}`;
 
-    // Validation
-    const linkCodeRegex = /^[0-9]{8}$/g;
-    const validatedLinkCode = newLinkCode.replace(/\s/g, '').match(linkCodeRegex);
-
-    if (validatedLinkCode.length === 1) {
-      console.info("Setting leader's linkCode to: " + newLinkCode);
-      this.http.put<any>(url, { linkCode: validatedLinkCode[0] }, this.httpOptions).subscribe(() => {
-        window.location.reload();
-      });
-    } else {
-      this.messageService.showError('Invalid linkCode. Please try again.');
-    }
+    // Give the people what they want!
+    // // Validation
+    // const linkCodeRegex = /^[0-9]{8}$/g;
+    // const validatedLinkCode = newLinkCode.replace(/\s/g, '').match(linkCodeRegex);
+    //
+    // if (validatedLinkCode && validatedLinkCode.length === 1) {
+    // } else {
+    //   this.messageService.showError('Invalid linkCode. Please try again.');
+    // }
+    console.info("Setting leader's linkCode to: " + newLinkCode);
+    this.http.put<any>(url, { linkCode: newLinkCode }, this.httpOptions).subscribe(() => {
+      window.location.reload();
+    });
   }
 
   /**
