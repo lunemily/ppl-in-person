@@ -27,6 +27,7 @@
     "build-online": "ng build --base-href /online/ --configuration=onlinePrd",
     "build-unplugged": "ng build --base-href /unplugged/ --configuration=unpluggedPrd",
     "generateQrCodes": "node bin/generateQrCodesWithBadges.js"
+  },
   "private": true,
   "dependencies": {
     "@angular-devkit/architect": "^0.1702.2",
