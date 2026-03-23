@@ -87,7 +87,6 @@ $mat-light-theme-background: (
 
 // Compute font config
 @include mat-core();
-
 $ppl-typography: mat.define-typography-config(
   $headline-4:
     mat.define-typography-level(
@@ -138,6 +137,7 @@ $ppl-typography: mat.define-typography-config(
       $letter-spacing: normal,
     ),
 );
+
 @include mat.typography-hierarchy($ppl-typography);
 
 // Theme Config

@@ -26,7 +26,8 @@
     "build-aus": "ng build --base-href /aus/ --configuration=ausPrd",
     "build-online": "ng build --base-href /online/ --configuration=onlinePrd",
     "build-unplugged": "ng build --base-href /unplugged/ --configuration=unpluggedPrd",
-    "generateQrCodes": "node bin/generateQrCodesWithBadges.js"
+    "generateQrCodes": "node bin/generateQrCodesWithBadges.js",
+    "buildDeployEastStg": ".\\deploy.ps1 east Stg"
   },
   "private": true,
   "dependencies": {
@@ -68,6 +69,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "jasmine-core": "^5.0.1",
     "jasmine-spec-reporter": "~7.0.0",
+    "jszip": "^3.10.1",
     "karma": "^6.4.2",
     "karma-chrome-launcher": "^3.2.0",
     "karma-coverage-istanbul-reporter": "~3.0.3",
