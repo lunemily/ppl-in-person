@@ -7,11 +7,11 @@ on:
         required: true
         type: choice
         options:
-          - East
-          - West
-          - Aus
-          - Online
-          - Unplugged
+          - east
+          - west
+          - aus
+          - online
+          - unplugged
 jobs:
   npm_build:
     name: Build the site
