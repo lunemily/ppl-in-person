@@ -2,7 +2,7 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { ClipboardModule } from '@angular/cdk/clipboard';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
@@ -62,10 +62,8 @@ import { QrEnqueueComponent, EnqueueDialog } from './common/qr-enqueue/qr-enqueu
 import { LinkCodeComponent, SetLinkCodeDialog } from './console/leader-console/link-code/link-code.component';
 import { NgOptimizedImage } from '@angular/common';
 
-@NgModule({
-    declarations: [AppComponent],
-    imports: [
-        MatAutocompleteModule,
+@NgModule({ declarations: [AppComponent],
+    bootstrap: [AppComponent], imports: [MatAutocompleteModule,
         MatButtonModule,
         MatCardModule,
         MatDialogModule,
@@ -86,7 +84,6 @@ import { NgOptimizedImage } from '@angular/common';
         FormsModule,
         ReactiveFormsModule,
         ClipboardModule,
-        HttpClientModule,
         BrowserAnimationsModule,
         QRCodeModule,
         AppRoutingModule,
@@ -124,9 +121,5 @@ import { NgOptimizedImage } from '@angular/common';
         QrCodeComponent,
         QrEnqueueComponent,
         LinkCodeComponent,
-        SetLinkCodeDialog,
-    ],
-    providers: [CookieService, Title],
-    bootstrap: [AppComponent],
-})
+        SetLinkCodeDialog], providers: [CookieService, Title, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {}
