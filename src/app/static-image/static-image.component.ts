@@ -2,9 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { api } from '../../environments/environment';
 
 @Component({
-  selector: 'app-static-image',
-  templateUrl: './static-image.component.html',
-  styleUrls: ['./static-image.component.scss'],
+    selector: 'app-static-image',
+    templateUrl: './static-image.component.html',
+    styleUrls: ['./static-image.component.scss'],
+    standalone: true,
 })
 export class StaticImageComponent implements OnInit {
   @Input() imageSrcPath: string;

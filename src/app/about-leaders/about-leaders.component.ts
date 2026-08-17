@@ -3,11 +3,20 @@ import { Leader } from '../models/leader';
 import { DataService } from '../services/static-data.service';
 import { api, leaderTypesReverseMap } from '../constants.data';
 import { ApiService } from '../services/api.service';
+import { LeaderListComponent } from '../common/leader-list/leader-list.component';
+import { NgIf } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-about-leaders',
-  templateUrl: './about-leaders.component.html',
-  styleUrls: ['./about-leaders.component.scss'],
+    selector: 'app-about-leaders',
+    templateUrl: './about-leaders.component.html',
+    styleUrls: ['./about-leaders.component.scss'],
+    standalone: true,
+    imports: [
+        MatCardModule,
+        NgIf,
+        LeaderListComponent,
+    ],
 })
 export class AboutLeadersComponent implements OnInit {
   leaderData: {

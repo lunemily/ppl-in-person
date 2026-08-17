@@ -8,8 +8,8 @@ describe('LinkCodeComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [LinkCodeComponent]
-    });
+    imports: [LinkCodeComponent]
+});
     fixture = TestBed.createComponent(LinkCodeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

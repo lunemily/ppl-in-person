@@ -10,9 +10,9 @@ describe('LeaderConsoleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      providers: [MatDialog, Overlay],
-      declarations: [LeaderConsoleComponent],
-    }).compileComponents();
+    imports: [LeaderConsoleComponent],
+    providers: [MatDialog, Overlay],
+}).compileComponents();
   }));
 
   beforeEach(() => {

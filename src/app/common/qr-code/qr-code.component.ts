@@ -1,10 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { api, pplEvent } from '../../constants.data'
+import { QRCodeModule } from 'angularx-qrcode';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-qr-code',
-  templateUrl: './qr-code.component.html',
-  styleUrls: ['./qr-code.component.scss'],
+    selector: 'app-qr-code',
+    templateUrl: './qr-code.component.html',
+    styleUrls: ['./qr-code.component.scss'],
+    standalone: true,
+    imports: [MatCardModule, QRCodeModule],
 })
 export class QrCodeComponent implements OnInit {
   @Input() isLeader: boolean

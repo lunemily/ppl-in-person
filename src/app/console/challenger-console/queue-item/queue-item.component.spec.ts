@@ -10,8 +10,8 @@ describe('QueueItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [QueueItemComponent],
-    }).compileComponents();
+    imports: [QueueItemComponent],
+}).compileComponents();
   }));
 
   beforeEach(() => {

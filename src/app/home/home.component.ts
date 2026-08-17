@@ -6,11 +6,34 @@ import { PPLSettings } from '../models/settings';
 import { WebSocketSubject, webSocket } from 'rxjs/webSocket';
 import { api } from '../constants.data';
 import { MessageService } from '../services/message.service';
+import { BingoBoardComponent } from '../bingo-board/bingo-board.component';
+import { HowToComponent } from '../how-to/how-to.component';
+import { AboutLeadersComponent } from '../about-leaders/about-leaders.component';
+import { TrainerCardComponent } from '../common/trainer-card/trainer-card.component';
+import { ConsoleComponent } from '../console/console.component';
+import { AuthComponent } from './auth/auth.component';
+import { NgIf } from '@angular/common';
+import { MeetupTimesComponent } from './meetup-times/meetup-times.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss'],
+    standalone: true,
+    imports: [
+        MatTabsModule,
+        MatIconModule,
+        MeetupTimesComponent,
+        NgIf,
+        AuthComponent,
+        ConsoleComponent,
+        TrainerCardComponent,
+        AboutLeadersComponent,
+        HowToComponent,
+        BingoBoardComponent,
+    ],
 })
 export class HomeComponent implements OnInit {
   loginId: string;

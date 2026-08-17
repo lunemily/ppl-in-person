@@ -4,11 +4,16 @@ import { DataService } from 'src/app/services/static-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Dialog } from '@angular/cdk/dialog';
 import { Observable, of } from 'rxjs';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-meetup-times',
-  templateUrl: './meetup-times.component.html',
-  styleUrls: ['./meetup-times.component.scss'],
+    selector: 'app-meetup-times',
+    templateUrl: './meetup-times.component.html',
+    styleUrls: ['./meetup-times.component.scss'],
+    standalone: true,
+    imports: [NgIf, MatButtonModule],
 })
 export class MeetupTimesComponent implements OnInit {
   showMeetupBanner: boolean = false;
@@ -42,9 +47,11 @@ export class MeetupTimesComponent implements OnInit {
 }
 
 @Component({
-  selector: 'meetup-popup',
-  templateUrl: 'meetup-popup.component.html',
-  styleUrls: ['meetup-popup.component.scss'],
+    selector: 'meetup-popup',
+    templateUrl: 'meetup-popup.component.html',
+    styleUrls: ['meetup-popup.component.scss'],
+    standalone: true,
+    imports: [MatListModule, NgFor],
 })
 export class MeetupPopup implements OnInit {
   pplSettings: PPLSettings;

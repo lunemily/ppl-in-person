@@ -1,11 +1,20 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Leader } from 'src/app/models/leader';
 import { ApiService } from 'src/app/services/api.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-queue-mgmt',
-  templateUrl: './queue-mgmt.component.html',
-  styleUrls: ['./queue-mgmt.component.scss'],
+    selector: 'app-queue-mgmt',
+    templateUrl: './queue-mgmt.component.html',
+    styleUrls: ['./queue-mgmt.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        MatButtonModule,
+        MatIconModule,
+    ],
 })
 export class QueueMgmtComponent implements OnInit {
   @Input() leader: Leader;

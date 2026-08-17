@@ -8,8 +8,8 @@ describe('QueueMgmtComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [QueueMgmtComponent]
-    });
+    imports: [QueueMgmtComponent]
+});
     fixture = TestBed.createComponent(QueueMgmtComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -48,8 +48,9 @@ export class AppComponent {
 }
 
 @Component({
-  selector: 'event-over-dialog',
-  templateUrl: 'event-over-dialog.html',
-  styleUrls: ['./event-over-dialog.scss'],
+    selector: 'event-over-dialog',
+    templateUrl: 'event-over-dialog.html',
+    styleUrls: ['./event-over-dialog.scss'],
+    standalone: true,
 })
 export class EventOverDialog {}

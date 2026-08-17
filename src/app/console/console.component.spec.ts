@@ -11,9 +11,9 @@ describe('ConsoleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      providers: [HttpClient, HttpHandler, MatSnackBar, Overlay],
-      declarations: [ConsoleComponent],
-    }).compileComponents();
+    imports: [ConsoleComponent],
+    providers: [HttpClient, HttpHandler, MatSnackBar, Overlay],
+}).compileComponents();
 
     fixture = TestBed.createComponent(ConsoleComponent);
     component = fixture.componentInstance;

@@ -11,9 +11,9 @@ describe('ChallengerSearchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      providers: [HttpClient, HttpHandler, MatSnackBar, Overlay],
-      declarations: [ChallengerSearchComponent],
-    }).compileComponents();
+    imports: [ChallengerSearchComponent],
+    providers: [HttpClient, HttpHandler, MatSnackBar, Overlay],
+}).compileComponents();
   });
 
   beforeEach(() => {

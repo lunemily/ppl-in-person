@@ -11,9 +11,9 @@ describe('AboutLeadersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      providers: [HttpClient, HttpHandler, MatSnackBar, Overlay],
-      declarations: [AboutLeadersComponent],
-    }).compileComponents();
+    imports: [AboutLeadersComponent],
+    providers: [HttpClient, HttpHandler, MatSnackBar, Overlay],
+}).compileComponents();
 
     fixture = TestBed.createComponent(AboutLeadersComponent);
     component = fixture.componentInstance;

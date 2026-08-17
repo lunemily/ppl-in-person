@@ -7,11 +7,24 @@ import { Subscription } from 'rxjs';
 import { DataService } from '../services/static-data.service';
 import { MatTabGroup } from '@angular/material/tabs';
 import { PPLSettings } from '../models/settings';
+import { ChallengerConsoleComponent } from './challenger-console/challenger-console.component';
+import { LeaderConsoleComponent } from './leader-console/leader-console.component';
+import { NameComponent } from './name/name.component';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-console',
-  templateUrl: './console.component.html',
-  styleUrls: ['./console.component.scss'],
+    selector: 'app-console',
+    templateUrl: './console.component.html',
+    styleUrls: ['./console.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        MatButtonModule,
+        NameComponent,
+        LeaderConsoleComponent,
+        ChallengerConsoleComponent,
+    ],
 })
 export class ConsoleComponent implements OnInit {
   loginId: string;

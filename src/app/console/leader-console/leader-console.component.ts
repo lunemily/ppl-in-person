@@ -5,6 +5,15 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { api, features } from '../../constants.data';
 import { Queue } from '../../models/queue';
 import { DataService } from '../../services/static-data.service';
+import { QrEnqueueComponent } from '../../common/qr-enqueue/qr-enqueue.component';
+import { QrCodeComponent } from '../../common/qr-code/qr-code.component';
+import { LeaderHoldItemComponent } from './leader-hold-item/leader-hold-item.component';
+import { ChallengerSearchComponent } from './challenger-search/challenger-search.component';
+import { QueueMgmtComponent } from './queue-mgmt/queue-mgmt.component';
+import { LeaderQueueItemComponent } from './leader-queue-item/leader-queue-item.component';
+import { LinkCodeComponent } from './link-code/link-code.component';
+import { NgIf, NgFor } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 
 export interface DialogData {
   previousName: string;
@@ -12,9 +21,22 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'app-leader-console',
-  templateUrl: './leader-console.component.html',
-  styleUrls: ['./leader-console.component.scss'],
+    selector: 'app-leader-console',
+    templateUrl: './leader-console.component.html',
+    styleUrls: ['./leader-console.component.scss'],
+    standalone: true,
+    imports: [
+        MatCardModule,
+        NgIf,
+        LinkCodeComponent,
+        NgFor,
+        LeaderQueueItemComponent,
+        QueueMgmtComponent,
+        ChallengerSearchComponent,
+        LeaderHoldItemComponent,
+        QrCodeComponent,
+        QrEnqueueComponent,
+    ],
 })
 export class LeaderConsoleComponent implements OnInit {
   battleCode: string;

@@ -11,9 +11,9 @@ describe('AuthComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      providers: [HttpClient, HttpHandler, MatSnackBar, Overlay],
-      declarations: [AuthComponent],
-    }).compileComponents();
+    imports: [AuthComponent],
+    providers: [HttpClient, HttpHandler, MatSnackBar, Overlay],
+}).compileComponents();
   });
 
   beforeEach(() => {

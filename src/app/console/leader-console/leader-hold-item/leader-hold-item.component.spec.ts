@@ -11,9 +11,9 @@ describe('LeaderHoldItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      providers: [HttpClient, HttpHandler, MatSnackBar, Overlay],
-      declarations: [LeaderHoldItemComponent],
-    }).compileComponents();
+    imports: [LeaderHoldItemComponent],
+    providers: [HttpClient, HttpHandler, MatSnackBar, Overlay],
+}).compileComponents();
   });
 
   beforeEach(() => {

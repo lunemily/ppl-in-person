@@ -2,9 +2,14 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Leader } from '../../models/leader';
 import { DataService } from '../../services/static-data.service';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { Format } from '../../models/format';
 import { ApiService } from '../../services/api.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgIf, NgFor } from '@angular/common';
 
 export interface DialogData {
   challengerId: string;
@@ -15,9 +20,10 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'app-qr-enqueue',
-  templateUrl: './qr-enqueue.component.html',
-  styleUrls: ['./qr-enqueue.component.scss'],
+    selector: 'app-qr-enqueue',
+    templateUrl: './qr-enqueue.component.html',
+    styleUrls: ['./qr-enqueue.component.scss'],
+    standalone: true,
 })
 export class QrEnqueueComponent implements OnInit {
   constructor(
@@ -117,8 +123,18 @@ export class QrEnqueueComponent implements OnInit {
 }
 
 @Component({
-  selector: 'enqueue-dialog',
-  templateUrl: 'enqueue-dialog.html',
+    selector: 'enqueue-dialog',
+    templateUrl: 'enqueue-dialog.html',
+    standalone: true,
+    imports: [
+        NgIf,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        NgFor,
+        MatOptionModule,
+        MatButtonModule,
+    ],
 })
 export class EnqueueDialog {
   selectedFormat: number;

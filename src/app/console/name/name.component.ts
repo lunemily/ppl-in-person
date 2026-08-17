@@ -10,7 +10,7 @@ import {
   Renderer2,
   SimpleChanges,
 } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { Challenger } from 'src/app/models/challenger';
 import { Leader } from 'src/app/models/leader';
 import { Person } from 'src/app/models/person';
@@ -18,6 +18,14 @@ import * as confetti from 'canvas-confetti';
 import { ApiService } from 'src/app/services/api.service';
 import { PPLSettings } from '../../models/settings';
 import { DataService } from '../../services/static-data.service';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 
 export interface DialogData {
   previousName: string;
@@ -25,9 +33,17 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'app-name',
-  templateUrl: './name.component.html',
-  styleUrls: ['./name.component.scss'],
+    selector: 'app-name',
+    templateUrl: './name.component.html',
+    styleUrls: ['./name.component.scss'],
+    standalone: true,
+    imports: [
+        MatCardModule,
+        NgIf,
+        MatButtonModule,
+        MatIconModule,
+        MatDividerModule,
+    ],
 })
 export class NameComponent implements OnInit, OnChanges {
   @Input() leader: Leader;
@@ -118,8 +134,16 @@ export class NameComponent implements OnInit, OnChanges {
 // Separate component for the name dialog
 
 @Component({
-  selector: 'set-name-dialog',
-  templateUrl: 'set-name-dialog.html',
+    selector: 'set-name-dialog',
+    templateUrl: 'set-name-dialog.html',
+    standalone: true,
+    imports: [
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        MatButtonModule,
+    ],
 })
 export class SetNameDialog {
   constructor(public dialogRef: MatDialogRef<SetNameDialog>, @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
