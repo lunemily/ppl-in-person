@@ -518,48 +518,48 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ppl-site:build"
+            "buildTarget": "ppl-site:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ppl-site:build:production"
+              "buildTarget": "ppl-site:build:production"
             },
             "eastPrd": {
-              "browserTarget": "ppl-site:build:eastPrd"
+              "buildTarget": "ppl-site:build:eastPrd"
             },
             "eastStg": {
-              "browserTarget": "ppl-site:build:eastStg"
+              "buildTarget": "ppl-site:build:eastStg"
             },
             "unpluggedPrd": {
-              "browserTarget": "ppl-site:build:unpluggedPrd"
+              "buildTarget": "ppl-site:build:unpluggedPrd"
             },
             "unpluggedStg": {
-              "browserTarget": "ppl-site:build:unpluggedStg"
+              "buildTarget": "ppl-site:build:unpluggedStg"
             },
             "onlinePrd": {
-              "browserTarget": "ppl-site:build:onlinePrd"
+              "buildTarget": "ppl-site:build:onlinePrd"
             },
             "onlineStg": {
-              "browserTarget": "ppl-site:build:onlineStg"
+              "buildTarget": "ppl-site:build:onlineStg"
             },
             "westPrd": {
-              "browserTarget": "ppl-site:build:westPrd"
+              "buildTarget": "ppl-site:build:westPrd"
             },
             "westStg": {
-              "browserTarget": "ppl-site:build:westStg"
+              "buildTarget": "ppl-site:build:westStg"
             },
             "ausPrd": {
-              "browserTarget": "ppl-site:build:ausPrd"
+              "buildTarget": "ppl-site:build:ausPrd"
             },
             "ausStg": {
-              "browserTarget": "ppl-site:build:ausStg"
+              "buildTarget": "ppl-site:build:ausStg"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ppl-site:build"
+            "buildTarget": "ppl-site:build"
           }
         },
         "test": {
