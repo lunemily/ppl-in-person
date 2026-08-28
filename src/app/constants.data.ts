@@ -6,6 +6,7 @@ export const battleFormatsMap = {
   doubles: 2,
   multi: 4,
   special: 8,
+  champions: 16,
 };
 
 export const battleFormatsReverseMap = {
@@ -14,6 +15,7 @@ export const battleFormatsReverseMap = {
   2: 'doubles',
   4: 'multi',
   8: 'special',
+  16: 'champions',
 };
 
 export const leaderTypesMap = {

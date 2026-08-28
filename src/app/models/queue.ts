@@ -8,7 +8,6 @@ export interface Queue {
   badgeName?: string;
   challengerId?: string;
   position: number;
-  badgeArt?: string;
   battleFormat?: Format;
   battleDifficulty?: Format;
   battleCode?: string;
