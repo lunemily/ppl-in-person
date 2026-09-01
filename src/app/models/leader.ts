@@ -66,19 +66,21 @@ export function leaderFromResponse(id: string, rawLeader: Leader): Leader {
     badgeName: rawLeader.badgeName,
     bio: rawLeader.bio,
     battleFormatIds: getBattleFormatsFromBitmask(rawLeader.battleFormat),
-    battleFormats: getBattleFormatsFromBitmask(rawLeader.battleFormat).map(function (formatId, index, formatIds) {
-      const format: Format = {
-        id: formatId,
-        name: battleFormatsReverseMap[formatId],
-        games:
-          formatId !== battleFormatsMap.special
-            ? leaderSupportsChampions(formatIds)
-              ? [Game.ScarletViolet, Game.Champions]
-              : [Game.ScarletViolet]
-            : [],
-      };
-      return format;
-    }, []),
+    battleFormats: getBattleFormatsFromBitmask(rawLeader.battleFormat)
+      .map(function (formatId, index, formatIds) {
+        const format: Format = {
+          id: formatId,
+          name: battleFormatsReverseMap[formatId],
+          games:
+            formatId !== battleFormatsMap.special
+              ? leaderSupportsChampions(formatIds)
+                ? [Game.ScarletViolet, Game.Champions]
+                : [Game.ScarletViolet]
+              : [],
+        };
+        return format;
+      }, [])
+      .filter((format) => format.id !== battleFormatsMap.champions),
     leaderTypeIds: getLeaderTypesFromBitmask(rawLeader.leaderType),
     leaderTypes: getLeaderTypesFromBitmask(rawLeader.leaderType).map(function (typeId) {
       const type: Format = {

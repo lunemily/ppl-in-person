@@ -5,6 +5,17 @@ export enum Game {
   Champions = 'pokemon-champions',
 }
 
+export function gameName(game: Game) {
+  switch (game) {
+    case Game.ScarletViolet:
+      return 'Scarlet and Violet';
+    case Game.Champions:
+      return 'Champions';
+    default:
+      throw new Error(`Unknown game: ${game}`);
+  }
+}
+
 export interface Format {
   id: number;
   name: string;

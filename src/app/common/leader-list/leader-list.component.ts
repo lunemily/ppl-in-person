@@ -3,17 +3,15 @@ import { api } from 'src/app/constants.data';
 import { Leader, isEliteLeader } from 'src/app/models/leader';
 import { NgFor, NgIf } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { gameName } from '../../models/format';
 
 @Component({
-    selector: 'app-leader-list',
-    templateUrl: './leader-list.component.html',
-    styleUrls: ['./leader-list.component.scss'],
-    standalone: true,
-    imports: [
-        MatExpansionModule,
-        NgFor,
-        NgIf,
-    ],
+  selector: 'app-leader-list',
+  templateUrl: './leader-list.component.html',
+  styleUrls: ['./leader-list.component.scss'],
+  standalone: true,
+  imports: [MatExpansionModule, NgFor, NgIf, MatTooltipModule],
 })
 export class LeaderListComponent implements OnInit {
   url = api.serverUrl;
@@ -33,4 +31,6 @@ export class LeaderListComponent implements OnInit {
   }
 
   constructor() {}
+
+  protected readonly gameName = gameName;
 }

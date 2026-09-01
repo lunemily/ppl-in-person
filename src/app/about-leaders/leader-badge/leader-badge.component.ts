@@ -11,6 +11,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgFor, NgIf } from '@angular/common';
+import { gameName } from '../../models/format';
 
 export interface DialogData {
   url: string;
@@ -21,11 +22,11 @@ export interface DialogData {
 }
 
 @Component({
-    selector: 'app-leader-badge',
-    templateUrl: './leader-badge.component.html',
-    styleUrls: ['./leader-badge.component.scss'],
-    standalone: true,
-    imports: [NgFor],
+  selector: 'app-leader-badge',
+  templateUrl: './leader-badge.component.html',
+  styleUrls: ['./leader-badge.component.scss'],
+  standalone: true,
+  imports: [NgFor],
 })
 export class LeaderBadgeComponent implements OnInit {
   loginId: string;
@@ -83,24 +84,18 @@ export class LeaderBadgeComponent implements OnInit {
       // this.challengerService.setChallengerName(this.challenger.id, this.newName);
     });
   }
+
+  protected readonly gameName = gameName;
 }
 
 // Separate component for the enqueue dialog
 
 @Component({
-    selector: 'leader-detail-enqueue-dialog',
-    templateUrl: 'leader-detail-enqueue-dialog.html',
-    styleUrls: ['leader-detail-enqueue-dialog.scss'],
-    standalone: true,
-    imports: [
-        NgIf,
-        MatFormFieldModule,
-        MatSelectModule,
-        NgFor,
-        MatOptionModule,
-        MatDialogModule,
-        MatButtonModule,
-    ],
+  selector: 'leader-detail-enqueue-dialog',
+  templateUrl: 'leader-detail-enqueue-dialog.html',
+  styleUrls: ['leader-detail-enqueue-dialog.scss'],
+  standalone: true,
+  imports: [NgIf, MatFormFieldModule, MatSelectModule, NgFor, MatOptionModule, MatDialogModule, MatButtonModule],
 })
 export class LeaderDetailEnqueueDialog {
   selectedFormat: number;

@@ -29,7 +29,7 @@
     <div class="leader-formats">
       <span *ngFor="let format of leader.battleFormats" class="callout {{ format.name }}-font">
         {{ format.name.toUpperCase() }}
-        <img *ngFor="let game of format.games" class="formats-games" src="assets/images/{{ game }}.png"/>
+          <img *ngFor="let game of format.games" class="formats-games" src="assets/images/{{ game }}.png" matTooltip="{{ gameName(game) }}"/>
       </span>
     </div>
   </mat-expansion-panel>
