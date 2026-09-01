@@ -8,8 +8,8 @@ describe('HowToComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HowToComponent]
-    });
+    imports: [HowToComponent]
+});
     fixture = TestBed.createComponent(HowToComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

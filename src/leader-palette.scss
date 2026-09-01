@@ -8,6 +8,7 @@ $singles: #248bff;
 $doubles: #b450d9;
 $multi: #ff08c8;
 $special: #00d25e;
+$champions: #cc9909;
 
 $dark-text: #000000;
 $light-text: #ffffff;
@@ -51,6 +52,10 @@ $light-text: #ffffff;
 
 .special-font {
   color: $special;
+}
+
+.champions-font {
+  color: $champions;
 }
 
 .casual-border {

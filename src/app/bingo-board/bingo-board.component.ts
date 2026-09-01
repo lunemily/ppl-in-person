@@ -5,11 +5,19 @@ import { ApiService } from '../services/api.service';
 import { api } from '../constants.data';
 import { Subscription } from 'rxjs';
 import { DataService } from '../services/static-data.service';
+import { MatCardModule } from '@angular/material/card';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-bingo-board',
-  templateUrl: './bingo-board.component.html',
-  styleUrls: ['./bingo-board.component.scss'],
+    selector: 'app-bingo-board',
+    templateUrl: './bingo-board.component.html',
+    styleUrls: ['./bingo-board.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        MatCardModule,
+        NgFor,
+    ],
 })
 export class BingoBoardComponent implements OnInit {
   loginId: string;

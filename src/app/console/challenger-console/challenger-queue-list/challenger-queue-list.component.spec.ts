@@ -8,8 +8,8 @@ describe('ChallengerQueueListComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ChallengerQueueListComponent]
-    });
+    imports: [ChallengerQueueListComponent]
+});
     fixture = TestBed.createComponent(ChallengerQueueListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

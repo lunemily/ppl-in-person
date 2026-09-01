@@ -10,9 +10,9 @@ describe('LeaderQueueItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      providers: [MatDialog, Overlay],
-      declarations: [LeaderQueueItemComponent],
-    }).compileComponents();
+    imports: [LeaderQueueItemComponent],
+    providers: [MatDialog, Overlay],
+}).compileComponents();
   });
 
   beforeEach(() => {

@@ -8,8 +8,8 @@ describe('QrCodeComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [QrCodeComponent]
-    });
+    imports: [QrCodeComponent]
+});
     fixture = TestBed.createComponent(QrCodeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

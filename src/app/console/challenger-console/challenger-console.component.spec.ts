@@ -10,9 +10,9 @@ describe('ChallengerConsoleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      providers: [MatDialog, Overlay],
-      declarations: [ChallengerConsoleComponent],
-    }).compileComponents();
+    imports: [ChallengerConsoleComponent],
+    providers: [MatDialog, Overlay],
+}).compileComponents();
   }));
 
   beforeEach(() => {

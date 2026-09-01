@@ -8,8 +8,8 @@ describe('QrEnqueueComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [QrEnqueueComponent]
-    });
+    imports: [QrEnqueueComponent]
+});
     fixture = TestBed.createComponent(QrEnqueueComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

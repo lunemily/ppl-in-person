@@ -1,11 +1,17 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { api, pplEvent } from '../../constants.data';
 import { Leader } from 'src/app/models/leader';
 import { ApiService } from 'src/app/services/api.service';
 import { PPLSettings } from 'src/app/models/settings';
 import { DataService } from 'src/app/services/static-data.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgFor, NgIf } from '@angular/common';
+import { gameName } from '../../models/format';
 
 export interface DialogData {
   url: string;
@@ -19,6 +25,8 @@ export interface DialogData {
   selector: 'app-leader-badge',
   templateUrl: './leader-badge.component.html',
   styleUrls: ['./leader-badge.component.scss'],
+  standalone: true,
+  imports: [NgFor],
 })
 export class LeaderBadgeComponent implements OnInit {
   loginId: string;
@@ -76,6 +84,8 @@ export class LeaderBadgeComponent implements OnInit {
       // this.challengerService.setChallengerName(this.challenger.id, this.newName);
     });
   }
+
+  protected readonly gameName = gameName;
 }
 
 // Separate component for the enqueue dialog
@@ -84,6 +94,8 @@ export class LeaderBadgeComponent implements OnInit {
   selector: 'leader-detail-enqueue-dialog',
   templateUrl: 'leader-detail-enqueue-dialog.html',
   styleUrls: ['leader-detail-enqueue-dialog.scss'],
+  standalone: true,
+  imports: [NgIf, MatFormFieldModule, MatSelectModule, NgFor, MatOptionModule, MatDialogModule, MatButtonModule],
 })
 export class LeaderDetailEnqueueDialog {
   selectedFormat: number;

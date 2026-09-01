@@ -1,14 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of, share, shareReplay, tap } from 'rxjs';
+import { catchError, map, Observable, of, tap } from 'rxjs';
 
-import { api, battleFormatsReverseMap, leaderTypesReverseMap, champHasBadge } from '../constants.data';
-import { Leader } from '../models/leader';
+import {
+  api,
+  battleFormatsMap,
+  battleFormatsReverseMap,
+  champHasBadge,
+  leaderTypesMap,
+  leaderTypesReverseMap,
+} from '../constants.data';
+import { Leader, leaderFromResponse } from '../models/leader';
 import { PPLSettings } from '../models/settings';
 import { AuthenticationService } from './authentication.service';
-
-import { battleFormatsMap, leaderTypesMap } from '../constants.data';
-import { Format } from '../models/format';
+import { Format, Game } from '../models/format';
 import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
@@ -26,20 +31,6 @@ export class DataService {
 
   private readonly _pplData: Observable<JSON>;
 
-  /**
-   * Convert bitmask for leaderTypes
-   */
-  static getLeaderTypesFromBitmask(bitmask: number): number[] {
-    const leaderTypes = [];
-    for (const key of Object.keys(leaderTypesMap)) {
-      if (bitmask & leaderTypesMap[key]) {
-        leaderTypes.push(leaderTypesMap[key]);
-      }
-    }
-
-    return leaderTypes;
-  }
-
   getLeaderData(): Observable<Leader[]> {
     return this.fetchAndReturnLeaderData();
   }
@@ -55,45 +46,18 @@ export class DataService {
       map((response: JSON) => {
         const leaders: Leader[] = [];
         for (const leaderId of Object.keys(response)) {
-          const leader: Leader = {
-            leaderId,
-            displayName: response[leaderId].name as string,
-            badgeName: response[leaderId].badgeName as string,
-            bio: response[leaderId].bio as string,
-            leaderArt: `${url}/static/portraits/${leaderId}.png`,
-            badgeArt: `${url}/static/badges/${leaderId}.png`,
-            tagline: response[leaderId].tagline as string,
-            leaderTypeIds: DataService.getLeaderTypesFromBitmask(response[leaderId].leaderType),
-            leaderTypes: DataService.getLeaderTypesFromBitmask(response[leaderId].leaderType).map(function (typeId) {
-              const type: Format = {
-                id: typeId,
-                name: leaderTypesReverseMap[typeId],
-              };
-              return type;
-            }, []),
-            battleFormatIds: this.getBattleFormatsFromBitmask(response[leaderId].battleFormat),
-            battleFormats: this.getBattleFormatsFromBitmask(response[leaderId].battleFormat).map(function (formatId) {
-              const format: Format = {
-                id: formatId,
-                name: battleFormatsReverseMap[formatId],
-              };
-              return format;
-            }, []),
-            champion: DataService.getLeaderTypesFromBitmask(response[leaderId].leaderType).includes(16), // champion leaderType
-          };
+          const leader: Leader = leaderFromResponse(leaderId, response[leaderId]);
           leaders.push(leader);
         }
 
         // Sort list of leaders
-        const sortedfLeaders: Leader[] = leaders.sort((a, b) => {
+        return leaders.sort((a, b) => {
           if (a.leaderTypeIds === b.leaderTypeIds) {
             return a.displayName < b.displayName ? -1 : 1;
           } else {
             return a.leaderTypeIds < b.leaderTypeIds ? -1 : 1;
           }
         });
-
-        return sortedfLeaders;
       }),
       tap((_) => this.log('fetched leader data')),
       catchError(this.handleErrorNoLogout<Leader[]>('fetchLeaderData', [])),
@@ -179,20 +143,6 @@ export class DataService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
-  }
-
-  /**
-   * Convert bitmask for leaderTypes
-   */
-  getBattleFormatsFromBitmask(bitmask: number): number[] {
-    const battleFormats = [];
-    for (const key of Object.keys(battleFormatsMap)) {
-      if (bitmask & battleFormatsMap[key]) {
-        battleFormats.push(battleFormatsMap[key]);
-      }
-    }
-
-    return battleFormats;
   }
 
   //   Cookies

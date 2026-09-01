@@ -10,9 +10,9 @@ describe('NameComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      providers: [MatDialog, Overlay],
-      declarations: [NameComponent],
-    }).compileComponents();
+    imports: [NameComponent],
+    providers: [MatDialog, Overlay],
+}).compileComponents();
 
     fixture = TestBed.createComponent(NameComponent);
     component = fixture.componentInstance;

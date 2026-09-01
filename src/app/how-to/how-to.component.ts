@@ -3,11 +3,24 @@ import { pplEvent } from '../constants.data';
 import { DataService } from '../services/static-data.service';
 import { MatTabGroup } from '@angular/material/tabs';
 import { PPLSettings } from '../models/settings';
+import { StaticImageComponent } from '../static-image/static-image.component';
+import { NgIf } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-how-to',
-  templateUrl: './how-to.component.html',
-  styleUrls: ['./how-to.component.scss'],
+    selector: 'app-how-to',
+    templateUrl: './how-to.component.html',
+    styleUrls: ['./how-to.component.scss'],
+    standalone: true,
+    imports: [
+        MatCardModule,
+        MatExpansionModule,
+        MatButtonModule,
+        NgIf,
+        StaticImageComponent,
+    ],
 })
 export class HowToComponent implements OnInit {
   pplSettings: PPLSettings;

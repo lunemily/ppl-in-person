@@ -10,9 +10,9 @@ import { HttpClient } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { Challenger } from '../models/challenger';
-import { Leader } from '../models/leader';
+import { getLeaderTypesFromBitmask, Leader, leaderFromResponse } from '../models/leader';
 import { DataService } from './static-data.service';
-import { Format } from '../models/format';
+import { Format, Game } from '../models/format';
 import { Queue } from '../models/queue';
 import { Hold } from '../models/hold';
 import { AuthenticationService } from './authentication.service';
@@ -72,59 +72,7 @@ export class ApiService {
     return this.http.get<Leader>(url, this.httpOptions).pipe(
       map((response) => {
         /** Create object to return. Add in all leaders now. */
-        const leader: Leader = {
-          id,
-          leaderId: response.leaderId,
-          displayName: response.leaderName,
-          battleFormatIds: this.dataService.getBattleFormatsFromBitmask(response.battleFormat),
-          battleFormats: this.dataService.getBattleFormatsFromBitmask(response.battleFormat).map(function (formatId) {
-            const format: Format = {
-              id: formatId,
-              name: battleFormatsReverseMap[formatId],
-            };
-            return format;
-          }, []),
-          leaderTypeIds: DataService.getLeaderTypesFromBitmask(response.leaderType),
-          leaderTypes: DataService.getLeaderTypesFromBitmask(response.leaderType).map(function (typeId) {
-            const type: Format = {
-              id: typeId,
-              name: leaderTypesReverseMap[typeId],
-            };
-            return type;
-          }, []),
-          queue: response.queue.map(function (item) {
-            const queue: Queue = {
-              position: item.position,
-              challengerId: item.challengerId,
-              displayName: item.displayName,
-              battleCode: item.linkCode,
-              battleFormat: {
-                id: item.format,
-                name: battleFormatsReverseMap[item.format],
-              },
-              badgeArt: `${url}/static/badges/${response.leaderId}.png`,
-              battleDifficulty: {
-                id: item.difficulty,
-                name: leaderTypesReverseMap[item.difficulty],
-              },
-            };
-            return queue;
-          }, []),
-          queueOpen: response.queueOpen,
-          onHold: response.onHold.map(function (item) {
-            const hold: Hold = {
-              challengerId: item.challengerId,
-              displayName: item.displayName,
-            };
-            return hold;
-          }, []),
-          twitchEnabled: response.twitchEnabled,
-          wins: response.winCount,
-          losses: response.lossCount,
-          badgesAwarded: response.badgesAwarded,
-          feedbackSurveyUrl: response.feedbackSurveyUrl ? response.feedbackSurveyUrl : null,
-        };
-        return leader;
+        return leaderFromResponse(id, response);
       }),
       tap((_) => console.debug(`fetched leader id=${id}`)),
       catchError(this.handleError<Leader>(`leader id=${id}`)),
@@ -158,7 +106,7 @@ export class ApiService {
                   name: leaderTypesReverseMap[item.difficulty],
                 },
                 battleCode: item.linkCode,
-                isChampion: DataService.getLeaderTypesFromBitmask(item.difficulty).includes(16), // champion leaderType
+                isChampion: getLeaderTypesFromBitmask(item.difficulty).includes(16), // champion leaderType
               };
               result.push(queue);
               return result;
@@ -178,7 +126,7 @@ export class ApiService {
                     id: item.difficulty,
                     name: leaderTypesReverseMap[item.difficulty],
                   },
-                  isChampion: DataService.getLeaderTypesFromBitmask(item.difficulty).includes(16), // champion leaderType
+                  isChampion: getLeaderTypesFromBitmask(item.difficulty).includes(16), // champion leaderType
                 };
                 result.push(queue);
                 return result;

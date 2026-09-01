@@ -8,11 +8,30 @@ import { api, pplEvent } from '../../constants.data';
 import { DataService } from '../../services/static-data.service';
 import { Leader, isEliteLeader } from '../../models/leader';
 import { PPLSettings } from '../../models/settings';
+import { LeaderListComponent } from '../leader-list/leader-list.component';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { NameComponent } from '../../console/name/name.component';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-trainer-card',
-  templateUrl: './trainer-card.component.html',
-  styleUrls: ['./trainer-card.component.scss'],
+    selector: 'app-trainer-card',
+    templateUrl: './trainer-card.component.html',
+    styleUrls: ['./trainer-card.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        NameComponent,
+        MatCardModule,
+        MatIconModule,
+        MatExpansionModule,
+        MatButtonModule,
+        ClipboardModule,
+        LeaderListComponent,
+    ],
 })
 export class TrainerCardComponent implements OnInit {
   pplSettings: PPLSettings;
