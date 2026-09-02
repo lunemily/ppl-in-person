@@ -51,6 +51,30 @@ $dark-bg-alpha-12: rgba(#2c2c2c, 0.12);
 @include mat.core();
 
 $ppl-typography: mat.m2-define-typography-config(
+  $headline-1:
+    mat.m2-define-typography-level(
+      $font-family: theboldfont,
+      $font-weight: 400,
+      $font-size: 2.5em,
+      $line-height: 2.5em,
+      $letter-spacing: normal,
+    ),
+  $headline-2:
+    mat.m2-define-typography-level(
+      $font-family: theboldfont,
+      $font-weight: 400,
+      $font-size: 2.5em,
+      $line-height: 2.5em,
+      $letter-spacing: normal,
+    ),
+  $headline-3:
+    mat.m2-define-typography-level(
+      $font-family: theboldfont,
+      $font-weight: 400,
+      $font-size: 2.5em,
+      $line-height: 2.5em,
+      $letter-spacing: normal,
+    ),
   $headline-4:
     mat.m2-define-typography-level(
       $font-family: theboldfont,
@@ -244,4 +268,12 @@ mat-card {
   padding-top: 56px;
   margin-bottom: 48px;
   overflow: auto !important;
+}
+
+h1.title {
+  font-family: theboldfont !important;
+  font-weight: 400;
+  font-size: 1.75em !important;
+  line-height: 2.5em !important;
+  letter-spacing: normal;
 }

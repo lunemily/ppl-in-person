@@ -6,10 +6,14 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 const prod = false;
 const port = prod ? 26438 : 26441;
 const prodPort = 26438;
-const paxEvent = 'east';
+const paxEvent = 'west';
 
 function cleanup() {
-  fs.rmdirSync('bin/qr', { recursive: true, force: true });
+  try {
+    fs.rmSync('bin/qr', { recursive: true, force: true });
+  } catch (err) {
+    console.error(err);
+  }
   fs.mkdirSync('bin/qr');
 }
 
@@ -27,7 +31,7 @@ async function getLeaderData() {
     leaderData.push({ id: 'be24de2c8b94', name: 'Lord Bingler, King of the Bingo Hall' });
   }
   // add followingler
-  // leaderData.push({ id: 'cddaba15d491', name: 'Lord Fingler, the Socialite' });
+  leaderData.push({ id: 'cddaba15d491', name: 'Lord Fingler, the Socialite' });
 
   // add artingler
   if (['unplugged'].includes(paxEvent)) {
