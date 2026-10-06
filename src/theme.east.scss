@@ -179,7 +179,7 @@ $theme-warn: mat.m2-define-palette($mat-warn, main, lighter, darker);
 $theme: mat.m2-define-light-theme($theme-primary, $theme-accent, $theme-warn);
 
 // Theme Init
-@include angular-material-theme($theme);
+@include mat.all-component-themes($theme);
 
 .color-primary {
   color: mat.m2-get-color-from-palette($theme-primary);
